@@ -1,0 +1,51 @@
+/* =========================================================
+   Global styles — Hospitalised Injuries Dashboard
+   ========================================================= */
+
+:root {
+  --colour-bg: #ffffff;
+  --colour-text: #1a1a1a;
+  --colour-muted: #666666;
+  --colour-accent: #1f77b4;
+  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-base);
+  color: var(--colour-text);
+  background: var(--colour-bg);
+  line-height: 1.5;
+}
+
+header {
+  padding: 2rem 1.5rem 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--colour-muted);
+}
+
+main {
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e5e5e5;
+  color: var(--colour-muted);
+  font-size: 0.875rem;
+}
