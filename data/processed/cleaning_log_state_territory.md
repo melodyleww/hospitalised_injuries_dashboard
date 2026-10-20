@@ -9,7 +9,7 @@
 ## 1. File Summary
 - **Input Data:** The `raw` tab in the Excel file, which contains 5 side-by-side tables (Totals, Road User, Sex, Age Group, Counterparty) at a 6-monthly granularity.
 - **Column Count Before Cleaning:** 38 columns (A to AL).
-- **Column Count After Cleaning:** 9 columns (year, road_user, sex, age_group, counterparty, Sum(hospitalisations), Sum(bed_days), jurisdiction, data_quality_flag)
+- **Column Count After Cleaning:** 9 columns (year, jurisdiction, breakdown_type, category, data_quality_flag, Sum(hospitalisations), Sum(bed_days))
 
 ---
 
@@ -20,7 +20,7 @@ The following transformations were applied using KNIME nodes:
    - The `Excel Reader` was configured to skip the first 2 header rows and read the data without column headers.
    - Five `Column Splitter` nodes were used to separate the 5 side-by-side tables into independent data streams based on their column indices.
 2. **Column Naming:** 
-   - `Column Rename` nodes were used to replace generic KNIME names (e.g., `Col0`) with descriptive schema names (e.g., `year`, `jurisdiction`, `hospitalisations`).
+   - `Column Rename` nodes were used to replace generic KNIME names (e.g., `A`) with descriptive schema names (e.g., `year`, `jurisdiction`, `hospitalisations`).
 3. **Blank Row Removal:** 
    - A `Row Filter` was applied to each stream to exclude rows where the `year` column was missing. This removed the structural padding rows created by the Excel Reader.
 4. **Category Standardisation:** 
@@ -34,7 +34,11 @@ The following transformations were applied using KNIME nodes:
    - A `Rule Engine` was used to create the `data_quality_flag` column. It flagged time series breaks (`Vic_break_2012`, `NSW_break_2017`) and remaining missing values as `n.p._suppressed`.
 7. **Aggregation (GroupBy):**
    - `GroupBy` nodes were used to sum the 6-monthly data (`Jan-Jun` and `Jul-Dec`) into annual totals. The `hospitalisations` and `bed_days` columns were aggregated using the `Sum` method.
-8. **Concatenation:**
+8. **Data Restructuring (Pivot to Long Format):**
+   - To prevent a massive "wide" table full of missing values (`?`) during concatenation, the dimensions were pivoted.
+   - `Column Rename` nodes renamed the dimension columns (`road_user`, `sex`, `age_group`, `counterparty`) to a unified `category` column.
+   - `Constant Value Column` nodes appended a `breakdown_type` column to identify the data source (e.g., "Road User", "Sex", "Total").
+9. **Concatenation:**
    - Four chained `Concatenate` nodes were used to append the 5 streams back together. The `Column handling` was set to **Union**, which correctly aligned the different dimensions and created `?` values for columns not present in a specific stream.
 
 ---
@@ -80,14 +84,32 @@ Because the Excel file contained 5 tables of varying lengths, KNIME automaticall
 - **Status:** Passed.
 - The number of rows in each cleaned stream matches the unique combinations of year, jurisdiction, and the specific dimension.
 
-### 11.2 Category Label Check
+### 11.2 Total Check
+- **Status:** Passed.
+- The sum of sub-categories (e.g., Road User) is less than or equal to the Total for each year, as required. Example:
+- Total: 2021 NSW = 9,003
+- Sex: Male (6,118) + Female (2,885) = 9,003 (PASSED)
+- Road User: Car (3,669) + Motorcycle (2,253) + Pedal (2,042) + Pedestrian (649) + Heavy (103) + Pickup (73) + Bus (50) = 8,839 < 9,003 (PASSED) The remaining 164 are "Other/Unknown."
+
+### 11.3 Known Value Check
+*Compared against the provided BITRE Dashboard screenshots.*
+
+| Metric | Expected Value | Cleaned Output (KNIME) | Status |
+| :--- | :--- | :--- | :--- |
+| 2021 NSW Total Hospitalizations | 9,003 | 9,003 | PASS |
+| 2021 Vic Total Hospitalizations | 11,130 | 11,130 | PASS |
+| 2021 Qld Total Hospitalizations | 10,447 | 10,447 | PASS |
+| 2021 SA Total Hospitalizations | 2,632 | 2,632 | PASS |
+| 2021 WA Total Hospitalizations | 3,568 |  3,568 | PASS |
+
+### 11.4 Category Label Check
 - **Status:** Passed.
 - All labels (Road User, Sex, Age Group, Counterparty) exactly match the standardised strings defined in Section 3 of the Data Contract. (e.g., `65+`, `Car driver/passenger`).
 
-### 11.3 Missing Value Check
+### 11.5 Missing Value Check
 - **Column:** `hospitalisations` and `bed_days`
 - **Status:** Acknowledged.
-- These columns contain `?` (NA) values strictly because of `n.p.` suppression in the raw data. There are no unexpected missing values in the dimension columns (`year`, `jurisdiction`, etc.).
+- These columns contain `?` (NA) values strictly because of `n.p.` suppression in the raw data. There are no unexpected missing values in the dimension columns (`year`, `jurisdiction`, `breakdown_type`, `category`).
 
 ---
 
