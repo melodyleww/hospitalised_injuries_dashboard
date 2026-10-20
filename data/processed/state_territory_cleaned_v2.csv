@@ -1,0 +1,1936 @@
+"year","jurisdiction","breakdown_type","category","data_quality_flag","Sum(hospitalisations)","Sum(bed_days)"
+2011,"ACT","Total","Total","OK",537,2576
+2011,"NSW","Total","Total","OK",10618,50344
+2011,"NT","Total","Total","OK",456,3010
+2011,"Qld","Total","Total","OK",6322,28533
+2011,"SA","Total","Total","OK",2359,12032
+2011,"Tas","Total","Total","OK",493,3106
+2011,"Vic","Total","Total","OK",9326,33924
+2011,"WA","Total","Total","OK",3442,18485
+2012,"ACT","Total","Total","OK",601,2266
+2012,"NSW","Total","Total","OK",11121,49958
+2012,"NT","Total","Total","OK",496,2955
+2012,"Qld","Total","Total","OK",6813,30414
+2012,"SA","Total","Total","OK",2311,12433
+2012,"Tas","Total","Total","OK",536,2848
+2012,"Vic","Total","Total","Vic_break_2012",8098,30245
+2012,"WA","Total","Total","OK",3493,17899
+2013,"ACT","Total","Total","OK",573,2517
+2013,"NSW","Total","Total","OK",11421,47039
+2013,"NT","Total","Total","OK",561,3661
+2013,"Qld","Total","Total","OK",7821,29019
+2013,"SA","Total","Total","OK",2221,11571
+2013,"Tas","Total","Total","OK",570,2891
+2013,"Vic","Total","Total","Vic_break_2012",7784,29066
+2013,"WA","Total","Total","OK",3475,17226
+2014,"ACT","Total","Total","OK",542,2026
+2014,"NSW","Total","Total","OK",11313,46040
+2014,"NT","Total","Total","OK",575,2967
+2014,"Qld","Total","Total","OK",7725,29016
+2014,"SA","Total","Total","OK",2381,11196
+2014,"Tas","Total","Total","OK",646,2869
+2014,"Vic","Total","Total","Vic_break_2012",8523,29025
+2014,"WA","Total","Total","OK",3154,16589
+2015,"ACT","Total","Total","OK",700,2896
+2015,"NSW","Total","Total","OK",11084,54331
+2015,"NT","Total","Total","OK",691,3461
+2015,"Qld","Total","Total","OK",8306,34270
+2015,"SA","Total","Total","OK",2467,11167
+2015,"Tas","Total","Total","OK",677,3443
+2015,"Vic","Total","Total","Vic_break_2012",9198,50072
+2015,"WA","Total","Total","OK",3183,18445
+2016,"ACT","Total","Total","OK",654,2672
+2016,"NSW","Total","Total","OK",11474,60349
+2016,"NT","Total","Total","OK",709,3793
+2016,"Qld","Total","Total","OK",8702,39817
+2016,"SA","Total","Total","OK",2654,13195
+2016,"Tas","Total","Total","OK",657,3964
+2016,"Vic","Total","Total","Vic_break_2012",10360,67778
+2016,"WA","Total","Total","OK",3031,21902
+2017,"ACT","Total","Total","OK",632,2609
+2017,"NSW","Total","Total","NSW_break_2017",11016,59514
+2017,"NT","Total","Total","OK",703,3997
+2017,"Qld","Total","Total","OK",9134,39864
+2017,"SA","Total","Total","OK",2394,13779
+2017,"Tas","Total","Total","OK",659,4310
+2017,"Vic","Total","Total","Vic_break_2012",10794,64054
+2017,"WA","Total","Total","OK",3195,19160
+2018,"ACT","Total","Total","OK",712,2984
+2018,"NSW","Total","Total","NSW_break_2017",9794,59524
+2018,"NT","Total","Total","OK",832,5278
+2018,"Qld","Total","Total","OK",9381,38839
+2018,"SA","Total","Total","OK",2489,12658
+2018,"Tas","Total","Total","OK",781,4676
+2018,"Vic","Total","Total","Vic_break_2012",11453,63844
+2018,"WA","Total","Total","OK",3274,15080
+2019,"ACT","Total","Total","OK",665,2804
+2019,"NSW","Total","Total","NSW_break_2017",9942,62998
+2019,"NT","Total","Total","OK",656,3809
+2019,"Qld","Total","Total","OK",9515,40189
+2019,"SA","Total","Total","OK",2457,10803
+2019,"Tas","Total","Total","OK",708,4080
+2019,"Vic","Total","Total","Vic_break_2012",11392,61009
+2019,"WA","Total","Total","OK",3534,17822
+2020,"ACT","Total","Total","OK",629,2537
+2020,"NSW","Total","Total","NSW_break_2017",9274,58371
+2020,"NT","Total","Total","OK",787,3467
+2020,"Qld","Total","Total","OK",9801,37850
+2020,"SA","Total","Total","OK",2503,12180
+2020,"Tas","Total","Total","OK",778,3482
+2020,"Vic","Total","Total","Vic_break_2012",9884,47937
+2020,"WA","Total","Total","OK",3636,18788
+2021,"ACT","Total","Total","OK",740,2739
+2021,"NSW","Total","Total","NSW_break_2017",9003,55098
+2021,"NT","Total","Total","OK",710,4073
+2021,"Qld","Total","Total","OK",10447,40889
+2021,"SA","Total","Total","OK",2632,11852
+2021,"Tas","Total","Total","OK",805,4860
+2021,"Vic","Total","Total","Vic_break_2012",11130,54699
+2021,"WA","Total","Total","OK",3568,22288
+2011,"ACT","Road User","Bus","n.p._suppressed",,
+2011,"NSW","Road User","Bus","OK",90,370
+2011,"NT","Road User","Bus","n.p._suppressed",,
+2011,"Qld","Road User","Bus","OK",29,77
+2011,"SA","Road User","Bus","OK",14,72
+2011,"SA","Road User","Bus","n.p._suppressed",,
+2011,"Tas","Road User","Bus","n.p._suppressed",,
+2011,"Vic","Road User","Bus","OK",39,62
+2011,"WA","Road User","Bus","OK",26,72
+2011,"ACT","Road User","Car driver/passenger","OK",198,923
+2011,"NSW","Road User","Car driver/passenger","OK",5285,23686
+2011,"NT","Road User","Car driver/passenger","OK",209,1515
+2011,"Qld","Road User","Car driver/passenger","OK",2768,12970
+2011,"SA","Road User","Car driver/passenger","OK",1255,5975
+2011,"Tas","Road User","Car driver/passenger","OK",225,1575
+2011,"Vic","Road User","Car driver/passenger","OK",4861,17151
+2011,"WA","Road User","Car driver/passenger","OK",1616,8277
+2011,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2011,"NSW","Road User","Heavy transport","OK",161,736
+2011,"Qld","Road User","Heavy transport","OK",162,776
+2011,"SA","Road User","Heavy transport","OK",28,85
+2011,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2011,"Vic","Road User","Heavy transport","OK",156,632
+2011,"WA","Road User","Heavy transport","OK",45,255
+2011,"ACT","Road User","Motorcyclist","OK",144,649
+2011,"NSW","Road User","Motorcyclist","OK",2393,11863
+2011,"NT","Road User","Motorcyclist","OK",106,708
+2011,"Qld","Road User","Motorcyclist","OK",1781,8354
+2011,"SA","Road User","Motorcyclist","OK",460,2798
+2011,"Tas","Road User","Motorcyclist","OK",129,855
+2011,"Vic","Road User","Motorcyclist","OK",1622,6525
+2011,"WA","Road User","Motorcyclist","OK",867,5545
+2011,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2011,"NSW","Road User","Other/Unknown","OK",172,955
+2011,"NT","Road User","Other/Unknown","OK",24,103
+2011,"Qld","Road User","Other/Unknown","OK",143,597
+2011,"SA","Road User","Other/Unknown","n.p._suppressed",,
+2011,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2011,"Vic","Road User","Other/Unknown","OK",151,498
+2011,"WA","Road User","Other/Unknown","OK",70,285
+2011,"ACT","Road User","Pedal cyclist","OK",149,429
+2011,"NSW","Road User","Pedal cyclist","OK",1487,4222
+2011,"NT","Road User","Pedal cyclist","OK",62,189
+2011,"Qld","Road User","Pedal cyclist","OK",955,2841
+2011,"SA","Road User","Pedal cyclist","OK",379,1319
+2011,"Tas","Road User","Pedal cyclist","OK",73,174
+2011,"Vic","Road User","Pedal cyclist","OK",1687,4174
+2011,"WA","Road User","Pedal cyclist","OK",530,1685
+2011,"ACT","Road User","Pedestrian","OK",30,459
+2011,"NSW","Road User","Pedestrian","OK",967,8340
+2011,"NT","Road User","Pedestrian","OK",44,453
+2011,"Qld","Road User","Pedestrian","OK",443,2683
+2011,"SA","Road User","Pedestrian","OK",176,1632
+2011,"Tas","Road User","Pedestrian","OK",45,347
+2011,"Vic","Road User","Pedestrian","OK",739,4677
+2011,"WA","Road User","Pedestrian","OK",261,1910
+2011,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2011,"NSW","Road User","Pick-up truck/van","OK",63,172
+2011,"NT","Road User","Pick-up truck/van","OK",7,21
+2011,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2011,"Qld","Road User","Pick-up truck/van","OK",41,235
+2011,"SA","Road User","Pick-up truck/van","OK",11,35
+2011,"SA","Road User","Pick-up truck/van","n.p._suppressed",,
+2011,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2011,"Vic","Road User","Pick-up truck/van","OK",71,205
+2011,"WA","Road User","Pick-up truck/van","OK",27,456
+2012,"ACT","Road User","Bus","n.p._suppressed",,
+2012,"NSW","Road User","Bus","OK",91,423
+2012,"NT","Road User","Bus","n.p._suppressed",,
+2012,"Qld","Road User","Bus","OK",33,100
+2012,"SA","Road User","Bus","OK",8,27
+2012,"SA","Road User","Bus","n.p._suppressed",,
+2012,"Tas","Road User","Bus","n.p._suppressed",,
+2012,"Vic","Road User","Bus","Vic_break_2012",33,148
+2012,"WA","Road User","Bus","OK",24,100
+2012,"ACT","Road User","Car driver/passenger","OK",237,991
+2012,"NSW","Road User","Car driver/passenger","OK",5423,22444
+2012,"NT","Road User","Car driver/passenger","OK",247,1358
+2012,"Qld","Road User","Car driver/passenger","OK",3199,14240
+2012,"SA","Road User","Car driver/passenger","OK",1133,6579
+2012,"Tas","Road User","Car driver/passenger","OK",245,1520
+2012,"Vic","Road User","Car driver/passenger","Vic_break_2012",4062,14857
+2012,"WA","Road User","Car driver/passenger","OK",1568,8384
+2012,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2012,"NSW","Road User","Heavy transport","OK",142,681
+2012,"NT","Road User","Heavy transport","OK",7,18
+2012,"NT","Road User","Heavy transport","n.p._suppressed",,
+2012,"Qld","Road User","Heavy transport","OK",146,662
+2012,"SA","Road User","Heavy transport","OK",31,90
+2012,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2012,"Vic","Road User","Heavy transport","Vic_break_2012",116,529
+2012,"WA","Road User","Heavy transport","OK",50,334
+2012,"ACT","Road User","Motorcyclist","OK",144,523
+2012,"NSW","Road User","Motorcyclist","OK",2626,12860
+2012,"NT","Road User","Motorcyclist","OK",118,660
+2012,"Qld","Road User","Motorcyclist","OK",1776,8547
+2012,"SA","Road User","Motorcyclist","OK",451,2479
+2012,"Tas","Road User","Motorcyclist","OK",124,618
+2012,"Vic","Road User","Motorcyclist","Vic_break_2012",1505,6109
+2012,"WA","Road User","Motorcyclist","OK",909,5388
+2012,"ACT","Road User","Other/Unknown","OK",11,22
+2012,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2012,"NSW","Road User","Other/Unknown","OK",133,662
+2012,"NT","Road User","Other/Unknown","OK",13,89
+2012,"Qld","Road User","Other/Unknown","OK",138,740
+2012,"SA","Road User","Other/Unknown","OK",61,178
+2012,"Tas","Road User","Other/Unknown","OK",7,10
+2012,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2012,"Vic","Road User","Other/Unknown","Vic_break_2012",103,442
+2012,"WA","Road User","Other/Unknown","OK",88,325
+2012,"ACT","Road User","Pedal cyclist","OK",173,527
+2012,"NSW","Road User","Pedal cyclist","OK",1667,4631
+2012,"NT","Road User","Pedal cyclist","OK",45,184
+2012,"Qld","Road User","Pedal cyclist","OK",1054,3053
+2012,"SA","Road User","Pedal cyclist","OK",401,1471
+2012,"Tas","Road User","Pedal cyclist","OK",91,200
+2012,"Vic","Road User","Pedal cyclist","Vic_break_2012",1530,3865
+2012,"WA","Road User","Pedal cyclist","OK",587,1569
+2012,"ACT","Road User","Pedestrian","OK",27,162
+2012,"NSW","Road User","Pedestrian","OK",955,7785
+2012,"NT","Road User","Pedestrian","OK",51,579
+2012,"Qld","Road User","Pedestrian","OK",416,2850
+2012,"SA","Road User","Pedestrian","OK",196,1515
+2012,"Tas","Road User","Pedestrian","OK",51,434
+2012,"Vic","Road User","Pedestrian","Vic_break_2012",675,3845
+2012,"WA","Road User","Pedestrian","OK",242,1649
+2012,"NSW","Road User","Pick-up truck/van","OK",84,472
+2012,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2012,"Qld","Road User","Pick-up truck/van","OK",51,222
+2012,"SA","Road User","Pick-up truck/van","OK",10,10
+2012,"SA","Road User","Pick-up truck/van","n.p._suppressed",,
+2012,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2012,"Vic","Road User","Pick-up truck/van","Vic_break_2012",74,450
+2012,"WA","Road User","Pick-up truck/van","OK",25,150
+2013,"ACT","Road User","Bus","n.p._suppressed",,
+2013,"NSW","Road User","Bus","OK",82,441
+2013,"NT","Road User","Bus","n.p._suppressed",,
+2013,"Qld","Road User","Bus","OK",37,143
+2013,"SA","Road User","Bus","OK",16,58
+2013,"Tas","Road User","Bus","n.p._suppressed",,
+2013,"Vic","Road User","Bus","Vic_break_2012",45,175
+2013,"WA","Road User","Bus","OK",30,113
+2013,"ACT","Road User","Car driver/passenger","OK",212,945
+2013,"NSW","Road User","Car driver/passenger","OK",5585,20913
+2013,"NT","Road User","Car driver/passenger","OK",296,1820
+2013,"Qld","Road User","Car driver/passenger","OK",3658,12494
+2013,"SA","Road User","Car driver/passenger","OK",1106,5513
+2013,"Tas","Road User","Car driver/passenger","OK",265,1348
+2013,"Vic","Road User","Car driver/passenger","Vic_break_2012",3689,13552
+2013,"WA","Road User","Car driver/passenger","OK",1452,7082
+2013,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2013,"NSW","Road User","Heavy transport","OK",127,563
+2013,"NT","Road User","Heavy transport","n.p._suppressed",,
+2013,"Qld","Road User","Heavy transport","OK",165,719
+2013,"SA","Road User","Heavy transport","OK",25,202
+2013,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2013,"Vic","Road User","Heavy transport","Vic_break_2012",103,558
+2013,"WA","Road User","Heavy transport","OK",40,342
+2013,"ACT","Road User","Motorcyclist","OK",137,611
+2013,"NSW","Road User","Motorcyclist","OK",2570,12130
+2013,"NT","Road User","Motorcyclist","OK",121,952
+2013,"Qld","Road User","Motorcyclist","OK",2047,8925
+2013,"SA","Road User","Motorcyclist","OK",455,2718
+2013,"Tas","Road User","Motorcyclist","OK",149,628
+2013,"Vic","Road User","Motorcyclist","Vic_break_2012",1521,5998
+2013,"WA","Road User","Motorcyclist","OK",958,5298
+2013,"ACT","Road User","Other/Unknown","OK",5,42
+2013,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2013,"NSW","Road User","Other/Unknown","OK",162,913
+2013,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2013,"Qld","Road User","Other/Unknown","OK",140,509
+2013,"SA","Road User","Other/Unknown","OK",27,77
+2013,"Tas","Road User","Other/Unknown","OK",9,81
+2013,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2013,"Vic","Road User","Other/Unknown","Vic_break_2012",118,480
+2013,"WA","Road User","Other/Unknown","OK",56,251
+2013,"ACT","Road User","Pedal cyclist","OK",174,475
+2013,"NSW","Road User","Pedal cyclist","OK",1835,4961
+2013,"NT","Road User","Pedal cyclist","OK",70,251
+2013,"Qld","Road User","Pedal cyclist","OK",1321,3517
+2013,"SA","Road User","Pedal cyclist","OK",400,1412
+2013,"Tas","Road User","Pedal cyclist","OK",94,298
+2013,"Vic","Road User","Pedal cyclist","Vic_break_2012",1583,3944
+2013,"WA","Road User","Pedal cyclist","OK",675,2203
+2013,"ACT","Road User","Pedestrian","OK",33,357
+2013,"NSW","Road User","Pedestrian","OK",993,6819
+2013,"NT","Road User","Pedestrian","OK",42,432
+2013,"Qld","Road User","Pedestrian","OK",400,2446
+2013,"SA","Road User","Pedestrian","OK",172,1497
+2013,"Tas","Road User","Pedestrian","OK",43,483
+2013,"Vic","Road User","Pedestrian","Vic_break_2012",673,4071
+2013,"WA","Road User","Pedestrian","OK",245,1696
+2013,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2013,"NSW","Road User","Pick-up truck/van","OK",67,299
+2013,"NT","Road User","Pick-up truck/van","OK",6,59
+2013,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2013,"Qld","Road User","Pick-up truck/van","OK",53,266
+2013,"SA","Road User","Pick-up truck/van","OK",20,94
+2013,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2013,"Vic","Road User","Pick-up truck/van","Vic_break_2012",52,288
+2013,"WA","Road User","Pick-up truck/van","OK",19,241
+2014,"ACT","Road User","Bus","n.p._suppressed",,
+2014,"NSW","Road User","Bus","OK",107,628
+2014,"NT","Road User","Bus","OK",7,43
+2014,"Qld","Road User","Bus","OK",49,292
+2014,"SA","Road User","Bus","OK",8,28
+2014,"SA","Road User","Bus","n.p._suppressed",,
+2014,"Tas","Road User","Bus","n.p._suppressed",,
+2014,"Vic","Road User","Bus","Vic_break_2012",57,284
+2014,"WA","Road User","Bus","OK",29,96
+2014,"ACT","Road User","Car driver/passenger","OK",232,943
+2014,"NSW","Road User","Car driver/passenger","OK",5319,20508
+2014,"NT","Road User","Car driver/passenger","OK",276,1331
+2014,"Qld","Road User","Car driver/passenger","OK",3580,12875
+2014,"SA","Road User","Car driver/passenger","OK",1066,5217
+2014,"Tas","Road User","Car driver/passenger","OK",261,1381
+2014,"Vic","Road User","Car driver/passenger","Vic_break_2012",4070,13176
+2014,"WA","Road User","Car driver/passenger","OK",1282,7032
+2014,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2014,"NSW","Road User","Heavy transport","OK",145,664
+2014,"NT","Road User","Heavy transport","OK",5,51
+2014,"NT","Road User","Heavy transport","n.p._suppressed",,
+2014,"Qld","Road User","Heavy transport","OK",146,882
+2014,"SA","Road User","Heavy transport","OK",35,112
+2014,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2014,"Vic","Road User","Heavy transport","Vic_break_2012",107,609
+2014,"WA","Road User","Heavy transport","OK",35,209
+2014,"ACT","Road User","Motorcyclist","OK",102,523
+2014,"NSW","Road User","Motorcyclist","OK",2636,11079
+2014,"NT","Road User","Motorcyclist","OK",150,898
+2014,"Qld","Road User","Motorcyclist","OK",2070,8517
+2014,"SA","Road User","Motorcyclist","OK",557,2370
+2014,"Tas","Road User","Motorcyclist","OK",204,787
+2014,"Vic","Road User","Motorcyclist","Vic_break_2012",1654,6257
+2014,"WA","Road User","Motorcyclist","OK",865,5326
+2014,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2014,"NSW","Road User","Other/Unknown","OK",131,554
+2014,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2014,"Qld","Road User","Other/Unknown","OK",134,408
+2014,"SA","Road User","Other/Unknown","OK",16,51
+2014,"SA","Road User","Other/Unknown","n.p._suppressed",,
+2014,"Tas","Road User","Other/Unknown","OK",9,20
+2014,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2014,"Vic","Road User","Other/Unknown","Vic_break_2012",115,400
+2014,"WA","Road User","Other/Unknown","OK",69,247
+2014,"ACT","Road User","Pedal cyclist","OK",179,430
+2014,"NSW","Road User","Pedal cyclist","OK",1902,4999
+2014,"NT","Road User","Pedal cyclist","OK",65,170
+2014,"Qld","Road User","Pedal cyclist","OK",1333,3497
+2014,"SA","Road User","Pedal cyclist","OK",494,1508
+2014,"Tas","Road User","Pedal cyclist","OK",111,357
+2014,"Vic","Road User","Pedal cyclist","Vic_break_2012",1819,4236
+2014,"WA","Road User","Pedal cyclist","OK",657,2026
+2014,"ACT","Road User","Pedestrian","OK",20,111
+2014,"NSW","Road User","Pedestrian","OK",1000,7285
+2014,"NT","Road User","Pedestrian","OK",59,418
+2014,"Qld","Road User","Pedestrian","OK",372,2377
+2014,"SA","Road User","Pedestrian","OK",162,1721
+2014,"Tas","Road User","Pedestrian","OK",45,284
+2014,"Vic","Road User","Pedestrian","Vic_break_2012",643,3741
+2014,"WA","Road User","Pedestrian","OK",198,1582
+2014,"NSW","Road User","Pick-up truck/van","OK",73,323
+2014,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2014,"Qld","Road User","Pick-up truck/van","OK",41,168
+2014,"SA","Road User","Pick-up truck/van","OK",26,71
+2014,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2014,"Vic","Road User","Pick-up truck/van","Vic_break_2012",58,322
+2014,"WA","Road User","Pick-up truck/van","OK",19,71
+2015,"ACT","Road User","Bus","OK",12,51
+2015,"ACT","Road User","Bus","n.p._suppressed",,
+2015,"NSW","Road User","Bus","OK",96,628
+2015,"NT","Road User","Bus","n.p._suppressed",,
+2015,"Qld","Road User","Bus","OK",40,141
+2015,"SA","Road User","Bus","OK",6,15
+2015,"SA","Road User","Bus","n.p._suppressed",,
+2015,"Tas","Road User","Bus","n.p._suppressed",,
+2015,"Vic","Road User","Bus","Vic_break_2012",60,473
+2015,"WA","Road User","Bus","OK",13,100
+2015,"WA","Road User","Bus","n.p._suppressed",,
+2015,"ACT","Road User","Car driver/passenger","OK",275,1163
+2015,"NSW","Road User","Car driver/passenger","OK",5428,25378
+2015,"NT","Road User","Car driver/passenger","OK",335,1607
+2015,"Qld","Road User","Car driver/passenger","OK",4013,15668
+2015,"SA","Road User","Car driver/passenger","OK",1193,5571
+2015,"Tas","Road User","Car driver/passenger","OK",325,1674
+2015,"Vic","Road User","Car driver/passenger","Vic_break_2012",4558,25027
+2015,"WA","Road User","Car driver/passenger","OK",1372,8942
+2015,"ACT","Road User","Heavy transport","OK",6,6
+2015,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2015,"NSW","Road User","Heavy transport","OK",163,1139
+2015,"NT","Road User","Heavy transport","n.p._suppressed",,
+2015,"Qld","Road User","Heavy transport","OK",141,828
+2015,"SA","Road User","Heavy transport","OK",17,40
+2015,"SA","Road User","Heavy transport","n.p._suppressed",,
+2015,"Tas","Road User","Heavy transport","OK",8,33
+2015,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2015,"Vic","Road User","Heavy transport","Vic_break_2012",107,504
+2015,"WA","Road User","Heavy transport","OK",33,261
+2015,"ACT","Road User","Motorcyclist","OK",145,703
+2015,"NSW","Road User","Motorcyclist","OK",2459,13849
+2015,"NT","Road User","Motorcyclist","OK",169,764
+2015,"Qld","Road User","Motorcyclist","OK",2144,10155
+2015,"SA","Road User","Motorcyclist","OK",549,3009
+2015,"Tas","Road User","Motorcyclist","OK",197,809
+2015,"Vic","Road User","Motorcyclist","Vic_break_2012",1694,9946
+2015,"WA","Road User","Motorcyclist","OK",842,5135
+2015,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2015,"NSW","Road User","Other/Unknown","OK",129,747
+2015,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2015,"Qld","Road User","Other/Unknown","OK",113,612
+2015,"SA","Road User","Other/Unknown","OK",32,116
+2015,"Tas","Road User","Other/Unknown","OK",9,65
+2015,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2015,"Vic","Road User","Other/Unknown","Vic_break_2012",122,607
+2015,"WA","Road User","Other/Unknown","OK",70,225
+2015,"ACT","Road User","Pedal cyclist","OK",222,665
+2015,"NSW","Road User","Pedal cyclist","OK",1793,4896
+2015,"NT","Road User","Pedal cyclist","OK",81,213
+2015,"Qld","Road User","Pedal cyclist","OK",1378,3660
+2015,"SA","Road User","Pedal cyclist","OK",517,1342
+2015,"Tas","Road User","Pedal cyclist","OK",93,344
+2015,"Vic","Road User","Pedal cyclist","Vic_break_2012",1894,5517
+2015,"WA","Road User","Pedal cyclist","OK",621,1963
+2015,"ACT","Road User","Pedestrian","OK",27,260
+2015,"NSW","Road User","Pedestrian","OK",951,7378
+2015,"NT","Road User","Pedestrian","OK",71,702
+2015,"Qld","Road User","Pedestrian","OK",427,2825
+2015,"SA","Road User","Pedestrian","OK",121,922
+2015,"Tas","Road User","Pedestrian","OK",35,450
+2015,"Vic","Road User","Pedestrian","Vic_break_2012",700,7649
+2015,"WA","Road User","Pedestrian","OK",204,1714
+2015,"NSW","Road User","Pick-up truck/van","OK",65,316
+2015,"NT","Road User","Pick-up truck/van","OK",19,72
+2015,"Qld","Road User","Pick-up truck/van","OK",50,381
+2015,"SA","Road User","Pick-up truck/van","OK",12,96
+2015,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2015,"Vic","Road User","Pick-up truck/van","Vic_break_2012",63,349
+2015,"WA","Road User","Pick-up truck/van","OK",8,29
+2015,"WA","Road User","Pick-up truck/van","n.p._suppressed",,
+2016,"ACT","Road User","Bus","n.p._suppressed",,
+2016,"NSW","Road User","Bus","OK",114,526
+2016,"NT","Road User","Bus","OK",5,11
+2016,"NT","Road User","Bus","n.p._suppressed",,
+2016,"Qld","Road User","Bus","OK",41,402
+2016,"SA","Road User","Bus","OK",14,71
+2016,"Tas","Road User","Bus","n.p._suppressed",,
+2016,"Vic","Road User","Bus","Vic_break_2012",63,625
+2016,"WA","Road User","Bus","OK",21,107
+2016,"ACT","Road User","Car driver/passenger","OK",250,1163
+2016,"NSW","Road User","Car driver/passenger","OK",5639,25633
+2016,"NT","Road User","Car driver/passenger","OK",374,1821
+2016,"Qld","Road User","Car driver/passenger","OK",4260,17819
+2016,"SA","Road User","Car driver/passenger","OK",1292,6641
+2016,"Tas","Road User","Car driver/passenger","OK",310,2040
+2016,"Vic","Road User","Car driver/passenger","Vic_break_2012",5324,33708
+2016,"WA","Road User","Car driver/passenger","OK",1252,10058
+2016,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2016,"NSW","Road User","Heavy transport","OK",133,1016
+2016,"NT","Road User","Heavy transport","OK",5,11
+2016,"NT","Road User","Heavy transport","n.p._suppressed",,
+2016,"Qld","Road User","Heavy transport","OK",142,852
+2016,"SA","Road User","Heavy transport","OK",39,254
+2016,"Tas","Road User","Heavy transport","OK",8,70
+2016,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2016,"Vic","Road User","Heavy transport","Vic_break_2012",110,1113
+2016,"WA","Road User","Heavy transport","OK",34,444
+2016,"ACT","Road User","Motorcyclist","OK",147,627
+2016,"NSW","Road User","Motorcyclist","OK",2648,16375
+2016,"NT","Road User","Motorcyclist","OK",151,720
+2016,"Qld","Road User","Motorcyclist","OK",2159,12016
+2016,"SA","Road User","Motorcyclist","OK",546,2902
+2016,"Tas","Road User","Motorcyclist","OK",171,1096
+2016,"Vic","Road User","Motorcyclist","Vic_break_2012",1806,12516
+2016,"WA","Road User","Motorcyclist","OK",802,6338
+2016,"ACT","Road User","Other/Unknown","OK",5,5
+2016,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2016,"NSW","Road User","Other/Unknown","OK",134,853
+2016,"NT","Road User","Other/Unknown","OK",6,21
+2016,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2016,"Qld","Road User","Other/Unknown","OK",146,887
+2016,"SA","Road User","Other/Unknown","OK",46,168
+2016,"Tas","Road User","Other/Unknown","OK",15,224
+2016,"Vic","Road User","Other/Unknown","Vic_break_2012",173,1259
+2016,"WA","Road User","Other/Unknown","OK",68,412
+2016,"ACT","Road User","Pedal cyclist","OK",215,513
+2016,"NSW","Road User","Pedal cyclist","OK",1775,5258
+2016,"NT","Road User","Pedal cyclist","OK",70,171
+2016,"Qld","Road User","Pedal cyclist","OK",1442,3920
+2016,"SA","Road User","Pedal cyclist","OK",527,1417
+2016,"Tas","Road User","Pedal cyclist","OK",96,176
+2016,"Vic","Road User","Pedal cyclist","Vic_break_2012",2008,6608
+2016,"WA","Road User","Pedal cyclist","OK",652,2264
+2016,"ACT","Road User","Pedestrian","OK",28,277
+2016,"NSW","Road User","Pedestrian","OK",964,10468
+2016,"NT","Road User","Pedestrian","OK",59,743
+2016,"Qld","Road User","Pedestrian","OK",455,3419
+2016,"SA","Road User","Pedestrian","OK",168,1657
+2016,"Tas","Road User","Pedestrian","OK",41,213
+2016,"Vic","Road User","Pedestrian","Vic_break_2012",800,11119
+2016,"WA","Road User","Pedestrian","OK",166,2012
+2016,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2016,"NSW","Road User","Pick-up truck/van","OK",67,220
+2016,"NT","Road User","Pick-up truck/van","OK",12,152
+2016,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2016,"Qld","Road User","Pick-up truck/van","OK",57,502
+2016,"SA","Road User","Pick-up truck/van","OK",22,85
+2016,"Tas","Road User","Pick-up truck/van","OK",5,90
+2016,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2016,"Vic","Road User","Pick-up truck/van","Vic_break_2012",76,830
+2016,"WA","Road User","Pick-up truck/van","OK",36,267
+2017,"ACT","Road User","Bus","n.p._suppressed",,
+2017,"NSW","Road User","Bus","NSW_break_2017",109,736
+2017,"Qld","Road User","Bus","OK",28,175
+2017,"SA","Road User","Bus","OK",15,44
+2017,"Tas","Road User","Bus","n.p._suppressed",,
+2017,"Vic","Road User","Bus","Vic_break_2012",73,429
+2017,"WA","Road User","Bus","OK",15,56
+2017,"ACT","Road User","Car driver/passenger","OK",250,1199
+2017,"NSW","Road User","Car driver/passenger","NSW_break_2017",5295,23955
+2017,"NT","Road User","Car driver/passenger","OK",366,2091
+2017,"Qld","Road User","Car driver/passenger","OK",4559,18461
+2017,"SA","Road User","Car driver/passenger","OK",1151,6903
+2017,"Tas","Road User","Car driver/passenger","OK",310,1854
+2017,"Vic","Road User","Car driver/passenger","Vic_break_2012",5528,28924
+2017,"WA","Road User","Car driver/passenger","OK",1277,9231
+2017,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2017,"NSW","Road User","Heavy transport","NSW_break_2017",147,770
+2017,"NT","Road User","Heavy transport","OK",7,44
+2017,"NT","Road User","Heavy transport","n.p._suppressed",,
+2017,"Qld","Road User","Heavy transport","OK",170,1082
+2017,"SA","Road User","Heavy transport","OK",31,102
+2017,"Tas","Road User","Heavy transport","OK",5,53
+2017,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2017,"Vic","Road User","Heavy transport","Vic_break_2012",126,764
+2017,"WA","Road User","Heavy transport","OK",29,172
+2017,"ACT","Road User","Motorcyclist","OK",119,454
+2017,"NSW","Road User","Motorcyclist","NSW_break_2017",2526,16369
+2017,"NT","Road User","Motorcyclist","OK",149,881
+2017,"Qld","Road User","Motorcyclist","OK",2208,11175
+2017,"SA","Road User","Motorcyclist","OK",531,3244
+2017,"Tas","Road User","Motorcyclist","OK",169,1044
+2017,"Vic","Road User","Motorcyclist","Vic_break_2012",1979,13406
+2017,"WA","Road User","Motorcyclist","OK",931,5439
+2017,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2017,"NSW","Road User","Other/Unknown","NSW_break_2017",137,1086
+2017,"NT","Road User","Other/Unknown","OK",9,60
+2017,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2017,"Qld","Road User","Other/Unknown","OK",135,886
+2017,"SA","Road User","Other/Unknown","OK",55,525
+2017,"Tas","Road User","Other/Unknown","OK",8,65
+2017,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2017,"Vic","Road User","Other/Unknown","Vic_break_2012",146,951
+2017,"WA","Road User","Other/Unknown","OK",87,303
+2017,"ACT","Road User","Pedal cyclist","OK",211,609
+2017,"NSW","Road User","Pedal cyclist","NSW_break_2017",1791,6632
+2017,"NT","Road User","Pedal cyclist","OK",74,196
+2017,"Qld","Road User","Pedal cyclist","OK",1542,4061
+2017,"SA","Road User","Pedal cyclist","OK",469,1305
+2017,"Tas","Road User","Pedal cyclist","OK",107,626
+2017,"Vic","Road User","Pedal cyclist","Vic_break_2012",2089,6055
+2017,"WA","Road User","Pedal cyclist","OK",637,1746
+2017,"ACT","Road User","Pedestrian","OK",34,291
+2017,"NSW","Road User","Pedestrian","NSW_break_2017",929,9657
+2017,"NT","Road User","Pedestrian","OK",79,634
+2017,"Qld","Road User","Pedestrian","OK",439,3834
+2017,"SA","Road User","Pedestrian","OK",127,1551
+2017,"Tas","Road User","Pedestrian","OK",34,313
+2017,"Vic","Road User","Pedestrian","Vic_break_2012",786,12837
+2017,"WA","Road User","Pedestrian","OK",194,1876
+2017,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2017,"NSW","Road User","Pick-up truck/van","NSW_break_2017",82,309
+2017,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2017,"Qld","Road User","Pick-up truck/van","OK",53,190
+2017,"SA","Road User","Pick-up truck/van","OK",15,105
+2017,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2017,"Vic","Road User","Pick-up truck/van","Vic_break_2012",67,688
+2017,"WA","Road User","Pick-up truck/van","OK",25,337
+2018,"ACT","Road User","Bus","n.p._suppressed",,
+2018,"NSW","Road User","Bus","NSW_break_2017",92,522
+2018,"NT","Road User","Bus","n.p._suppressed",,
+2018,"Qld","Road User","Bus","OK",37,95
+2018,"SA","Road User","Bus","OK",9,86
+2018,"SA","Road User","Bus","n.p._suppressed",,
+2018,"Tas","Road User","Bus","n.p._suppressed",,
+2018,"Vic","Road User","Bus","Vic_break_2012",73,542
+2018,"WA","Road User","Bus","OK",12,99
+2018,"ACT","Road User","Car driver/passenger","OK",287,1210
+2018,"NSW","Road User","Car driver/passenger","NSW_break_2017",4469,26020
+2018,"NT","Road User","Car driver/passenger","OK",488,3073
+2018,"Qld","Road User","Car driver/passenger","OK",4823,18616
+2018,"SA","Road User","Car driver/passenger","OK",1190,5760
+2018,"Tas","Road User","Car driver/passenger","OK",404,2258
+2018,"Vic","Road User","Car driver/passenger","Vic_break_2012",6099,31404
+2018,"WA","Road User","Car driver/passenger","OK",1485,6987
+2018,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2018,"NSW","Road User","Heavy transport","NSW_break_2017",151,1476
+2018,"NT","Road User","Heavy transport","n.p._suppressed",,
+2018,"Qld","Road User","Heavy transport","OK",163,937
+2018,"SA","Road User","Heavy transport","OK",20,195
+2018,"Tas","Road User","Heavy transport","OK",8,82
+2018,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2018,"Vic","Road User","Heavy transport","Vic_break_2012",143,633
+2018,"WA","Road User","Heavy transport","OK",46,157
+2018,"ACT","Road User","Motorcyclist","OK",161,1023
+2018,"NSW","Road User","Motorcyclist","NSW_break_2017",2347,14941
+2018,"NT","Road User","Motorcyclist","OK",169,1028
+2018,"Qld","Road User","Motorcyclist","OK",2320,10780
+2018,"SA","Road User","Motorcyclist","OK",559,3160
+2018,"Tas","Road User","Motorcyclist","OK",171,936
+2018,"Vic","Road User","Motorcyclist","Vic_break_2012",1944,14361
+2018,"WA","Road User","Motorcyclist","OK",788,4155
+2018,"ACT","Road User","Other/Unknown","OK",9,41
+2018,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2018,"NSW","Road User","Other/Unknown","NSW_break_2017",163,1282
+2018,"NT","Road User","Other/Unknown","OK",7,189
+2018,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2018,"Qld","Road User","Other/Unknown","OK",131,690
+2018,"SA","Road User","Other/Unknown","OK",51,202
+2018,"Tas","Road User","Other/Unknown","OK",15,115
+2018,"Vic","Road User","Other/Unknown","Vic_break_2012",150,1449
+2018,"WA","Road User","Other/Unknown","OK",60,298
+2018,"ACT","Road User","Pedal cyclist","OK",217,399
+2018,"NSW","Road User","Pedal cyclist","NSW_break_2017",1681,5765
+2018,"NT","Road User","Pedal cyclist","OK",71,244
+2018,"Qld","Road User","Pedal cyclist","OK",1408,4045
+2018,"SA","Road User","Pedal cyclist","OK",496,1716
+2018,"Tas","Road User","Pedal cyclist","OK",109,340
+2018,"Vic","Road User","Pedal cyclist","Vic_break_2012",2144,6179
+2018,"WA","Road User","Pedal cyclist","OK",665,1678
+2018,"ACT","Road User","Pedestrian","OK",24,228
+2018,"NSW","Road User","Pedestrian","NSW_break_2017",823,9316
+2018,"NT","Road User","Pedestrian","OK",73,584
+2018,"Qld","Road User","Pedestrian","OK",430,3108
+2018,"SA","Road User","Pedestrian","OK",148,1288
+2018,"Tas","Road User","Pedestrian","OK",59,765
+2018,"Vic","Road User","Pedestrian","Vic_break_2012",830,8808
+2018,"WA","Road User","Pedestrian","OK",189,1588
+2018,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2018,"NSW","Road User","Pick-up truck/van","NSW_break_2017",68,202
+2018,"NT","Road User","Pick-up truck/van","OK",7,9
+2018,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2018,"Qld","Road User","Pick-up truck/van","OK",69,568
+2018,"SA","Road User","Pick-up truck/van","OK",8,204
+2018,"SA","Road User","Pick-up truck/van","n.p._suppressed",,
+2018,"Tas","Road User","Pick-up truck/van","OK",5,62
+2018,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2018,"Vic","Road User","Pick-up truck/van","Vic_break_2012",70,468
+2018,"WA","Road User","Pick-up truck/van","OK",29,118
+2019,"ACT","Road User","Bus","n.p._suppressed",,
+2019,"NSW","Road User","Bus","NSW_break_2017",97,357
+2019,"NT","Road User","Bus","n.p._suppressed",,
+2019,"Qld","Road User","Bus","OK",39,146
+2019,"SA","Road User","Bus","OK",14,36
+2019,"Tas","Road User","Bus","n.p._suppressed",,
+2019,"Vic","Road User","Bus","Vic_break_2012",67,191
+2019,"WA","Road User","Bus","OK",16,74
+2019,"ACT","Road User","Car driver/passenger","OK",279,1077
+2019,"NSW","Road User","Car driver/passenger","NSW_break_2017",4397,26054
+2019,"NT","Road User","Car driver/passenger","OK",347,1866
+2019,"Qld","Road User","Car driver/passenger","OK",4829,17647
+2019,"SA","Road User","Car driver/passenger","OK",1075,5062
+2019,"Tas","Road User","Car driver/passenger","OK",344,1756
+2019,"Vic","Road User","Car driver/passenger","Vic_break_2012",5996,28974
+2019,"WA","Road User","Car driver/passenger","OK",1540,7575
+2019,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2019,"NSW","Road User","Heavy transport","NSW_break_2017",127,1080
+2019,"NT","Road User","Heavy transport","n.p._suppressed",,
+2019,"Qld","Road User","Heavy transport","OK",165,841
+2019,"SA","Road User","Heavy transport","OK",44,82
+2019,"Tas","Road User","Heavy transport","OK",9,149
+2019,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2019,"Vic","Road User","Heavy transport","Vic_break_2012",122,900
+2019,"WA","Road User","Heavy transport","OK",40,340
+2019,"ACT","Road User","Motorcyclist","OK",136,908
+2019,"NSW","Road User","Motorcyclist","NSW_break_2017",2565,16854
+2019,"NT","Road User","Motorcyclist","OK",153,780
+2019,"Qld","Road User","Motorcyclist","OK",2322,12608
+2019,"SA","Road User","Motorcyclist","OK",562,2306
+2019,"Tas","Road User","Motorcyclist","OK",148,1026
+2019,"Vic","Road User","Motorcyclist","Vic_break_2012",1939,13405
+2019,"WA","Road User","Motorcyclist","OK",886,5169
+2019,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2019,"NSW","Road User","Other/Unknown","NSW_break_2017",168,2047
+2019,"NT","Road User","Other/Unknown","OK",17,214
+2019,"Qld","Road User","Other/Unknown","OK",120,641
+2019,"SA","Road User","Other/Unknown","OK",23,155
+2019,"SA","Road User","Other/Unknown","n.p._suppressed",,
+2019,"Tas","Road User","Other/Unknown","OK",11,105
+2019,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2019,"Vic","Road User","Other/Unknown","Vic_break_2012",169,998
+2019,"WA","Road User","Other/Unknown","OK",62,335
+2019,"ACT","Road User","Pedal cyclist","OK",218,664
+2019,"NSW","Road User","Pedal cyclist","NSW_break_2017",1678,5724
+2019,"NT","Road User","Pedal cyclist","OK",84,420
+2019,"Qld","Road User","Pedal cyclist","OK",1531,4242
+2019,"SA","Road User","Pedal cyclist","OK",526,1563
+2019,"Tas","Road User","Pedal cyclist","OK",121,252
+2019,"Vic","Road User","Pedal cyclist","Vic_break_2012",2215,7341
+2019,"WA","Road User","Pedal cyclist","OK",735,2243
+2019,"ACT","Road User","Pedestrian","OK",22,114
+2019,"NSW","Road User","Pedestrian","NSW_break_2017",858,10676
+2019,"NT","Road User","Pedestrian","OK",38,409
+2019,"Qld","Road User","Pedestrian","OK",444,3718
+2019,"SA","Road User","Pedestrian","OK",167,1342
+2019,"Tas","Road User","Pedestrian","OK",53,508
+2019,"Vic","Road User","Pedestrian","Vic_break_2012",815,8816
+2019,"WA","Road User","Pedestrian","OK",227,1967
+2019,"NSW","Road User","Pick-up truck/van","NSW_break_2017",52,206
+2019,"NT","Road User","Pick-up truck/van","OK",7,56
+2019,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2019,"Qld","Road User","Pick-up truck/van","OK",65,346
+2019,"SA","Road User","Pick-up truck/van","OK",9,143
+2019,"SA","Road User","Pick-up truck/van","n.p._suppressed",,
+2019,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2019,"Vic","Road User","Pick-up truck/van","Vic_break_2012",69,384
+2019,"WA","Road User","Pick-up truck/van","OK",28,119
+2020,"ACT","Road User","Bus","n.p._suppressed",,
+2020,"NSW","Road User","Bus","NSW_break_2017",64,434
+2020,"NT","Road User","Bus","n.p._suppressed",,
+2020,"Qld","Road User","Bus","OK",22,35
+2020,"SA","Road User","Bus","OK",23,56
+2020,"Tas","Road User","Bus","n.p._suppressed",,
+2020,"Vic","Road User","Bus","Vic_break_2012",34,191
+2020,"WA","Road User","Bus","OK",20,65
+2020,"ACT","Road User","Car driver/passenger","OK",230,1251
+2020,"NSW","Road User","Car driver/passenger","NSW_break_2017",3924,23971
+2020,"NT","Road User","Car driver/passenger","OK",385,1815
+2020,"Qld","Road User","Car driver/passenger","OK",4836,16554
+2020,"SA","Road User","Car driver/passenger","OK",1089,5935
+2020,"Tas","Road User","Car driver/passenger","OK",378,1939
+2020,"Vic","Road User","Car driver/passenger","Vic_break_2012",4661,23007
+2020,"WA","Road User","Car driver/passenger","OK",1498,8650
+2020,"ACT","Road User","Heavy transport","n.p._suppressed",,
+2020,"NSW","Road User","Heavy transport","NSW_break_2017",125,780
+2020,"NT","Road User","Heavy transport","OK",6,19
+2020,"NT","Road User","Heavy transport","n.p._suppressed",,
+2020,"Qld","Road User","Heavy transport","OK",171,1029
+2020,"SA","Road User","Heavy transport","OK",29,139
+2020,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2020,"Vic","Road User","Heavy transport","Vic_break_2012",103,824
+2020,"WA","Road User","Heavy transport","OK",44,191
+2020,"ACT","Road User","Motorcyclist","OK",142,554
+2020,"NSW","Road User","Motorcyclist","NSW_break_2017",2335,15262
+2020,"NT","Road User","Motorcyclist","OK",195,647
+2020,"Qld","Road User","Motorcyclist","OK",2447,11306
+2020,"SA","Road User","Motorcyclist","OK",583,2964
+2020,"Tas","Road User","Motorcyclist","OK",192,717
+2020,"Vic","Road User","Motorcyclist","Vic_break_2012",1682,9858
+2020,"WA","Road User","Motorcyclist","OK",949,5912
+2020,"ACT","Road User","Other/Unknown","OK",12,115
+2020,"NSW","Road User","Other/Unknown","NSW_break_2017",138,1434
+2020,"NT","Road User","Other/Unknown","OK",23,110
+2020,"Qld","Road User","Other/Unknown","OK",142,804
+2020,"SA","Road User","Other/Unknown","OK",32,91
+2020,"Tas","Road User","Other/Unknown","OK",12,45
+2020,"Vic","Road User","Other/Unknown","Vic_break_2012",144,800
+2020,"WA","Road User","Other/Unknown","OK",74,243
+2020,"ACT","Road User","Pedal cyclist","OK",223,512
+2020,"NSW","Road User","Pedal cyclist","NSW_break_2017",1950,7366
+2020,"NT","Road User","Pedal cyclist","OK",108,265
+2020,"Qld","Road User","Pedal cyclist","OK",1684,4710
+2020,"SA","Road User","Pedal cyclist","OK",593,1763
+2020,"Tas","Road User","Pedal cyclist","OK",133,335
+2020,"Vic","Road User","Pedal cyclist","Vic_break_2012",2645,6669
+2020,"WA","Road User","Pedal cyclist","OK",834,2464
+2020,"ACT","Road User","Pedestrian","OK",14,68
+2020,"NSW","Road User","Pedestrian","NSW_break_2017",660,8715
+2020,"NT","Road User","Pedestrian","OK",56,530
+2020,"Qld","Road User","Pedestrian","OK",414,3032
+2020,"SA","Road User","Pedestrian","OK",131,1130
+2020,"Tas","Road User","Pedestrian","OK",36,286
+2020,"Vic","Road User","Pedestrian","Vic_break_2012",558,6214
+2020,"WA","Road User","Pedestrian","OK",183,1127
+2020,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2020,"NSW","Road User","Pick-up truck/van","NSW_break_2017",78,409
+2020,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2020,"Qld","Road User","Pick-up truck/van","OK",85,380
+2020,"SA","Road User","Pick-up truck/van","OK",23,102
+2020,"Tas","Road User","Pick-up truck/van","OK",7,15
+2020,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2020,"Vic","Road User","Pick-up truck/van","Vic_break_2012",57,374
+2020,"WA","Road User","Pick-up truck/van","OK",34,136
+2021,"NSW","Road User","Bus","NSW_break_2017",50,255
+2021,"NT","Road User","Bus","OK",5,8
+2021,"NT","Road User","Bus","n.p._suppressed",,
+2021,"Qld","Road User","Bus","OK",38,105
+2021,"SA","Road User","Bus","OK",14,42
+2021,"Tas","Road User","Bus","n.p._suppressed",,
+2021,"Vic","Road User","Bus","Vic_break_2012",37,287
+2021,"WA","Road User","Bus","OK",22,53
+2021,"ACT","Road User","Car driver/passenger","OK",234,1037
+2021,"NSW","Road User","Car driver/passenger","NSW_break_2017",3669,23489
+2021,"NT","Road User","Car driver/passenger","OK",362,2518
+2021,"Qld","Road User","Car driver/passenger","OK",5471,18802
+2021,"SA","Road User","Car driver/passenger","OK",1231,5579
+2021,"Tas","Road User","Car driver/passenger","OK",399,2749
+2021,"Vic","Road User","Car driver/passenger","Vic_break_2012",5402,24726
+2021,"WA","Road User","Car driver/passenger","OK",1579,9940
+2021,"NSW","Road User","Heavy transport","NSW_break_2017",103,690
+2021,"NT","Road User","Heavy transport","n.p._suppressed",,
+2021,"Qld","Road User","Heavy transport","OK",144,634
+2021,"SA","Road User","Heavy transport","OK",26,85
+2021,"Tas","Road User","Heavy transport","n.p._suppressed",,
+2021,"Vic","Road User","Heavy transport","Vic_break_2012",136,1206
+2021,"WA","Road User","Heavy transport","OK",47,163
+2021,"ACT","Road User","Motorcyclist","OK",144,541
+2021,"NSW","Road User","Motorcyclist","NSW_break_2017",2253,13985
+2021,"NT","Road User","Motorcyclist","OK",157,640
+2021,"Qld","Road User","Motorcyclist","OK",2598,12076
+2021,"SA","Road User","Motorcyclist","OK",556,2594
+2021,"Tas","Road User","Motorcyclist","OK",198,1116
+2021,"Vic","Road User","Motorcyclist","Vic_break_2012",1967,11727
+2021,"WA","Road User","Motorcyclist","OK",882,6581
+2021,"ACT","Road User","Other/Unknown","n.p._suppressed",,
+2021,"NSW","Road User","Other/Unknown","NSW_break_2017",164,1445
+2021,"NT","Road User","Other/Unknown","OK",8,124
+2021,"NT","Road User","Other/Unknown","n.p._suppressed",,
+2021,"Qld","Road User","Other/Unknown","OK",152,861
+2021,"SA","Road User","Other/Unknown","OK",40,205
+2021,"Tas","Road User","Other/Unknown","OK",8,41
+2021,"Tas","Road User","Other/Unknown","n.p._suppressed",,
+2021,"Vic","Road User","Other/Unknown","Vic_break_2012",135,938
+2021,"WA","Road User","Other/Unknown","OK",71,470
+2021,"ACT","Road User","Pedal cyclist","OK",333,964
+2021,"NSW","Road User","Pedal cyclist","NSW_break_2017",2042,7091
+2021,"NT","Road User","Pedal cyclist","OK",92,215
+2021,"Qld","Road User","Pedal cyclist","OK",1504,4776
+2021,"SA","Road User","Pedal cyclist","OK",577,1813
+2021,"Tas","Road User","Pedal cyclist","OK",118,687
+2021,"Vic","Road User","Pedal cyclist","Vic_break_2012",2695,7881
+2021,"WA","Road User","Pedal cyclist","OK",704,3024
+2021,"ACT","Road User","Pedestrian","OK",22,190
+2021,"NSW","Road User","Pedestrian","NSW_break_2017",649,7740
+2021,"NT","Road User","Pedestrian","OK",58,383
+2021,"Qld","Road User","Pedestrian","OK",448,3191
+2021,"SA","Road User","Pedestrian","OK",172,1510
+2021,"Tas","Road User","Pedestrian","OK",46,202
+2021,"Vic","Road User","Pedestrian","Vic_break_2012",682,7322
+2021,"WA","Road User","Pedestrian","OK",220,1803
+2021,"ACT","Road User","Pick-up truck/van","n.p._suppressed",,
+2021,"NSW","Road User","Pick-up truck/van","NSW_break_2017",73,403
+2021,"NT","Road User","Pick-up truck/van","OK",9,17
+2021,"NT","Road User","Pick-up truck/van","n.p._suppressed",,
+2021,"Qld","Road User","Pick-up truck/van","OK",92,444
+2021,"SA","Road User","Pick-up truck/van","OK",16,24
+2021,"Tas","Road User","Pick-up truck/van","OK",13,17
+2021,"Tas","Road User","Pick-up truck/van","n.p._suppressed",,
+2021,"Vic","Road User","Pick-up truck/van","Vic_break_2012",76,612
+2021,"WA","Road User","Pick-up truck/van","OK",43,254
+2011,"ACT","Sex","Female","OK",158,676
+2011,"NSW","Sex","Female","OK",3729,16626
+2011,"NT","Sex","Female","OK",121,754
+2011,"Qld","Sex","Female","OK",1948,7588
+2011,"SA","Sex","Female","OK",834,4043
+2011,"Tas","Sex","Female","OK",159,1061
+2011,"Vic","Sex","Female","OK",3397,11842
+2011,"WA","Sex","Female","OK",1155,5752
+2011,"ACT","Sex","Male","OK",379,1900
+2011,"NSW","Sex","Male","OK",6889,33718
+2011,"NT","Sex","Male","OK",335,2256
+2011,"Qld","Sex","Male","OK",4374,20945
+2011,"SA","Sex","Male","OK",1525,7989
+2011,"Tas","Sex","Male","OK",334,2045
+2011,"Vic","Sex","Male","OK",5929,22082
+2011,"WA","Sex","Male","OK",2287,12733
+2012,"ACT","Sex","Female","OK",212,877
+2012,"NSW","Sex","Female","OK",3798,16809
+2012,"NT","Sex","Female","OK",154,900
+2012,"Qld","Sex","Female","OK",2117,9166
+2012,"SA","Sex","Female","OK",802,4107
+2012,"Tas","Sex","Female","OK",167,948
+2012,"Vic","Sex","Female","Vic_break_2012",3000,11290
+2012,"WA","Sex","Female","OK",1114,4882
+2012,"ACT","Sex","Male","OK",389,1389
+2012,"NSW","Sex","Male","OK",7323,33149
+2012,"NT","Sex","Male","OK",342,2055
+2012,"Qld","Sex","Male","OK",4696,21248
+2012,"SA","Sex","Male","OK",1509,8326
+2012,"Tas","Sex","Male","OK",369,1900
+2012,"Vic","Sex","Male","Vic_break_2012",5098,18955
+2012,"WA","Sex","Male","OK",2379,13017
+2013,"ACT","Sex","Female","OK",207,844
+2013,"NSW","Sex","Female","OK",3988,14855
+2013,"NT","Sex","Female","OK",163,1078
+2013,"Qld","Sex","Female","OK",2617,8239
+2013,"SA","Sex","Female","OK",749,3870
+2013,"Tas","Sex","Female","OK",184,1103
+2013,"Vic","Sex","Female","Vic_break_2012",2803,9689
+2013,"WA","Sex","Female","OK",1093,4868
+2013,"ACT","Sex","Male","OK",366,1673
+2013,"NSW","Sex","Male","OK",7431,32180
+2013,"NT","Sex","Male","OK",398,2583
+2013,"Qld","Sex","Male","OK",5204,20780
+2013,"SA","Sex","Male","OK",1472,7701
+2013,"Tas","Sex","Male","OK",386,1788
+2013,"Vic","Sex","Male","Vic_break_2012",4981,19377
+2013,"WA","Sex","Male","OK",2382,12358
+2014,"ACT","Sex","Female","OK",196,654
+2014,"NSW","Sex","Female","OK",3963,16363
+2014,"NT","Sex","Female","OK",174,826
+2014,"Qld","Sex","Female","OK",2599,8580
+2014,"SA","Sex","Female","OK",756,3362
+2014,"Tas","Sex","Female","OK",205,992
+2014,"Vic","Sex","Female","Vic_break_2012",3116,9951
+2014,"WA","Sex","Female","OK",997,4619
+2014,"ACT","Sex","Male","OK",346,1372
+2014,"NSW","Sex","Male","OK",7350,29677
+2014,"NT","Sex","Male","OK",401,2141
+2014,"Qld","Sex","Male","OK",5126,20436
+2014,"SA","Sex","Male","OK",1625,7834
+2014,"Tas","Sex","Male","OK",441,1877
+2014,"Vic","Sex","Male","Vic_break_2012",5407,19074
+2014,"WA","Sex","Male","OK",2157,11970
+2015,"ACT","Sex","Female","OK",222,1061
+2015,"NSW","Sex","Female","OK",3886,18143
+2015,"NT","Sex","Female","OK",242,1258
+2015,"Qld","Sex","Female","OK",2863,10872
+2015,"SA","Sex","Female","OK",860,3735
+2015,"Tas","Sex","Female","OK",216,1238
+2015,"Vic","Sex","Female","Vic_break_2012",3452,18564
+2015,"WA","Sex","Female","OK",1086,5949
+2015,"ACT","Sex","Male","OK",478,1835
+2015,"NSW","Sex","Male","OK",7198,36188
+2015,"NT","Sex","Male","OK",449,2203
+2015,"Qld","Sex","Male","OK",5443,23398
+2015,"SA","Sex","Male","OK",1607,7432
+2015,"Tas","Sex","Male","OK",461,2205
+2015,"Vic","Sex","Male","Vic_break_2012",5746,31508
+2015,"WA","Sex","Male","OK",2096,12495
+2016,"ACT","Sex","Female","OK",205,818
+2016,"NSW","Sex","Female","OK",4057,18313
+2016,"NT","Sex","Female","OK",233,1332
+2016,"Qld","Sex","Female","OK",3099,12803
+2016,"SA","Sex","Female","OK",919,4472
+2016,"Tas","Sex","Female","OK",222,1328
+2016,"Vic","Sex","Female","Vic_break_2012",3954,25755
+2016,"WA","Sex","Female","OK",966,6884
+2016,"ACT","Sex","Male","OK",449,1854
+2016,"NSW","Sex","Male","OK",7417,42036
+2016,"NT","Sex","Male","OK",476,2461
+2016,"Qld","Sex","Male","OK",5603,27014
+2016,"SA","Sex","Male","OK",1735,8723
+2016,"Tas","Sex","Male","OK",435,2636
+2016,"Vic","Sex","Male","Vic_break_2012",6406,42023
+2016,"WA","Sex","Male","OK",2065,15018
+2017,"ACT","Sex","Female","OK",245,939
+2017,"NSW","Sex","Female","NSW_break_2017",3867,21057
+2017,"NT","Sex","Female","OK",235,1327
+2017,"Qld","Sex","Female","OK",3201,12024
+2017,"SA","Sex","Female","OK",829,4577
+2017,"Tas","Sex","Female","OK",221,1689
+2017,"Vic","Sex","Female","Vic_break_2012",4117,22434
+2017,"WA","Sex","Female","OK",1035,5780
+2017,"ACT","Sex","Male","OK",387,1670
+2017,"NSW","Sex","Male","NSW_break_2017",7149,38457
+2017,"NT","Sex","Male","OK",468,2670
+2017,"Qld","Sex","Male","OK",5933,27840
+2017,"SA","Sex","Male","OK",1565,9202
+2017,"Tas","Sex","Male","OK",438,2621
+2017,"Vic","Sex","Male","Vic_break_2012",6677,41620
+2017,"WA","Sex","Male","OK",2160,13380
+2018,"ACT","Sex","Female","OK",230,943
+2018,"NSW","Sex","Female","NSW_break_2017",3343,19811
+2018,"NT","Sex","Female","OK",322,2175
+2018,"Qld","Sex","Female","OK",3333,12094
+2018,"SA","Sex","Female","OK",867,3532
+2018,"Tas","Sex","Female","OK",296,1747
+2018,"Vic","Sex","Female","Vic_break_2012",4363,23804
+2018,"WA","Sex","Female","OK",1135,5298
+2018,"ACT","Sex","Male","OK",482,2041
+2018,"NSW","Sex","Male","NSW_break_2017",6451,39713
+2018,"NT","Sex","Male","OK",510,3103
+2018,"Qld","Sex","Male","OK",6048,26745
+2018,"SA","Sex","Male","OK",1622,9126
+2018,"Tas","Sex","Male","OK",484,2928
+2018,"Vic","Sex","Male","Vic_break_2012",7089,40039
+2018,"WA","Sex","Male","OK",2139,9782
+2019,"ACT","Sex","Female","OK",234,696
+2019,"NSW","Sex","Female","NSW_break_2017",3463,20129
+2019,"NT","Sex","Female","OK",230,998
+2019,"Qld","Sex","Female","OK",3463,12230
+2019,"SA","Sex","Female","OK",808,3484
+2019,"Tas","Sex","Female","OK",251,1635
+2019,"Vic","Sex","Female","Vic_break_2012",4459,21235
+2019,"WA","Sex","Female","OK",1187,5548
+2019,"ACT","Sex","Male","OK",431,2108
+2019,"NSW","Sex","Male","NSW_break_2017",6479,42869
+2019,"NT","Sex","Male","OK",426,2811
+2019,"Qld","Sex","Male","OK",6052,27959
+2019,"SA","Sex","Male","OK",1649,7319
+2019,"Tas","Sex","Male","OK",457,2445
+2019,"Vic","Sex","Male","Vic_break_2012",6932,39773
+2019,"WA","Sex","Male","OK",2347,12274
+2020,"ACT","Sex","Female","OK",190,473
+2020,"NSW","Sex","Female","NSW_break_2017",2997,19062
+2020,"NT","Sex","Female","OK",225,872
+2020,"Qld","Sex","Female","OK",3422,11747
+2020,"SA","Sex","Female","OK",793,3736
+2020,"Tas","Sex","Female","OK",273,1298
+2020,"Vic","Sex","Female","Vic_break_2012",3464,15918
+2020,"WA","Sex","Female","OK",1172,5474
+2020,"ACT","Sex","Male","OK",436,2040
+2020,"NSW","Sex","Male","NSW_break_2017",6277,39309
+2020,"NT","Sex","Male","OK",561,2594
+2020,"Qld","Sex","Male","OK",6379,26103
+2020,"SA","Sex","Male","OK",1710,8444
+2020,"Tas","Sex","Male","OK",504,2182
+2020,"Vic","Sex","Male","Vic_break_2012",6419,32017
+2020,"WA","Sex","Male","OK",2464,13314
+2021,"ACT","Sex","Female","OK",234,743
+2021,"NSW","Sex","Female","NSW_break_2017",2885,16085
+2021,"NT","Sex","Female","OK",246,1055
+2021,"Qld","Sex","Female","OK",3774,12650
+2021,"SA","Sex","Female","OK",930,3901
+2021,"Tas","Sex","Female","OK",269,1769
+2021,"Vic","Sex","Female","Vic_break_2012",4031,18271
+2021,"WA","Sex","Female","OK",1204,6355
+2021,"ACT","Sex","Male","OK",506,1996
+2021,"NSW","Sex","Male","NSW_break_2017",6118,39013
+2021,"NT","Sex","Male","OK",464,3018
+2021,"Qld","Sex","Male","OK",6673,28239
+2021,"SA","Sex","Male","OK",1702,7951
+2021,"Tas","Sex","Male","OK",536,3091
+2021,"Vic","Sex","Male","Vic_break_2012",7098,36427
+2021,"WA","Sex","Male","OK",2364,15933
+2011,"ACT","Age Group","0-7","OK",5,10
+2011,"ACT","Age Group","0-7","n.p._suppressed",,
+2011,"NSW","Age Group","0-7","OK",204,785
+2011,"NT","Age Group","0-7","OK",7,10
+2011,"NT","Age Group","0-7","n.p._suppressed",,
+2011,"Qld","Age Group","0-7","OK",197,466
+2011,"SA","Age Group","0-7","OK",44,86
+2011,"Tas","Age Group","0-7","OK",20,71
+2011,"Vic","Age Group","0-7","OK",149,393
+2011,"WA","Age Group","0-7","OK",84,452
+2011,"ACT","Age Group","17-25","OK",118,501
+2011,"NSW","Age Group","17-25","OK",2502,9842
+2011,"NT","Age Group","17-25","OK",119,607
+2011,"Qld","Age Group","17-25","OK",1499,6063
+2011,"SA","Age Group","17-25","OK",527,1918
+2011,"Tas","Age Group","17-25","OK",126,781
+2011,"Vic","Age Group","17-25","OK",2147,6016
+2011,"WA","Age Group","17-25","OK",856,4061
+2011,"ACT","Age Group","26-39","OK",142,512
+2011,"NSW","Age Group","26-39","OK",2462,9187
+2011,"NT","Age Group","26-39","OK",134,765
+2011,"Qld","Age Group","26-39","OK",1457,6726
+2011,"SA","Age Group","26-39","OK",541,2913
+2011,"Tas","Age Group","26-39","OK",97,691
+2011,"Vic","Age Group","26-39","OK",2358,7758
+2011,"WA","Age Group","26-39","OK",823,4383
+2011,"ACT","Age Group","40-64","OK",177,729
+2011,"NSW","Age Group","40-64","OK",3352,15809
+2011,"NT","Age Group","40-64","OK",124,1022
+2011,"Qld","Age Group","40-64","OK",1936,9335
+2011,"SA","Age Group","40-64","OK",774,4435
+2011,"Tas","Age Group","40-64","OK",143,929
+2011,"Vic","Age Group","40-64","OK",3014,11390
+2011,"WA","Age Group","40-64","OK",1048,6503
+2011,"ACT","Age Group","65+","OK",10,104
+2011,"ACT","Age Group","65+","n.p._suppressed",,
+2011,"NSW","Age Group","65+","OK",1343,11776
+2011,"NT","Age Group","65+","OK",8,188
+2011,"NT","Age Group","65+","n.p._suppressed",,
+2011,"Qld","Age Group","65+","OK",601,4235
+2011,"SA","Age Group","65+","OK",312,2163
+2011,"Tas","Age Group","65+","OK",61,501
+2011,"Vic","Age Group","65+","OK",1125,6931
+2011,"WA","Age Group","65+","OK",337,1847
+2011,"ACT","Age Group","8-16","OK",38,393
+2011,"NSW","Age Group","8-16","OK",755,2945
+2011,"NT","Age Group","8-16","OK",54,285
+2011,"Qld","Age Group","8-16","OK",632,1708
+2011,"SA","Age Group","8-16","OK",161,517
+2011,"Tas","Age Group","8-16","OK",46,133
+2011,"Vic","Age Group","8-16","OK",533,1436
+2011,"WA","Age Group","8-16","OK",294,1239
+2012,"ACT","Age Group","0-7","n.p._suppressed",,
+2012,"NSW","Age Group","0-7","OK",246,1258
+2012,"NT","Age Group","0-7","n.p._suppressed",,
+2012,"Qld","Age Group","0-7","OK",193,523
+2012,"SA","Age Group","0-7","OK",40,81
+2012,"Tas","Age Group","0-7","OK",19,43
+2012,"Vic","Age Group","0-7","Vic_break_2012",126,321
+2012,"WA","Age Group","0-7","OK",93,458
+2012,"ACT","Age Group","17-25","OK",141,508
+2012,"NSW","Age Group","17-25","OK",2516,8646
+2012,"NT","Age Group","17-25","OK",121,707
+2012,"Qld","Age Group","17-25","OK",1647,6365
+2012,"SA","Age Group","17-25","OK",538,2302
+2012,"Tas","Age Group","17-25","OK",134,611
+2012,"Vic","Age Group","17-25","Vic_break_2012",1891,5540
+2012,"WA","Age Group","17-25","OK",820,3986
+2012,"ACT","Age Group","26-39","OK",157,518
+2012,"NSW","Age Group","26-39","OK",2640,10116
+2012,"NT","Age Group","26-39","OK",150,862
+2012,"Qld","Age Group","26-39","OK",1593,6412
+2012,"SA","Age Group","26-39","OK",468,2313
+2012,"Tas","Age Group","26-39","OK",102,527
+2012,"Vic","Age Group","26-39","Vic_break_2012",2050,6897
+2012,"WA","Age Group","26-39","OK",902,4560
+2012,"ACT","Age Group","40-64","OK",205,796
+2012,"NSW","Age Group","40-64","OK",3591,16660
+2012,"NT","Age Group","40-64","OK",143,1006
+2012,"Qld","Age Group","40-64","OK",2139,10519
+2012,"SA","Age Group","40-64","OK",760,4847
+2012,"Tas","Age Group","40-64","OK",170,879
+2012,"Vic","Age Group","40-64","Vic_break_2012",2531,9216
+2012,"WA","Age Group","40-64","OK",1028,5600
+2012,"ACT","Age Group","65+","OK",7,24
+2012,"ACT","Age Group","65+","n.p._suppressed",,
+2012,"NSW","Age Group","65+","OK",1369,10163
+2012,"NT","Age Group","65+","OK",12,102
+2012,"NT","Age Group","65+","n.p._suppressed",,
+2012,"Qld","Age Group","65+","OK",679,5067
+2012,"SA","Age Group","65+","OK",366,2500
+2012,"Tas","Age Group","65+","OK",69,595
+2012,"Vic","Age Group","65+","Vic_break_2012",1078,7144
+2012,"WA","Age Group","65+","OK",336,2151
+2012,"ACT","Age Group","8-16","OK",36,115
+2012,"NSW","Age Group","8-16","OK",759,3115
+2012,"NT","Age Group","8-16","OK",46,153
+2012,"Qld","Age Group","8-16","OK",562,1528
+2012,"SA","Age Group","8-16","OK",139,390
+2012,"Tas","Age Group","8-16","OK",42,193
+2012,"Vic","Age Group","8-16","Vic_break_2012",422,1127
+2012,"WA","Age Group","8-16","OK",314,1144
+2013,"ACT","Age Group","0-7","n.p._suppressed",,
+2013,"NSW","Age Group","0-7","OK",238,692
+2013,"NT","Age Group","0-7","n.p._suppressed",,
+2013,"Qld","Age Group","0-7","OK",217,422
+2013,"SA","Age Group","0-7","OK",34,78
+2013,"Tas","Age Group","0-7","OK",8,20
+2013,"Tas","Age Group","0-7","n.p._suppressed",,
+2013,"Vic","Age Group","0-7","Vic_break_2012",128,292
+2013,"WA","Age Group","0-7","OK",70,268
+2013,"ACT","Age Group","17-25","OK",109,441
+2013,"NSW","Age Group","17-25","OK",2545,8644
+2013,"NT","Age Group","17-25","OK",149,907
+2013,"Qld","Age Group","17-25","OK",1720,5011
+2013,"SA","Age Group","17-25","OK",461,2437
+2013,"Tas","Age Group","17-25","OK",135,484
+2013,"Vic","Age Group","17-25","Vic_break_2012",1679,4999
+2013,"WA","Age Group","17-25","OK",816,3631
+2013,"ACT","Age Group","26-39","OK",160,600
+2013,"NSW","Age Group","26-39","OK",2625,8378
+2013,"NT","Age Group","26-39","OK",166,1191
+2013,"Qld","Age Group","26-39","OK",1841,6701
+2013,"SA","Age Group","26-39","OK",508,2328
+2013,"Tas","Age Group","26-39","OK",122,463
+2013,"Vic","Age Group","26-39","Vic_break_2012",1928,5835
+2013,"WA","Age Group","26-39","OK",929,4105
+2013,"ACT","Age Group","40-64","OK",204,878
+2013,"NSW","Age Group","40-64","OK",3733,16266
+2013,"NT","Age Group","40-64","OK",146,1040
+2013,"Qld","Age Group","40-64","OK",2603,10652
+2013,"SA","Age Group","40-64","OK",735,3683
+2013,"Tas","Age Group","40-64","OK",162,822
+2013,"Vic","Age Group","40-64","Vic_break_2012",2605,10565
+2013,"WA","Age Group","40-64","OK",1061,5592
+2013,"ACT","Age Group","65+","OK",34,177
+2013,"ACT","Age Group","65+","n.p._suppressed",,
+2013,"NSW","Age Group","65+","OK",1509,10776
+2013,"NT","Age Group","65+","OK",15,100
+2013,"NT","Age Group","65+","n.p._suppressed",,
+2013,"Qld","Age Group","65+","OK",781,4565
+2013,"SA","Age Group","65+","OK",307,2587
+2013,"Tas","Age Group","65+","OK",60,495
+2013,"Tas","Age Group","65+","n.p._suppressed",,
+2013,"Vic","Age Group","65+","Vic_break_2012",1083,6402
+2013,"WA","Age Group","65+","OK",333,2622
+2013,"ACT","Age Group","8-16","OK",26,86
+2013,"NSW","Age Group","8-16","OK",771,2283
+2013,"NT","Age Group","8-16","OK",60,282
+2013,"Qld","Age Group","8-16","OK",659,1668
+2013,"SA","Age Group","8-16","OK",176,458
+2013,"Tas","Age Group","8-16","OK",48,153
+2013,"Vic","Age Group","8-16","Vic_break_2012",361,973
+2013,"WA","Age Group","8-16","OK",266,1008
+2014,"ACT","Age Group","0-7","OK",6,25
+2014,"ACT","Age Group","0-7","n.p._suppressed",,
+2014,"NSW","Age Group","0-7","OK",217,746
+2014,"NT","Age Group","0-7","n.p._suppressed",,
+2014,"Qld","Age Group","0-7","OK",216,643
+2014,"SA","Age Group","0-7","OK",45,106
+2014,"Tas","Age Group","0-7","OK",7,9
+2014,"Tas","Age Group","0-7","n.p._suppressed",,
+2014,"Vic","Age Group","0-7","Vic_break_2012",137,370
+2014,"WA","Age Group","0-7","OK",79,470
+2014,"ACT","Age Group","17-25","OK",123,356
+2014,"NSW","Age Group","17-25","OK",2328,7074
+2014,"NT","Age Group","17-25","OK",154,772
+2014,"Qld","Age Group","17-25","OK",1751,5089
+2014,"SA","Age Group","17-25","OK",509,1582
+2014,"Tas","Age Group","17-25","OK",136,398
+2014,"Vic","Age Group","17-25","Vic_break_2012",1807,5299
+2014,"WA","Age Group","17-25","OK",675,3361
+2014,"ACT","Age Group","26-39","OK",147,423
+2014,"NSW","Age Group","26-39","OK",2702,9432
+2014,"NT","Age Group","26-39","OK",172,859
+2014,"Qld","Age Group","26-39","OK",1819,6198
+2014,"SA","Age Group","26-39","OK",521,1942
+2014,"Tas","Age Group","26-39","OK",149,593
+2014,"Vic","Age Group","26-39","Vic_break_2012",2092,5640
+2014,"WA","Age Group","26-39","OK",834,4212
+2014,"ACT","Age Group","40-64","OK",171,657
+2014,"NSW","Age Group","40-64","OK",3749,15522
+2014,"NT","Age Group","40-64","OK",165,999
+2014,"Qld","Age Group","40-64","OK",2546,11017
+2014,"SA","Age Group","40-64","OK",836,4902
+2014,"Tas","Age Group","40-64","OK",207,1016
+2014,"Vic","Age Group","40-64","Vic_break_2012",2870,9785
+2014,"WA","Age Group","40-64","OK",1004,5409
+2014,"ACT","Age Group","65+","OK",43,301
+2014,"ACT","Age Group","65+","n.p._suppressed",,
+2014,"NSW","Age Group","65+","OK",1658,11469
+2014,"NT","Age Group","65+","OK",17,136
+2014,"NT","Age Group","65+","n.p._suppressed",,
+2014,"Qld","Age Group","65+","OK",800,4395
+2014,"SA","Age Group","65+","OK",323,2332
+2014,"Tas","Age Group","65+","OK",75,643
+2014,"Tas","Age Group","65+","n.p._suppressed",,
+2014,"Vic","Age Group","65+","Vic_break_2012",1174,6926
+2014,"WA","Age Group","65+","OK",318,2424
+2014,"ACT","Age Group","8-16","OK",33,81
+2014,"NSW","Age Group","8-16","OK",659,1797
+2014,"NT","Age Group","8-16","OK",48,148
+2014,"Qld","Age Group","8-16","OK",593,1674
+2014,"SA","Age Group","8-16","OK",147,332
+2014,"Tas","Age Group","8-16","OK",50,135
+2014,"Vic","Age Group","8-16","Vic_break_2012",443,1005
+2014,"WA","Age Group","8-16","OK",244,713
+2015,"ACT","Age Group","0-7","OK",7,7
+2015,"ACT","Age Group","0-7","n.p._suppressed",,
+2015,"NSW","Age Group","0-7","OK",212,795
+2015,"NT","Age Group","0-7","OK",6,25
+2015,"NT","Age Group","0-7","n.p._suppressed",,
+2015,"Qld","Age Group","0-7","OK",206,762
+2015,"SA","Age Group","0-7","OK",37,59
+2015,"Tas","Age Group","0-7","n.p._suppressed",,
+2015,"Vic","Age Group","0-7","Vic_break_2012",167,308
+2015,"WA","Age Group","0-7","OK",90,443
+2015,"ACT","Age Group","17-25","OK",130,503
+2015,"NSW","Age Group","17-25","OK",2402,8911
+2015,"NT","Age Group","17-25","OK",157,794
+2015,"Qld","Age Group","17-25","OK",1769,5258
+2015,"SA","Age Group","17-25","OK",482,1647
+2015,"Tas","Age Group","17-25","OK",157,683
+2015,"Vic","Age Group","17-25","Vic_break_2012",1829,7883
+2015,"WA","Age Group","17-25","OK",655,3403
+2015,"ACT","Age Group","26-39","OK",171,470
+2015,"NSW","Age Group","26-39","OK",2563,10317
+2015,"NT","Age Group","26-39","OK",197,837
+2015,"Qld","Age Group","26-39","OK",1928,7558
+2015,"SA","Age Group","26-39","OK",550,2272
+2015,"Tas","Age Group","26-39","OK",160,760
+2015,"Vic","Age Group","26-39","Vic_break_2012",2351,10466
+2015,"WA","Age Group","26-39","OK",803,4098
+2015,"ACT","Age Group","40-64","OK",250,1123
+2015,"NSW","Age Group","40-64","OK",3679,19883
+2015,"NT","Age Group","40-64","OK",241,1400
+2015,"Qld","Age Group","40-64","OK",2780,12584
+2015,"SA","Age Group","40-64","OK",856,4164
+2015,"Tas","Age Group","40-64","OK",218,1013
+2015,"Vic","Age Group","40-64","Vic_break_2012",3031,15623
+2015,"WA","Age Group","40-64","OK",994,6433
+2015,"ACT","Age Group","65+","OK",83,529
+2015,"ACT","Age Group","65+","n.p._suppressed",,
+2015,"NSW","Age Group","65+","OK",1576,12514
+2015,"NT","Age Group","65+","OK",21,164
+2015,"NT","Age Group","65+","n.p._suppressed",,
+2015,"Qld","Age Group","65+","OK",962,6606
+2015,"SA","Age Group","65+","OK",383,2523
+2015,"Tas","Age Group","65+","OK",44,341
+2015,"Tas","Age Group","65+","n.p._suppressed",,
+2015,"Vic","Age Group","65+","Vic_break_2012",1308,13954
+2015,"WA","Age Group","65+","OK",354,3256
+2015,"ACT","Age Group","8-16","OK",43,114
+2015,"NSW","Age Group","8-16","OK",652,1911
+2015,"NT","Age Group","8-16","OK",57,201
+2015,"Qld","Age Group","8-16","OK",661,1502
+2015,"SA","Age Group","8-16","OK",159,502
+2015,"Tas","Age Group","8-16","OK",52,92
+2015,"Vic","Age Group","8-16","Vic_break_2012",512,1838
+2015,"WA","Age Group","8-16","OK",287,812
+2016,"ACT","Age Group","0-7","OK",12,25
+2016,"ACT","Age Group","0-7","n.p._suppressed",,
+2016,"NSW","Age Group","0-7","OK",174,815
+2016,"NT","Age Group","0-7","OK",8,22
+2016,"NT","Age Group","0-7","n.p._suppressed",,
+2016,"Qld","Age Group","0-7","OK",201,470
+2016,"SA","Age Group","0-7","OK",50,90
+2016,"Tas","Age Group","0-7","OK",11,20
+2016,"Vic","Age Group","0-7","Vic_break_2012",173,636
+2016,"WA","Age Group","0-7","OK",82,153
+2016,"ACT","Age Group","17-25","OK",138,490
+2016,"NSW","Age Group","17-25","OK",2415,10023
+2016,"NT","Age Group","17-25","OK",197,764
+2016,"Qld","Age Group","17-25","OK",2021,6240
+2016,"SA","Age Group","17-25","OK",565,2079
+2016,"Tas","Age Group","17-25","OK",182,971
+2016,"Vic","Age Group","17-25","Vic_break_2012",2125,10235
+2016,"WA","Age Group","17-25","OK",577,4191
+2016,"ACT","Age Group","26-39","OK",154,380
+2016,"NSW","Age Group","26-39","OK",2713,12415
+2016,"NT","Age Group","26-39","OK",198,883
+2016,"Qld","Age Group","26-39","OK",2065,8382
+2016,"SA","Age Group","26-39","OK",561,2521
+2016,"Tas","Age Group","26-39","OK",128,588
+2016,"Vic","Age Group","26-39","Vic_break_2012",2649,13639
+2016,"WA","Age Group","26-39","OK",743,5045
+2016,"ACT","Age Group","40-64","OK",214,914
+2016,"NSW","Age Group","40-64","OK",3835,21752
+2016,"NT","Age Group","40-64","OK",192,1187
+2016,"Qld","Age Group","40-64","OK",2785,15111
+2016,"SA","Age Group","40-64","OK",877,4501
+2016,"Tas","Age Group","40-64","OK",184,1286
+2016,"Vic","Age Group","40-64","Vic_break_2012",3487,23140
+2016,"WA","Age Group","40-64","OK",1022,7401
+2016,"ACT","Age Group","65+","OK",71,625
+2016,"ACT","Age Group","65+","n.p._suppressed",,
+2016,"NSW","Age Group","65+","OK",1632,13411
+2016,"NT","Age Group","65+","OK",24,540
+2016,"NT","Age Group","65+","n.p._suppressed",,
+2016,"Qld","Age Group","65+","OK",986,8282
+2016,"SA","Age Group","65+","OK",446,3581
+2016,"Tas","Age Group","65+","OK",92,983
+2016,"Vic","Age Group","65+","Vic_break_2012",1398,18651
+2016,"WA","Age Group","65+","OK",350,4235
+2016,"ACT","Age Group","8-16","OK",51,111
+2016,"NSW","Age Group","8-16","OK",705,1933
+2016,"NT","Age Group","8-16","OK",61,223
+2016,"Qld","Age Group","8-16","OK",644,1332
+2016,"SA","Age Group","8-16","OK",155,423
+2016,"Tas","Age Group","8-16","OK",60,116
+2016,"Vic","Age Group","8-16","Vic_break_2012",528,1477
+2016,"WA","Age Group","8-16","OK",257,877
+2017,"ACT","Age Group","0-7","n.p._suppressed",,
+2017,"NSW","Age Group","0-7","NSW_break_2017",190,582
+2017,"NT","Age Group","0-7","OK",20,117
+2017,"Qld","Age Group","0-7","OK",217,413
+2017,"SA","Age Group","0-7","OK",40,268
+2017,"Tas","Age Group","0-7","n.p._suppressed",,
+2017,"Vic","Age Group","0-7","Vic_break_2012",193,311
+2017,"WA","Age Group","0-7","OK",63,147
+2017,"ACT","Age Group","17-25","OK",113,356
+2017,"NSW","Age Group","17-25","NSW_break_2017",2393,9078
+2017,"NT","Age Group","17-25","OK",179,646
+2017,"Qld","Age Group","17-25","OK",2041,6820
+2017,"SA","Age Group","17-25","OK",463,1997
+2017,"Tas","Age Group","17-25","OK",149,546
+2017,"Vic","Age Group","17-25","Vic_break_2012",2212,10419
+2017,"WA","Age Group","17-25","OK",612,3333
+2017,"ACT","Age Group","26-39","OK",153,519
+2017,"NSW","Age Group","26-39","NSW_break_2017",2510,12502
+2017,"NT","Age Group","26-39","OK",197,937
+2017,"Qld","Age Group","26-39","OK",2142,7630
+2017,"SA","Age Group","26-39","OK",525,2811
+2017,"Tas","Age Group","26-39","OK",104,677
+2017,"Vic","Age Group","26-39","Vic_break_2012",2763,13769
+2017,"WA","Age Group","26-39","OK",804,4133
+2017,"ACT","Age Group","40-64","OK",237,822
+2017,"NSW","Age Group","40-64","NSW_break_2017",3647,21031
+2017,"NT","Age Group","40-64","OK",204,1573
+2017,"Qld","Age Group","40-64","OK",3004,14104
+2017,"SA","Age Group","40-64","OK",791,4481
+2017,"Tas","Age Group","40-64","OK",233,1577
+2017,"Vic","Age Group","40-64","Vic_break_2012",3607,21324
+2017,"WA","Age Group","40-64","OK",1080,6733
+2017,"ACT","Age Group","65+","OK",42,260
+2017,"ACT","Age Group","65+","n.p._suppressed",,
+2017,"NSW","Age Group","65+","NSW_break_2017",1646,14454
+2017,"NT","Age Group","65+","OK",47,616
+2017,"Qld","Age Group","65+","OK",1031,9127
+2017,"SA","Age Group","65+","OK",425,3728
+2017,"Tas","Age Group","65+","OK",68,581
+2017,"Tas","Age Group","65+","n.p._suppressed",,
+2017,"Vic","Age Group","65+","Vic_break_2012",1445,16424
+2017,"WA","Age Group","65+","OK",348,3725
+2017,"ACT","Age Group","8-16","OK",40,121
+2017,"NSW","Age Group","8-16","NSW_break_2017",630,1867
+2017,"NT","Age Group","8-16","OK",56,108
+2017,"Qld","Age Group","8-16","OK",699,1770
+2017,"SA","Age Group","8-16","OK",150,494
+2017,"Tas","Age Group","8-16","OK",50,121
+2017,"Vic","Age Group","8-16","Vic_break_2012",574,1807
+2017,"WA","Age Group","8-16","OK",288,1089
+2018,"ACT","Age Group","0-7","OK",14,24
+2018,"NSW","Age Group","0-7","NSW_break_2017",130,683
+2018,"NT","Age Group","0-7","OK",12,23
+2018,"NT","Age Group","0-7","n.p._suppressed",,
+2018,"Qld","Age Group","0-7","OK",204,393
+2018,"SA","Age Group","0-7","OK",36,247
+2018,"Tas","Age Group","0-7","OK",8,10
+2018,"Tas","Age Group","0-7","n.p._suppressed",,
+2018,"Vic","Age Group","0-7","Vic_break_2012",228,589
+2018,"WA","Age Group","0-7","OK",76,437
+2018,"ACT","Age Group","17-25","OK",143,430
+2018,"NSW","Age Group","17-25","NSW_break_2017",1974,10628
+2018,"NT","Age Group","17-25","OK",221,1343
+2018,"Qld","Age Group","17-25","OK",2061,6427
+2018,"SA","Age Group","17-25","OK",482,2260
+2018,"Tas","Age Group","17-25","OK",164,1047
+2018,"Vic","Age Group","17-25","Vic_break_2012",2311,9401
+2018,"WA","Age Group","17-25","OK",627,2034
+2018,"ACT","Age Group","26-39","OK",171,764
+2018,"NSW","Age Group","26-39","NSW_break_2017",2285,9586
+2018,"NT","Age Group","26-39","OK",256,1653
+2018,"Qld","Age Group","26-39","OK",2286,8235
+2018,"SA","Age Group","26-39","OK",572,2287
+2018,"Tas","Age Group","26-39","OK",161,866
+2018,"Vic","Age Group","26-39","Vic_break_2012",2862,12158
+2018,"WA","Age Group","26-39","OK",808,3892
+2018,"ACT","Age Group","40-64","OK",248,813
+2018,"NSW","Age Group","40-64","NSW_break_2017",3283,20666
+2018,"NT","Age Group","40-64","OK",241,1428
+2018,"Qld","Age Group","40-64","OK",3052,13103
+2018,"SA","Age Group","40-64","OK",853,4717
+2018,"Tas","Age Group","40-64","OK",266,1505
+2018,"Vic","Age Group","40-64","Vic_break_2012",3780,22846
+2018,"WA","Age Group","40-64","OK",1111,4559
+2018,"ACT","Age Group","65+","OK",99,814
+2018,"NSW","Age Group","65+","NSW_break_2017",1560,16032
+2018,"NT","Age Group","65+","OK",28,350
+2018,"NT","Age Group","65+","n.p._suppressed",,
+2018,"Qld","Age Group","65+","OK",1107,9301
+2018,"SA","Age Group","65+","OK",367,2652
+2018,"Tas","Age Group","65+","OK",99,875
+2018,"Tas","Age Group","65+","n.p._suppressed",,
+2018,"Vic","Age Group","65+","Vic_break_2012",1695,17529
+2018,"WA","Age Group","65+","OK",393,3340
+2018,"ACT","Age Group","8-16","OK",37,139
+2018,"NSW","Age Group","8-16","NSW_break_2017",562,1929
+2018,"NT","Age Group","8-16","OK",66,359
+2018,"Qld","Age Group","8-16","OK",671,1380
+2018,"SA","Age Group","8-16","OK",179,495
+2018,"Tas","Age Group","8-16","OK",54,112
+2018,"Vic","Age Group","8-16","Vic_break_2012",577,1321
+2018,"WA","Age Group","8-16","OK",259,818
+2019,"ACT","Age Group","0-7","n.p._suppressed",,
+2019,"NSW","Age Group","0-7","NSW_break_2017",149,931
+2019,"NT","Age Group","0-7","OK",12,54
+2019,"NT","Age Group","0-7","n.p._suppressed",,
+2019,"Qld","Age Group","0-7","OK",165,436
+2019,"SA","Age Group","0-7","OK",53,86
+2019,"Tas","Age Group","0-7","OK",8,10
+2019,"Tas","Age Group","0-7","n.p._suppressed",,
+2019,"Vic","Age Group","0-7","Vic_break_2012",183,541
+2019,"WA","Age Group","0-7","OK",102,371
+2019,"ACT","Age Group","17-25","OK",128,552
+2019,"NSW","Age Group","17-25","NSW_break_2017",1950,10485
+2019,"NT","Age Group","17-25","OK",178,994
+2019,"Qld","Age Group","17-25","OK",2004,6835
+2019,"SA","Age Group","17-25","OK",498,1821
+2019,"Tas","Age Group","17-25","OK",153,508
+2019,"Vic","Age Group","17-25","Vic_break_2012",2185,11674
+2019,"WA","Age Group","17-25","OK",622,2214
+2019,"ACT","Age Group","26-39","OK",181,511
+2019,"NSW","Age Group","26-39","NSW_break_2017",2240,10486
+2019,"NT","Age Group","26-39","OK",180,784
+2019,"Qld","Age Group","26-39","OK",2216,7606
+2019,"SA","Age Group","26-39","OK",539,2263
+2019,"Tas","Age Group","26-39","OK",163,1079
+2019,"Vic","Age Group","26-39","Vic_break_2012",2894,11448
+2019,"WA","Age Group","26-39","OK",864,3674
+2019,"ACT","Age Group","40-64","OK",217,985
+2019,"NSW","Age Group","40-64","NSW_break_2017",3357,21032
+2019,"NT","Age Group","40-64","OK",185,1266
+2019,"Qld","Age Group","40-64","OK",3165,14549
+2019,"SA","Age Group","40-64","OK",809,3731
+2019,"Tas","Age Group","40-64","OK",211,1344
+2019,"Vic","Age Group","40-64","Vic_break_2012",3838,20008
+2019,"WA","Age Group","40-64","OK",1224,7081
+2019,"ACT","Age Group","65+","OK",71,530
+2019,"ACT","Age Group","65+","n.p._suppressed",,
+2019,"NSW","Age Group","65+","NSW_break_2017",1663,18087
+2019,"NT","Age Group","65+","OK",41,414
+2019,"NT","Age Group","65+","n.p._suppressed",,
+2019,"Qld","Age Group","65+","OK",1250,9025
+2019,"SA","Age Group","65+","OK",407,2608
+2019,"Tas","Age Group","65+","OK",117,1020
+2019,"Vic","Age Group","65+","Vic_break_2012",1691,15532
+2019,"WA","Age Group","65+","OK",438,3801
+2019,"ACT","Age Group","8-16","OK",29,37
+2019,"ACT","Age Group","8-16","n.p._suppressed",,
+2019,"NSW","Age Group","8-16","NSW_break_2017",583,1977
+2019,"NT","Age Group","8-16","OK",44,118
+2019,"Qld","Age Group","8-16","OK",715,1738
+2019,"SA","Age Group","8-16","OK",151,294
+2019,"Tas","Age Group","8-16","OK",28,56
+2019,"Tas","Age Group","8-16","n.p._suppressed",,
+2019,"Vic","Age Group","8-16","Vic_break_2012",601,1806
+2019,"WA","Age Group","8-16","OK",284,681
+2020,"ACT","Age Group","0-7","n.p._suppressed",,
+2020,"NSW","Age Group","0-7","NSW_break_2017",151,907
+2020,"NT","Age Group","0-7","n.p._suppressed",,
+2020,"Qld","Age Group","0-7","OK",233,407
+2020,"SA","Age Group","0-7","OK",30,75
+2020,"Tas","Age Group","0-7","OK",26,115
+2020,"Vic","Age Group","0-7","Vic_break_2012",176,364
+2020,"WA","Age Group","0-7","OK",72,183
+2020,"ACT","Age Group","17-25","OK",101,370
+2020,"NSW","Age Group","17-25","NSW_break_2017",1917,7961
+2020,"NT","Age Group","17-25","OK",202,777
+2020,"Qld","Age Group","17-25","OK",2183,7807
+2020,"SA","Age Group","17-25","OK",497,1802
+2020,"Tas","Age Group","17-25","OK",192,818
+2020,"Vic","Age Group","17-25","Vic_break_2012",1917,7439
+2020,"WA","Age Group","17-25","OK",693,3215
+2020,"ACT","Age Group","26-39","OK",174,515
+2020,"NSW","Age Group","26-39","NSW_break_2017",2076,9738
+2020,"NT","Age Group","26-39","OK",206,906
+2020,"Qld","Age Group","26-39","OK",2296,8258
+2020,"SA","Age Group","26-39","OK",586,2633
+2020,"Tas","Age Group","26-39","OK",170,616
+2020,"Vic","Age Group","26-39","Vic_break_2012",2497,9569
+2020,"WA","Age Group","26-39","OK",924,3970
+2020,"ACT","Age Group","40-64","OK",220,1024
+2020,"NSW","Age Group","40-64","NSW_break_2017",3071,20403
+2020,"NT","Age Group","40-64","OK",232,1157
+2020,"Qld","Age Group","40-64","OK",3199,12242
+2020,"SA","Age Group","40-64","OK",807,4261
+2020,"Tas","Age Group","40-64","OK",221,841
+2020,"Vic","Age Group","40-64","Vic_break_2012",3285,15916
+2020,"WA","Age Group","40-64","OK",1217,7195
+2020,"ACT","Age Group","65+","OK",47,234
+2020,"ACT","Age Group","65+","n.p._suppressed",,
+2020,"NSW","Age Group","65+","NSW_break_2017",1416,17184
+2020,"NT","Age Group","65+","OK",44,317
+2020,"NT","Age Group","65+","n.p._suppressed",,
+2020,"Qld","Age Group","65+","OK",1118,7517
+2020,"SA","Age Group","65+","OK",396,2849
+2020,"Tas","Age Group","65+","OK",108,954
+2020,"Vic","Age Group","65+","Vic_break_2012",1298,12624
+2020,"WA","Age Group","65+","OK",444,3488
+2020,"ACT","Age Group","8-16","OK",56,200
+2020,"NSW","Age Group","8-16","NSW_break_2017",643,2178
+2020,"NT","Age Group","8-16","OK",73,129
+2020,"Qld","Age Group","8-16","OK",772,1619
+2020,"SA","Age Group","8-16","OK",187,560
+2020,"Tas","Age Group","8-16","OK",61,138
+2020,"Vic","Age Group","8-16","Vic_break_2012",711,2025
+2020,"WA","Age Group","8-16","OK",286,737
+2021,"ACT","Age Group","0-7","OK",10,12
+2021,"ACT","Age Group","0-7","n.p._suppressed",,
+2021,"NSW","Age Group","0-7","NSW_break_2017",146,654
+2021,"NT","Age Group","0-7","OK",12,32
+2021,"NT","Age Group","0-7","n.p._suppressed",,
+2021,"Qld","Age Group","0-7","OK",186,358
+2021,"SA","Age Group","0-7","OK",48,144
+2021,"Tas","Age Group","0-7","OK",10,75
+2021,"Vic","Age Group","0-7","Vic_break_2012",214,426
+2021,"WA","Age Group","0-7","OK",67,221
+2021,"ACT","Age Group","17-25","OK",118,221
+2021,"NSW","Age Group","17-25","NSW_break_2017",1762,8694
+2021,"NT","Age Group","17-25","OK",178,747
+2021,"Qld","Age Group","17-25","OK",2316,7539
+2021,"SA","Age Group","17-25","OK",523,1918
+2021,"Tas","Age Group","17-25","OK",199,1050
+2021,"Vic","Age Group","17-25","Vic_break_2012",2070,8368
+2021,"WA","Age Group","17-25","OK",685,4034
+2021,"ACT","Age Group","26-39","OK",174,636
+2021,"NSW","Age Group","26-39","NSW_break_2017",1956,8703
+2021,"NT","Age Group","26-39","OK",199,1014
+2021,"Qld","Age Group","26-39","OK",2503,8405
+2021,"SA","Age Group","26-39","OK",589,2547
+2021,"Tas","Age Group","26-39","OK",163,496
+2021,"Vic","Age Group","26-39","Vic_break_2012",2804,11525
+2021,"WA","Age Group","26-39","OK",824,5237
+2021,"ACT","Age Group","40-64","OK",288,1118
+2021,"NSW","Age Group","40-64","NSW_break_2017",3027,18478
+2021,"NT","Age Group","40-64","OK",215,1309
+2021,"Qld","Age Group","40-64","OK",3430,14028
+2021,"SA","Age Group","40-64","OK",848,3714
+2021,"Tas","Age Group","40-64","OK",227,1392
+2021,"Vic","Age Group","40-64","Vic_break_2012",3714,19292
+2021,"WA","Age Group","40-64","OK",1201,7016
+2021,"ACT","Age Group","65+","OK",63,276
+2021,"ACT","Age Group","65+","n.p._suppressed",,
+2021,"NSW","Age Group","65+","NSW_break_2017",1456,16198
+2021,"NT","Age Group","65+","OK",40,806
+2021,"NT","Age Group","65+","n.p._suppressed",,
+2021,"Qld","Age Group","65+","OK",1259,8776
+2021,"SA","Age Group","65+","OK",442,2951
+2021,"Tas","Age Group","65+","OK",147,1723
+2021,"Vic","Age Group","65+","Vic_break_2012",1520,12772
+2021,"WA","Age Group","65+","OK",507,4905
+2021,"ACT","Age Group","8-16","OK",60,285
+2021,"NSW","Age Group","8-16","NSW_break_2017",656,2371
+2021,"NT","Age Group","8-16","OK",56,120
+2021,"Qld","Age Group","8-16","OK",753,1783
+2021,"SA","Age Group","8-16","OK",182,578
+2021,"Tas","Age Group","8-16","OK",59,124
+2021,"Vic","Age Group","8-16","Vic_break_2012",808,2316
+2021,"WA","Age Group","8-16","OK",284,875
+2011,"ACT","Counterparty","Car/pick-up truck/van","OK",177,1216
+2011,"NSW","Counterparty","Car/pick-up truck/van","OK",4679,23189
+2011,"NT","Counterparty","Car/pick-up truck/van","OK",107,823
+2011,"Qld","Counterparty","Car/pick-up truck/van","OK",2113,10750
+2011,"SA","Counterparty","Car/pick-up truck/van","OK",961,5418
+2011,"Tas","Counterparty","Car/pick-up truck/van","OK",172,1293
+2011,"Vic","Counterparty","Car/pick-up truck/van","OK",4308,16385
+2011,"WA","Counterparty","Car/pick-up truck/van","OK",1309,7880
+2011,"ACT","Counterparty","Fixed/stationary object","OK",75,479
+2011,"NSW","Counterparty","Fixed/stationary object","OK",1543,9230
+2011,"NT","Counterparty","Fixed/stationary object","OK",59,417
+2011,"Qld","Counterparty","Fixed/stationary object","OK",801,5532
+2011,"SA","Counterparty","Fixed/stationary object","OK",402,2301
+2011,"Tas","Counterparty","Fixed/stationary object","OK",85,643
+2011,"Vic","Counterparty","Fixed/stationary object","OK",1407,5781
+2011,"WA","Counterparty","Fixed/stationary object","OK",493,2969
+2011,"ACT","Counterparty","Non-collision transport","OK",177,486
+2011,"NSW","Counterparty","Non-collision transport","OK",2349,8805
+2011,"NT","Counterparty","Non-collision transport","OK",198,1128
+2011,"Qld","Counterparty","Non-collision transport","OK",1969,6813
+2011,"SA","Counterparty","Non-collision transport","OK",650,2522
+2011,"Tas","Counterparty","Non-collision transport","OK",138,579
+2011,"Vic","Counterparty","Non-collision transport","OK",1975,5629
+2011,"WA","Counterparty","Non-collision transport","OK",1012,4531
+2011,"ACT","Counterparty","Other","OK",108,395
+2011,"NSW","Counterparty","Other","OK",2047,9120
+2011,"NT","Counterparty","Other","OK",92,642
+2011,"Qld","Counterparty","Other","OK",1439,5438
+2011,"SA","Counterparty","Other","OK",346,1791
+2011,"Tas","Counterparty","Other","OK",98,591
+2011,"Vic","Counterparty","Other","OK",1636,6129
+2011,"WA","Counterparty","Other","OK",628,3105
+2012,"ACT","Counterparty","Car/pick-up truck/van","OK",223,993
+2012,"NSW","Counterparty","Car/pick-up truck/van","OK",4832,23149
+2012,"NT","Counterparty","Car/pick-up truck/van","OK",119,932
+2012,"Qld","Counterparty","Car/pick-up truck/van","OK",2332,12023
+2012,"SA","Counterparty","Car/pick-up truck/van","OK",911,5449
+2012,"Tas","Counterparty","Car/pick-up truck/van","OK",168,1206
+2012,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",3730,13949
+2012,"WA","Counterparty","Car/pick-up truck/van","OK",1252,6722
+2012,"ACT","Counterparty","Fixed/stationary object","OK",77,396
+2012,"NSW","Counterparty","Fixed/stationary object","OK",1624,8205
+2012,"NT","Counterparty","Fixed/stationary object","OK",52,375
+2012,"Qld","Counterparty","Fixed/stationary object","OK",976,5498
+2012,"SA","Counterparty","Fixed/stationary object","OK",356,2213
+2012,"Tas","Counterparty","Fixed/stationary object","OK",72,369
+2012,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1218,5352
+2012,"WA","Counterparty","Fixed/stationary object","OK",444,3125
+2012,"ACT","Counterparty","Non-collision transport","OK",207,518
+2012,"NSW","Counterparty","Non-collision transport","OK",2506,9077
+2012,"NT","Counterparty","Non-collision transport","OK",216,1092
+2012,"Qld","Counterparty","Non-collision transport","OK",2026,7186
+2012,"SA","Counterparty","Non-collision transport","OK",673,2771
+2012,"Tas","Counterparty","Non-collision transport","OK",193,805
+2012,"Vic","Counterparty","Non-collision transport","Vic_break_2012",1695,5518
+2012,"WA","Counterparty","Non-collision transport","OK",1124,5432
+2012,"ACT","Counterparty","Other","OK",94,359
+2012,"NSW","Counterparty","Other","OK",2159,9527
+2012,"NT","Counterparty","Other","OK",109,556
+2012,"Qld","Counterparty","Other","OK",1479,5707
+2012,"SA","Counterparty","Other","OK",371,2000
+2012,"Tas","Counterparty","Other","OK",103,468
+2012,"Vic","Counterparty","Other","Vic_break_2012",1455,5426
+2012,"WA","Counterparty","Other","OK",673,2620
+2013,"ACT","Counterparty","Car/pick-up truck/van","OK",186,1086
+2013,"NSW","Counterparty","Car/pick-up truck/van","OK",5048,21011
+2013,"NT","Counterparty","Car/pick-up truck/van","OK",124,815
+2013,"Qld","Counterparty","Car/pick-up truck/van","OK",2733,11130
+2013,"SA","Counterparty","Car/pick-up truck/van","OK",842,4777
+2013,"Tas","Counterparty","Car/pick-up truck/van","OK",179,1298
+2013,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",3438,12939
+2013,"WA","Counterparty","Car/pick-up truck/van","OK",1241,6819
+2013,"ACT","Counterparty","Fixed/stationary object","OK",78,401
+2013,"NSW","Counterparty","Fixed/stationary object","OK",1630,8363
+2013,"NT","Counterparty","Fixed/stationary object","OK",87,578
+2013,"Qld","Counterparty","Fixed/stationary object","OK",1012,4069
+2013,"SA","Counterparty","Fixed/stationary object","OK",350,2194
+2013,"Tas","Counterparty","Fixed/stationary object","OK",96,458
+2013,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1177,5555
+2013,"WA","Counterparty","Fixed/stationary object","OK",460,3328
+2013,"ACT","Counterparty","Non-collision transport","OK",190,561
+2013,"NSW","Counterparty","Non-collision transport","OK",2690,9359
+2013,"NT","Counterparty","Non-collision transport","OK",271,1796
+2013,"Qld","Counterparty","Non-collision transport","OK",2414,7769
+2013,"SA","Counterparty","Non-collision transport","OK",672,2524
+2013,"Tas","Counterparty","Non-collision transport","OK",196,648
+2013,"Vic","Counterparty","Non-collision transport","Vic_break_2012",1751,5286
+2013,"WA","Counterparty","Non-collision transport","OK",1048,4447
+2013,"ACT","Counterparty","Other","OK",119,469
+2013,"NSW","Counterparty","Other","OK",2053,8306
+2013,"NT","Counterparty","Other","OK",79,472
+2013,"Qld","Counterparty","Other","OK",1662,6051
+2013,"SA","Counterparty","Other","OK",357,2076
+2013,"Tas","Counterparty","Other","OK",99,487
+2013,"Vic","Counterparty","Other","Vic_break_2012",1418,5286
+2013,"WA","Counterparty","Other","OK",726,2632
+2014,"ACT","Counterparty","Car/pick-up truck/van","OK",191,701
+2014,"NSW","Counterparty","Car/pick-up truck/van","OK",5005,20708
+2014,"NT","Counterparty","Car/pick-up truck/van","OK",145,894
+2014,"Qld","Counterparty","Car/pick-up truck/van","OK",2737,11360
+2014,"SA","Counterparty","Car/pick-up truck/van","OK",914,5131
+2014,"Tas","Counterparty","Car/pick-up truck/van","OK",203,1098
+2014,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",3757,12428
+2014,"WA","Counterparty","Car/pick-up truck/van","OK",1040,5924
+2014,"ACT","Counterparty","Fixed/stationary object","OK",72,419
+2014,"NSW","Counterparty","Fixed/stationary object","OK",1589,8398
+2014,"NT","Counterparty","Fixed/stationary object","OK",80,417
+2014,"Qld","Counterparty","Fixed/stationary object","OK",1074,4251
+2014,"SA","Counterparty","Fixed/stationary object","OK",351,1651
+2014,"Tas","Counterparty","Fixed/stationary object","OK",96,471
+2014,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1268,5489
+2014,"WA","Counterparty","Fixed/stationary object","OK",439,3089
+2014,"ACT","Counterparty","Non-collision transport","OK",185,595
+2014,"NSW","Counterparty","Non-collision transport","OK",2683,9197
+2014,"NT","Counterparty","Non-collision transport","OK",272,1290
+2014,"Qld","Counterparty","Non-collision transport","OK",2345,7966
+2014,"SA","Counterparty","Non-collision transport","OK",741,2754
+2014,"Tas","Counterparty","Non-collision transport","OK",217,877
+2014,"Vic","Counterparty","Non-collision transport","Vic_break_2012",1980,6071
+2014,"WA","Counterparty","Non-collision transport","OK",1015,4825
+2014,"ACT","Counterparty","Other","OK",94,311
+2014,"NSW","Counterparty","Other","OK",2036,7737
+2014,"NT","Counterparty","Other","OK",78,366
+2014,"Qld","Counterparty","Other","OK",1569,5439
+2014,"SA","Counterparty","Other","OK",375,1660
+2014,"Tas","Counterparty","Other","OK",130,423
+2014,"Vic","Counterparty","Other","Vic_break_2012",1518,5037
+2014,"WA","Counterparty","Other","OK",660,2751
+2015,"ACT","Counterparty","Car/pick-up truck/van","OK",244,1028
+2015,"NSW","Counterparty","Car/pick-up truck/van","OK",5005,24157
+2015,"NT","Counterparty","Car/pick-up truck/van","OK",182,1187
+2015,"Qld","Counterparty","Car/pick-up truck/van","OK",3119,12543
+2015,"SA","Counterparty","Car/pick-up truck/van","OK",917,4467
+2015,"Tas","Counterparty","Car/pick-up truck/van","OK",199,1138
+2015,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",4250,23839
+2015,"WA","Counterparty","Car/pick-up truck/van","OK",1100,6576
+2015,"ACT","Counterparty","Fixed/stationary object","OK",76,675
+2015,"NSW","Counterparty","Fixed/stationary object","OK",1669,10776
+2015,"NT","Counterparty","Fixed/stationary object","OK",83,302
+2015,"Qld","Counterparty","Fixed/stationary object","OK",1135,6417
+2015,"SA","Counterparty","Fixed/stationary object","OK",394,2356
+2015,"Tas","Counterparty","Fixed/stationary object","OK",131,687
+2015,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1250,9548
+2015,"WA","Counterparty","Fixed/stationary object","OK",459,4002
+2015,"ACT","Counterparty","Non-collision transport","OK",233,598
+2015,"NSW","Counterparty","Non-collision transport","OK",2657,9928
+2015,"NT","Counterparty","Non-collision transport","OK",339,1654
+2015,"Qld","Counterparty","Non-collision transport","OK",2451,8425
+2015,"SA","Counterparty","Non-collision transport","OK",746,2537
+2015,"Tas","Counterparty","Non-collision transport","OK",220,798
+2015,"Vic","Counterparty","Non-collision transport","Vic_break_2012",1999,7441
+2015,"WA","Counterparty","Non-collision transport","OK",973,4811
+2015,"ACT","Counterparty","Other","OK",147,595
+2015,"NSW","Counterparty","Other","OK",1753,9470
+2015,"NT","Counterparty","Other","OK",87,318
+2015,"Qld","Counterparty","Other","OK",1601,6885
+2015,"SA","Counterparty","Other","OK",410,1807
+2015,"Tas","Counterparty","Other","OK",127,820
+2015,"Vic","Counterparty","Other","Vic_break_2012",1699,9244
+2015,"WA","Counterparty","Other","OK",651,3056
+2016,"ACT","Counterparty","Car/pick-up truck/van","OK",235,1068
+2016,"NSW","Counterparty","Car/pick-up truck/van","OK",5217,26496
+2016,"NT","Counterparty","Car/pick-up truck/van","OK",168,1183
+2016,"Qld","Counterparty","Car/pick-up truck/van","OK",3380,15217
+2016,"SA","Counterparty","Car/pick-up truck/van","OK",1064,6019
+2016,"Tas","Counterparty","Car/pick-up truck/van","OK",197,1416
+2016,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",4918,34403
+2016,"WA","Counterparty","Car/pick-up truck/van","OK",1086,9522
+2016,"ACT","Counterparty","Fixed/stationary object","OK",78,344
+2016,"NSW","Counterparty","Fixed/stationary object","OK",1710,11237
+2016,"NT","Counterparty","Fixed/stationary object","OK",121,661
+2016,"Qld","Counterparty","Fixed/stationary object","OK",1302,7802
+2016,"SA","Counterparty","Fixed/stationary object","OK",387,2501
+2016,"Tas","Counterparty","Fixed/stationary object","OK",98,854
+2016,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1415,12892
+2016,"WA","Counterparty","Fixed/stationary object","OK",410,4154
+2016,"ACT","Counterparty","Non-collision transport","OK",211,519
+2016,"NSW","Counterparty","Non-collision transport","OK",2734,11955
+2016,"NT","Counterparty","Non-collision transport","OK",304,1270
+2016,"Qld","Counterparty","Non-collision transport","OK",2376,8968
+2016,"SA","Counterparty","Non-collision transport","OK",765,2636
+2016,"Tas","Counterparty","Non-collision transport","OK",227,871
+2016,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2174,8572
+2016,"WA","Counterparty","Non-collision transport","OK",892,4988
+2016,"ACT","Counterparty","Other","OK",130,741
+2016,"NSW","Counterparty","Other","OK",1813,10661
+2016,"NT","Counterparty","Other","OK",116,679
+2016,"Qld","Counterparty","Other","OK",1644,7830
+2016,"SA","Counterparty","Other","OK",438,2039
+2016,"Tas","Counterparty","Other","OK",135,823
+2016,"Vic","Counterparty","Other","Vic_break_2012",1853,11911
+2016,"WA","Counterparty","Other","OK",643,3238
+2017,"ACT","Counterparty","Car/pick-up truck/van","OK",221,1046
+2017,"NSW","Counterparty","Car/pick-up truck/van","NSW_break_2017",5012,28593
+2017,"NT","Counterparty","Car/pick-up truck/van","OK",212,1377
+2017,"Qld","Counterparty","Car/pick-up truck/van","OK",3674,16381
+2017,"SA","Counterparty","Car/pick-up truck/van","OK",890,5708
+2017,"Tas","Counterparty","Car/pick-up truck/van","OK",212,1852
+2017,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",5279,32540
+2017,"WA","Counterparty","Car/pick-up truck/van","OK",1091,7813
+2017,"ACT","Counterparty","Fixed/stationary object","OK",74,513
+2017,"NSW","Counterparty","Fixed/stationary object","NSW_break_2017",1540,9923
+2017,"NT","Counterparty","Fixed/stationary object","OK",93,480
+2017,"Qld","Counterparty","Fixed/stationary object","OK",1224,6740
+2017,"SA","Counterparty","Fixed/stationary object","OK",372,2521
+2017,"Tas","Counterparty","Fixed/stationary object","OK",110,680
+2017,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1509,12274
+2017,"WA","Counterparty","Fixed/stationary object","OK",436,4376
+2017,"ACT","Counterparty","Non-collision transport","OK",219,640
+2017,"NSW","Counterparty","Non-collision transport","NSW_break_2017",2638,11137
+2017,"NT","Counterparty","Non-collision transport","OK",292,1448
+2017,"Qld","Counterparty","Non-collision transport","OK",2546,9476
+2017,"SA","Counterparty","Non-collision transport","OK",688,2772
+2017,"Tas","Counterparty","Non-collision transport","OK",234,850
+2017,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2266,8797
+2017,"WA","Counterparty","Non-collision transport","OK",969,4357
+2017,"ACT","Counterparty","Other","OK",118,410
+2017,"NSW","Counterparty","Other","NSW_break_2017",1826,9861
+2017,"NT","Counterparty","Other","OK",106,692
+2017,"Qld","Counterparty","Other","OK",1690,7267
+2017,"SA","Counterparty","Other","OK",444,2778
+2017,"Tas","Counterparty","Other","OK",103,928
+2017,"Vic","Counterparty","Other","Vic_break_2012",1740,10443
+2017,"WA","Counterparty","Other","OK",699,2614
+2018,"ACT","Counterparty","Car/pick-up truck/van","OK",283,1522
+2018,"NSW","Counterparty","Car/pick-up truck/van","NSW_break_2017",4134,26179
+2018,"NT","Counterparty","Car/pick-up truck/van","OK",240,1489
+2018,"Qld","Counterparty","Car/pick-up truck/van","OK",3749,14446
+2018,"SA","Counterparty","Car/pick-up truck/van","OK",926,4889
+2018,"Tas","Counterparty","Car/pick-up truck/van","OK",254,1966
+2018,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",5675,28739
+2018,"WA","Counterparty","Car/pick-up truck/van","OK",1179,6258
+2018,"ACT","Counterparty","Fixed/stationary object","OK",79,356
+2018,"NSW","Counterparty","Fixed/stationary object","NSW_break_2017",1410,10890
+2018,"NT","Counterparty","Fixed/stationary object","OK",129,544
+2018,"Qld","Counterparty","Fixed/stationary object","OK",1271,7336
+2018,"SA","Counterparty","Fixed/stationary object","OK",384,2422
+2018,"Tas","Counterparty","Fixed/stationary object","OK",115,722
+2018,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1607,13155
+2018,"WA","Counterparty","Fixed/stationary object","OK",458,2606
+2018,"ACT","Counterparty","Non-collision transport","OK",213,734
+2018,"NSW","Counterparty","Non-collision transport","NSW_break_2017",2511,11728
+2018,"NT","Counterparty","Non-collision transport","OK",362,2185
+2018,"Qld","Counterparty","Non-collision transport","OK",2707,10510
+2018,"SA","Counterparty","Non-collision transport","OK",729,2489
+2018,"Tas","Counterparty","Non-collision transport","OK",294,1047
+2018,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2309,9650
+2018,"WA","Counterparty","Non-collision transport","OK",958,3605
+2018,"ACT","Counterparty","Other","OK",137,372
+2018,"NSW","Counterparty","Other","NSW_break_2017",1739,10727
+2018,"NT","Counterparty","Other","OK",101,1060
+2018,"Qld","Counterparty","Other","OK",1654,6547
+2018,"SA","Counterparty","Other","OK",450,2858
+2018,"Tas","Counterparty","Other","OK",118,941
+2018,"Vic","Counterparty","Other","Vic_break_2012",1862,12300
+2018,"WA","Counterparty","Other","OK",679,2611
+2019,"ACT","Counterparty","Car/pick-up truck/van","OK",243,1076
+2019,"NSW","Counterparty","Car/pick-up truck/van","NSW_break_2017",4303,27854
+2019,"NT","Counterparty","Car/pick-up truck/van","OK",155,1027
+2019,"Qld","Counterparty","Car/pick-up truck/van","OK",3885,16829
+2019,"SA","Counterparty","Car/pick-up truck/van","OK",924,4234
+2019,"Tas","Counterparty","Car/pick-up truck/van","OK",223,1546
+2019,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",5630,29373
+2019,"WA","Counterparty","Car/pick-up truck/van","OK",1270,7101
+2019,"ACT","Counterparty","Fixed/stationary object","OK",82,622
+2019,"NSW","Counterparty","Fixed/stationary object","NSW_break_2017",1374,12965
+2019,"NT","Counterparty","Fixed/stationary object","OK",114,451
+2019,"Qld","Counterparty","Fixed/stationary object","OK",1322,6316
+2019,"SA","Counterparty","Fixed/stationary object","OK",354,2045
+2019,"Tas","Counterparty","Fixed/stationary object","OK",115,540
+2019,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1524,12254
+2019,"WA","Counterparty","Fixed/stationary object","OK",512,3260
+2019,"ACT","Counterparty","Non-collision transport","OK",213,719
+2019,"NSW","Counterparty","Non-collision transport","NSW_break_2017",2501,10182
+2019,"NT","Counterparty","Non-collision transport","OK",277,1587
+2019,"Qld","Counterparty","Non-collision transport","OK",2611,9355
+2019,"SA","Counterparty","Non-collision transport","OK",688,2259
+2019,"Tas","Counterparty","Non-collision transport","OK",213,832
+2019,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2214,8096
+2019,"WA","Counterparty","Non-collision transport","OK",1068,3959
+2019,"ACT","Counterparty","Other","OK",127,387
+2019,"NSW","Counterparty","Other","NSW_break_2017",1764,11997
+2019,"NT","Counterparty","Other","OK",110,744
+2019,"Qld","Counterparty","Other","OK",1697,7689
+2019,"SA","Counterparty","Other","OK",491,2265
+2019,"Tas","Counterparty","Other","OK",157,1162
+2019,"Vic","Counterparty","Other","Vic_break_2012",2024,11286
+2019,"WA","Counterparty","Other","OK",684,3502
+2020,"ACT","Counterparty","Car/pick-up truck/van","OK",184,868
+2020,"NSW","Counterparty","Car/pick-up truck/van","NSW_break_2017",3730,25346
+2020,"NT","Counterparty","Car/pick-up truck/van","OK",206,1271
+2020,"Qld","Counterparty","Car/pick-up truck/van","OK",3742,13535
+2020,"SA","Counterparty","Car/pick-up truck/van","OK",916,4900
+2020,"Tas","Counterparty","Car/pick-up truck/van","OK",233,1020
+2020,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",4190,21267
+2020,"WA","Counterparty","Car/pick-up truck/van","OK",1163,7496
+2020,"ACT","Counterparty","Fixed/stationary object","OK",86,544
+2020,"NSW","Counterparty","Fixed/stationary object","NSW_break_2017",1405,11456
+2020,"NT","Counterparty","Fixed/stationary object","OK",128,549
+2020,"Qld","Counterparty","Fixed/stationary object","OK",1516,7462
+2020,"SA","Counterparty","Fixed/stationary object","OK",381,2691
+2020,"Tas","Counterparty","Fixed/stationary object","OK",110,688
+2020,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1348,10460
+2020,"WA","Counterparty","Fixed/stationary object","OK",585,3125
+2020,"ACT","Counterparty","Non-collision transport","OK",217,677
+2020,"NSW","Counterparty","Non-collision transport","NSW_break_2017",2545,10373
+2020,"NT","Counterparty","Non-collision transport","OK",338,1224
+2020,"Qld","Counterparty","Non-collision transport","OK",2896,9394
+2020,"SA","Counterparty","Non-collision transport","OK",783,2914
+2020,"Tas","Counterparty","Non-collision transport","OK",290,916
+2020,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2477,8259
+2020,"WA","Counterparty","Non-collision transport","OK",1171,5042
+2020,"ACT","Counterparty","Other","OK",142,448
+2020,"NSW","Counterparty","Other","NSW_break_2017",1594,11196
+2020,"NT","Counterparty","Other","OK",115,423
+2020,"Qld","Counterparty","Other","OK",1647,7459
+2020,"SA","Counterparty","Other","OK",423,1675
+2020,"Tas","Counterparty","Other","OK",145,858
+2020,"Vic","Counterparty","Other","Vic_break_2012",1869,7951
+2020,"WA","Counterparty","Other","OK",717,3125
+2021,"ACT","Counterparty","Car/pick-up truck/van","OK",232,949
+2021,"NSW","Counterparty","Car/pick-up truck/van","NSW_break_2017",3454,23580
+2021,"NT","Counterparty","Car/pick-up truck/van","OK",205,724
+2021,"Qld","Counterparty","Car/pick-up truck/van","OK",4396,16735
+2021,"SA","Counterparty","Car/pick-up truck/van","OK",1093,4977
+2021,"Tas","Counterparty","Car/pick-up truck/van","OK",294,2498
+2021,"Vic","Counterparty","Car/pick-up truck/van","Vic_break_2012",4984,24317
+2021,"WA","Counterparty","Car/pick-up truck/van","OK",1314,9276
+2021,"ACT","Counterparty","Fixed/stationary object","OK",82,435
+2021,"NSW","Counterparty","Fixed/stationary object","NSW_break_2017",1314,10274
+2021,"NT","Counterparty","Fixed/stationary object","OK",84,300
+2021,"Qld","Counterparty","Fixed/stationary object","OK",1510,6842
+2021,"SA","Counterparty","Fixed/stationary object","OK",418,2245
+2021,"Tas","Counterparty","Fixed/stationary object","OK",134,843
+2021,"Vic","Counterparty","Fixed/stationary object","Vic_break_2012",1474,10500
+2021,"WA","Counterparty","Fixed/stationary object","OK",517,4258
+2021,"ACT","Counterparty","Non-collision transport","OK",248,931
+2021,"NSW","Counterparty","Non-collision transport","NSW_break_2017",2563,10504
+2021,"NT","Counterparty","Non-collision transport","OK",315,2426
+2021,"Qld","Counterparty","Non-collision transport","OK",2831,9912
+2021,"SA","Counterparty","Non-collision transport","OK",670,2473
+2021,"Tas","Counterparty","Non-collision transport","OK",241,838
+2021,"Vic","Counterparty","Non-collision transport","Vic_break_2012",2674,9243
+2021,"WA","Counterparty","Non-collision transport","OK",1054,4976
+2021,"ACT","Counterparty","Other","OK",178,424
+2021,"NSW","Counterparty","Other","NSW_break_2017",1672,10740
+2021,"NT","Counterparty","Other","OK",106,623
+2021,"Qld","Counterparty","Other","OK",1710,7400
+2021,"SA","Counterparty","Other","OK",451,2157
+2021,"Tas","Counterparty","Other","OK",136,681
+2021,"Vic","Counterparty","Other","Vic_break_2012",1998,10639
+2021,"WA","Counterparty","Other","OK",683,3778
