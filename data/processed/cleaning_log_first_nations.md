@@ -4,7 +4,7 @@
 
 - Source: `data/raw/first_nations_2011_2021.xlsx`
 - Worksheet: `raw`
-- KNIME workflow: `first_nations_clean.knmf`
+- KNIME workflow: `first_nations_clean.knwf`
 - Coverage: 2011–2021
 - Original workbook preserved unchanged.
 
@@ -21,7 +21,7 @@ Row 2 was used for column names, with data starting at row 3. Title rows, blank 
 
 The A–G block was excluded because it repeats the age data in Q–W.
 
-The retained breakdowns describe overlapping hospitalisations. Their counts were kept separate to avoid double counting.
+The four retained breakdowns describe different dimensions of overlapping hospitalisations. They were processed separately during cleaning and aggregation to avoid incorrectly adding counts from different breakdowns together.
 
 ## 3. Column names and data types
 
@@ -34,7 +34,21 @@ Column names were standardised to:
 - `hospitalisations`
 - `bed_days`
 
-Year was stored as an integer. Categories were retained as text, and hospitalisations and bed days were stored as numeric values.
+`year` was stored as an integer. Categories were retained as text, and `hospitalisations` and `bed_days` were stored as numeric values.
+
+For the final combined dataset, the four breakdown-specific category columns were standardised further:
+
+- `age_group` → category
+- `road_user` → category
+- `remoteness` → category
+- `counterparty` → category
+
+A new string field `breakdown_type` was added to identify the source breakdown of each row:
+
+- `age_group`
+- `road_user`
+- `remoteness`
+- `counterparty`
 
 ## 4. Suppression and missing values
 
@@ -74,16 +88,43 @@ The workflow calculated:
 - Number of non-missing values for each measure.
 - Number of suppressed records for each measure.
 
-For age and road user, annual measures were retained only when both distinct half-years were present and both measure values were numeric. Otherwise, the annual measure remained missing.
+For age and road user, annual measures were retained only when both half-year periods were present and both corresponding measure values were numeric. If these completeness conditions were not met, the annual measure remained missing.
 
-The 2011 First Nations bus-occupant group had only one half-year record. Its annual measures remained missing.
+For example, the 2011 First Nations bus-occupant category had only one half-year record, so its annual hospitalisation and bed-day values remained missing.
 
-For remoteness and counterparty, annual sums were used directly after confirming complete coverage and numeric values across all groups.
+For remoteness and counterparty, annual sums were retained after confirming complete half-year coverage and numeric measure values.
 
-- Remoteness completeness check: All 66 annual groups contained two distinct half-years and two numeric values for both hospitalisations and bed days. Suppression counts were zero — PASS
-- Counterparty completeness check: All 88 annual groups contained two distinct half-years and two numeric values for both hospitalisations and bed days. Suppression counts were zero — PASS
+Validation results:
 
-## 7. Output files
+- Remoteness: all 66 annual groups contained two distinct half-years and two valid numeric values for both hospitalisations and bed days — PASS
+- Counterparty: all 88 annual groups contained two distinct half-years and two valid numeric values for both hospitalisations and bed days — PASS
+
+## 7. Long-format integration
+
+After the four breakdowns were cleaned and aggregated independently, additional branches were created from each final annual dataset.
+Column Renamer nodes standardised the category field to category, and Constant Value Column nodes added the breakdown_type field.
+The resulting branch dimensions were:
+
+- Age: 132 rows × 9 columns
+- Road user: 176 rows × 9 columns
+- Remoteness: 66 rows × 9 columns
+- Counterparty: 88 rows × 9 columns
+  The four datasets were then vertically combined using Concatenate nodes.
+  The final combined First Nations dataset contained:
+  462 rows × 9 columns
+  The combined dataset retains the following structure:
+- year
+- first_nations_status
+- category
+- half_years_present
+- hospitalisations_suppressed_count
+- bed_days_suppressed_count
+- hospitalisations
+- bed_days
+- breakdown_type
+  The datasets were concatenated vertically rather than joined horizontally because the four breakdowns represent different analytical dimensions and do not have a one-to-one relationship between individual rows.
+
+## 8. Output files
 
 The final annual outputs are:
 
@@ -102,7 +143,7 @@ Temporary aggregation columns were removed from the final exports but remain ava
 
 Actual exported dimensions checked: [Confirm].
 
-## 8. Validation results
+## 9. Validation results
 
 Age:
 
@@ -126,27 +167,39 @@ Counterparty:
 
 Additional years and non-Indigenous records checked: [Record results].
 
-## 9. Limitations and discrepancies
+## 10. Limitations and discrepancies
 
-Hospitalisation counts describe recorded burden rather than individual injury risk or unique crashes.
+Hospitalisation counts represent recorded hospitalisation burden rather than individual injury risk or the number of unique road crashes.
 
-First Nations and non-Indigenous counts exclude unstated or inadequately described status, so their sum may differ from the overall national total.
+First Nations and non-Indigenous counts exclude cases where Indigenous status was unstated or inadequately described. Their combined total may therefore differ from the overall national total.
 
-Remoteness describes usual residence, not crash location. Unknown remoteness is excluded. The 2011 First Nations remoteness counts therefore total 1,153, compared with 1,167 overall.
+Remoteness refers to the patient's usual place of residence rather than the location where the crash occurred. Records with unknown remoteness are excluded. For example, the 2011 First Nations remoteness categories total 1,153 compared with 1,167 overall.
 
-The published 2014 First Nations age total in T3 is 1,407, while T1 reports 1,456. Suppressed age categories are present. Totals were not forced to reconcile.
+The published 2014 First Nations age total in T3 is 1,407, while T1 reports 1,456. Some age categories are suppressed, so the totals were not artificially forced to reconcile.
 
-Changes in admission practices affect historical comparisons. Bed-day methodology also requires care when comparing years.
+Changes in hospital admission practices may affect comparisons across years. Bed-day methodology also requires care when interpreting historical trends.
 
-Incomplete age distributions must not be silently rescaled to 100%.
+Incomplete distributions, particularly where suppressed values are present, must not be silently rescaled to 100%.
 
-## 10. Export and reproducibility
+The four breakdowns represent overlapping views of the same hospitalisation data. Therefore, hospitalisation counts must not be summed across different breakdown_type values.
 
-Exports include column headers, exclude Row IDs, use UTF-8 encoding and preserve missing values as empty fields.
+## 11. Export and reproducibility
+
+CSV exports:
+
+- include column headers;
+- exclude KNIME Row IDs;
+- use UTF-8 encoding;
+- preserve missing values as empty fields.
+
+The final combined dataset is exported as: `first_nations_cleaned.csv`
+
+The latest KNIME workflow contains the source Excel workbook within the saved workflow and includes the full cleaning, aggregation, validation, long-format transformation and export process.
 
 Final checks:
 
-- Workflow saved: [Confirm].
-- Export paths and filenames checked: [Confirm].
-- Workflow rerun successfully from the source: [Confirm].
-- Validation screenshots saved: [Confirm].
+- Workflow saved — Confirmed
+- Combined dataset contains 462 rows — Confirmed
+- Breakdown row-count validation executed — Confirmed
+- Combined CSV Writer executed — Confirmed
+- Source workbook included in workflow — Confirmed
