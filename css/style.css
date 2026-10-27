@@ -1,51 +1,347 @@
-/* =========================================================
-   Global styles — Hospitalised Injuries Dashboard
-   ========================================================= */
-
-:root {
-  --colour-bg: #ffffff;
-  --colour-text: #1a1a1a;
-  --colour-muted: #666666;
-  --colour-accent: #1f77b4;
-  --font-base: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-}
-
+/* --- GLOBAL STYLES --- */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-base);
-  color: var(--colour-text);
-  background: var(--colour-bg);
-  line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4F7F6;
+    color: #1A2B4C;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents scrolling */
 }
 
-header {
-  padding: 2rem 1.5rem 1rem;
-  border-bottom: 1px solid #e5e5e5;
+/* --- TOP HEADER --- */
+.top-bar {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
 }
 
-h1 {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
+.top-bar h1 {
+    font-size: clamp(16px, 1.8vw, 22px); 
+    font-weight: 700;
 }
 
-.subtitle {
-  margin: 0;
-  color: var(--colour-muted);
+.how-to-use {
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-main {
-  padding: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
+/* --- NAVIGATION TABS --- */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    flex-shrink: 0;
 }
 
-footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid #e5e5e5;
-  color: var(--colour-muted);
-  font-size: 0.875rem;
+.tabs {
+    display: flex;
+    list-style: none;
+    background: #FFFFFF;
+    border-radius: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    padding: 4px;
+}
+
+.tab {
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px; 
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* --- MAIN DASHBOARD WRAPPER --- */
+.dashboard-wrapper {
+    flex: 1; 
+    padding: 0 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0; 
+}
+
+/* --- FILTER BAR --- */
+.filter-bar {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 16px; 
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 12px;
+}
+
+/* --- CUSTOM DROPDOWN --- */
+.dropdown-wrapper {
+    position: relative;
+    width: 170px;
+}
+
+.dropdown {
+    padding: 6px 14px;
+    padding-right: 30px;
+    border-radius: 50px;
+    border: 1px solid rgba(217, 217, 217, 0.69);
+    background-color: rgba(217, 217, 217, 0.2);
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px; 
+    color: #686868;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown:focus {
+    background-color: #FFFFFF;
+    border-color: #1A2B4C;
+}
+
+/* The Custom Arrow */
+.dropdown-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 6px;
+    pointer-events: none; /* Lets clicks pass through to the dropdown */
+    
+    /* Clean SVG Arrow */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%226%22%20viewBox%3D%220%200%2010%206%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M4.75%203.64166L8.39167%200L9.5%201.10833L4.75%205.85833L0%201.10833L1.10833%200L4.75%203.64166Z%22%20fill%3D%22%231D1B20%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    transition: transform 0.2s ease;
+}
+
+/* Rotate the arrow when the wrapper has the 'open' class */
+.dropdown-wrapper.open .dropdown-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 6px 24px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-apply { background-color: #1A2B4C; }
+.btn-reset { background-color: #C72323; }
+
+.filter-note {
+    grid-column: 1 / -1;
+    font-size: 10px; 
+    font-weight: 400;
+    color: #6B7280;
+}
+
+/* --- CHARTS GRID --- */
+.charts-grid {
+    flex: 1; 
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    grid-template-rows: 1fr 1fr; 
+    gap: 12px;
+    min-height: 0;
+}
+
+/* Base Card Style */
+.card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 16px; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; 
+}
+
+.card h2 {
+    font-size: 13px; 
+    font-weight: 700;
+    margin-bottom: 2px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Top Row Placements */
+.line-chart-card {
+    grid-column: 1 / 5; 
+    grid-row: 1 / 2;
+    flex-direction: row; 
+    padding: 10px;
+}
+
+.line-section {
+    flex: 2.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-right: 8px;
+}
+
+.divider {
+    width: 1px;
+    background-color: #D9D9D9;
+    margin: 0 5px;
+}
+
+.guide-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5px;
+}
+
+.guide-section h2 {
+    text-align: left;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.guide-section ol {
+    font-size: 10px;
+    color: #6B7280;
+    padding-left: 12px;
+    line-height: 1.2;
+}
+
+.guide-section li {
+    margin-bottom: 4px;
+}
+
+/* KPI Cards */
+.kpi-card {
+    grid-column: span 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+    text-align: left;
+    padding-left: 20px;
+}
+
+.kpi-icon {
+    width: 45px; 
+    height: 45px;
+    margin-bottom: 12px;
+    object-fit: contain; 
+}
+
+.kpi-card h3 {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #1A2B4C;
+}
+
+.kpi-card p {
+    font-size: clamp(20px, 2.5vw, 32px); 
+    font-weight: 700;
+    color: #6B7280;
+}
+
+/* Bottom Row Placements */
+.road-user-card {
+    grid-column: 1 / 4; 
+    grid-row: 2 / 3;
+}
+
+.age-group-card {
+    grid-column: 4 / 7; 
+    grid-row: 2 / 3;
+}
+
+/* Chart Areas */
+.chart-area {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    min-height: 0;
+}
+
+.click-note {
+    font-size: 9px;
+    color: #6B7280;
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+}
+
+/* --- FOOTER --- */
+.bottom-bar {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    height: 28px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    font-size: 11px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.icon-credits {
+    font-size: 10px;
+    color: #A0ABC0;
+}
+
+.icon-credits a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.icon-credits a:hover {
+    text-decoration: underline;
 }

@@ -1,43 +1,74 @@
+import { loadData } from './data/loadData.js';
+import { drawLineChart } from './charts/national/lineChart.js';
+import { drawRoadUserChart, drawAgeGroupChart, updateKPIs } from './charts/national/barCharts.js';
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("main.js loaded");
-  console.log("D3 version:", d3.version);
-  console.log("CONFIG:", CONFIG);
+    
+    // --- Dropdown Arrow Logic ---
+    const wrappers = document.querySelectorAll(".dropdown-wrapper");
+    wrappers.forEach(wrapper => {
+        const select = wrapper.querySelector(".dropdown");
+        select.addEventListener("mousedown", () => {
+            wrappers.forEach(w => w.classList.remove("open"));
+            wrapper.classList.add("open");
+        });
+        select.addEventListener("change", () => wrapper.classList.remove("open"));
+        document.addEventListener("click", (e) => {
+            if (!wrapper.contains(e.target)) wrapper.classList.remove("open");
+        });
+    });
 
-  drawScaffoldTest();
+    // --- Global Variables ---
+    const yearSelect = document.getElementById("yearFilter");
+    const roadUserSelect = document.getElementById("roadUserFilter");
+    const resetBtn = document.querySelector(".btn-reset");
+
+    // --- Load Data & Initial Draw ---
+    loadData().then(data => {
+        window.globalData = data; // Make data global for the age chart clicks
+        
+        drawLineChart(window.globalData, "lineChart");
+        drawRoadUserChart(window.globalData, "roadUserChart", 2021, "All", "All");
+        drawAgeGroupChart(window.globalData, "ageGroupChart", 2021);
+        updateKPIs(window.globalData, 2021);
+    });
+
+    // --- Filtering Function (Runs whenever a dropdown changes) ---
+    function updateDashboard() {
+        const selectedYear = yearSelect.value === "All" ? 2021 : parseInt(yearSelect.value);
+        const selectedRoadUser = roadUserSelect.value;
+
+        // Reset age chart title in case it was changed by clicking
+        document.querySelector(".road-user-card h2").innerText = "Road User Breakdown";
+
+        // 1. Update Road User Chart
+        drawRoadUserChart(window.globalData, "roadUserChart", selectedYear, selectedRoadUser, "All");
+
+        // 2. Cross-filter logic
+        if (selectedRoadUser === "All") {
+            drawAgeGroupChart(window.globalData, "ageGroupChart", selectedYear);
+            updateKPIs(window.globalData, selectedYear);
+        } else {
+            const filteredData = window.globalData.filter(d => d.road_user === selectedRoadUser);
+            drawAgeGroupChart(filteredData, "ageGroupChart", selectedYear);
+            updateKPIs(filteredData, selectedYear);
+        }
+    }
+
+    // --- Event Listeners for Auto-Filtering ---
+    yearSelect.addEventListener("change", updateDashboard);
+    roadUserSelect.addEventListener("change", updateDashboard);
+
+    // --- Reset Filters Logic ---
+    resetBtn.addEventListener("click", () => {
+        yearSelect.value = "2021";
+        roadUserSelect.value = "All";
+        
+        document.querySelector(".road-user-card h2").innerText = "Road User Breakdown";
+
+        drawLineChart(window.globalData, "lineChart");
+        drawRoadUserChart(window.globalData, "roadUserChart", 2021, "All", "All");
+        drawAgeGroupChart(window.globalData, "ageGroupChart", 2021);
+        updateKPIs(window.globalData, 2021);
+    });
 });
-
-/**
- * Draws a simple test bar chart to confirm D3 is wired up correctly.
- * Delete this function once real charts are in place.
- */
-function drawScaffoldTest() {
-  const data = [40, 80, 120, 60, 100];
-
-  const svg = d3.select("#test-chart");
-  const { width, height, margin } = CONFIG;
-
-  const innerW = width  - margin.left - margin.right;
-  const innerH = height - margin.top  - margin.bottom;
-
-  const g = svg.append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
-
-  const x = d3.scaleBand()
-    .domain(d3.range(data.length))
-    .range([0, innerW])
-    .padding(0.2);
-
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(data)])
-    .nice()
-    .range([innerH, 0]);
-
-  g.selectAll("rect")
-    .data(data)
-    .join("rect")
-      .attr("x", (_, i) => x(i))
-      .attr("y", d => y(d))
-      .attr("width", x.bandwidth())
-      .attr("height", d => innerH - y(d))
-      .attr("fill", CONFIG.colours.primary);
-}

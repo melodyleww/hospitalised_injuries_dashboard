@@ -1,34 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hospitalised Injuries from Road Crashes in Australia</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitalised Injuries Dashboard</title>
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Hospitalised Injuries from Road Crashes in Australia</h1>
-    <p class="subtitle">An interactive data story (2011&ndash;2021)</p>
-  </header>
+    <!-- TOP HEADER -->
+    <header class="top-bar">
+        <h1>Hospitalised Injuries from Road Crashes in Australia (2011–2021)</h1>
+        <div class="how-to-use">
+            <span>ⓘ</span> How to use?
+        </div>
+    </header>
 
-  <main>
-    <!-- Test SVG — confirms D3 is working -->
-    <section id="scaffold-test">
-      <h2>Scaffold Test</h2>
-      <svg id="test-chart" width="600" height="200"></svg>
-    </section>
-  </main>
+    <!-- NAVIGATION TABS -->
+    <nav class="tabs-container">
+        <ul class="tabs">
+            <li class="tab active">National Overview</li>
+            <li class="tab">State Comparisons</li>
+            <li class="tab">First Nations</li>
+            <li class="tab">About the Data</li>
+        </ul>
+    </nav>
 
-  <footer>
-    <p>COS30045 Data Visualisation Project &mdash; <span id="team-name">Team Name</span></p>
-  </footer>
+    <!-- MAIN DASHBOARD CONTAINER -->
+    <main class="dashboard-wrapper">
+        
+        <!-- FILTER BAR -->
+        <section class="filter-bar">
+            <div class="dropdowns">
+                
+                <!-- Year Dropdown -->
+                <div class="dropdown-wrapper">
+                    <select id="yearFilter" class="dropdown">
+                        <option value="All">Select Year: 2021</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021" selected>2021</option>
+                    </select>
+                    <span class="dropdown-arrow"></span>
+                </div>
 
-  <!-- D3 v7 via CDN -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+                <!-- Road User Dropdown -->
+                <div class="dropdown-wrapper">
+                    <select id="roadUserFilter" class="dropdown">
+                        <option value="All">Select Road User</option>
+                        <option value="Car driver/passenger">Car driver/passenger</option>
+                        <option value="Motorcyclist">Motorcyclist</option>
+                        <option value="Pedal cyclist">Pedal cyclist</option>
+                        <option value="Pedestrian">Pedestrian</option>
+                        <option value="Heavy transport">Heavy transport</option>
+                        <option value="Pick-up truck/van">Pick-up truck/van</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Other/Unknown">Other/Unknown</option>
+                    </select>
+                    <span class="dropdown-arrow"></span>
+                </div>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn btn-reset">Reset</button>
+            </div>
+
+            <p class="filter-note"><strong>Note:</strong> The Year filter updates the KPI cards and the two Bar charts. The Road User filter cross-filters the Bar charts and Age chart. The Line chart shows the full unfiltered timeline.</p>
+        </section>
+
+        <!-- CHARTS GRID -->
+        <section class="charts-grid">
+            
+            <!-- ROW 1: Line Chart & Guide -->
+            <div class="card line-chart-card">
+                <div class="line-section">
+                    <h2>National Trend (2011 - 2021)</h2>
+                    <div id="lineChart" class="chart-area"></div>
+                </div>
+                
+                <div class="divider"></div>
+
+                <div class="guide-section">
+                    <h2>Chart Guide</h2>
+                    <ol>
+                        <li><strong>Blue solid line:</strong> Total hospitalisations.</li>
+                        <li><strong>Dotted line:</strong> Time-series breaks (2012/2017).</li>
+                        <li><strong>Caveat:</strong> Raw counts, not rates.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- KPI CARDS -->
+            <div class="card kpi-card">
+                <img src="assets/images/icons/icon-hospital.png" alt="Hospital Icon" class="kpi-icon">
+                <h3>Total Hospitalisations</h3>
+                <p id="kpiTotal">-</p>
+            </div>
+
+            <div class="card kpi-card">
+                <img src="assets/images/icons/icon-bed.png" alt="Bed Icon" class="kpi-icon">
+                <h3>Avg Bed Days per Case</h3>
+                <p id="kpiBedDays">-</p>
+            </div>
+
+            <!-- ROW 2: Bar Charts -->
+            <div class="card road-user-card">
+                <h2>Road User Breakdown</h2>
+                <div id="roadUserChart" class="chart-area"></div>
+                <p class="click-note">* Click a bar to filter the dashboard.</p>
+            </div>
+
+            <div class="card age-group-card">
+                <h2>Age Group Breakdown</h2>
+                <div id="ageGroupChart" class="chart-area"></div>
+                <p class="click-note">* Click a bar to filter the dashboard.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bottom-bar">
+        <p>Data Source: BITRE / AIHW | Note: These are raw counts, not adjusted for population size.</p>
+        
+        <!-- Icon Attributions -->
+        <p class="icon-credits">
+            Icons by <a href="https://www.flaticon.com/authors/magnific" target="_blank" title="Magnific">Magnific</a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">Flaticon</a>
+        </p>
+    </footer>
+
+    <!-- Load D3 and your main script -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

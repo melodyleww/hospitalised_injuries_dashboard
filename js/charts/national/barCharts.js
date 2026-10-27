@@ -1,0 +1,114 @@
+import { COLORS, MARGINS } from '../../config.js';
+
+export function drawRoadUserChart(data, containerId, selectedYear = 2021, selectedRoadUser = "All", selectedAgeGroup = "All") {
+    const container = document.getElementById(containerId);
+    const margin = MARGINS.barHorizontal;
+    const width = container.clientWidth - margin.left - margin.right;
+    const height = container.clientHeight - margin.top - margin.bottom;
+
+    d3.select(`#${containerId}`).html("");
+
+    const svg = d3.select(`#${containerId}`)
+        .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
+        .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Apply Age Group Filter if one is selected
+    let filteredData = data.filter(d => d.year === selectedYear);
+    if (selectedAgeGroup !== "All") {
+        filteredData = filteredData.filter(d => d.age_group === selectedAgeGroup);
+    }
+
+    const totals = d3.rollup(filteredData, v => d3.sum(v, d => d.hospitalisations), d => d.road_user);
+    const ruData = Array.from(totals, ([roadUser, total]) => ({ roadUser, total })).sort((a, b) => b.total - a.total);
+
+    const x = d3.scaleLinear().domain([0, d3.max(ruData, d => d.total) * 1.1]).range([0, width]); 
+    const y = d3.scaleBand().domain(ruData.map(d => d.roadUser)).range([0, height]).padding(0.2);
+
+    svg.append("g").call(d3.axisLeft(y).tickSize(0))
+        .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.text);
+
+    svg.selectAll(".bar").data(ruData).enter().append("rect")
+        .attr("x", 0).attr("y", d => y(d.roadUser))
+        .attr("width", d => x(d.total)).attr("height", y.bandwidth())
+        .attr("fill", d => {
+            if (selectedRoadUser === "All") return COLORS.primary;
+            return d.roadUser === selectedRoadUser ? COLORS.primary : "#D1D5DB"; 
+        })
+        .style("cursor", "pointer")
+        .style("transition", "opacity 0.2s")
+        .on("click", function(event, d) {
+            const roadUserSelect = document.getElementById("roadUserFilter");
+            roadUserSelect.value = d.roadUser;
+            // Trigger the change event so the dashboard auto-filters immediately
+            roadUserSelect.dispatchEvent(new Event('change'));
+        })
+        .on("mouseover", function() { d3.select(this).style("opacity", 0.7); })
+        .on("mouseout", function() { d3.select(this).style("opacity", 1); });
+
+    svg.selectAll(".label").data(ruData).enter().append("text")
+        .attr("x", d => x(d.total) + 5)
+        .attr("y", d => y(d.roadUser) + y.bandwidth() / 2)
+        .attr("dy", ".35em")
+        .text(d => d3.format(",")(d.total))
+        .style("font-family", "Poppins").style("font-size", "9px").style("fill", COLORS.muted);
+}
+
+export function drawAgeGroupChart(data, containerId, selectedYear = 2021) {
+    const container = document.getElementById(containerId);
+    const margin = MARGINS.barVertical;
+    const width = container.clientWidth - margin.left - margin.right;
+    const height = container.clientHeight - margin.top - margin.bottom;
+
+    d3.select(`#${containerId}`).html("");
+
+    const svg = d3.select(`#${containerId}`)
+        .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
+        .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+    const yearData = data.filter(d => d.year === selectedYear);
+    const totals = d3.rollup(yearData, v => d3.sum(v, d => d.hospitalisations), d => d.age_group);
+    const ageOrder = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
+    const ageData = Array.from(totals, ([ageGroup, total]) => ({ ageGroup, total })).sort((a, b) => ageOrder.indexOf(a.ageGroup) - ageOrder.indexOf(b.ageGroup));
+
+    const x = d3.scaleBand().domain(ageData.map(d => d.ageGroup)).range([0, width]).padding(0.25);
+    const y = d3.scaleLinear().domain([0, d3.max(ageData, d => d.total) * 1.1]).range([height, 0]);
+
+    svg.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickSize(0)).style("font-family", "Poppins").style("font-size", "10px");
+    svg.append("g").call(d3.axisLeft(y).ticks(4).tickFormat(d3.format(",")))
+        .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
+
+    svg.selectAll(".bar").data(ageData).enter().append("rect")
+        .attr("x", d => x(d.ageGroup)).attr("y", d => y(d.total))
+        .attr("width", x.bandwidth()).attr("height", d => height - y(d.total))
+        .attr("fill", COLORS.secondary)
+        .style("cursor", "pointer")
+        .style("transition", "opacity 0.2s")
+        // --- NEW CLICK EVENT ---
+        .on("click", function(event, d) {
+            // 1. Clear the road user dropdown so it doesn't conflict
+            document.getElementById("roadUserFilter").value = "All";
+            
+            // 2. Get current year
+            const selectedYear = parseInt(document.getElementById("yearFilter").value);
+            
+            // 3. Redraw the Road User Chart filtered by the clicked Age Group
+            // We pass the global data, container, year, "All" for road user, and the clicked Age Group
+            // Note: 'globalData' is accessible because we will expose it in main.js
+            drawRoadUserChart(window.globalData, "roadUserChart", selectedYear, "All", d.ageGroup);
+            
+            // Optional: Change the title of the Road User chart to show it's filtered
+            document.querySelector(".road-user-card h2").innerText = `Road Users for Age ${d.ageGroup}`;
+        })
+        .on("mouseover", function() { d3.select(this).style("opacity", 0.7); })
+        .on("mouseout", function() { d3.select(this).style("opacity", 1); });
+}
+
+export function updateKPIs(data, selectedYear = 2021) {
+    const yearData = data.filter(d => d.year === selectedYear);
+    const totalHosp = d3.sum(yearData, d => d.hospitalisations);
+    const totalBedDays = d3.sum(yearData, d => d.bed_days);
+    const avgBedDays = totalHosp > 0 ? (totalBedDays / totalHosp) : 0;
+
+    document.getElementById("kpiTotal").innerText = d3.format(",")(totalHosp);
+    document.getElementById("kpiBedDays").innerText = avgBedDays.toFixed(1) + " days";
+}
