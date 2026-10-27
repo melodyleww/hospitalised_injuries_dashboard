@@ -15,7 +15,6 @@ export function drawRoadUserChart(data, containerId, selectedYear = 2021, select
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Add Accessibility
     addAriaLabel(d3.select(`#${containerId} svg`), `Horizontal bar chart showing hospitalisations by road user for ${selectedYear}.`);
 
     let filteredData = data.filter(d => d.year === selectedYear);
@@ -49,7 +48,6 @@ export function drawRoadUserChart(data, containerId, selectedYear = 2021, select
         .on("mouseover", function() { d3.select(this).style("opacity", 0.7); })
         .on("mouseout", function() { d3.select(this).style("opacity", 1); });
 
-    // Use formatNumber utility
     svg.selectAll(".label").data(ruData).enter().append("text")
         .attr("x", d => x(d.total) + 5)
         .attr("y", d => y(d.roadUser) + y.bandwidth() / 2)
@@ -58,7 +56,7 @@ export function drawRoadUserChart(data, containerId, selectedYear = 2021, select
         .style("font-family", "Poppins").style("font-size", "9px").style("fill", COLORS.muted);
 }
 
-export function drawAgeGroupChart(data, containerId, selectedYear = 2021) {
+export function drawAgeGroupChart(data, containerId, selectedYear = 2021, selectedAgeGroup = "All") {
     const container = document.getElementById(containerId);
     const margin = MARGINS.barVertical;
     const width = container.clientWidth - margin.left - margin.right;
@@ -70,7 +68,6 @@ export function drawAgeGroupChart(data, containerId, selectedYear = 2021) {
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Add Accessibility
     addAriaLabel(d3.select(`#${containerId} svg`), `Vertical bar chart showing hospitalisations by age group for ${selectedYear}.`);
 
     const yearData = data.filter(d => d.year === selectedYear);
@@ -83,22 +80,25 @@ export function drawAgeGroupChart(data, containerId, selectedYear = 2021) {
 
     svg.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x).tickSize(0)).style("font-family", "Poppins").style("font-size", "10px");
     
-    // Use formatNumber utility
     svg.append("g").call(d3.axisLeft(y).ticks(4).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
 
     svg.selectAll(".bar").data(ageData).enter().append("rect")
         .attr("x", d => x(d.ageGroup)).attr("y", d => y(d.total))
         .attr("width", x.bandwidth()).attr("height", d => height - y(d.total))
-        .attr("fill", COLORS.secondary)
+        // NEW: Conditional coloring based on selectedAgeGroup
+        .attr("fill", d => {
+            if (selectedAgeGroup === "All") return COLORS.secondary;
+            return d.ageGroup === selectedAgeGroup ? COLORS.secondary : "#D1D5DB"; 
+        })
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s")
         .on("click", function(event, d) {
-            document.getElementById("roadUserFilter").value = "All";
-            const selectedYear = parseInt(document.getElementById("yearFilter").value);
+            // Toggle logic: if it's already selected, deselect it
+            const newSelected = (selectedAgeGroup === d.ageGroup) ? "All" : d.ageGroup;
             
-            drawRoadUserChart(window.globalData, "roadUserChart", selectedYear, "All", d.ageGroup);
-            document.querySelector(".road-user-card h2").innerText = `Road Users for Age ${d.ageGroup}`;
+            // Call the global update function we will expose in main.js
+            window.applyAgeFilter(newSelected);
         })
         .on("mouseover", function() { d3.select(this).style("opacity", 0.7); })
         .on("mouseout", function() { d3.select(this).style("opacity", 1); });
