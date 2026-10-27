@@ -3,7 +3,7 @@ import { COLORS, MARGINS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
 import { addAriaLabel } from '../../utils/accessibility.js';
 
-export function drawRoadUserChart(data, containerId, selectedYear = 2021, selectedRoadUser = "All", selectedAgeGroup = "All") {
+export function drawRoadUserChart(data, containerId, selectedYear = "All", selectedRoadUser = "All", selectedAgeGroup = "All") {
     const container = document.getElementById(containerId);
     const margin = MARGINS.barHorizontal;
     const width = container.clientWidth - margin.left - margin.right;
@@ -15,9 +15,10 @@ export function drawRoadUserChart(data, containerId, selectedYear = 2021, select
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    addAriaLabel(d3.select(`#${containerId} svg`), `Horizontal bar chart showing hospitalisations by road user for ${selectedYear}.`);
+    addAriaLabel(d3.select(`#${containerId} svg`), `Horizontal bar chart showing hospitalisations by road user.`);
 
-    let filteredData = data.filter(d => d.year === selectedYear);
+    // Handle "All" year filter
+    let filteredData = selectedYear === "All" ? data : data.filter(d => d.year === selectedYear);
     if (selectedAgeGroup !== "All") {
         filteredData = filteredData.filter(d => d.age_group === selectedAgeGroup);
     }
@@ -56,7 +57,7 @@ export function drawRoadUserChart(data, containerId, selectedYear = 2021, select
         .style("font-family", "Poppins").style("font-size", "9px").style("fill", COLORS.muted);
 }
 
-export function drawAgeGroupChart(data, containerId, selectedYear = 2021, selectedAgeGroup = "All") {
+export function drawAgeGroupChart(data, containerId, selectedYear = "All", selectedAgeGroup = "All") {
     const container = document.getElementById(containerId);
     const margin = MARGINS.barVertical;
     const width = container.clientWidth - margin.left - margin.right;
@@ -68,9 +69,11 @@ export function drawAgeGroupChart(data, containerId, selectedYear = 2021, select
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-    addAriaLabel(d3.select(`#${containerId} svg`), `Vertical bar chart showing hospitalisations by age group for ${selectedYear}.`);
+    addAriaLabel(d3.select(`#${containerId} svg`), `Vertical bar chart showing hospitalisations by age group.`);
 
-    const yearData = data.filter(d => d.year === selectedYear);
+    // Handle "All" year filter
+    const yearData = selectedYear === "All" ? data : data.filter(d => d.year === selectedYear);
+    
     const totals = d3.rollup(yearData, v => d3.sum(v, d => d.hospitalisations), d => d.age_group);
     const ageOrder = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
     const ageData = Array.from(totals, ([ageGroup, total]) => ({ ageGroup, total })).sort((a, b) => ageOrder.indexOf(a.ageGroup) - ageOrder.indexOf(b.ageGroup));
@@ -86,7 +89,6 @@ export function drawAgeGroupChart(data, containerId, selectedYear = 2021, select
     svg.selectAll(".bar").data(ageData).enter().append("rect")
         .attr("x", d => x(d.ageGroup)).attr("y", d => y(d.total))
         .attr("width", x.bandwidth()).attr("height", d => height - y(d.total))
-        // NEW: Conditional coloring based on selectedAgeGroup
         .attr("fill", d => {
             if (selectedAgeGroup === "All") return COLORS.secondary;
             return d.ageGroup === selectedAgeGroup ? COLORS.secondary : "#D1D5DB"; 
@@ -94,10 +96,7 @@ export function drawAgeGroupChart(data, containerId, selectedYear = 2021, select
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s")
         .on("click", function(event, d) {
-            // Toggle logic: if it's already selected, deselect it
             const newSelected = (selectedAgeGroup === d.ageGroup) ? "All" : d.ageGroup;
-            
-            // Call the global update function we will expose in main.js
             window.applyAgeFilter(newSelected);
         })
         .on("mouseover", function() { d3.select(this).style("opacity", 0.7); })

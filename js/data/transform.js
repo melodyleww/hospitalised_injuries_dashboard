@@ -1,7 +1,8 @@
 // js/data/transform.js
 
 export function calculateKPIs(data, selectedYear) {
-    const yearData = data.filter(d => d.year === selectedYear);
+    // Handle the "All" case by not filtering by year
+    const yearData = selectedYear === "All" ? data : data.filter(d => d.year === selectedYear);
     
     const totalHosp = d3.sum(yearData, d => d.hospitalisations);
     const totalBedDays = d3.sum(yearData, d => d.bed_days);
