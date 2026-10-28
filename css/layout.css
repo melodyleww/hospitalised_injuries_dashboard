@@ -1,9 +1,12 @@
-/* Divide the available browser height between page sections. */
 /* --- GLOBAL STYLES --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html{
+    height: 100%;
 }
 
 body {
@@ -14,7 +17,17 @@ body {
     height: 100dvh;
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr) auto;
-    overflow: hidden;
+    overflow: hidden; /*chart must sized to fit avaiable space*/
+}
+
+button,
+select {
+    font-family: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid #b86200;
+    outline-offset: 3px;
 }
 
 /* --- TOP HEADER --- */
@@ -25,8 +38,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     padding: 0 20px;
-    flex-shrink: 0;
 }
 
 .top-bar h1 {
@@ -73,6 +86,7 @@ body {
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
+    white-space: nowrap;
     cursor: pointer;
 }
 
@@ -82,14 +96,62 @@ body {
     font-weight: 600;
 }
 
+/* Shared main-content container */
+.dashboard-wrapper {
+    padding: 0 20px 10px;
 
-html{
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    /* Allow the content to fit inside the remaining grid row. */
+    min-height: 0;
+    min-width: 0;
 }
 
-:focus-visible {
-    outline: 3px solid #b86200;
-    outline-offset: 3px;
+/* Shared buttons */
+.btn {
+    padding: 6px 24px;
+    border: 0;
+    border-radius: 50px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-reset {
+    background-color: #C72323;
+}
+
+/* --- FOOTER --- */
+.bottom-bar {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    height: 28px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.icon-credits {
+    font-size: 10px;
+    color: #A0ABC0;
+}
+
+.icon-credits a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.icon-credits a:hover {
+    text-decoration: underline;
 }
 
 /* Dialogs overlay the dashboard instead of pushing charts down. */
@@ -107,35 +169,11 @@ html{
     background: rgb(0 0 0 / 40%);
 }
 
+.shared-dialog h2 {
+    font-size: 20px;
+}
+
 .shared-dialog p {
     margin: 16px 0;
     line-height: 1.6;
-}
-
-/* --- FOOTER --- */
-.bottom-bar {
-    background-color: #1A2B4C;
-    color: #FFFFFF;
-    height: 28px;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 0 20px;
-    font-size: 11px;
-    font-weight: 500;
-    flex-shrink: 0;
-}
-
-.icon-credits {
-    font-size: 10px;
-    color: #A0ABC0;
-}
-
-.icon-credits a {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-.icon-credits a:hover {
-    text-decoration: underline;
 }
