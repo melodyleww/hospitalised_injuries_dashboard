@@ -1,463 +1,463 @@
-"year","first_nations_status","category","half_years_present","hospitalisations_suppressed_count","bed_days_suppressed_count","hospitalisations","bed_days","breakdown_type"
-2011,"First Nations people","0-7",2,0,0,92,315,"age"
-2011,"First Nations people","17-25",2,0,0,335,2021,"age"
-2011,"First Nations people","26-39",2,0,0,286,1633,"age"
-2011,"First Nations people","40-64",2,0,0,226,1242,"age"
-2011,"First Nations people","65+",2,0,0,24,258,"age"
-2011,"First Nations people","8-16",2,0,0,204,1090,"age"
-2011,"Non-Indigenous","0-7",2,0,0,614,1906,"age"
-2011,"Non-Indigenous","17-25",2,0,0,7546,28182,"age"
-2011,"Non-Indigenous","26-39",2,0,0,7659,31172,"age"
-2011,"Non-Indigenous","40-64",2,0,0,10166,48079,"age"
-2011,"Non-Indigenous","65+",2,0,0,3735,27163,"age"
-2011,"Non-Indigenous","8-16",2,0,0,2277,7444,"age"
-2012,"First Nations people","0-7",2,0,0,81,290,"age"
-2012,"First Nations people","17-25",2,0,0,385,2267,"age"
-2012,"First Nations people","26-39",2,0,0,372,1954,"age"
-2012,"First Nations people","40-64",2,0,0,315,1769,"age"
-2012,"First Nations people","65+",2,0,0,22,169,"age"
-2012,"First Nations people","8-16",2,0,0,229,773,"age"
-2012,"Non-Indigenous","0-7",2,0,0,653,2440,"age"
-2012,"Non-Indigenous","17-25",2,0,0,7459,26683,"age"
-2012,"Non-Indigenous","26-39",2,0,0,7670,29998,"age"
-2012,"Non-Indigenous","40-64",2,0,0,10081,47194,"age"
-2012,"Non-Indigenous","65+",2,0,0,3862,27376,"age"
-2012,"Non-Indigenous","8-16",2,0,0,2065,6915,"age"
-2013,"First Nations people","0-7",2,0,0,78,308,"age"
-2013,"First Nations people","17-25",2,0,0,422,2153,"age"
-2013,"First Nations people","26-39",2,0,0,366,2048,"age"
-2013,"First Nations people","40-64",2,0,0,279,1809,"age"
-2013,"First Nations people","65+",2,0,0,27,95,"age"
-2013,"First Nations people","8-16",2,0,0,242,1159,"age"
-2013,"Non-Indigenous","0-7",2,0,0,647,1602,"age"
-2013,"Non-Indigenous","17-25",2,0,0,7251,24905,"age"
-2013,"Non-Indigenous","26-39",2,0,0,7929,27672,"age"
-2013,"Non-Indigenous","40-64",2,0,0,10820,46751,"age"
-2013,"Non-Indigenous","65+",2,0,0,4081,27701,"age"
-2013,"Non-Indigenous","8-16",2,0,0,2111,5846,"age"
-2014,"First Nations people","0-7",2,1,1,,,"age"
-2014,"First Nations people","17-25",2,0,0,422,1771,"age"
-2014,"First Nations people","26-39",2,0,0,388,1890,"age"
-2014,"First Nations people","40-64",2,0,0,314,2536,"age"
-2014,"First Nations people","65+",2,1,1,,,"age"
-2014,"First Nations people","8-16",2,0,0,220,1079,"age"
-2014,"Non-Indigenous","0-7",2,1,1,,,"age"
-2014,"Non-Indigenous","17-25",2,0,0,7150,22631,"age"
-2014,"Non-Indigenous","26-39",2,0,0,8107,27544,"age"
-2014,"Non-Indigenous","40-64",2,0,0,11105,46322,"age"
-2014,"Non-Indigenous","65+",2,1,1,,,"age"
-2014,"Non-Indigenous","8-16",2,0,0,1980,4788,"age"
-2015,"First Nations people","0-7",2,0,0,79,247,"age"
-2015,"First Nations people","17-25",2,0,0,420,1560,"age"
-2015,"First Nations people","26-39",2,0,0,449,2317,"age"
-2015,"First Nations people","40-64",2,0,0,372,2337,"age"
-2015,"First Nations people","65+",2,0,0,41,349,"age"
-2015,"First Nations people","8-16",2,0,0,239,794,"age"
-2015,"Non-Indigenous","0-7",2,0,0,654,2278,"age"
-2015,"Non-Indigenous","17-25",2,0,0,7316,27983,"age"
-2015,"Non-Indigenous","26-39",2,0,0,8369,35248,"age"
-2015,"Non-Indigenous","40-64",2,0,0,11587,58986,"age"
-2015,"Non-Indigenous","65+",2,0,0,4671,39706,"age"
-2015,"Non-Indigenous","8-16",2,0,0,2176,6006,"age"
-2016,"First Nations people","0-7",2,0,0,89,236,"age"
-2016,"First Nations people","17-25",2,0,0,501,1803,"age"
-2016,"First Nations people","26-39",2,0,0,422,2576,"age"
-2016,"First Nations people","40-64",2,0,0,374,3218,"age"
-2016,"First Nations people","65+",2,0,0,29,321,"age"
-2016,"First Nations people","8-16",2,0,0,254,818,"age"
-2016,"Non-Indigenous","0-7",2,0,0,634,1954,"age"
-2016,"Non-Indigenous","17-25",2,0,0,7839,34258,"age"
-2016,"Non-Indigenous","26-39",2,0,0,8897,41933,"age"
-2016,"Non-Indigenous","40-64",2,0,0,12157,71609,"age"
-2016,"Non-Indigenous","65+",2,0,0,4957,49859,"age"
-2016,"Non-Indigenous","8-16",2,0,0,2200,5480,"age"
-2017,"First Nations people","0-7",2,0,0,81,224,"age"
-2017,"First Nations people","17-25",2,0,0,506,1931,"age"
-2017,"First Nations people","26-39",2,0,0,435,2804,"age"
-2017,"First Nations people","40-64",2,0,0,418,2633,"age"
-2017,"First Nations people","65+",2,0,0,42,356,"age"
-2017,"First Nations people","8-16",2,0,0,251,850,"age"
-2017,"Non-Indigenous","0-7",2,0,0,642,1483,"age"
-2017,"Non-Indigenous","17-25",2,0,0,7856,32212,"age"
-2017,"Non-Indigenous","26-39",2,0,0,8926,40307,"age"
-2017,"Non-Indigenous","40-64",2,0,0,12329,68352,"age"
-2017,"Non-Indigenous","65+",2,0,0,5055,49262,"age"
-2017,"Non-Indigenous","8-16",2,0,0,2222,6438,"age"
-2018,"First Nations people","0-7",2,0,0,70,303,"age"
-2018,"First Nations people","17-25",2,0,0,607,3083,"age"
-2018,"First Nations people","26-39",2,0,0,542,3338,"age"
-2018,"First Nations people","40-64",2,0,0,411,2236,"age"
-2018,"First Nations people","65+",2,0,0,47,372,"age"
-2018,"First Nations people","8-16",2,0,0,253,835,"age"
-2018,"Non-Indigenous","0-7",2,0,0,646,2166,"age"
-2018,"Non-Indigenous","17-25",2,0,0,7622,31608,"age"
-2018,"Non-Indigenous","26-39",2,0,0,9100,36881,"age"
-2018,"Non-Indigenous","40-64",2,0,0,12381,66521,"age"
-2018,"Non-Indigenous","65+",2,0,0,5305,49452,"age"
-2018,"Non-Indigenous","8-16",2,0,0,2144,5734,"age"
-2019,"First Nations people","0-7",2,0,0,78,337,"age"
-2019,"First Nations people","17-25",2,0,0,521,3200,"age"
-2019,"First Nations people","26-39",2,0,0,539,3102,"age"
-2019,"First Nations people","40-64",2,0,0,411,2356,"age"
-2019,"First Nations people","65+",2,0,0,59,508,"age"
-2019,"First Nations people","8-16",2,0,0,248,812,"age"
-2019,"Non-Indigenous","0-7",2,0,0,616,2129,"age"
-2019,"Non-Indigenous","17-25",2,0,0,7486,32386,"age"
-2019,"Non-Indigenous","26-39",2,0,0,8968,34913,"age"
-2019,"Non-Indigenous","40-64",2,0,0,12579,67038,"age"
-2019,"Non-Indigenous","65+",2,0,0,5614,49438,"age"
-2019,"Non-Indigenous","8-16",2,0,0,2219,5966,"age"
-2020,"First Nations people","0-7",2,0,0,82,416,"age"
-2020,"First Nations people","17-25",2,0,0,705,3578,"age"
-2020,"First Nations people","26-39",2,0,0,659,3843,"age"
-2020,"First Nations people","40-64",2,0,0,496,3078,"age"
-2020,"First Nations people","65+",2,0,0,53,410,"age"
-2020,"First Nations people","8-16",2,0,0,295,1051,"age"
-2020,"Non-Indigenous","0-7",2,0,0,620,1676,"age"
-2020,"Non-Indigenous","17-25",2,0,0,7183,26606,"age"
-2020,"Non-Indigenous","26-39",2,0,0,8405,32446,"age"
-2020,"Non-Indigenous","40-64",2,0,0,11674,58595,"age"
-2020,"Non-Indigenous","65+",2,0,0,4826,44291,"age"
-2020,"Non-Indigenous","8-16",2,0,0,2478,6285,"age"
-2021,"First Nations people","0-7",2,0,0,86,400,"age"
-2021,"First Nations people","17-25",2,0,0,686,3522,"age"
-2021,"First Nations people","26-39",2,0,0,597,3981,"age"
-2021,"First Nations people","40-64",2,0,0,515,3830,"age"
-2021,"First Nations people","65+",2,0,0,45,306,"age"
-2021,"First Nations people","8-16",2,0,0,291,1237,"age"
-2021,"Non-Indigenous","0-7",2,0,0,610,1559,"age"
-2021,"Non-Indigenous","17-25",2,0,0,7225,28997,"age"
-2021,"Non-Indigenous","26-39",2,0,0,8689,34628,"age"
-2021,"Non-Indigenous","40-64",2,0,0,12337,61658,"age"
-2021,"Non-Indigenous","65+",2,0,0,5361,47318,"age"
-2021,"Non-Indigenous","8-16",2,0,0,2533,7243,"age"
-2011,"First Nations people","Bus occupant",1,1,1,,,"road_user"
-2011,"First Nations people","Car driver, passenger or unknown position",2,0,0,617,3437,"road_user"
-2011,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2011,"First Nations people","Motorcyclist",2,0,0,187,1017,"road_user"
-2011,"First Nations people","Other or unknown",2,0,0,34,156,"road_user"
-2011,"First Nations people","Pedal cyclist",2,0,0,121,390,"road_user"
-2011,"First Nations people","Pedestrian",2,0,0,180,1385,"road_user"
-2011,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2011,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2011,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15597,68200,"road_user"
-2011,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2011,"Non-Indigenous","Motorcyclist",2,0,0,7185,35485,"road_user"
-2011,"Non-Indigenous","Other or unknown",2,0,0,559,2465,"road_user"
-2011,"Non-Indigenous","Pedal cyclist",2,0,0,5174,14378,"road_user"
-2011,"Non-Indigenous","Pedestrian",2,0,0,2522,19123,"road_user"
-2011,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2012,"First Nations people","Bus occupant",2,1,1,,,"road_user"
-2012,"First Nations people","Car driver, passenger or unknown position",2,0,0,758,3775,"road_user"
-2012,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2012,"First Nations people","Motorcyclist",2,0,0,218,1030,"road_user"
-2012,"First Nations people","Other or unknown",2,0,0,30,83,"road_user"
-2012,"First Nations people","Pedal cyclist",2,0,0,152,361,"road_user"
-2012,"First Nations people","Pedestrian",2,0,0,219,1860,"road_user"
-2012,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2012,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2012,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15250,66414,"road_user"
-2012,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2012,"Non-Indigenous","Motorcyclist",2,0,0,7348,35584,"road_user"
-2012,"Non-Indigenous","Other or unknown",2,0,0,489,2277,"road_user"
-2012,"Non-Indigenous","Pedal cyclist",2,0,0,5379,15104,"road_user"
-2012,"Non-Indigenous","Pedestrian",2,0,0,2390,16738,"road_user"
-2012,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2013,"First Nations people","Bus occupant",2,2,2,,,"road_user"
-2013,"First Nations people","Car driver, passenger or unknown position",2,0,0,755,3948,"road_user"
-2013,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2013,"First Nations people","Motorcyclist",2,0,0,267,1566,"road_user"
-2013,"First Nations people","Other or unknown",2,0,0,25,94,"road_user"
-2013,"First Nations people","Pedal cyclist",2,0,0,173,381,"road_user"
-2013,"First Nations people","Pedestrian",2,0,0,166,1496,"road_user"
-2013,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2013,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user"
-2013,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15439,59588,"road_user"
-2013,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2013,"Non-Indigenous","Motorcyclist",2,0,0,7617,35103,"road_user"
-2013,"Non-Indigenous","Other or unknown",2,0,0,504,2377,"road_user"
-2013,"Non-Indigenous","Pedal cyclist",2,0,0,5985,16544,"road_user"
-2013,"Non-Indigenous","Pedestrian",2,0,0,2409,16207,"road_user"
-2013,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2014,"First Nations people","Bus occupant",2,2,2,,,"road_user"
-2014,"First Nations people","Car driver, passenger or unknown position",2,0,0,759,4110,"road_user"
-2014,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,168,"road_user"
-2014,"First Nations people","Motorcyclist",2,0,0,254,1251,"road_user"
-2014,"First Nations people","Other or unknown",2,0,0,38,73,"road_user"
-2014,"First Nations people","Pedal cyclist",2,0,0,177,578,"road_user"
-2014,"First Nations people","Pedestrian",2,0,0,196,1489,"road_user"
-2014,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2014,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user"
-2014,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15363,58850,"road_user"
-2014,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,449,2357,"road_user"
-2014,"Non-Indigenous","Motorcyclist",2,0,0,7919,34159,"road_user"
-2014,"Non-Indigenous","Other or unknown",2,0,0,458,1750,"road_user"
-2014,"Non-Indigenous","Pedal cyclist",2,0,0,6354,16513,"road_user"
-2014,"Non-Indigenous","Pedestrian",2,0,0,2316,15967,"road_user"
-2014,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2015,"First Nations people","Bus occupant",2,1,1,,,"road_user"
-2015,"First Nations people","Car driver, passenger or unknown position",2,0,0,883,4004,"road_user"
-2015,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,95,"road_user"
-2015,"First Nations people","Motorcyclist",2,0,0,273,1290,"road_user"
-2015,"First Nations people","Other or unknown",2,0,0,28,157,"road_user"
-2015,"First Nations people","Pedal cyclist",2,0,0,177,424,"road_user"
-2015,"First Nations people","Pedestrian",2,0,0,206,1501,"road_user"
-2015,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2015,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2015,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,16692,81580,"road_user"
-2015,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,479,2767,"road_user"
-2015,"Non-Indigenous","Motorcyclist",2,0,0,7855,42321,"road_user"
-2015,"Non-Indigenous","Other or unknown",2,0,0,464,2348,"road_user"
-2015,"Non-Indigenous","Pedal cyclist",2,0,0,6435,18013,"road_user"
-2015,"Non-Indigenous","Pedestrian",2,0,0,2378,20548,"road_user"
-2015,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2016,"First Nations people","Bus occupant",2,1,1,,,"road_user"
-2016,"First Nations people","Car driver, passenger or unknown position",2,0,0,928,5126,"road_user"
-2016,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,14,51,"road_user"
-2016,"First Nations people","Motorcyclist",2,0,0,296,1505,"road_user"
-2016,"First Nations people","Other or unknown",2,0,0,25,132,"road_user"
-2016,"First Nations people","Pedal cyclist",2,0,0,190,389,"road_user"
-2016,"First Nations people","Pedestrian",2,0,0,190,1693,"road_user"
-2016,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2016,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2016,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17872,94804,"road_user"
-2016,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,452,3722,"road_user"
-2016,"Non-Indigenous","Motorcyclist",2,0,0,8111,50984,"road_user"
-2016,"Non-Indigenous","Other or unknown",2,0,0,575,3615,"road_user"
-2016,"Non-Indigenous","Pedal cyclist",2,0,0,6613,19976,"road_user"
-2016,"Non-Indigenous","Pedestrian",2,0,0,2514,28025,"road_user"
-2016,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2017,"First Nations people","Bus occupant",2,2,2,,,"road_user"
-2017,"First Nations people","Car driver, passenger or unknown position",2,0,0,938,4376,"road_user"
-2017,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,70,"road_user"
-2017,"First Nations people","Motorcyclist",2,0,0,319,1806,"road_user"
-2017,"First Nations people","Other or unknown",2,0,0,35,147,"road_user"
-2017,"First Nations people","Pedal cyclist",2,0,0,201,452,"road_user"
-2017,"First Nations people","Pedestrian",2,0,0,209,1901,"road_user"
-2017,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2017,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user"
-2017,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17901,88306,"road_user"
-2017,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,500,2987,"road_user"
-2017,"Non-Indigenous","Motorcyclist",2,0,0,8318,50220,"road_user"
-2017,"Non-Indigenous","Other or unknown",2,0,0,554,3753,"road_user"
-2017,"Non-Indigenous","Pedal cyclist",2,0,0,6782,20847,"road_user"
-2017,"Non-Indigenous","Pedestrian",2,0,0,2465,28650,"road_user"
-2017,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user"
-2018,"First Nations people","Bus occupant",2,1,1,,,"road_user"
-2018,"First Nations people","Car driver, passenger or unknown position",2,0,0,1113,6329,"road_user"
-2018,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,20,67,"road_user"
-2018,"First Nations people","Motorcyclist",2,0,0,333,1512,"road_user"
-2018,"First Nations people","Other or unknown",2,0,0,37,566,"road_user"
-2018,"First Nations people","Pedal cyclist",2,0,0,199,464,"road_user"
-2018,"First Nations people","Pedestrian",2,0,0,209,1128,"road_user"
-2018,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2018,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2018,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,18337,89186,"road_user"
-2018,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,524,3476,"road_user"
-2018,"Non-Indigenous","Motorcyclist",2,0,0,8200,48644,"road_user"
-2018,"Non-Indigenous","Other or unknown",2,0,0,551,3682,"road_user"
-2018,"Non-Indigenous","Pedal cyclist",2,0,0,6676,19771,"road_user"
-2018,"Non-Indigenous","Pedestrian",2,0,0,2412,24365,"road_user"
-2018,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user"
-2019,"First Nations people","Bus occupant",2,2,2,,,"road_user"
-2019,"First Nations people","Car driver, passenger or unknown position",2,0,0,996,5361,"road_user"
-2019,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2019,"First Nations people","Motorcyclist",2,0,0,353,2543,"road_user"
-2019,"First Nations people","Other or unknown",2,1,1,,,"road_user"
-2019,"First Nations people","Pedal cyclist",2,0,0,240,761,"road_user"
-2019,"First Nations people","Pedestrian",2,0,0,211,1394,"road_user"
-2019,"First Nations people","Pick-up truck or van occupant",2,0,0,11,41,"road_user"
-2019,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user"
-2019,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,18006,84026,"road_user"
-2019,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2019,"Non-Indigenous","Motorcyclist",2,0,0,8463,49619,"road_user"
-2019,"Non-Indigenous","Other or unknown",2,1,1,,,"road_user"
-2019,"Non-Indigenous","Pedal cyclist",2,0,0,6984,21765,"road_user"
-2019,"Non-Indigenous","Pedestrian",2,0,0,2461,26248,"road_user"
-2019,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,244,1323,"road_user"
-2020,"First Nations people","Bus occupant",2,0,0,10,31,"road_user"
-2020,"First Nations people","Car driver, passenger or unknown position",2,0,0,1208,6452,"road_user"
-2020,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,10,23,"road_user"
-2020,"First Nations people","Motorcyclist",2,0,0,545,2909,"road_user"
-2020,"First Nations people","Other or unknown",2,0,0,45,175,"road_user"
-2020,"First Nations people","Pedal cyclist",2,0,0,230,900,"road_user"
-2020,"First Nations people","Pedestrian",2,0,0,223,1834,"road_user"
-2020,"First Nations people","Pick-up truck or van occupant",2,0,0,19,52,"road_user"
-2020,"Non-Indigenous","Bus occupant",2,0,0,160,808,"road_user"
-2020,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15843,75290,"road_user"
-2020,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,476,2996,"road_user"
-2020,"Non-Indigenous","Motorcyclist",2,0,0,8038,43525,"road_user"
-2020,"Non-Indigenous","Other or unknown",2,0,0,525,3401,"road_user"
-2020,"Non-Indigenous","Pedal cyclist",2,0,0,8012,23222,"road_user"
-2020,"Non-Indigenous","Pedestrian",2,0,0,1857,19245,"road_user"
-2020,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,275,1412,"road_user"
-2021,"First Nations people","Bus occupant",2,1,1,,,"road_user"
-2021,"First Nations people","Car driver, passenger or unknown position",2,0,0,1158,5969,"road_user"
-2021,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2021,"First Nations people","Motorcyclist",2,0,0,520,3204,"road_user"
-2021,"First Nations people","Other or unknown",2,0,0,52,419,"road_user"
-2021,"First Nations people","Pedal cyclist",2,0,0,207,892,"road_user"
-2021,"First Nations people","Pedestrian",2,0,0,235,2636,"road_user"
-2021,"First Nations people","Pick-up truck or van occupant",2,0,0,28,101,"road_user"
-2021,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user"
-2021,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17098,81374,"road_user"
-2021,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user"
-2021,"Non-Indigenous","Motorcyclist",2,0,0,8259,46069,"road_user"
-2021,"Non-Indigenous","Other or unknown",2,0,0,541,3564,"road_user"
-2021,"Non-Indigenous","Pedal cyclist",2,0,0,7861,25640,"road_user"
-2021,"Non-Indigenous","Pedestrian",2,0,0,2072,19632,"road_user"
-2021,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,312,1873,"road_user"
-2011,"First Nations people","Major Cities",2,0,0,368,2157,"remoteness"
-2011,"First Nations people","Regional",2,0,0,455,2373,"remoteness"
-2011,"First Nations people","Remote",2,0,0,330,1983,"remoteness"
-2011,"Non-Indigenous","Major Cities",2,0,0,20985,89284,"remoteness"
-2011,"Non-Indigenous","Regional",2,0,0,9717,47965,"remoteness"
-2011,"Non-Indigenous","Remote",2,0,0,789,3735,"remoteness"
-2012,"First Nations people","Major Cities",2,0,0,429,2229,"remoteness"
-2012,"First Nations people","Regional",2,0,0,545,2437,"remoteness"
-2012,"First Nations people","Remote",2,0,0,426,2507,"remoteness"
-2012,"Non-Indigenous","Major Cities",2,0,0,20858,87148,"remoteness"
-2012,"Non-Indigenous","Regional",2,0,0,9536,46579,"remoteness"
-2012,"Non-Indigenous","Remote",2,0,0,802,3824,"remoteness"
-2013,"First Nations people","Major Cities",2,0,0,446,2113,"remoteness"
-2013,"First Nations people","Regional",2,0,0,540,2800,"remoteness"
-2013,"First Nations people","Remote",2,0,0,420,2631,"remoteness"
-2013,"Non-Indigenous","Major Cities",2,0,0,22224,85720,"remoteness"
-2013,"Non-Indigenous","Regional",2,0,0,9218,42371,"remoteness"
-2013,"Non-Indigenous","Remote",2,0,0,765,3249,"remoteness"
-2014,"First Nations people","Major Cities",2,0,0,486,2309,"remoteness"
-2014,"First Nations people","Regional",2,0,0,565,2856,"remoteness"
-2014,"First Nations people","Remote",2,0,0,392,2407,"remoteness"
-2014,"Non-Indigenous","Major Cities",2,0,0,22572,82883,"remoteness"
-2014,"Non-Indigenous","Regional",2,0,0,9358,42022,"remoteness"
-2014,"Non-Indigenous","Remote",2,0,0,737,3643,"remoteness"
-2015,"First Nations people","Major Cities",2,0,0,508,1886,"remoteness"
-2015,"First Nations people","Regional",2,0,0,613,2727,"remoteness"
-2015,"First Nations people","Remote",2,0,0,461,2834,"remoteness"
-2015,"Non-Indigenous","Major Cities",2,0,0,23597,109643,"remoteness"
-2015,"Non-Indigenous","Regional",2,0,0,9684,52983,"remoteness"
-2015,"Non-Indigenous","Remote",2,0,0,694,3528,"remoteness"
-2016,"First Nations people","Major Cities",2,0,0,551,2559,"remoteness"
-2016,"First Nations people","Regional",2,0,0,648,3415,"remoteness"
-2016,"First Nations people","Remote",2,0,0,454,2903,"remoteness"
-2016,"Non-Indigenous","Major Cities",2,0,0,25390,134670,"remoteness"
-2016,"Non-Indigenous","Regional",2,0,0,9846,61984,"remoteness"
-2016,"Non-Indigenous","Remote",2,0,0,678,3469,"remoteness"
-2017,"First Nations people","Major Cities",2,0,0,617,2643,"remoteness"
-2017,"First Nations people","Regional",2,0,0,704,3201,"remoteness"
-2017,"First Nations people","Remote",2,0,0,393,2768,"remoteness"
-2017,"Non-Indigenous","Major Cities",2,0,0,25288,127399,"remoteness"
-2017,"Non-Indigenous","Regional",2,0,0,10163,62541,"remoteness"
-2017,"Non-Indigenous","Remote",2,0,0,653,3528,"remoteness"
-2018,"First Nations people","Major Cities",2,0,0,642,2497,"remoteness"
-2018,"First Nations people","Regional",2,0,0,797,4371,"remoteness"
-2018,"First Nations people","Remote",2,0,0,466,3139,"remoteness"
-2018,"Non-Indigenous","Major Cities",2,0,0,25236,121035,"remoteness"
-2018,"Non-Indigenous","Regional",2,0,0,10278,63502,"remoteness"
-2018,"Non-Indigenous","Remote",2,0,0,720,2763,"remoteness"
-2019,"First Nations people","Major Cities",2,0,0,708,4364,"remoteness"
-2019,"First Nations people","Regional",2,0,0,669,3229,"remoteness"
-2019,"First Nations people","Remote",2,0,0,447,2567,"remoteness"
-2019,"Non-Indigenous","Major Cities",2,0,0,25502,124113,"remoteness"
-2019,"Non-Indigenous","Regional",2,0,0,10232,59663,"remoteness"
-2019,"Non-Indigenous","Remote",2,0,0,638,2985,"remoteness"
-2020,"First Nations people","Major Cities",2,0,0,810,4007,"remoteness"
-2020,"First Nations people","Regional",2,0,0,946,5415,"remoteness"
-2020,"First Nations people","Remote",2,0,0,504,2718,"remoteness"
-2020,"Non-Indigenous","Major Cities",2,0,0,23823,109218,"remoteness"
-2020,"Non-Indigenous","Regional",2,0,0,9936,54918,"remoteness"
-2020,"Non-Indigenous","Remote",2,0,0,660,2828,"remoteness"
-2021,"First Nations people","Major Cities",2,0,0,795,5128,"remoteness"
-2021,"First Nations people","Regional",2,0,0,885,5265,"remoteness"
-2021,"First Nations people","Remote",2,0,0,503,2726,"remoteness"
-2021,"Non-Indigenous","Major Cities",2,0,0,25254,115139,"remoteness"
-2021,"Non-Indigenous","Regional",2,0,0,10332,59185,"remoteness"
-2021,"Non-Indigenous","Remote",2,0,0,600,3784,"remoteness"
-2011,"First Nations people","Car, pick-up truck or van",2,0,0,391,2536,"counterparty"
-2011,"First Nations people","Fixed or stationary object",2,0,0,192,1305,"counterparty"
-2011,"First Nations people","Non-collision transport accident",2,0,0,362,1664,"counterparty"
-2011,"First Nations people","Other",2,0,0,222,1054,"counterparty"
-2011,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13293,63693,"counterparty"
-2011,"Non-Indigenous","Fixed or stationary object",2,0,0,4601,25815,"counterparty"
-2011,"Non-Indigenous","Non-collision transport accident",2,0,0,8059,28641,"counterparty"
-2011,"Non-Indigenous","Other",2,0,0,6044,25797,"counterparty"
-2012,"First Nations people","Car, pick-up truck or van",2,0,0,476,2860,"counterparty"
-2012,"First Nations people","Fixed or stationary object",2,0,0,226,1192,"counterparty"
-2012,"First Nations people","Non-collision transport accident",2,0,0,466,2234,"counterparty"
-2012,"First Nations people","Other",2,0,0,236,936,"counterparty"
-2012,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13010,61102,"counterparty"
-2012,"Non-Indigenous","Fixed or stationary object",2,0,0,4549,24116,"counterparty"
-2012,"Non-Indigenous","Non-collision transport accident",2,0,0,8130,30223,"counterparty"
-2012,"Non-Indigenous","Other",2,0,0,6101,25165,"counterparty"
-2013,"First Nations people","Car, pick-up truck or van",2,0,0,430,2596,"counterparty"
-2013,"First Nations people","Fixed or stationary object",2,0,0,255,1168,"counterparty"
-2013,"First Nations people","Non-collision transport accident",2,0,0,503,2427,"counterparty"
-2013,"First Nations people","Other",2,0,0,226,1381,"counterparty"
-2013,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13276,56839,"counterparty"
-2013,"Non-Indigenous","Fixed or stationary object",2,0,0,4584,23624,"counterparty"
-2013,"Non-Indigenous","Non-collision transport accident",2,0,0,8729,29752,"counterparty"
-2013,"Non-Indigenous","Other",2,0,0,6250,24262,"counterparty"
-2014,"First Nations people","Car, pick-up truck or van",2,0,0,461,2673,"counterparty"
-2014,"First Nations people","Fixed or stationary object",2,0,0,271,1268,"counterparty"
-2014,"First Nations people","Non-collision transport accident",2,0,0,479,2424,"counterparty"
-2014,"First Nations people","Other",2,0,0,245,1387,"counterparty"
-2014,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13543,55742,"counterparty"
-2014,"Non-Indigenous","Fixed or stationary object",2,0,0,4668,22590,"counterparty"
-2014,"Non-Indigenous","Non-collision transport accident",2,0,0,8957,31386,"counterparty"
-2014,"Non-Indigenous","Other",2,0,0,6193,22219,"counterparty"
-2015,"First Nations people","Car, pick-up truck or van",2,0,0,497,2427,"counterparty"
-2015,"First Nations people","Fixed or stationary object",2,0,0,275,1477,"counterparty"
-2015,"First Nations people","Non-collision transport accident",2,0,0,573,2537,"counterparty"
-2015,"First Nations people","Other",2,0,0,255,1163,"counterparty"
-2015,"Non-Indigenous","Car, pick-up truck or van",2,0,0,14538,72133,"counterparty"
-2015,"Non-Indigenous","Fixed or stationary object",2,0,0,4920,33404,"counterparty"
-2015,"Non-Indigenous","Non-collision transport accident",2,0,0,9125,34085,"counterparty"
-2015,"Non-Indigenous","Other",2,0,0,6190,30585,"counterparty"
-2016,"First Nations people","Car, pick-up truck or van",2,0,0,540,3858,"counterparty"
-2016,"First Nations people","Fixed or stationary object",2,0,0,304,2002,"counterparty"
-2016,"First Nations people","Non-collision transport accident",2,0,0,554,2155,"counterparty"
-2016,"First Nations people","Other",2,0,0,271,957,"counterparty"
-2016,"Non-Indigenous","Car, pick-up truck or van",2,0,0,15759,91699,"counterparty"
-2016,"Non-Indigenous","Fixed or stationary object",2,0,0,5212,38249,"counterparty"
-2016,"Non-Indigenous","Non-collision transport accident",2,0,0,9204,38209,"counterparty"
-2016,"Non-Indigenous","Other",2,0,0,6509,36936,"counterparty"
-2017,"First Nations people","Car, pick-up truck or van",2,0,0,595,3760,"counterparty"
-2017,"First Nations people","Fixed or stationary object",2,0,0,303,1675,"counterparty"
-2017,"First Nations people","Non-collision transport accident",2,0,0,567,2344,"counterparty"
-2017,"First Nations people","Other",2,0,0,268,1019,"counterparty"
-2017,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16144,91347,"counterparty"
-2017,"Non-Indigenous","Fixed or stationary object",2,0,0,5052,35728,"counterparty"
-2017,"Non-Indigenous","Non-collision transport accident",2,0,0,9378,37707,"counterparty"
-2017,"Non-Indigenous","Other",2,0,0,6456,33272,"counterparty"
-2018,"First Nations people","Car, pick-up truck or van",2,0,0,608,2860,"counterparty"
-2018,"First Nations people","Fixed or stationary object",2,0,0,345,2035,"counterparty"
-2018,"First Nations people","Non-collision transport accident",2,0,0,711,3551,"counterparty"
-2018,"First Nations people","Other",2,0,0,266,1721,"counterparty"
-2018,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16018,82291,"counterparty"
-2018,"Non-Indigenous","Fixed or stationary object",2,0,0,5149,35629,"counterparty"
-2018,"Non-Indigenous","Non-collision transport accident",2,0,0,9538,38988,"counterparty"
-2018,"Non-Indigenous","Other",2,0,0,6493,35454,"counterparty"
-2019,"First Nations people","Car, pick-up truck or van",2,0,0,628,4076,"counterparty"
-2019,"First Nations people","Fixed or stationary object",2,0,0,338,1492,"counterparty"
-2019,"First Nations people","Non-collision transport accident",2,0,0,602,2938,"counterparty"
-2019,"First Nations people","Other",2,0,0,288,1809,"counterparty"
-2019,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16283,84605,"counterparty"
-2019,"Non-Indigenous","Fixed or stationary object",2,0,0,5101,36269,"counterparty"
-2019,"Non-Indigenous","Non-collision transport accident",2,0,0,9330,34213,"counterparty"
-2019,"Non-Indigenous","Other",2,0,0,6768,36783,"counterparty"
-2020,"First Nations people","Car, pick-up truck or van",2,0,0,733,4036,"counterparty"
-2020,"First Nations people","Fixed or stationary object",2,0,0,467,2461,"counterparty"
-2020,"First Nations people","Non-collision transport accident",2,0,0,732,3860,"counterparty"
-2020,"First Nations people","Other",2,0,0,358,2019,"counterparty"
-2020,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13769,70596,"counterparty"
-2020,"Non-Indigenous","Fixed or stationary object",2,0,0,5110,33562,"counterparty"
-2020,"Non-Indigenous","Non-collision transport accident",2,0,0,10047,35020,"counterparty"
-2020,"Non-Indigenous","Other",2,0,0,6260,30721,"counterparty"
-2021,"First Nations people","Car, pick-up truck or van",2,0,0,746,5492,"counterparty"
-2021,"First Nations people","Fixed or stationary object",2,0,0,369,2624,"counterparty"
-2021,"First Nations people","Non-collision transport accident",2,0,0,742,3130,"counterparty"
-2021,"First Nations people","Other",2,0,0,363,2030,"counterparty"
-2021,"Non-Indigenous","Car, pick-up truck or van",2,0,0,15252,77549,"counterparty"
-2021,"Non-Indigenous","Fixed or stationary object",2,0,0,5150,32295,"counterparty"
-2021,"Non-Indigenous","Non-collision transport accident",2,0,0,9866,37867,"counterparty"
-2021,"Non-Indigenous","Other",2,0,0,6487,33692,"counterparty"
+"year","first_nations_status","category","half_years_present","hospitalisations_suppressed_count","bed_days_suppressed_count","hospitalisations","bed_days","breakdown_type","hospitalisation_share_pct"
+2011,"First Nations people","0-7",2,0,0,92,315,"age",7.8834618680377035
+2011,"First Nations people","17-25",2,0,0,335,2021,"age",28.706083976006855
+2011,"First Nations people","26-39",2,0,0,286,1633,"age",24.507283633247642
+2011,"First Nations people","40-64",2,0,0,226,1242,"age",19.365895458440445
+2011,"First Nations people","65+",2,0,0,24,258,"age",2.056555269922879
+2011,"First Nations people","8-16",2,0,0,204,1090,"age",17.480719794344473
+2011,"Non-Indigenous","0-7",2,0,0,614,1906,"age",1.9189298996780948
+2011,"Non-Indigenous","17-25",2,0,0,7546,28182,"age",23.583460949464012
+2011,"Non-Indigenous","26-39",2,0,0,7659,31172,"age",23.93661905803669
+2011,"Non-Indigenous","40-64",2,0,0,10166,48079,"age",31.77172859955621
+2011,"Non-Indigenous","65+",2,0,0,3735,27163,"age",11.672969340875706
+2011,"Non-Indigenous","8-16",2,0,0,2277,7444,"age",7.116292152389287
+2012,"First Nations people","0-7",2,0,0,81,290,"age",5.769230769230769
+2012,"First Nations people","17-25",2,0,0,385,2267,"age",27.42165242165242
+2012,"First Nations people","26-39",2,0,0,372,1954,"age",26.495726495726494
+2012,"First Nations people","40-64",2,0,0,315,1769,"age",22.435897435897434
+2012,"First Nations people","65+",2,0,0,22,169,"age",1.566951566951567
+2012,"First Nations people","8-16",2,0,0,229,773,"age",16.31054131054131
+2012,"Non-Indigenous","0-7",2,0,0,653,2440,"age",2.0541050644856873
+2012,"Non-Indigenous","17-25",2,0,0,7459,26683,"age",23.4633532557408
+2012,"Non-Indigenous","26-39",2,0,0,7670,29998,"age",24.127083988675682
+2012,"Non-Indigenous","40-64",2,0,0,10081,47194,"age",31.711229946524064
+2012,"Non-Indigenous","65+",2,0,0,3862,27376,"age",12.148474363007235
+2012,"Non-Indigenous","8-16",2,0,0,2065,6915,"age",6.49575338156653
+2013,"First Nations people","0-7",2,0,0,78,308,"age",5.516265912305516
+2013,"First Nations people","17-25",2,0,0,422,2153,"age",29.844413012729845
+2013,"First Nations people","26-39",2,0,0,366,2048,"age",25.884016973125885
+2013,"First Nations people","40-64",2,0,0,279,1809,"age",19.73125884016973
+2013,"First Nations people","65+",2,0,0,27,95,"age",1.9094766619519095
+2013,"First Nations people","8-16",2,0,0,242,1159,"age",17.114568599717114
+2013,"Non-Indigenous","0-7",2,0,0,647,1602,"age",1.9702183379518257
+2013,"Non-Indigenous","17-25",2,0,0,7251,24905,"age",22.080453119766133
+2013,"Non-Indigenous","26-39",2,0,0,7929,27672,"age",24.145071408995403
+2013,"Non-Indigenous","40-64",2,0,0,10820,46751,"age",32.94862815554676
+2013,"Non-Indigenous","65+",2,0,0,4081,27701,"age",12.427296811717774
+2013,"Non-Indigenous","8-16",2,0,0,2111,5846,"age",6.428332166022108
+2014,"First Nations people","0-7",2,1,1,,,"age",
+2014,"First Nations people","17-25",2,0,0,422,1771,"age",
+2014,"First Nations people","26-39",2,0,0,388,1890,"age",
+2014,"First Nations people","40-64",2,0,0,314,2536,"age",
+2014,"First Nations people","65+",2,1,1,,,"age",
+2014,"First Nations people","8-16",2,0,0,220,1079,"age",
+2014,"Non-Indigenous","0-7",2,1,1,,,"age",
+2014,"Non-Indigenous","17-25",2,0,0,7150,22631,"age",
+2014,"Non-Indigenous","26-39",2,0,0,8107,27544,"age",
+2014,"Non-Indigenous","40-64",2,0,0,11105,46322,"age",
+2014,"Non-Indigenous","65+",2,1,1,,,"age",
+2014,"Non-Indigenous","8-16",2,0,0,1980,4788,"age",
+2015,"First Nations people","0-7",2,0,0,79,247,"age",4.9375
+2015,"First Nations people","17-25",2,0,0,420,1560,"age",26.25
+2015,"First Nations people","26-39",2,0,0,449,2317,"age",28.0625
+2015,"First Nations people","40-64",2,0,0,372,2337,"age",23.25
+2015,"First Nations people","65+",2,0,0,41,349,"age",2.5625
+2015,"First Nations people","8-16",2,0,0,239,794,"age",14.9375
+2015,"Non-Indigenous","0-7",2,0,0,654,2278,"age",1.880769562591666
+2015,"Non-Indigenous","17-25",2,0,0,7316,27983,"age",21.03931210997038
+2015,"Non-Indigenous","26-39",2,0,0,8369,35248,"age",24.067523653409253
+2015,"Non-Indigenous","40-64",2,0,0,11587,58986,"age",33.32183015558048
+2015,"Non-Indigenous","65+",2,0,0,4671,39706,"age",13.432835820895523
+2015,"Non-Indigenous","8-16",2,0,0,2176,6006,"age",6.257728697552699
+2016,"First Nations people","0-7",2,0,0,89,236,"age",5.3325344517675255
+2016,"First Nations people","17-25",2,0,0,501,1803,"age",30.017974835230678
+2016,"First Nations people","26-39",2,0,0,422,2576,"age",25.28460155781905
+2016,"First Nations people","40-64",2,0,0,374,3218,"age",22.408627920910725
+2016,"First Nations people","65+",2,0,0,29,321,"age",1.737567405632115
+2016,"First Nations people","8-16",2,0,0,254,818,"age",15.218693828639903
+2016,"Non-Indigenous","0-7",2,0,0,634,1954,"age",1.7282739068803838
+2016,"Non-Indigenous","17-25",2,0,0,7839,34258,"age",21.36898920510304
+2016,"Non-Indigenous","26-39",2,0,0,8897,41933,"age",24.253080362010685
+2016,"Non-Indigenous","40-64",2,0,0,12157,71609,"age",33.13978846363537
+2016,"Non-Indigenous","65+",2,0,0,4957,49859,"age",13.512703085813978
+2016,"Non-Indigenous","8-16",2,0,0,2200,5480,"age",5.997164976556537
+2017,"First Nations people","0-7",2,0,0,81,224,"age",4.67397576457011
+2017,"First Nations people","17-25",2,0,0,506,1931,"age",29.19792267743797
+2017,"First Nations people","26-39",2,0,0,435,2804,"age",25.100980957876516
+2017,"First Nations people","40-64",2,0,0,418,2633,"age",24.1200230813618
+2017,"First Nations people","65+",2,0,0,42,356,"age",2.423542989036353
+2017,"First Nations people","8-16",2,0,0,251,850,"age",14.483554529717253
+2017,"Non-Indigenous","0-7",2,0,0,642,1483,"age",1.7337294085876316
+2017,"Non-Indigenous","17-25",2,0,0,7856,32212,"age",21.215230893869837
+2017,"Non-Indigenous","26-39",2,0,0,8926,40307,"age",24.104779908182554
+2017,"Non-Indigenous","40-64",2,0,0,12329,68352,"age",33.294625978936
+2017,"Non-Indigenous","65+",2,0,0,5055,49262,"age",13.651093707804483
+2017,"Non-Indigenous","8-16",2,0,0,2222,6438,"age",6.000540102619498
+2018,"First Nations people","0-7",2,0,0,70,303,"age",3.626943005181347
+2018,"First Nations people","17-25",2,0,0,607,3083,"age",31.45077720207254
+2018,"First Nations people","26-39",2,0,0,542,3338,"age",28.082901554404145
+2018,"First Nations people","40-64",2,0,0,411,2236,"age",21.295336787564768
+2018,"First Nations people","65+",2,0,0,47,372,"age",2.435233160621762
+2018,"First Nations people","8-16",2,0,0,253,835,"age",13.10880829015544
+2018,"Non-Indigenous","0-7",2,0,0,646,2166,"age",1.7366525081993656
+2018,"Non-Indigenous","17-25",2,0,0,7622,31608,"age",20.490348943491586
+2018,"Non-Indigenous","26-39",2,0,0,9100,36881,"age",24.46368084305608
+2018,"Non-Indigenous","40-64",2,0,0,12381,66521,"age",33.28404752943707
+2018,"Non-Indigenous","65+",2,0,0,5305,49452,"age",14.261519436528845
+2018,"Non-Indigenous","8-16",2,0,0,2144,5734,"age",5.763750739287058
+2019,"First Nations people","0-7",2,0,0,78,337,"age",4.202586206896552
+2019,"First Nations people","17-25",2,0,0,521,3200,"age",28.07112068965517
+2019,"First Nations people","26-39",2,0,0,539,3102,"age",29.040948275862068
+2019,"First Nations people","40-64",2,0,0,411,2356,"age",22.14439655172414
+2019,"First Nations people","65+",2,0,0,59,508,"age",3.1788793103448274
+2019,"First Nations people","8-16",2,0,0,248,812,"age",13.362068965517242
+2019,"Non-Indigenous","0-7",2,0,0,616,2129,"age",1.6434555253188197
+2019,"Non-Indigenous","17-25",2,0,0,7486,32386,"age",19.97225334827384
+2019,"Non-Indigenous","26-39",2,0,0,8968,34913,"age",23.926151219251906
+2019,"Non-Indigenous","40-64",2,0,0,12579,67038,"age",33.56010885224908
+2019,"Non-Indigenous","65+",2,0,0,5614,49438,"age",14.977856037564697
+2019,"Non-Indigenous","8-16",2,0,0,2219,5966,"age",5.920175017341657
+2020,"First Nations people","0-7",2,0,0,82,416,"age",3.5807860262008733
+2020,"First Nations people","17-25",2,0,0,705,3578,"age",30.786026200873362
+2020,"First Nations people","26-39",2,0,0,659,3843,"age",28.777292576419214
+2020,"First Nations people","40-64",2,0,0,496,3078,"age",21.65938864628821
+2020,"First Nations people","65+",2,0,0,53,410,"age",2.314410480349345
+2020,"First Nations people","8-16",2,0,0,295,1051,"age",12.882096069868995
+2020,"Non-Indigenous","0-7",2,0,0,620,1676,"age",1.7620644574546696
+2020,"Non-Indigenous","17-25",2,0,0,7183,26606,"age",20.4143693514466
+2020,"Non-Indigenous","26-39",2,0,0,8405,32446,"age",23.8873415563008
+2020,"Non-Indigenous","40-64",2,0,0,11674,58595,"age",33.17796851020292
+2020,"Non-Indigenous","65+",2,0,0,4826,44291,"age",13.715682373671347
+2020,"Non-Indigenous","8-16",2,0,0,2478,6285,"age",7.042573750923663
+2021,"First Nations people","0-7",2,0,0,86,400,"age",3.873873873873874
+2021,"First Nations people","17-25",2,0,0,686,3522,"age",30.9009009009009
+2021,"First Nations people","26-39",2,0,0,597,3981,"age",26.89189189189189
+2021,"First Nations people","40-64",2,0,0,515,3830,"age",23.1981981981982
+2021,"First Nations people","65+",2,0,0,45,306,"age",2.027027027027027
+2021,"First Nations people","8-16",2,0,0,291,1237,"age",13.108108108108109
+2021,"Non-Indigenous","0-7",2,0,0,610,1559,"age",1.65963814447014
+2021,"Non-Indigenous","17-25",2,0,0,7225,28997,"age",19.657189498027478
+2021,"Non-Indigenous","26-39",2,0,0,8689,34628,"age",23.640321044755815
+2021,"Non-Indigenous","40-64",2,0,0,12337,61658,"age",33.565501292341175
+2021,"Non-Indigenous","65+",2,0,0,5361,47318,"age",14.585770643449871
+2021,"Non-Indigenous","8-16",2,0,0,2533,7243,"age",6.891579376955517
+2011,"First Nations people","Car, pick-up truck or van",2,0,0,391,2536,"counterparty",33.50471293916024
+2011,"First Nations people","Fixed or stationary object",2,0,0,192,1305,"counterparty",16.452442159383033
+2011,"First Nations people","Non-collision transport accident",2,0,0,362,1664,"counterparty",31.019708654670094
+2011,"First Nations people","Other",2,0,0,222,1054,"counterparty",19.02313624678663
+2011,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13293,63693,"counterparty",41.54451979873113
+2011,"Non-Indigenous","Fixed or stationary object",2,0,0,4601,25815,"counterparty",14.379473075600838
+2011,"Non-Indigenous","Non-collision transport accident",2,0,0,8059,28641,"counterparty",25.18673625652405
+2011,"Non-Indigenous","Other",2,0,0,6044,25797,"counterparty",18.88927086914398
+2012,"First Nations people","Car, pick-up truck or van",2,0,0,476,2860,"counterparty",33.903133903133906
+2012,"First Nations people","Fixed or stationary object",2,0,0,226,1192,"counterparty",16.096866096866098
+2012,"First Nations people","Non-collision transport accident",2,0,0,466,2234,"counterparty",33.19088319088319
+2012,"First Nations people","Other",2,0,0,236,936,"counterparty",16.80911680911681
+2012,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13010,61102,"counterparty",40.92481912551116
+2012,"Non-Indigenous","Fixed or stationary object",2,0,0,4549,24116,"counterparty",14.309531299150676
+2012,"Non-Indigenous","Non-collision transport accident",2,0,0,8130,30223,"counterparty",25.574079899339416
+2012,"Non-Indigenous","Other",2,0,0,6101,25165,"counterparty",19.191569675998743
+2013,"First Nations people","Car, pick-up truck or van",2,0,0,430,2596,"counterparty",30.41018387553041
+2013,"First Nations people","Fixed or stationary object",2,0,0,255,1168,"counterparty",18.033946251768032
+2013,"First Nations people","Non-collision transport accident",2,0,0,503,2427,"counterparty",35.57284299858557
+2013,"First Nations people","Other",2,0,0,226,1381,"counterparty",15.983026874115984
+2013,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13276,56839,"counterparty",40.42754042449526
+2013,"Non-Indigenous","Fixed or stationary object",2,0,0,4584,23624,"counterparty",13.959012150187277
+2013,"Non-Indigenous","Non-collision transport accident",2,0,0,8729,29752,"counterparty",26.581199183897194
+2013,"Non-Indigenous","Other",2,0,0,6250,24262,"counterparty",19.032248241420263
+2014,"First Nations people","Car, pick-up truck or van",2,0,0,461,2673,"counterparty",31.662087912087912
+2014,"First Nations people","Fixed or stationary object",2,0,0,271,1268,"counterparty",18.61263736263736
+2014,"First Nations people","Non-collision transport accident",2,0,0,479,2424,"counterparty",32.89835164835165
+2014,"First Nations people","Other",2,0,0,245,1387,"counterparty",16.826923076923077
+2014,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13543,55742,"counterparty",40.59530589610623
+2014,"Non-Indigenous","Fixed or stationary object",2,0,0,4668,22590,"counterparty",13.992386319354935
+2014,"Non-Indigenous","Non-collision transport accident",2,0,0,8957,31386,"counterparty",26.848715566080152
+2014,"Non-Indigenous","Other",2,0,0,6193,22219,"counterparty",18.56359221845868
+2015,"First Nations people","Car, pick-up truck or van",2,0,0,497,2427,"counterparty",31.0625
+2015,"First Nations people","Fixed or stationary object",2,0,0,275,1477,"counterparty",17.1875
+2015,"First Nations people","Non-collision transport accident",2,0,0,573,2537,"counterparty",35.8125
+2015,"First Nations people","Other",2,0,0,255,1163,"counterparty",15.9375
+2015,"Non-Indigenous","Car, pick-up truck or van",2,0,0,14538,72133,"counterparty",41.808299542748685
+2015,"Non-Indigenous","Fixed or stationary object",2,0,0,4920,33404,"counterparty",14.148908636010699
+2015,"Non-Indigenous","Non-collision transport accident",2,0,0,9125,34085,"counterparty",26.241624248698702
+2015,"Non-Indigenous","Other",2,0,0,6190,30585,"counterparty",17.801167572541914
+2016,"First Nations people","Car, pick-up truck or van",2,0,0,540,3858,"counterparty",32.354703415218694
+2016,"First Nations people","Fixed or stationary object",2,0,0,304,2002,"counterparty",18.214499700419413
+2016,"First Nations people","Non-collision transport accident",2,0,0,554,2155,"counterparty",33.19352905931696
+2016,"First Nations people","Other",2,0,0,271,957,"counterparty",16.23726782504494
+2016,"Non-Indigenous","Car, pick-up truck or van",2,0,0,15759,91699,"counterparty",42.95878312070658
+2016,"Non-Indigenous","Fixed or stationary object",2,0,0,5212,38249,"counterparty",14.207829026278487
+2016,"Non-Indigenous","Non-collision transport accident",2,0,0,9204,38209,"counterparty",25.089957474648347
+2016,"Non-Indigenous","Other",2,0,0,6509,36936,"counterparty",17.74343037836659
+2017,"First Nations people","Car, pick-up truck or van",2,0,0,595,3760,"counterparty",34.333525678015
+2017,"First Nations people","Fixed or stationary object",2,0,0,303,1675,"counterparty",17.48413156376226
+2017,"First Nations people","Non-collision transport accident",2,0,0,567,2344,"counterparty",32.71783035199077
+2017,"First Nations people","Other",2,0,0,268,1019,"counterparty",15.464512406231968
+2017,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16144,91347,"counterparty",43.597083445854715
+2017,"Non-Indigenous","Fixed or stationary object",2,0,0,5052,35728,"counterparty",13.642992168512018
+2017,"Non-Indigenous","Non-collision transport accident",2,0,0,9378,37707,"counterparty",25.32541182824737
+2017,"Non-Indigenous","Other",2,0,0,6456,33272,"counterparty",17.434512557385904
+2018,"First Nations people","Car, pick-up truck or van",2,0,0,608,2860,"counterparty",31.502590673575128
+2018,"First Nations people","Fixed or stationary object",2,0,0,345,2035,"counterparty",17.875647668393782
+2018,"First Nations people","Non-collision transport accident",2,0,0,711,3551,"counterparty",36.83937823834197
+2018,"First Nations people","Other",2,0,0,266,1721,"counterparty",13.782383419689118
+2018,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16018,82291,"counterparty",43.06145491693102
+2018,"Non-Indigenous","Fixed or stationary object",2,0,0,5149,35629,"counterparty",13.842142050647885
+2018,"Non-Indigenous","Non-collision transport accident",2,0,0,9538,38988,"counterparty",25.641163503414163
+2018,"Non-Indigenous","Other",2,0,0,6493,35454,"counterparty",17.455239529006935
+2019,"First Nations people","Car, pick-up truck or van",2,0,0,628,4076,"counterparty",33.83620689655172
+2019,"First Nations people","Fixed or stationary object",2,0,0,338,1492,"counterparty",18.211206896551722
+2019,"First Nations people","Non-collision transport accident",2,0,0,602,2938,"counterparty",32.435344827586206
+2019,"First Nations people","Other",2,0,0,288,1809,"counterparty",15.517241379310345
+2019,"Non-Indigenous","Car, pick-up truck or van",2,0,0,16283,84605,"counterparty",43.44218558241289
+2019,"Non-Indigenous","Fixed or stationary object",2,0,0,5101,36269,"counterparty",13.609199082226136
+2019,"Non-Indigenous","Non-collision transport accident",2,0,0,9330,34213,"counterparty",24.89194813510485
+2019,"Non-Indigenous","Other",2,0,0,6768,36783,"counterparty",18.056667200256122
+2020,"First Nations people","Car, pick-up truck or van",2,0,0,733,4036,"counterparty",32.00873362445415
+2020,"First Nations people","Fixed or stationary object",2,0,0,467,2461,"counterparty",20.393013100436683
+2020,"First Nations people","Non-collision transport accident",2,0,0,732,3860,"counterparty",31.965065502183407
+2020,"First Nations people","Other",2,0,0,358,2019,"counterparty",15.633187772925764
+2020,"Non-Indigenous","Car, pick-up truck or van",2,0,0,13769,70596,"counterparty",39.1320411527312
+2020,"Non-Indigenous","Fixed or stationary object",2,0,0,5110,33562,"counterparty",14.522821576763485
+2020,"Non-Indigenous","Non-collision transport accident",2,0,0,10047,35020,"counterparty",28.553970329108168
+2020,"Non-Indigenous","Other",2,0,0,6260,30721,"counterparty",17.791166941397147
+2021,"First Nations people","Car, pick-up truck or van",2,0,0,746,5492,"counterparty",33.6036036036036
+2021,"First Nations people","Fixed or stationary object",2,0,0,369,2624,"counterparty",16.62162162162162
+2021,"First Nations people","Non-collision transport accident",2,0,0,742,3130,"counterparty",33.42342342342342
+2021,"First Nations people","Other",2,0,0,363,2030,"counterparty",16.35135135135135
+2021,"Non-Indigenous","Car, pick-up truck or van",2,0,0,15252,77549,"counterparty",41.49639504829275
+2021,"Non-Indigenous","Fixed or stationary object",2,0,0,5150,32295,"counterparty",14.01169908855938
+2021,"Non-Indigenous","Non-collision transport accident",2,0,0,9866,37867,"counterparty",26.8426064481023
+2021,"Non-Indigenous","Other",2,0,0,6487,33692,"counterparty",17.649299415045572
+2011,"First Nations people","Bus occupant",1,1,1,,,"road_user",
+2011,"First Nations people","Car driver, passenger or unknown position",2,0,0,617,3437,"road_user",
+2011,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2011,"First Nations people","Motorcyclist",2,0,0,187,1017,"road_user",
+2011,"First Nations people","Other or unknown",2,0,0,34,156,"road_user",
+2011,"First Nations people","Pedal cyclist",2,0,0,121,390,"road_user",
+2011,"First Nations people","Pedestrian",2,0,0,180,1385,"road_user",
+2011,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2011,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2011,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15597,68200,"road_user",
+2011,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2011,"Non-Indigenous","Motorcyclist",2,0,0,7185,35485,"road_user",
+2011,"Non-Indigenous","Other or unknown",2,0,0,559,2465,"road_user",
+2011,"Non-Indigenous","Pedal cyclist",2,0,0,5174,14378,"road_user",
+2011,"Non-Indigenous","Pedestrian",2,0,0,2522,19123,"road_user",
+2011,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2012,"First Nations people","Bus occupant",2,1,1,,,"road_user",
+2012,"First Nations people","Car driver, passenger or unknown position",2,0,0,758,3775,"road_user",
+2012,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2012,"First Nations people","Motorcyclist",2,0,0,218,1030,"road_user",
+2012,"First Nations people","Other or unknown",2,0,0,30,83,"road_user",
+2012,"First Nations people","Pedal cyclist",2,0,0,152,361,"road_user",
+2012,"First Nations people","Pedestrian",2,0,0,219,1860,"road_user",
+2012,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2012,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2012,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15250,66414,"road_user",
+2012,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2012,"Non-Indigenous","Motorcyclist",2,0,0,7348,35584,"road_user",
+2012,"Non-Indigenous","Other or unknown",2,0,0,489,2277,"road_user",
+2012,"Non-Indigenous","Pedal cyclist",2,0,0,5379,15104,"road_user",
+2012,"Non-Indigenous","Pedestrian",2,0,0,2390,16738,"road_user",
+2012,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2013,"First Nations people","Bus occupant",2,2,2,,,"road_user",
+2013,"First Nations people","Car driver, passenger or unknown position",2,0,0,755,3948,"road_user",
+2013,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2013,"First Nations people","Motorcyclist",2,0,0,267,1566,"road_user",
+2013,"First Nations people","Other or unknown",2,0,0,25,94,"road_user",
+2013,"First Nations people","Pedal cyclist",2,0,0,173,381,"road_user",
+2013,"First Nations people","Pedestrian",2,0,0,166,1496,"road_user",
+2013,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2013,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user",
+2013,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15439,59588,"road_user",
+2013,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2013,"Non-Indigenous","Motorcyclist",2,0,0,7617,35103,"road_user",
+2013,"Non-Indigenous","Other or unknown",2,0,0,504,2377,"road_user",
+2013,"Non-Indigenous","Pedal cyclist",2,0,0,5985,16544,"road_user",
+2013,"Non-Indigenous","Pedestrian",2,0,0,2409,16207,"road_user",
+2013,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2014,"First Nations people","Bus occupant",2,2,2,,,"road_user",
+2014,"First Nations people","Car driver, passenger or unknown position",2,0,0,759,4110,"road_user",
+2014,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,168,"road_user",
+2014,"First Nations people","Motorcyclist",2,0,0,254,1251,"road_user",
+2014,"First Nations people","Other or unknown",2,0,0,38,73,"road_user",
+2014,"First Nations people","Pedal cyclist",2,0,0,177,578,"road_user",
+2014,"First Nations people","Pedestrian",2,0,0,196,1489,"road_user",
+2014,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2014,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user",
+2014,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15363,58850,"road_user",
+2014,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,449,2357,"road_user",
+2014,"Non-Indigenous","Motorcyclist",2,0,0,7919,34159,"road_user",
+2014,"Non-Indigenous","Other or unknown",2,0,0,458,1750,"road_user",
+2014,"Non-Indigenous","Pedal cyclist",2,0,0,6354,16513,"road_user",
+2014,"Non-Indigenous","Pedestrian",2,0,0,2316,15967,"road_user",
+2014,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2015,"First Nations people","Bus occupant",2,1,1,,,"road_user",
+2015,"First Nations people","Car driver, passenger or unknown position",2,0,0,883,4004,"road_user",
+2015,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,95,"road_user",
+2015,"First Nations people","Motorcyclist",2,0,0,273,1290,"road_user",
+2015,"First Nations people","Other or unknown",2,0,0,28,157,"road_user",
+2015,"First Nations people","Pedal cyclist",2,0,0,177,424,"road_user",
+2015,"First Nations people","Pedestrian",2,0,0,206,1501,"road_user",
+2015,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2015,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2015,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,16692,81580,"road_user",
+2015,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,479,2767,"road_user",
+2015,"Non-Indigenous","Motorcyclist",2,0,0,7855,42321,"road_user",
+2015,"Non-Indigenous","Other or unknown",2,0,0,464,2348,"road_user",
+2015,"Non-Indigenous","Pedal cyclist",2,0,0,6435,18013,"road_user",
+2015,"Non-Indigenous","Pedestrian",2,0,0,2378,20548,"road_user",
+2015,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2016,"First Nations people","Bus occupant",2,1,1,,,"road_user",
+2016,"First Nations people","Car driver, passenger or unknown position",2,0,0,928,5126,"road_user",
+2016,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,14,51,"road_user",
+2016,"First Nations people","Motorcyclist",2,0,0,296,1505,"road_user",
+2016,"First Nations people","Other or unknown",2,0,0,25,132,"road_user",
+2016,"First Nations people","Pedal cyclist",2,0,0,190,389,"road_user",
+2016,"First Nations people","Pedestrian",2,0,0,190,1693,"road_user",
+2016,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2016,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2016,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17872,94804,"road_user",
+2016,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,452,3722,"road_user",
+2016,"Non-Indigenous","Motorcyclist",2,0,0,8111,50984,"road_user",
+2016,"Non-Indigenous","Other or unknown",2,0,0,575,3615,"road_user",
+2016,"Non-Indigenous","Pedal cyclist",2,0,0,6613,19976,"road_user",
+2016,"Non-Indigenous","Pedestrian",2,0,0,2514,28025,"road_user",
+2016,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2017,"First Nations people","Bus occupant",2,2,2,,,"road_user",
+2017,"First Nations people","Car driver, passenger or unknown position",2,0,0,938,4376,"road_user",
+2017,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,15,70,"road_user",
+2017,"First Nations people","Motorcyclist",2,0,0,319,1806,"road_user",
+2017,"First Nations people","Other or unknown",2,0,0,35,147,"road_user",
+2017,"First Nations people","Pedal cyclist",2,0,0,201,452,"road_user",
+2017,"First Nations people","Pedestrian",2,0,0,209,1901,"road_user",
+2017,"First Nations people","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2017,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user",
+2017,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17901,88306,"road_user",
+2017,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,500,2987,"road_user",
+2017,"Non-Indigenous","Motorcyclist",2,0,0,8318,50220,"road_user",
+2017,"Non-Indigenous","Other or unknown",2,0,0,554,3753,"road_user",
+2017,"Non-Indigenous","Pedal cyclist",2,0,0,6782,20847,"road_user",
+2017,"Non-Indigenous","Pedestrian",2,0,0,2465,28650,"road_user",
+2017,"Non-Indigenous","Pick-up truck or van occupant",2,2,2,,,"road_user",
+2018,"First Nations people","Bus occupant",2,1,1,,,"road_user",
+2018,"First Nations people","Car driver, passenger or unknown position",2,0,0,1113,6329,"road_user",
+2018,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,20,67,"road_user",
+2018,"First Nations people","Motorcyclist",2,0,0,333,1512,"road_user",
+2018,"First Nations people","Other or unknown",2,0,0,37,566,"road_user",
+2018,"First Nations people","Pedal cyclist",2,0,0,199,464,"road_user",
+2018,"First Nations people","Pedestrian",2,0,0,209,1128,"road_user",
+2018,"First Nations people","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2018,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2018,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,18337,89186,"road_user",
+2018,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,524,3476,"road_user",
+2018,"Non-Indigenous","Motorcyclist",2,0,0,8200,48644,"road_user",
+2018,"Non-Indigenous","Other or unknown",2,0,0,551,3682,"road_user",
+2018,"Non-Indigenous","Pedal cyclist",2,0,0,6676,19771,"road_user",
+2018,"Non-Indigenous","Pedestrian",2,0,0,2412,24365,"road_user",
+2018,"Non-Indigenous","Pick-up truck or van occupant",2,1,1,,,"road_user",
+2019,"First Nations people","Bus occupant",2,2,2,,,"road_user",
+2019,"First Nations people","Car driver, passenger or unknown position",2,0,0,996,5361,"road_user",
+2019,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2019,"First Nations people","Motorcyclist",2,0,0,353,2543,"road_user",
+2019,"First Nations people","Other or unknown",2,1,1,,,"road_user",
+2019,"First Nations people","Pedal cyclist",2,0,0,240,761,"road_user",
+2019,"First Nations people","Pedestrian",2,0,0,211,1394,"road_user",
+2019,"First Nations people","Pick-up truck or van occupant",2,0,0,11,41,"road_user",
+2019,"Non-Indigenous","Bus occupant",2,2,2,,,"road_user",
+2019,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,18006,84026,"road_user",
+2019,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2019,"Non-Indigenous","Motorcyclist",2,0,0,8463,49619,"road_user",
+2019,"Non-Indigenous","Other or unknown",2,1,1,,,"road_user",
+2019,"Non-Indigenous","Pedal cyclist",2,0,0,6984,21765,"road_user",
+2019,"Non-Indigenous","Pedestrian",2,0,0,2461,26248,"road_user",
+2019,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,244,1323,"road_user",
+2020,"First Nations people","Bus occupant",2,0,0,10,31,"road_user",
+2020,"First Nations people","Car driver, passenger or unknown position",2,0,0,1208,6452,"road_user",
+2020,"First Nations people","Heavy transport driver, passenger or unknown position",2,0,0,10,23,"road_user",
+2020,"First Nations people","Motorcyclist",2,0,0,545,2909,"road_user",
+2020,"First Nations people","Other or unknown",2,0,0,45,175,"road_user",
+2020,"First Nations people","Pedal cyclist",2,0,0,230,900,"road_user",
+2020,"First Nations people","Pedestrian",2,0,0,223,1834,"road_user",
+2020,"First Nations people","Pick-up truck or van occupant",2,0,0,19,52,"road_user",
+2020,"Non-Indigenous","Bus occupant",2,0,0,160,808,"road_user",
+2020,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,15843,75290,"road_user",
+2020,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,0,0,476,2996,"road_user",
+2020,"Non-Indigenous","Motorcyclist",2,0,0,8038,43525,"road_user",
+2020,"Non-Indigenous","Other or unknown",2,0,0,525,3401,"road_user",
+2020,"Non-Indigenous","Pedal cyclist",2,0,0,8012,23222,"road_user",
+2020,"Non-Indigenous","Pedestrian",2,0,0,1857,19245,"road_user",
+2020,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,275,1412,"road_user",
+2021,"First Nations people","Bus occupant",2,1,1,,,"road_user",
+2021,"First Nations people","Car driver, passenger or unknown position",2,0,0,1158,5969,"road_user",
+2021,"First Nations people","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2021,"First Nations people","Motorcyclist",2,0,0,520,3204,"road_user",
+2021,"First Nations people","Other or unknown",2,0,0,52,419,"road_user",
+2021,"First Nations people","Pedal cyclist",2,0,0,207,892,"road_user",
+2021,"First Nations people","Pedestrian",2,0,0,235,2636,"road_user",
+2021,"First Nations people","Pick-up truck or van occupant",2,0,0,28,101,"road_user",
+2021,"Non-Indigenous","Bus occupant",2,1,1,,,"road_user",
+2021,"Non-Indigenous","Car driver, passenger or unknown position",2,0,0,17098,81374,"road_user",
+2021,"Non-Indigenous","Heavy transport driver, passenger or unknown position",2,1,1,,,"road_user",
+2021,"Non-Indigenous","Motorcyclist",2,0,0,8259,46069,"road_user",
+2021,"Non-Indigenous","Other or unknown",2,0,0,541,3564,"road_user",
+2021,"Non-Indigenous","Pedal cyclist",2,0,0,7861,25640,"road_user",
+2021,"Non-Indigenous","Pedestrian",2,0,0,2072,19632,"road_user",
+2021,"Non-Indigenous","Pick-up truck or van occupant",2,0,0,312,1873,"road_user",
+2011,"First Nations people","Major Cities",2,0,0,368,2157,"remoteness",
+2011,"First Nations people","Regional",2,0,0,455,2373,"remoteness",
+2011,"First Nations people","Remote",2,0,0,330,1983,"remoteness",
+2011,"Non-Indigenous","Major Cities",2,0,0,20985,89284,"remoteness",
+2011,"Non-Indigenous","Regional",2,0,0,9717,47965,"remoteness",
+2011,"Non-Indigenous","Remote",2,0,0,789,3735,"remoteness",
+2012,"First Nations people","Major Cities",2,0,0,429,2229,"remoteness",
+2012,"First Nations people","Regional",2,0,0,545,2437,"remoteness",
+2012,"First Nations people","Remote",2,0,0,426,2507,"remoteness",
+2012,"Non-Indigenous","Major Cities",2,0,0,20858,87148,"remoteness",
+2012,"Non-Indigenous","Regional",2,0,0,9536,46579,"remoteness",
+2012,"Non-Indigenous","Remote",2,0,0,802,3824,"remoteness",
+2013,"First Nations people","Major Cities",2,0,0,446,2113,"remoteness",
+2013,"First Nations people","Regional",2,0,0,540,2800,"remoteness",
+2013,"First Nations people","Remote",2,0,0,420,2631,"remoteness",
+2013,"Non-Indigenous","Major Cities",2,0,0,22224,85720,"remoteness",
+2013,"Non-Indigenous","Regional",2,0,0,9218,42371,"remoteness",
+2013,"Non-Indigenous","Remote",2,0,0,765,3249,"remoteness",
+2014,"First Nations people","Major Cities",2,0,0,486,2309,"remoteness",
+2014,"First Nations people","Regional",2,0,0,565,2856,"remoteness",
+2014,"First Nations people","Remote",2,0,0,392,2407,"remoteness",
+2014,"Non-Indigenous","Major Cities",2,0,0,22572,82883,"remoteness",
+2014,"Non-Indigenous","Regional",2,0,0,9358,42022,"remoteness",
+2014,"Non-Indigenous","Remote",2,0,0,737,3643,"remoteness",
+2015,"First Nations people","Major Cities",2,0,0,508,1886,"remoteness",
+2015,"First Nations people","Regional",2,0,0,613,2727,"remoteness",
+2015,"First Nations people","Remote",2,0,0,461,2834,"remoteness",
+2015,"Non-Indigenous","Major Cities",2,0,0,23597,109643,"remoteness",
+2015,"Non-Indigenous","Regional",2,0,0,9684,52983,"remoteness",
+2015,"Non-Indigenous","Remote",2,0,0,694,3528,"remoteness",
+2016,"First Nations people","Major Cities",2,0,0,551,2559,"remoteness",
+2016,"First Nations people","Regional",2,0,0,648,3415,"remoteness",
+2016,"First Nations people","Remote",2,0,0,454,2903,"remoteness",
+2016,"Non-Indigenous","Major Cities",2,0,0,25390,134670,"remoteness",
+2016,"Non-Indigenous","Regional",2,0,0,9846,61984,"remoteness",
+2016,"Non-Indigenous","Remote",2,0,0,678,3469,"remoteness",
+2017,"First Nations people","Major Cities",2,0,0,617,2643,"remoteness",
+2017,"First Nations people","Regional",2,0,0,704,3201,"remoteness",
+2017,"First Nations people","Remote",2,0,0,393,2768,"remoteness",
+2017,"Non-Indigenous","Major Cities",2,0,0,25288,127399,"remoteness",
+2017,"Non-Indigenous","Regional",2,0,0,10163,62541,"remoteness",
+2017,"Non-Indigenous","Remote",2,0,0,653,3528,"remoteness",
+2018,"First Nations people","Major Cities",2,0,0,642,2497,"remoteness",
+2018,"First Nations people","Regional",2,0,0,797,4371,"remoteness",
+2018,"First Nations people","Remote",2,0,0,466,3139,"remoteness",
+2018,"Non-Indigenous","Major Cities",2,0,0,25236,121035,"remoteness",
+2018,"Non-Indigenous","Regional",2,0,0,10278,63502,"remoteness",
+2018,"Non-Indigenous","Remote",2,0,0,720,2763,"remoteness",
+2019,"First Nations people","Major Cities",2,0,0,708,4364,"remoteness",
+2019,"First Nations people","Regional",2,0,0,669,3229,"remoteness",
+2019,"First Nations people","Remote",2,0,0,447,2567,"remoteness",
+2019,"Non-Indigenous","Major Cities",2,0,0,25502,124113,"remoteness",
+2019,"Non-Indigenous","Regional",2,0,0,10232,59663,"remoteness",
+2019,"Non-Indigenous","Remote",2,0,0,638,2985,"remoteness",
+2020,"First Nations people","Major Cities",2,0,0,810,4007,"remoteness",
+2020,"First Nations people","Regional",2,0,0,946,5415,"remoteness",
+2020,"First Nations people","Remote",2,0,0,504,2718,"remoteness",
+2020,"Non-Indigenous","Major Cities",2,0,0,23823,109218,"remoteness",
+2020,"Non-Indigenous","Regional",2,0,0,9936,54918,"remoteness",
+2020,"Non-Indigenous","Remote",2,0,0,660,2828,"remoteness",
+2021,"First Nations people","Major Cities",2,0,0,795,5128,"remoteness",
+2021,"First Nations people","Regional",2,0,0,885,5265,"remoteness",
+2021,"First Nations people","Remote",2,0,0,503,2726,"remoteness",
+2021,"Non-Indigenous","Major Cities",2,0,0,25254,115139,"remoteness",
+2021,"Non-Indigenous","Regional",2,0,0,10332,59185,"remoteness",
+2021,"Non-Indigenous","Remote",2,0,0,600,3784,"remoteness",
