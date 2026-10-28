@@ -5,25 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospitalised Injuries Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="national">
 
-    <header class="top-bar">
-        <h1>Hospitalised Injuries from Road Crashes in Australia (2011–2021)</h1>
-        <div class="how-to-use">
-            <span>ⓘ</span> How to use?
-        </div>
-    </header>
+<header id="site-header" class="top-bar"></header>
 
-    <nav class="tabs-container">
-        <ul class="tabs">
-            <li class="tab active">National Overview</li>
-            <li class="tab">State Comparisons</li>
-            <li class="tab">First Nations</li>
-            <li class="tab">About the Data</li>
-        </ul>
-    </nav>
+<nav
+    id="site-navigation"
+    class="tabs-container"
+    aria-label="Dashboard sections">
+</nav>
 
     <main class="dashboard-wrapper">
         
@@ -120,15 +113,10 @@
         </section>
     </main>
 
-    <footer class="bottom-bar">
-        <p>Data Source: BITRE / AIHW | Note: These are raw counts, not adjusted for population size.</p>
-        
-        <p class="icon-credits">
-            Icons by <a href="https://www.flaticon.com/authors/magnific" target="_blank" title="Magnific">Magnific</a> from <a href="https://www.flaticon.com/" target="_blank" title="Flaticon">Flaticon</a>
-        </p>
-    </footer>
+<footer id="site-footer" class="bottom-bar"></footer>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/components/layout.js"></script>
 </body>
 </html>
