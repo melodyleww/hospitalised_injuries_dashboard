@@ -62,10 +62,9 @@
             </div>
 
             <p class="filter-note">
-                <strong>Note:</strong> The Year filter applies to the Bar and Pie charts. 
+                <strong>Note:</strong> The Year filter applies only to the Bar and Pie charts. 
                 The Road User filter cross-filters the Line, Bar, and Pie charts. 
-                Click any bar or pie slice to apply a cross-filter across the dashboard. 
-                The Line chart shows the full timeline.
+                The Line chart always shows the full timeline.
             </p>
         </section>
 
@@ -100,15 +99,14 @@
                     </div>
                 </div>
                 <div id="stateBarChart" class="chart-area"></div>
-                <p class="click-note">* Click a bar to filter by state.</p>
+                <p class="click-note">* Click a bar to filter the Line, Pie, and Heatmap by state.</p>
             </div>
 
             <!-- 3. Heatmap -->
             <div class="card state-heatmap-card">
-                <h2>Age Group Over Time</h2>
-                <div class="chart-area" id="ageHeatmap">
-                    <p style="text-align: center; color: #6B7280; margin-top: 40px;">(Coming Soon)</p>
-                </div>
+                <h2 id="heatmapTitle">Age Group Over Time</h2>
+                <div class="chart-area" id="ageHeatmap"></div>
+                <p class="click-note">* Note: Age data is shown for all road users combined.</p>
             </div>
 
             <!-- 4. Pie Chart (Far Right) -->
@@ -116,7 +114,7 @@
             <div class="card state-pie-card">
                 <h2>Road User Composition</h2>
                 <div class="chart-area" id="roadUserChart"></div>
-                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a slice to filter.</p>
+                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the Line and Bar charts by road user. </p>
             </div>
 
         </section>
