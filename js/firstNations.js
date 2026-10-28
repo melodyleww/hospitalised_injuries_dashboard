@@ -85,6 +85,36 @@ async function initialiseFirstNations() {
 
     // Apply the default selection on page load.
     updateDashboard();
+
+    // Redraw when the available age-chart space changes.
+    const ageContainer = document.getElementById("fnAgeChart");
+
+    let previousWidth = ageContainer.clientWidth;
+    let previousHeight = ageContainer.clientHeight;
+    let resizeTimer;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const { width, height } = entries[0].contentRect;
+
+      // Ignore notifications where the dimensions have not changed.
+      if (
+        Math.abs(width - previousWidth) < 1 &&
+        Math.abs(height - previousHeight) < 1
+      ) {
+        return;
+      }
+
+      previousWidth = width;
+      previousHeight = height;
+
+      // Wait briefly so repeated resize events cause only one redraw.
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        updateDashboard();
+      }, 100);
+    });
+
+    resizeObserver.observe(ageContainer);
   } catch (error) {
     console.error("First Nations dashboard could not load:", error);
   }

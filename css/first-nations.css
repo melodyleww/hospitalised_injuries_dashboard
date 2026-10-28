@@ -199,9 +199,42 @@
     background: #287A5B;
 }
 
+
+.fn-age-bar:hover {
+    opacity: 0.8;
+}
+
+.fn-age-bar:focus {
+    outline: none;
+    stroke: #1A2B4C;
+    stroke-width: 2px;
+}
+
 .fn-note {
     flex-shrink: 0;
     color: #536174;
     font-size: 9px;
     line-height: 1.4;
+}
+
+/* Floating tooltip does not occupy dashboard layout space. */
+.fn-tooltip {
+    position: fixed;
+    z-index: 100;
+    max-width: min(360px, calc(100vw - 24px));
+    padding: 12px 16px;
+
+    background: #1A2B4C;
+    color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+
+    font-size: 12px;
+    line-height: 1.6;
+    white-space: pre-line;
+    pointer-events: none;
+}
+
+.fn-tooltip[hidden] {
+    display: none;
 }

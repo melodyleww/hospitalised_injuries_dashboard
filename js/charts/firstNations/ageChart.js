@@ -12,6 +12,9 @@ const POPULATION_COLORS = {
 export function drawAgeChart(rows) {
   const container = document.getElementById("fnAgeChart");
 
+  const tooltip = document.getElementById("fnTooltip");
+  tooltip.hidden = true;
+
   // Remove the previous chart when a filter changes.
   container.replaceChildren();
 
@@ -87,10 +90,7 @@ export function drawAgeChart(rows) {
     );
 
   // Left age-group axis.
-  innerChart
-    .append("g")
-    .call(d3.axisLeft(yScale).tickSize(0).tickPadding(8))
-    .call((group) => group.select(".domain").remove());
+  innerChart.append("g").call(d3.axisLeft(yScale).tickSize(4).tickPadding(8));
 
   // Horizontal-axis label.
   svg
@@ -129,13 +129,57 @@ export function drawAgeChart(rows) {
     .attr("height", populationScale.bandwidth())
     .attr("fill", (row) => POPULATION_COLORS[row.first_nations_status]);
 
-  // Provide a basic description for each bar.
+  // Describe only the record attached to this bar.
+  function describeBar(row) {
+    return [
+      `Age group: ${row.category}`,
+      `Hospitalisations: ${d3.format(",d")(row.hospitalisations)}`,
+      `Share within population: ${row.hospitalisation_share_pct.toFixed(2)}%`,
+    ].join("\n");
+  }
+
+  // Mouse and keyboard focus show the same information.
+  function showTooltip(event, row) {
+    tooltip.textContent = describeBar(row);
+    tooltip.hidden = false;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+
+    const anchorX = event.type === "focus" ? bounds.right : event.clientX;
+
+    const anchorY = event.type === "focus" ? bounds.top : event.clientY;
+
+    tooltip.style.left = `${Math.max(
+      12,
+      Math.min(anchorX + 12, window.innerWidth - tooltip.offsetWidth - 12),
+    )}px`;
+
+    tooltip.style.top = `${Math.max(
+      12,
+      Math.min(anchorY + 12, window.innerHeight - tooltip.offsetHeight - 12),
+    )}px`;
+  }
+
+  function hideTooltip() {
+    tooltip.hidden = true;
+  }
+
+  // Attach interactions directly to the visible bars.
   bars
-    .append("title")
-    .text(
-      (row) =>
-        `${row.first_nations_status}, ages ${row.category}: ` +
-        `${row.hospitalisation_share_pct.toFixed(2)}% ` +
-        `(${row.hospitalisations} hospitalisations)`,
-    );
+    .attr("tabindex", 0)
+    .attr("role", "group")
+    .attr(
+      "aria-label",
+      (row) => `${row.first_nations_status}, ${row.year}. ${describeBar(row)}`,
+    )
+    .on("mouseenter", showTooltip)
+    .on("mousemove", showTooltip)
+    .on("mouseleave", hideTooltip)
+    .on("focus", showTooltip)
+    .on("blur", hideTooltip)
+    .on("keydown", (event) => {
+      if (event.key === "Escape") {
+        hideTooltip();
+      }
+    });
 }
