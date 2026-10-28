@@ -1,28 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hospitalised Injuries Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/first-nations.css">
-</head>
-<body data-page="firstNations">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/first-nations.css" />
+  </head>
+  <body data-page="firstNations">
+    <header id="site-header" class="top-bar"></header>
 
-<header id="site-header" class="top-bar"></header>
+    <nav
+      id="site-navigation"
+      class="tabs-container"
+      aria-label="Dashboard sections"
+    ></nav>
 
-<nav
-    id="site-navigation"
-    class="tabs-container"
-    aria-label="Dashboard sections">
-</nav>
+    <main class="dashboard-wrapper fn-dashboard">
+      <!-- Shared selection for all three First Nations charts -->
+      <section class="fn-filters" aria-label="Chart filters">
+        <label for="fnYear"> Year </label>
+        <div class="fn-select-wrapper fn-year-select">
+          <select id="fnYear">
+            <option value="2021">2021</option>
+          </select>
+          <span class="fn-select-arrow" aria-hidden="true"></span>
+        </div>
 
+        <label for="fnPopulation"> Population </label>
+        <div class="fn-select-wrapper fn-population-select">
+          <select id="fnPopulation">
+            <option value="Both">Both populations</option>
+            <option value="First Nations people">First Nations peoples</option>
+            <option value="Non-Indigenous">Non-Indigenous Australians</option>
+          </select>
+          <span class="fn-select-arrow" aria-hidden="true"></span>
+        </div>
 
-<footer id="site-footer" class="bottom-bar"></footer>
+        <button id="fnReset" class="btn btn-reset" type="button">Reset</button>
+      </section>
+
+      <!-- Left: age and counterparty; right: road-user counts -->
+      <section class="fn-grid" aria-label="Population comparisons">
+        <article class="fn-card fn-age">
+          <h2 id="fnAgeTitle">Age distribution, 2021</h2>
+          <div id="fnAgeChart" class="fn-chart"></div>
+          <div class="fn-population-legend" aria-label="Population colours">
+            <span>
+              <span class="fn-swatch fn-swatch-first" aria-hidden="true"></span>
+              First Nations peoples
+            </span>
+            <span>
+              <span class="fn-swatch fn-swatch-non" aria-hidden="true"></span>
+              Non-Indigenous Australians
+            </span>
+          </div>
+          <p class="fn-note">
+            Shares of hospitalisations within each population—not population
+            injury rates
+          </p>
+        </article>
+
+        <article class="fn-card fn-counterparty">
+          <h2 id="fnCounterpartyTitle">Counterparty distribution, 2021</h2>
+          <div id="fnCounterpartyChart" class="fn-chart"></div>
+          <p class="fn-note">
+            Counterparty identifies the other party or object involved, not who
+            caused the crash.
+          </p>
+        </article>
+
+        <article class="fn-card fn-road">
+          <h2 id="fnRoadTitle">Hospitalisations by road user, 2021</h2>
+          <div id="fnRoadChart" class="fn-chart"></div>
+          <p class="fn-note">
+            Unavailable counts are not zero. Counts describe recorded burden,
+            not individual injury risk.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer id="site-footer" class="bottom-bar"></footer>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script type="module" src="js/main.js"></script>
     <script type="module" src="js/components/layout.js"></script>
-</body>
+    <script type="module" src="js/firstNations.js"></script>
+  </body>
 </html>

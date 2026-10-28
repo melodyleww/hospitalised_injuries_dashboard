@@ -1,0 +1,207 @@
+/* First Nations content uses the remaining viewport height. */
+.fn-dashboard {
+    min-height: 0;
+    min-width: 0;
+}
+
+/* Filters occupy only the space they need. */
+.fn-filters {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 12px 18px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+
+    flex-shrink: 0;
+}
+
+.fn-filters label {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.fn-select-wrapper {
+    position: relative;
+    min-width: 0;
+}
+
+.fn-year-select {
+    width: 130px;
+}
+
+.fn-population-select {
+    width: 270px;
+}
+
+/* Match the National dropdown appearance. */
+.fn-select-wrapper select {
+    display: block;
+    width: 100%;
+    padding: 6px 34px 6px 14px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    border: 1px solid rgb(217 217 217 / 69%);
+    border-radius: 50px;
+    background: rgb(217 217 217 / 20%);
+
+    font-family: inherit;
+    font-size: 12px;
+    color: #686868;
+    cursor: pointer;
+}
+
+.fn-select-wrapper select:focus {
+    background: #FFFFFF;
+    border-color: #1A2B4C;
+}
+
+/* Draw a decorative downward chevron. */
+.fn-select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid #1A2B4C;
+    border-bottom: 2px solid #1A2B4C;
+
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+}
+
+#fnReset {
+    margin-left: auto;
+}
+
+/* Two rows on the left; road-user chart spans both on the right. */
+.fn-grid {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-areas:
+        "age road"
+        "counterparty road";
+    gap: 16px;
+}
+
+.fn-age {
+    grid-area: age;
+}
+
+.fn-counterparty {
+    grid-area: counterparty;
+}
+
+.fn-road {
+    grid-area: road;
+}
+
+/* Card headings and notes stay outside the chart drawing area. */
+.fn-card {
+    min-height: 0;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+}
+
+.fn-card h2 {
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* D3 will measure this available space when drawing each chart. */
+.fn-chart {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+}
+
+/* Keep the SVG inside its measured chart area. */
+.fn-chart svg {
+    display: block;
+}
+
+.fn-chart .tick text {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #536174;
+}
+
+.fn-chart .tick line,
+.fn-chart .domain {
+    stroke: #9AA6B2;
+}
+
+.fn-axis-title {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #536174;
+}
+
+/* Explain unavailable distributions inside the chart area. */
+.fn-chart-message {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: #536174;
+}
+
+.fn-population-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    flex-shrink: 0;
+    font-size: 12px;
+}
+
+.fn-population-legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fn-swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+
+.fn-swatch-first {
+    background: #3864A0;
+}
+
+.fn-swatch-non {
+    background: #287A5B;
+}
+
+.fn-note {
+    flex-shrink: 0;
+    color: #536174;
+    font-size: 9px;
+    line-height: 1.4;
+}
