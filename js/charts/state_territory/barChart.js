@@ -7,13 +7,14 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const margin = { top: 10, right: 30, bottom: 30, left: 50 };
+    // Adjusted margins to give more room for labels on the right
+    const margin = { top: 10, right: 50, bottom: 30, left: 50 };
     const width = container.clientWidth - margin.left - margin.right;
     const height = container.clientHeight - margin.top - margin.bottom;
 
     d3.select(`#${containerId}`).html("");
     
-    // 1. Remove any old tooltips to prevent ghosting
+    // Remove any old tooltips to prevent ghosting
     d3.selectAll(".bar-tooltip").remove();
 
     const svg = d3.select(`#${containerId}`)
@@ -41,26 +42,27 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
     }).sort((a, b) => b.value - a.value);
 
     const x = d3.scaleLinear().domain([0, d3.max(chartData, d => d.value) * 1.1]).range([0, width]); 
-    const y = d3.scaleBand().domain(chartData.map(d => d.jurisdiction)).range([0, height]).padding(0.3);
+    const y = d3.scaleBand().domain(chartData.map(d => d.jurisdiction)).range([0, height]).padding(0.2);
 
+    // Y Axis (States)
     svg.append("g").call(d3.axisLeft(y).tickSize(0))
         .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.text);
 
+    // X Axis (Values)
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x).ticks(4).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "9px").style("color", COLORS.muted);
 
-    // 2. Create tooltip with a specific class so we can remove it later
     const tooltip = d3.select("body").append("div")
         .attr("class", "bar-tooltip")
         .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    // 3. Flag to stop hover events right after a click
     let isClicking = false;
 
+    // Draw Bars
     svg.selectAll(".bar").data(chartData).enter().append("rect")
         .attr("x", 0).attr("y", d => y(d.jurisdiction))
         .attr("width", d => x(d.value)).attr("height", y.bandwidth())
@@ -71,49 +73,33 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         .style("cursor", "pointer")
         .style("transition", "fill 0.2s")
         
-        // HOVER IN
         .on("mouseover", function(event, d) {
-            if (isClicking) return; // Ignore if we just clicked
-
+            if (isClicking) return; 
             d3.select(this).style("opacity", 0.7);
             const rateDisplay = ((d.rawCount / (popMap[d.jurisdiction] || 1)) * 100000).toFixed(1);
             tooltip.style("opacity", 1)
                 .html(`<strong>${d.jurisdiction}</strong><br>Count: ${formatNumber(d.rawCount)}<br>Rate: ${rateDisplay}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
-        
-        // HOVER OUT
         .on("mouseout", function() {
-            if (isClicking) return; // Ignore if we just clicked
-
+            if (isClicking) return; 
             d3.select(this).style("opacity", 1);
             tooltip.style("opacity", 0);
         })
-        
-        // CLICK
         .on("click", function(event, d) {
-            // 1. Hide tooltip immediately
             tooltip.style("opacity", 0);
-            
-            // 2. Block hover events
             isClicking = true;
-            
-            // 3. Trigger the filter (which will redraw the chart)
             if (onFilter) onFilter(d.jurisdiction);
-
-            // 4. Re-enable hover events after 300ms
-            setTimeout(() => {
-                isClicking = false;
-            }, 300);
+            setTimeout(() => { isClicking = false; }, 300);
         });
 
+    // Draw Labels (Outside the bar, grey color)
     svg.selectAll(".label").data(chartData).enter().append("text")
-        .attr("x", d => x(d.value) - 5)
+        .attr("x", d => x(d.value) + 5) // Place outside the bar (add 5px padding)
         .attr("y", d => y(d.jurisdiction) + y.bandwidth() / 2)
         .attr("dy", ".35em")
-        .attr("text-anchor", "end")
         .text(d => viewMode === "count" ? formatNumber(d.value) : d.value.toFixed(1))
         .style("font-family", "Poppins").style("font-size", "9px")
-        .style("fill", "#FFFFFF")
-        .style("font-weight", "600");
+        .style("fill", COLORS.muted) // Grey/dark grey color
+        .style("font-weight", "normal");
 }
