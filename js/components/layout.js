@@ -38,7 +38,7 @@ function renderSharedLayout() {
     const links = [
         { id: "national", label: "National Overview", href: "index.html" },
         { id: "state", label: "State Comparisons", href: "state-comparisons.html" },
-        { id: "firstNations", label: "First Nations", href: "first-nations.html" }
+        { id: "firstNations", label: "Population Comparison", href: "first-nations.html" }
     ];
 
     document.getElementById("site-navigation").innerHTML = `
