@@ -1,0 +1,141 @@
+/* Divide the available browser height between page sections. */
+/* --- GLOBAL STYLES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4F7F6;
+    color: #1A2B4C;
+
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    overflow: hidden;
+}
+
+/* --- TOP HEADER --- */
+.top-bar {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.top-bar h1 {
+    font-size: clamp(16px, 1.8vw, 22px); 
+    font-weight: 700;
+}
+
+.how-to-use {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* --- NAVIGATION TABS --- */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    flex-shrink: 0;
+}
+
+.tabs {
+    display: flex;
+    list-style: none;
+    background: #FFFFFF;
+    border-radius: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    padding: 4px;
+}
+
+.tab {
+    display: block;
+    padding: 8px 20px;
+    border: 0;
+    border-radius: 50px;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+
+html{
+    height: 100%;
+}
+
+:focus-visible {
+    outline: 3px solid #b86200;
+    outline-offset: 3px;
+}
+
+/* Dialogs overlay the dashboard instead of pushing charts down. */
+.shared-dialog {
+    margin: auto;
+    width: min(520px, 90vw);
+    padding: 24px;
+    border: 0;
+    border-radius: 16px;
+    color: #1a2b4c;
+    font-family: inherit;
+}
+
+.shared-dialog::backdrop {
+    background: rgb(0 0 0 / 40%);
+}
+
+.shared-dialog p {
+    margin: 16px 0;
+    line-height: 1.6;
+}
+
+/* --- FOOTER --- */
+.bottom-bar {
+    background-color: #1A2B4C;
+    color: #FFFFFF;
+    height: 28px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+    font-size: 11px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.icon-credits {
+    font-size: 10px;
+    color: #A0ABC0;
+}
+
+.icon-credits a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.icon-credits a:hover {
+    text-decoration: underline;
+}
