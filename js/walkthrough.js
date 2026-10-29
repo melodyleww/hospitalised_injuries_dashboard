@@ -1,4 +1,10 @@
 // js/walkthrough.js
+
+// --- GenAI Acknowledgment ---
+// The walkthrough logic, including the localStorage check to show it only once,
+// was generated with the assistance of a large language model.
+// ---
+
 document.addEventListener("DOMContentLoaded", () => {
     // Only run on the National page
     if (document.body.dataset.page !== "national") return;
@@ -40,20 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
             tabHighlight.style.display = "none";
 
             if (targetId === ".tabs") {
-                // Step 1: Highlight the first 3 tabs (National, State, First Nations)
                 const tabsList = document.querySelectorAll(".tabs li a");
                 if (tabsList.length < 3) return;
                 const firstTab = tabsList[0].getBoundingClientRect();
-                const lastTab = tabsList[2].getBoundingClientRect(); // 3rd tab
+                const lastTab = tabsList[2].getBoundingClientRect();
                 tabHighlight.style.display = "block";
                 tabHighlight.style.top = `${firstTab.top - 6}px`; tabHighlight.style.left = `${firstTab.left - 6}px`; tabHighlight.style.width = `${(lastTab.right - firstTab.left) + 12}px`; tabHighlight.style.height = `${firstTab.height + 12}px`;
                 dialog.style.top = `${firstTab.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
             }
             else if (targetId === "aboutTab") {
-                // Step 2: Highlight the 4th tab (About the Data)
                 const tabsList = document.querySelectorAll(".tabs li a");
                 if (tabsList.length < 4) return;
-                const aboutTab = tabsList[3].getBoundingClientRect(); // 4th tab
+                const aboutTab = tabsList[3].getBoundingClientRect();
                 tabHighlight.style.display = "block";
                 tabHighlight.style.top = `${aboutTab.top - 6}px`; tabHighlight.style.left = `${aboutTab.left - 6}px`; tabHighlight.style.width = `${aboutTab.width + 12}px`; tabHighlight.style.height = `${aboutTab.height + 12}px`;
                 dialog.style.top = `${aboutTab.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
@@ -107,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
             overlay.style.display = "none";
             tabHighlight.style.display = "none";
             dialog.close();
+            // Mark the walkthrough as completed in localStorage
+            localStorage.setItem("walkthroughCompleted", "true");
         }
 
         btnNext.addEventListener("click", () => {
@@ -127,19 +133,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         btnSkip.addEventListener("click", endWalkthrough);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const shouldAutoStart = urlParams.get('walkthrough') === 'true';
+        // Check if the user has already completed the walkthrough
+        const walkthroughCompleted = localStorage.getItem("walkthroughCompleted");
 
-        if (shouldAutoStart) {
-            window.history.replaceState({}, document.title, window.location.pathname);
-            setTimeout(startWalkthrough, 300); 
-        } else {
-            setTimeout(startWalkthrough, 800);
+        if (walkthroughCompleted !== "true") {
+            // Only auto-start if not completed before
+            const urlParams = new URLSearchParams(window.location.search);
+            const shouldAutoStart = urlParams.get('walkthrough') === 'true';
+            if (shouldAutoStart) {
+                window.history.replaceState({}, document.title, window.location.pathname);
+                setTimeout(startWalkthrough, 300);
+            } else {
+                setTimeout(startWalkthrough, 800);
+            }
         }
 
         document.body.addEventListener("click", (e) => {
             if (e.target.closest("#sharedHelpButton")) {
                 e.preventDefault();
+                // Manually reset the step and start
                 startWalkthrough();
             }
         });
@@ -150,5 +162,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-    }, 150); 
+    }, 150);
 });
