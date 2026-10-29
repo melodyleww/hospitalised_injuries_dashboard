@@ -47,14 +47,27 @@ document.addEventListener("DOMContentLoaded", async () => {
         drawStateLineChart(injuryData, "lineChart", currentRoadUser, currentStateFilter);
         drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
         drawRoadUserPieChart(injuryData, "roadUserChart", currentYear, currentStateFilter, currentRoadUser, handleRoadUserFilter);
-        
-        // Draw Heatmap (It will handle its own title internally)
         drawAgeHeatmap(injuryData, "ageHeatmap", currentRoadUser, currentStateFilter);
     }
 
+    // Initial Draw
     setTimeout(updateAllCharts, 50);
 
-    // Radio Toggle
+    // --- RESIZE OBSERVER ---
+    let resizeTimeout;
+    const resizeObserver = new ResizeObserver(() => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            updateAllCharts();
+        }, 150); 
+    });
+
+    const gridContainer = document.querySelector('.state-layout-grid');
+    if (gridContainer) {
+        resizeObserver.observe(gridContainer);
+    }
+
+    // Radio Toggle (Count vs Rate)
     const radioButtons = document.querySelectorAll('input[name="viewMode"]');
     radioButtons.forEach(radio => {
         radio.addEventListener('change', (e) => {
@@ -63,12 +76,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    // Year Dropdown (Does NOT update Heatmap or Line Chart)
+    // Year Dropdown
     if (yearSelect) {
         yearSelect.addEventListener("change", (e) => {
             currentYear = +e.target.value;
             if(yearLabel) yearLabel.innerText = currentYear;
-            // Only update Bar and Pie
+            // Only redraw charts affected by year
             drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
             drawRoadUserPieChart(injuryData, "roadUserChart", currentYear, currentStateFilter, currentRoadUser, handleRoadUserFilter);
         });
@@ -82,17 +95,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // Click Bar (State Filter) -> Updates ALL charts including Heatmap
+    // Click Bar (State Filter)
     function handleStateFilter(state) {
         currentStateFilter = (currentStateFilter === state) ? "All" : state;
         updateAllCharts();
     }
 
-    // Click Pie Slice (Road User Filter) -> Updates Line & Bar charts
+    // Click Pie Slice (Road User Filter)
     function handleRoadUserFilter(roadUser) {
         currentRoadUser = (currentRoadUser === roadUser) ? "All" : roadUser;
         if (roadUserSelect) roadUserSelect.value = currentRoadUser;
-        updateAllCharts(); // Heatmap will redraw, but its internal filter won't change (since it's Total age data)
+        updateAllCharts(); 
     }
 
     // Reset Button
@@ -112,4 +125,4 @@ document.addEventListener("DOMContentLoaded", async () => {
             updateAllCharts();
         });
     }
-}); 
+});
