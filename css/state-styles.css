@@ -1,5 +1,12 @@
 /* css/state-styles.css */
 
+.state-layout-grid svg {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+    max-height: 100%;
+}
+
 /* 3-Column Grid Layout */
 .state-layout-grid {
     display: grid;
@@ -135,6 +142,7 @@
     grid-template-rows: auto auto;   /* Row 1: Dropdowns/Buttons, Row 2: Note */
     gap: 10px 20px; /* Row gap, column gap */
     align-items: center;
+    font-size: 14px;
 }
 
 .filter-bar .dropdowns {
