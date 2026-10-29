@@ -11,15 +11,32 @@
     flex-shrink: 0;
 }
 
+/* Container for all filter groups */
 .dropdowns {
     display: flex;
-    gap: 12px;
+    gap: 24px; /* Increased gap to separate the filter groups */
+    align-items: center; /* Vertically center items */
+}
+
+/* Container for one label + dropdown pair */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the label and the dropdown */
+}
+
+/* Style for the label text */
+.filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1A2B4C; /* Navy text to match theme */
+    white-space: nowrap;
 }
 
 /* --- CUSTOM DROPDOWN --- */
 .dropdown-wrapper {
     position: relative;
-    width: 170px;
+    width: 150px; /* Slightly reduced width to fit better */
 }
 
 .dropdown {
@@ -328,4 +345,25 @@
 
 .walkthrough-btn-next:hover {
     opacity: 0.8;
+}
+
+/* --- ACCESSIBILITY FOCUS STATES --- */
+/* Ensures keyboard users can see which element is focused */
+rect:focus, circle:focus {
+    outline: 3px solid #F59E0B; /* A high-contrast focus ring */
+    outline-offset: 2px;
+    opacity: 0.7; /* Also reduce opacity on focus for extra visibility */
+}
+
+/* --- SCREEN READER ONLY (Visually Hidden) --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
