@@ -1,88 +1,165 @@
-/* Source information above three equal explanation cards */
+/* Use the shared dashboard width and available height. */
 .about-dashboard {
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: 14px;
-}
-
-/* Shared appearance for the source box and explanation cards */
-.about-source,
-.about-card {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
-    min-width: 0;
-}
-
-.about-source h2 {
-    font-size: 15px;
-    margin-bottom: 10px;
-}
-
-.about-source p {
-    margin-bottom: 8px;
-}
-
-/* Each dashboard explanation receives the same width */
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
     min-height: 0;
 }
 
-/* Pill badges identifying each dashboard section */
-.about-card .about-badge {
+/* One white panel for the whole page. */
+.about-sheet {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+}
+
+/* Source information separated from the explanations. */
+.about-source {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #d9dfe6;
+}
+
+.about-source h2 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.about-source p + p {
+    margin-top: 6px;
+}
+
+.about-source > a {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+/* Three equal explanation columns. */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 16px;
+    min-height: 0;
+     flex: 1;
+}
+
+.about-section {
+    min-width: 0;
+    padding: 0 18px;
+}
+
+.about-section:first-child {
+    padding-left: 0;
+}
+
+.about-section:last-child {
+    padding-right: 0;
+}
+
+/* Dividers between the explanation columns. */
+.about-section + .about-section {
+    border-left: 2px solid #d9dfe6;
+}
+
+/* Keep your title badges. */
+.about-badge {
     display: inline-block;
     max-width: 100%;
-    padding: 10px 20px;
-    margin-bottom: 18px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
 
-    background-color: #1a2b4c;
+    background: #1a2b4c;
     color: #ffffff;
     border-radius: 9px;
 
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 14px;
     line-height: 1.3;
     text-align: center;
 }
 
-.about-source p,
-.about-card p,
-.about-card li {
+.about-sheet p,
+.about-sheet li {
     font-size: 12px;
     line-height: 1.5;
 }
 
-.about-card > p {
-    margin-bottom: 14px;
+.about-section > p {
+    margin-bottom: 10px;
 }
 
-.about-card ul {
-    padding-left: 20px;
+.about-section ul {
+    padding-left: 18px;
 }
 
-.about-card li + li {
-    margin-top: 10px;
+.about-section li + li {
+    margin-top: 8px;
 }
 
-.about-source a,
-.about-card a {
+.about-sheet a {
     color: #1a2b4c;
-    font-size: 13px;
+    font-size: 12px;
     text-underline-offset: 3px;
     overflow-wrap: anywhere;
 }
 
-.about-card > a {
-    display: inline-block;
-    margin-top: 14px;
+.about-section .about-assessment-note {
+    margin-top: 12px;
+    margin-bottom: 0;
 }
 
-.about-card .about-assessment-note {
-    margin-top: 14px;
-    margin-bottom: 0;
-    font-size: 12px;
+/* Stack explanations with horizontal dividers on narrower screens. */
+@media (max-width: 1100px) {
+    .about-sheet {
+        padding: 14px;
+    }
+
+    .about-source {
+        padding-bottom: 10px;
+    }
+
+    .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(3, auto);
+        align-content: start;
+        margin-top: 0;
+    }
+
+    .about-section {
+        display: block;
+        padding: 10px 0;
+    }
+
+    /* Remove desktop vertical borders. */
+    .about-section + .about-section {
+        border-left: 0;
+        border-top: 1px solid #d9dfe6;
+    }
+
+    .about-section .about-badge {
+        margin: 0 0 7px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .about-sheet p,
+    .about-sheet li {
+        line-height: 1.4;
+    }
+
+    .about-section > p {
+        margin-bottom: 6px;
+    }
+
+    .about-section > p:last-child {
+        margin-bottom: 0;
+    }
+
+    .about-section .about-assessment-note {
+        margin-top: 6px;
+        margin-bottom: 0;
+    }
 }

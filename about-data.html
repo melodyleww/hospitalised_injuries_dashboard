@@ -26,142 +26,146 @@
 
     <main class="dashboard-wrapper about-dashboard">
       <!-- Shared source information -->
-      <section class="about-source" aria-labelledby="aboutTitle">
-        <h2 id="aboutTitle">About the Data</h2>
+      <section class="about-sheet" aria-labelledby="aboutTitle">
+        <div class="about-source">
+          <h2 id="aboutTitle">About the Data</h2>
 
-        <p>
-          This dashboard shows Australian road-crash hospitalisations from
-          <strong>2011–2021</strong>, using BITRE’s September 2023 release based
-          on AIHW hospital data.
-        </p>
+          <p>
+            This dashboard shows Australian road-crash hospitalisations from
+            <strong>2011–2021</strong>, using BITRE’s September 2023 release
+            based on AIHW hospital data.
+          </p>
 
-        <p>
-          Figures describe <strong>hospitalisation cases</strong>, not unique
-          people or crashes.
-        </p>
+          <p>
+            Figures describe <strong>hospitalisation cases</strong>, not unique
+            people or crashes.
+          </p>
 
-        <a
-          href="https://www.bitre.gov.au/resource/road-safety/hospitalised-injury"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View the BITRE dataset and documentation (opens in a new tab)
-        </a>
+          <a
+            href="https://www.bitre.gov.au/resource/road-safety/hospitalised-injury"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View the BITRE dataset and documentation (opens in a new tab)
+          </a>
+        </div>
+        <!-- Three equal cards explaining the dashboard tabs -->
+        <div class="about-grid">
+          <section class="about-section" aria-labelledby="nationalAboutTitle">
+            <h3 id="nationalAboutTitle" class="about-badge">
+              National Overview
+            </h3>
+
+            <p>
+              Explore national changes over time and compare hospitalisations
+              across road-user and age groups.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Total hospitalisations:</strong>
+                recorded number of hospitalisation cases.
+              </li>
+              <li>
+                <strong>Average bed days per case:</strong>
+                total bed days divided by hospitalisations.
+              </li>
+              <li>
+                <strong>Time-series breaks:</strong>
+                Admission-policy changes in
+                <strong>Victoria (2012)</strong> and
+                <strong>NSW (2017)</strong> affect comparisons over time.
+              </li>
+              <li>
+                Changes in bed-day calculation methods also require caution when
+                comparing years.
+              </li>
+            </ul>
+          </section>
+
+          <section class="about-section" aria-labelledby="stateAboutTitle">
+            <h3 id="stateAboutTitle" class="about-badge">State Comparisons</h3>
+
+            <p>
+              Compare hospitalisation trends, road-user composition and age
+              patterns across Australian states and territories.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Counts vs. rates:</strong>
+                Counts show total hospitalisation volume. Rates per 100,000
+                account for population size: hospitalisations ÷ population ×
+                100,000.
+              </li>
+
+              <li>
+                <strong>2021 snapshot:</strong>
+                The rate comparison uses 2021 hospitalisations and
+                <a
+                  href="https://www.abs.gov.au/statistics/people/population/population-census/latest-release"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >ABS 2021 Census population counts</a
+                >.
+              </li>
+
+              <li>
+                Rates account for population size, but not how much people
+                travel.
+              </li>
+
+              <li>
+                <strong>Time-series breaks:</strong>
+                Admission-policy changes in <strong>Victoria (2012)</strong> and
+                <strong>NSW (2017)</strong> affect the respective jurisdiction
+                trends.
+              </li>
+            </ul>
+
+            <p class="about-assessment-note">
+              The assignment brief states, “You are not required to normalise
+              this data to pass this assessment.” Our team includes the 2021
+              rate comparison to account for population-size differences.
+            </p>
+          </section>
+
+          <section class="about-section" aria-labelledby="populationAboutTitle">
+            <h3 id="populationAboutTitle" class="about-badge">
+              Population Comparison
+            </h3>
+
+            <p>
+              Compare First Nations peoples and non-Indigenous Australians by
+              age, counterparty and road-user hospitalisations.
+            </p>
+
+            <ul>
+              <li>
+                <strong>Age and counterparty percentages</strong>
+                describe hospitalisations within each population and selected
+                year. They are not population injury rates.
+              </li>
+              <li>
+                <strong>Counterparty</strong> identifies the other party or
+                object involved, not who caused the crash.
+              </li>
+              <li>
+                <strong>Car occupants</strong> includes drivers, passengers and
+                occupants whose position was unknown.
+              </li>
+              <li>
+                Complete age percentages are unavailable for
+                <strong>2014</strong> because some counts were not published.
+              </li>
+              <li>
+                <strong>“Not published” means unavailable—not zero.</strong>
+                Annual counts require published values for both half-years.
+              </li>
+            </ul>
+          </section>
+        </div>
       </section>
-
-      <!-- Three equal cards explaining the dashboard tabs -->
-      <div class="about-grid">
-        <section class="about-card" aria-labelledby="nationalAboutTitle">
-          <h3 id="nationalAboutTitle" class="about-badge">National Overview</h3>
-
-          <p>
-            Explore national changes over time and compare hospitalisations
-            across road-user and age groups.
-          </p>
-
-          <ul>
-            <li>
-              <strong>Total hospitalisations:</strong>
-              recorded number of hospitalisation cases.
-            </li>
-            <li>
-              <strong>Average bed days per case:</strong>
-              total bed days divided by hospitalisations.
-            </li>
-            <li>
-              <strong>Time-series breaks:</strong>
-              Admission-policy changes in
-              <strong>Victoria (2012)</strong> and
-              <strong>NSW (2017)</strong> affect comparisons over time.
-            </li>
-            <li>
-              Changes in bed-day calculation methods also require caution when
-              comparing years.
-            </li>
-          </ul>
-        </section>
-
-        <section class="about-card" aria-labelledby="stateAboutTitle">
-          <h3 id="stateAboutTitle" class="about-badge">State Comparisons</h3>
-
-          <p>
-            Compare hospitalisation trends, road-user composition and age
-            patterns across Australian states and territories.
-          </p>
-
-          <ul>
-            <li>
-              <strong>Counts vs. rates:</strong>
-              Counts show total hospitalisation volume. Rates per 100,000
-              account for population size: hospitalisations ÷ population ×
-              100,000.
-            </li>
-
-            <li>
-              <strong>2021 snapshot:</strong>
-              The rate comparison uses 2021 hospitalisations and
-              <a
-                href="https://www.abs.gov.au/statistics/people/population/population-census/latest-release"
-                target="_blank"
-                rel="noopener noreferrer"
-                >ABS 2021 Census population counts</a
-              >.
-            </li>
-
-            <li>
-              Rates account for population size, but not how much people travel.
-            </li>
-
-            <li>
-              <strong>Time-series breaks:</strong>
-              Admission-policy changes in <strong>Victoria (2012)</strong> and
-              <strong>NSW (2017)</strong> affect the respective jurisdiction
-              trends.
-            </li>
-          </ul>
-
-          <p class="about-assessment-note">
-            The assignment brief states, “You are not required to normalise this
-            data to pass this assessment.” Our team includes the 2021 rate
-            comparison to account for population-size differences.
-          </p>
-        </section>
-
-        <section class="about-card" aria-labelledby="populationAboutTitle">
-          <h3 id="populationAboutTitle" class="about-badge">
-            Population Comparison
-          </h3>
-
-          <p>
-            Compare First Nations peoples and non-Indigenous Australians by age,
-            counterparty and road-user hospitalisations.
-          </p>
-
-          <ul>
-            <li>
-              <strong>Age and counterparty percentages</strong>
-              describe hospitalisations within each population and selected
-              year. They are not population injury rates.
-            </li>
-            <li>
-              <strong>Counterparty</strong> identifies the other party or object
-              involved, not who caused the crash.
-            </li>
-            <li>
-              <strong>Car occupants</strong> includes drivers, passengers and
-              occupants whose position was unknown.
-            </li>
-            <li>
-              Complete age percentages are unavailable for
-              <strong>2014</strong> because some counts were not published.
-            </li>
-            <li>
-              <strong>“Not published” means unavailable—not zero.</strong>
-              Annual counts require published values for both half-years.
-            </li>
-          </ul>
-        </section>
-      </div>
     </main>
 
     <footer id="site-footer" class="bottom-bar"></footer>
