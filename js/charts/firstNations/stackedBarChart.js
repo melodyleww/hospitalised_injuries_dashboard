@@ -1,14 +1,12 @@
 //counterparty
-import { COLORS, COUNTERPARTY_COLORS } from "../../config.js";
+import {
+  COLORS,
+  COUNTERPARTY_COLORS,
+  POPULATION_ORDER,
+  POPULATION_LABELS,
+} from "../../config.js";
 import { attachTooltip, hideTooltip } from "../../utils/tooltip.js";
 import { drawLegend } from "../../utils/legend.js";
-
-const POPULATION_ORDER = ["First Nations people", "Non-Indigenous"];
-
-const POPULATION_LABELS = {
-  "First Nations people": "First Nations peoples",
-  "Non-Indigenous": "Non-Indigenous Australians",
-};
 
 const COUNTERPARTY_ORDER = [
   "Car, pick-up truck or van",
@@ -66,7 +64,7 @@ export function drawStackedBarChart(rows) {
     top: 8,
     right: 15,
     bottom: 30,
-    left: 175,
+    left: 160,
   };
 
   const innerWidth = width - margin.left - margin.right;
@@ -110,16 +108,13 @@ export function drawStackedBarChart(rows) {
         .tickFormat((value) => `${value}%`),
     );
 
-  innerChart
-    .append("g")
-    .call(
-      d3
-        .axisLeft(yScale)
-        .tickSize(0)
-        .tickPadding(8)
-        .tickFormat((population) => POPULATION_LABELS[population]),
-    )
-    .call((group) => group.select(".domain").remove());
+  innerChart.append("g").call(
+    d3
+      .axisLeft(yScale)
+      .tickSize(4)
+      .tickPadding(8)
+      .tickFormat((population) => POPULATION_LABELS[population]),
+  );
 
   // Stacked segments
   // Convert long-format records into one object per population.
@@ -217,8 +212,14 @@ export function drawStackedBarChart(rows) {
     // Dark text on the lighter blue; white on the darker colours
     .attr("fill", COLORS.white)
 
-    // Hide labels that cannot fit inside narrow segment
+    // Hide all labels when the drawing area is too small.
     .text((segment) => {
+      const compact = innerWidth < 300 || yScale.bandwidth() < 18;
+
+      if (compact) {
+        return "";
+      }
+
       const segmentWidth = xScale(segment.end) - xScale(segment.start);
 
       return segmentWidth >= 50

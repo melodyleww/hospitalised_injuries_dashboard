@@ -195,6 +195,18 @@
     pointer-events: none; /*let pointer reach underneath the text*/
 }
 
+.fn-road-missing {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #536174;
+}
+
+.fn-road-count {
+    font-family: inherit;
+    font-size: 12px;
+    fill: #1A2B4C;
+}
+
 .fn-note {
     flex-shrink: 0;
     color: #536174;
