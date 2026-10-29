@@ -30,3 +30,12 @@ export const COUNTERPARTY_COLORS = [
   COLORS.green,
   COLORS.orange,
 ];
+
+// Source values: used for filtering and consistent chart order
+export const POPULATION_ORDER = ["First Nations people", "Non-Indigenous"];
+
+// Display labels: used for axes, legends and descriptions
+export const POPULATION_LABELS = {
+  "First Nations people": "First Nations peoples",
+  "Non-Indigenous": "Non-Indigenous Australians",
+};

@@ -1,13 +1,10 @@
 //age paired bar chart
-import { POPULATION_COLORS } from "../../config.js";
+import { POPULATION_COLORS, POPULATION_ORDER } from "../../config.js";
 import { attachTooltip, hideTooltip } from "../../utils/tooltip.js";
-import { drawLegend } from "../../utils/legend.js";
+import { drawPopulationLegend } from "../../utils/legend.js";
 
 // Keep age categories in their natural order.
 const AGE_ORDER = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
-
-// Population
-const POPULATION_ORDER = ["First Nations people", "Non-Indigenous"];
 
 export function drawAgeChart(rows) {
   const container = document.getElementById("fnAgeChart");
@@ -17,17 +14,7 @@ export function drawAgeChart(rows) {
   // Remove the previous chart when a filter change
   container.replaceChildren();
 
-  // Keep both population entries visible, as chosen for this page.
-  drawLegend("fnAgeLegend", [
-    {
-      label: "First Nations peoples",
-      color: POPULATION_COLORS["First Nations people"],
-    },
-    {
-      label: "Non-Indigenous Australians",
-      color: POPULATION_COLORS["Non-Indigenous"],
-    },
-  ]);
+  drawPopulationLegend("fnAgeLegend");
 
   // Do not draw an incomplete percentage distribution
   if (
@@ -52,7 +39,7 @@ export function drawAgeChart(rows) {
     top: 10,
     right: 20,
     bottom: 40,
-    left: 65,
+    left: 60,
   };
 
   const innerWidth = width - margin.left - margin.right;
@@ -63,7 +50,7 @@ export function drawAgeChart(rows) {
     return;
   }
 
-  // Create the outer SVG.
+  // Create the outer SVG
   const svg = d3
     .select(container)
     .append("svg")
