@@ -19,6 +19,8 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
 
     const svg = d3.select(`#${containerId}`)
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
     addAriaLabel(svg, `Hospitalisations by state for ${selectedYear}.`);
