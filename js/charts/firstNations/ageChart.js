@@ -1,24 +1,35 @@
+//age paired bar chart
+import { POPULATION_COLORS } from "../../config.js";
+import { attachTooltip, hideTooltip } from "../../utils/tooltip.js";
+import { drawLegend } from "../../utils/legend.js";
+
 // Keep age categories in their natural order.
 const AGE_ORDER = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
 
 // Population
 const POPULATION_ORDER = ["First Nations people", "Non-Indigenous"];
-// Use the same population colours across the dashboard
-const POPULATION_COLORS = {
-  "First Nations people": "#3864A0",
-  "Non-Indigenous": "#287A5B",
-};
 
 export function drawAgeChart(rows) {
   const container = document.getElementById("fnAgeChart");
 
-  const tooltip = document.getElementById("fnTooltip");
-  tooltip.hidden = true;
+  hideTooltip();
 
-  // Remove the previous chart when a filter changes.
+  // Remove the previous chart when a filter change
   container.replaceChildren();
 
-  // Do not draw an incomplete percentage distribution.
+  // Keep both population entries visible, as chosen for this page.
+  drawLegend("fnAgeLegend", [
+    {
+      label: "First Nations peoples",
+      color: POPULATION_COLORS["First Nations people"],
+    },
+    {
+      label: "Non-Indigenous Australians",
+      color: POPULATION_COLORS["Non-Indigenous"],
+    },
+  ]);
+
+  // Do not draw an incomplete percentage distribution
   if (
     rows.length === 0 ||
     rows.some((row) => row.hospitalisation_share_pct === null)
@@ -33,7 +44,7 @@ export function drawAgeChart(rows) {
     return;
   }
 
-  // Measure the available card space instead of using fixed heights.
+  // Measure the available card space instead of using fixed height
   const width = container.clientWidth;
   const height = container.clientHeight;
 
@@ -59,7 +70,7 @@ export function drawAgeChart(rows) {
     .attr("width", width)
     .attr("height", height)
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("role", "img")
+    .attr("role", "group")
     .attr("aria-label", "Age distribution of hospitalisations");
 
   // Move the drawing origin inside the margins.
@@ -129,57 +140,13 @@ export function drawAgeChart(rows) {
     .attr("height", populationScale.bandwidth())
     .attr("fill", (row) => POPULATION_COLORS[row.first_nations_status]);
 
-  // Describe only the record attached to this bar.
-  function describeBar(row) {
-    return [
-      `Age group: ${row.category}`,
+  // Supply age-specific content to the shared tooltip
+  attachTooltip(bars, (row) => ({
+    title: `Age group: ${row.category}`,
+    lines: [
       `Hospitalisations: ${d3.format(",d")(row.hospitalisations)}`,
-      `Share within population: ${row.hospitalisation_share_pct.toFixed(2)}%`,
-    ].join("\n");
-  }
-
-  // Mouse and keyboard focus show the same information.
-  function showTooltip(event, row) {
-    tooltip.textContent = describeBar(row);
-    tooltip.hidden = false;
-
-    const bounds = event.currentTarget.getBoundingClientRect();
-
-    const anchorX = event.type === "focus" ? bounds.right : event.clientX;
-
-    const anchorY = event.type === "focus" ? bounds.top : event.clientY;
-
-    tooltip.style.left = `${Math.max(
-      12,
-      Math.min(anchorX + 12, window.innerWidth - tooltip.offsetWidth - 12),
-    )}px`;
-
-    tooltip.style.top = `${Math.max(
-      12,
-      Math.min(anchorY + 12, window.innerHeight - tooltip.offsetHeight - 12),
-    )}px`;
-  }
-
-  function hideTooltip() {
-    tooltip.hidden = true;
-  }
-
-  // Attach interactions directly to the visible bars.
-  bars
-    .attr("tabindex", 0)
-    .attr("role", "group")
-    .attr(
-      "aria-label",
-      (row) => `${row.first_nations_status}, ${row.year}. ${describeBar(row)}`,
-    )
-    .on("mouseenter", showTooltip)
-    .on("mousemove", showTooltip)
-    .on("mouseleave", hideTooltip)
-    .on("focus", showTooltip)
-    .on("blur", hideTooltip)
-    .on("keydown", (event) => {
-      if (event.key === "Escape") {
-        hideTooltip();
-      }
-    });
+      `Share: ${row.hospitalisation_share_pct.toFixed(2)}%`,
+    ],
+    context: `${row.first_nations_status}, ${row.year}`,
+  }));
 }
