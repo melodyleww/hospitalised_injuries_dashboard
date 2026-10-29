@@ -1,4 +1,4 @@
-//shared page structure
+// js/components/layout.js
 const pageSettings = {
     national: {
         note: "Counts are not adjusted for population size.",
@@ -96,10 +96,8 @@ function renderSharedLayout() {
         dialog.showModal();
     }
 
-    document.getElementById("sharedHelpButton")
-        .addEventListener("click", () => {
-            openDialog("How to use", settings.help);
-        });
+    // --- REMOVED the sharedHelpButton event listener here ---
+    // The walkthrough.js will handle the "How to use" button click
 
     document.getElementById("sharedAboutButton")
         .addEventListener("click", () => {
