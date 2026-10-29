@@ -1,4 +1,4 @@
-//shared page structure
+// js/components/layout.js
 const pageSettings = {
   national: {
     note: "Counts are not adjusted for population size.",
@@ -107,9 +107,17 @@ function renderSharedLayout() {
     document.getElementById("sharedDialogText").textContent = text;
     dialog.showModal();
   }
+  // --- REMOVED the sharedHelpButton event listener here ---
+  // The walkthrough.js will handle the "How to use" button click
 
-  document.getElementById("sharedHelpButton").addEventListener("click", () => {
-    openDialog("How to use", settings.help);
+  document.getElementById("sharedAboutButton").addEventListener("click", () => {
+    openDialog(
+      "About the data",
+      "BITRE’s September 2023 release uses AIHW hospital data " +
+        "for 2011–2021. Figures describe hospitalisation cases, " +
+        "not unique people or crashes. Admission-policy changes " +
+        "and unpublished values affect some comparisons.",
+    );
   });
 }
 

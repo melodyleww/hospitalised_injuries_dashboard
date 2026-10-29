@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +9,19 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body data-page="national">
 
-<header id="site-header" class="top-bar"></header>
+    <header id="site-header" class="top-bar"></header>
 
-<nav
-    id="site-navigation"
-    class="tabs-container"
-    aria-label="Dashboard sections">
-</nav>
+    <nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections">
+    </nav>
 
     <main class="dashboard-wrapper">
-        
+
         <section class="filter-bar">
             <div class="dropdowns">
-                
+
                 <!-- Year Dropdown: "All" selected by default -->
                 <div class="dropdown-wrapper">
                     <select id="yearFilter" class="dropdown">
@@ -58,22 +57,24 @@
                 </div>
 
             </div>
-            
+
             <div class="buttons">
                 <button class="btn btn-reset">Reset</button>
             </div>
 
-            <p class="filter-note"><strong>Note:</strong> The Year filter updates the KPI cards and the two Bar charts. The Road User filter cross-filters the Bar charts and Age chart. The Line chart shows the full unfiltered timeline.</p>
+            <p class="filter-note"><strong>Note:</strong> The Year filter updates the KPI cards and the two Bar charts.
+                The Road User filter cross-filters the Bar charts and Age chart. The Line chart shows the full
+                unfiltered timeline.</p>
         </section>
 
         <section class="charts-grid">
-            
+
             <div class="card line-chart-card">
                 <div class="line-section">
                     <h2>National Trend (2011 - 2021)</h2>
                     <div id="lineChart" class="chart-area"></div>
                 </div>
-                
+
                 <div class="divider"></div>
 
                 <div class="guide-section">
@@ -113,10 +114,31 @@
         </section>
     </main>
 
-<footer id="site-footer" class="bottom-bar"></footer>
+    <footer id="site-footer" class="bottom-bar"></footer>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/components/layout.js"></script>
+    <script type="module" src="js/walkthrough.js"></script>
+
+    <!-- Walkthrough Overlay & Modal -->
+    <div id="walkthroughOverlay" class="walkthrough-overlay" style="display: none;"></div>
+    <!-- The spotlight for the tabs -->
+    <div id="walkthroughTabHighlight" class="walkthrough-tab-highlight" style="display: none;"></div>
+
+    <dialog id="walkthroughDialog" class="walkthrough-dialog" aria-labelledby="walkthroughTitle">
+        <h2 id="walkthroughTitle" class="walkthrough-step">Step 1/5</h2>
+        <p id="walkthroughText" class="walkthrough-text"></p>
+
+        <div class="walkthrough-actions">
+            <button id="walkthroughSkip" class="walkthrough-link">Skip for now</button>
+            <div class="walkthrough-nav">
+                <button id="walkthroughPrev" class="walkthrough-btn-prev" style="display: none;">Prev</button>
+                <button id="walkthroughNext" class="walkthrough-btn-next">Next</button>
+            </div>
+        </div>
+    </dialog>
+
 </body>
+
 </html>

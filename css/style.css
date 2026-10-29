@@ -222,3 +222,110 @@
     left: 10px;
 }
 
+/* --- WALKTHROUGH STYLES --- */
+.walkthrough-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 999;
+    pointer-events: none; 
+}
+
+/* The spotlight that sits on top of the dim background, but under the tabs */
+.walkthrough-tab-highlight {
+    position: fixed;
+    background: transparent; /* Make the background see-through so text shows */
+    border-radius: 50px;
+    z-index: 1000; 
+    
+    /* This creates the dark overlay everywhere EXCEPT inside this box */
+    box-shadow: 0 0 0 9999px rgba(30, 30, 30, 0.6); 
+    
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.walkthrough-dialog {
+    position: fixed;
+    /* Default centered position */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 411px;
+    padding: 24px;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* Highest so it's always clickable */
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.walkthrough-dialog::backdrop {
+    background: transparent; 
+}
+
+.walkthrough-step {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A2B4C;
+    margin: 0 0 15px 0;
+}
+
+.walkthrough-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1A2B4C;
+    line-height: 1.5;
+    margin: 0 0 30px 0;
+}
+
+.walkthrough-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.walkthrough-link {
+    background: none;
+    border: none;
+    color: #1E1E1E;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+}
+
+.walkthrough-nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.walkthrough-btn-prev {
+    background: none;
+    border: none;
+    color: #1E1E1E;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.walkthrough-btn-next {
+    background: #1A2B4C;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.walkthrough-btn-next:hover {
+    opacity: 0.8;
+}
