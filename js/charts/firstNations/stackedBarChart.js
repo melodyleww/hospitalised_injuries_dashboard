@@ -63,7 +63,7 @@ export function drawStackedBarChart(rows) {
   const margin = {
     top: 8,
     right: 15,
-    bottom: 30,
+    bottom: 40,
     left: 160,
   };
 
@@ -115,6 +115,14 @@ export function drawStackedBarChart(rows) {
       .tickPadding(8)
       .tickFormat((population) => POPULATION_LABELS[population]),
   );
+
+  svg
+    .append("text")
+    .attr("class", "fn-axis-title")
+    .attr("x", margin.left + innerWidth / 2)
+    .attr("y", height - 5)
+    .attr("text-anchor", "middle")
+    .text("Hospitalisations within each population (%)");
 
   // Stacked segments
   // Convert long-format records into one object per population.
