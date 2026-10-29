@@ -101,21 +101,34 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("stroke-width", 1)
         .style("cursor", "pointer");
 
-    // 7. Data Quality Breaks
+    // 7. Data Quality Breaks (Using Background Shading)
     const breakYears = [2012, 2017];
-    breakYears.forEach(year => {
-        if (x(year)) { // Only draw if the year exists in the current x-axis domain
-            svg.append("line")
-                .attr("x1", x(year)).attr("x2", x(year))
-                .attr("y1", 0).attr("y2", height)
-                .attr("stroke", COLORS.warning).attr("stroke-width", 1.5).attr("stroke-dasharray", "5,5");
 
+    // Calculate the width of a "band" (e.g., half a year's width)
+    const bandWidth = x.step() * 0.5 || 20;
+
+    breakYears.forEach(year => {
+        if (x(year)) {
+            // Draw a subtle grey vertical band
+            svg.append("rect")
+                .attr("x", x(year) - bandWidth / 2)
+                .attr("y", 0)
+                .attr("width", bandWidth)
+                .attr("height", height)
+                .attr("fill", "#bbbdbf")
+                .attr("opacity", 0.5)
+                .style("pointer-events", "none");
+
+            // Draw the annotation text at the top
             svg.append("text")
-                .attr("x", x(year) + 5)
-                .attr("y", 15)
+                .attr("x", x(year))
+                .attr("y", -5) // Just above the chart area
+                .attr("text-anchor", "middle")
                 .text(year === 2012 ? "Vic break" : "NSW break")
-                .style("font-family", "Poppins").style("font-size", "9px")
-                .style("fill", COLORS.warning).style("font-weight", "bold");
+                .style("font-family", "Poppins")
+                .style("font-size", "9px")
+                .style("fill", COLORS.warning)
+                .style("font-weight", "bold");
         }
     });
 
