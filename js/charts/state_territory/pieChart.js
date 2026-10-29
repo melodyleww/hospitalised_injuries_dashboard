@@ -7,19 +7,22 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const width = container.clientWidth || 350; 
-    const height = 400; 
-    const chartHeight = 250;
-    const radius = Math.min(width, chartHeight) / 2 - 20;
+    const width = container.clientWidth;
+    const height = container.clientHeight; 
+
+    const legendSpace = 80; 
+    const chartHeight = height - legendSpace; 
+    const radius = Math.min(width, chartHeight) / 2 - 10;
 
     d3.select(`#${containerId}`).html("");
+    // CRITICAL: Remove ALL old tooltips so they don't stack up invisibly
     d3.selectAll(".pie-tooltip").remove();
 
     const svg = d3.select(`#${containerId}`)
         .append("svg")
         .attr("width", width)
         .attr("height", height)
-        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("viewBox", `0 0 ${width} ${height}`) 
         .attr("preserveAspectRatio", "xMidYMid meet");
 
     const chartGroup = svg.append("g")
@@ -48,17 +51,10 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
 
     const tooltip = d3.select("body").append("div")
         .attr("class", "pie-tooltip")
-        .style("opacity", 0)
-        .style("position", "absolute")
-        .style("background", COLORS.text)
-        .style("color", "#fff")
-        .style("padding", "5px 10px")
-        .style("border-radius", "5px")
-        .style("font-size", "12px")
-        .style("pointer-events", "none")
-        .style("z-index", "1000");
+        .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
+        .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
+        .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    // FLAG to stop hover events right after a click
     let isClicking = false;
 
     const slices = chartGroup.selectAll(".slice")
@@ -74,46 +70,38 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .style("transition", "opacity 0.2s")
         
         .on("mouseover", function(event, d) {
-            // If we just clicked, ignore this hover
             if (isClicking) return;
-
-            // Restore normal opacity for the hovered slice
             d3.select(this).style("opacity", 0.8);
-            
             tooltip.style("opacity", 1)
                 .html(`<strong>${d.data.category}</strong><br>Count: ${formatNumber(d.data.value)}`)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
-        
         .on("mouseout", function(event, d) {
-            if (isClicking) return;
-
-            // Restore opacity based on filter state
+            // CRITICAL FIX: Also block mouseout if we are clicking!
+            if (isClicking) return; 
+            
             d3.select(this).style("opacity", selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3);
             tooltip.style("opacity", 0);
         })
-
         .on("click", function(event, d) {
-            // 1. Hide tooltip
+            // Hide the tooltip immediately
             tooltip.style("opacity", 0);
             
-            // 2. Set the flag to block mouseover events
+            // Set the flag to block hover events
             isClicking = true;
             
-            // 3. Redraw the chart (this destroys the current DOM)
+            // Trigger the redraw
             const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
             if (onFilter) onFilter(newRoadUser);
-
-            // 4. Wait 300ms, then allow hover events again
-            setTimeout(() => {
-                isClicking = false;
-            }, 300);
+            
+            // Unblock hover events after the chart redraws
+            setTimeout(() => { isClicking = false; }, 300);
         });
 
-    // --- LEGEND BELOW CHART ---
+    // --- LEGEND ---
     const legendGroup = svg.append("g")
-        .attr("transform", `translate(10, ${chartHeight + 20})`); 
+        .attr("transform", `translate(10, ${chartHeight + 5})`); 
 
     const itemsPerCol = Math.ceil(pieData.length / 2);
     
@@ -122,21 +110,21 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         const row = i % itemsPerCol;
         
         const xOffset = col * (width / 2); 
-        const yOffset = row * 20; 
+        const yOffset = row * 16; 
 
         const legendRow = legendGroup.append("g")
             .attr("transform", `translate(${xOffset}, ${yOffset})`);
         
         legendRow.append("rect")
             .attr("x", 0).attr("y", 0)
-            .attr("width", 12).attr("height", 12)
+            .attr("width", 10).attr("height", 10)
             .attr("fill", colorScale(d.category));
 
         legendRow.append("text")
-            .attr("x", 18).attr("y", 10)
+            .attr("x", 15).attr("y", 9)
             .text(d.category)
             .style("font-family", "Poppins")
-            .style("font-size", "11px")
+            .style("font-size", "10px")
             .style("fill", COLORS.text)
             .style("alignment-baseline", "middle");
     });

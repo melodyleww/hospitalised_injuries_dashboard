@@ -19,9 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const yearSelect = document.getElementById("yearFilter");
     const roadUserSelect = document.getElementById("roadUserFilter");
     const lineChartTitle = document.getElementById("lineChartTitle"); 
+    const pieChartTitle = document.getElementById("pieChartTitle");
 
     const { injuryData, populationMap } = await loadStateData();
     
+    // --- TITLE UPDATERS ---
     function updateLineChartTitle() {
         if (!lineChartTitle) return;
         let title = "Annual Hospitalisation Trends ";
@@ -39,10 +41,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // --- MASTER RENDER FUNCTION ---
+    function updatePieChartTitle() {
+        if (!pieChartTitle) return;
+        let title = "Road User Composition ";
+        title += (currentStateFilter !== "All") ? `(${currentStateFilter}, ${currentYear})` : `(${currentYear})`;
+        pieChartTitle.innerText = title;
+    }
+
+    // --- MASTER RENDER ---
     function updateAllCharts() {
         updateLineChartTitle();
         updateBarChartTitle();
+        updatePieChartTitle();
         
         drawStateLineChart(injuryData, "lineChart", currentRoadUser, currentStateFilter);
         drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
@@ -50,7 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         drawAgeHeatmap(injuryData, "ageHeatmap", currentRoadUser, currentStateFilter);
     }
 
-    // Initial Draw
     setTimeout(updateAllCharts, 50);
 
     // --- RESIZE OBSERVER ---
@@ -61,13 +70,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             updateAllCharts();
         }, 150); 
     });
-
     const gridContainer = document.querySelector('.state-layout-grid');
     if (gridContainer) {
         resizeObserver.observe(gridContainer);
     }
 
-    // Radio Toggle (Count vs Rate)
+    // --- EVENT LISTENERS ---
+
+    // Radio Toggle
     const radioButtons = document.querySelectorAll('input[name="viewMode"]');
     radioButtons.forEach(radio => {
         radio.addEventListener('change', (e) => {
@@ -81,7 +91,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         yearSelect.addEventListener("change", (e) => {
             currentYear = +e.target.value;
             if(yearLabel) yearLabel.innerText = currentYear;
-            // Only redraw charts affected by year
+            
+            updateBarChartTitle();
+            updatePieChartTitle();
+
             drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
             drawRoadUserPieChart(injuryData, "roadUserChart", currentYear, currentStateFilter, currentRoadUser, handleRoadUserFilter);
         });

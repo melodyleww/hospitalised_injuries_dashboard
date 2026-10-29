@@ -6,9 +6,9 @@ import { addAriaLabel } from '../../utils/accessibility.js';
 export function drawStateLineChart(data, containerId, selectedRoadUser = "All", selectedState = "All") {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     // Increase right margin to fit the legend
-    const margin = { top: 20, right: 120, bottom: 40, left: 60 };
+    const margin = { top: 20, right: 200, bottom: 40, left: 60 };
     const width = container.clientWidth - margin.left - margin.right;
     const height = container.clientHeight - margin.top - margin.bottom;
 
@@ -80,7 +80,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     // 5. Draw Lines
     groupedData.forEach((values, jurisdiction) => {
         svg.append("path")
-            .datum(values.sort((a,b) => a.year - b.year))
+            .datum(values.sort((a, b) => a.year - b.year))
             .attr("fill", "none")
             .attr("stroke", colorScale(jurisdiction))
             .attr("stroke-width", 2)
@@ -95,9 +95,9 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("class", "marker")
         .attr("cx", d => x(d.year))
         .attr("cy", d => y(d.hospitalisations))
-        .attr("r", 3.5) 
+        .attr("r", 3.5)
         .attr("fill", d => colorScale(d.jurisdiction))
-        .attr("stroke", "#FFFFFF") 
+        .attr("stroke", "#FFFFFF")
         .attr("stroke-width", 1)
         .style("cursor", "pointer");
 
@@ -126,24 +126,34 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
     svg.selectAll(".marker")
-        .on("mouseover", function(event, d) {
-            d3.select(this).attr("r", 6); 
+        .on("mouseover", function (event, d) {
+            d3.select(this).attr("r", 6);
             tooltip.style("opacity", 1)
                 .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Count: ${formatNumber(d.hospitalisations)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", function() {
-            d3.select(this).attr("r", 3.5); 
+        .on("mouseout", function () {
+            d3.select(this).attr("r", 3.5);
             tooltip.style("opacity", 0);
         });
 
-    // 9. Legend (Only shows the states currently drawn)
+    // 9. Legend (2-column layout to save vertical space)
     const legendGroup = svg.append("g")
         .attr("transform", `translate(${width + 20}, 10)`);
 
+    // Calculate how many items per column (e.g. 8 items = 4 per column)
+    const itemsPerCol = Math.ceil(jurisdictions.length / 2);
+
     jurisdictions.forEach((jurisdiction, i) => {
+        const col = Math.floor(i / itemsPerCol); // 0 or 1
+        const row = i % itemsPerCol;
+
+        // Shift the second column to the right by 60px
+        const xOffset = col * 60;
+        const yOffset = row * 20;
+
         const legendRow = legendGroup.append("g")
-            .attr("transform", `translate(0, ${i * 20})`);
+            .attr("transform", `translate(${xOffset}, ${yOffset})`);
 
         legendRow.append("rect")
             .attr("x", 0).attr("y", 0)
@@ -151,7 +161,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
             .attr("fill", colorScale(jurisdiction));
 
         legendRow.append("text")
-            .attr("x", 20).attr("y", 10)
+            .attr("x", 18).attr("y", 10)
             .text(jurisdiction)
             .style("font-family", "Poppins")
             .style("font-size", "11px")
