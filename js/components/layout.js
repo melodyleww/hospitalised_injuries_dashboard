@@ -1,28 +1,32 @@
 // js/components/layout.js
 const pageSettings = {
-    national: {
-        note: "Counts are not adjusted for population size.",
-        help: "Choose a year or road-user group to explore the national charts."
-    },
-    state: {
-        note: "Read chart labels to distinguish counts from population rates.",
-        help: "Use the available filters to compare states and territories."
-    },
-    firstNations: {
-        note: "Counts and within-population percentages are not population injury rates.",
-        help: "Choose a year and population. Missing values are not zero."
-    }
+  national: {
+    note: "Counts are not adjusted for population size.",
+    help: "Choose a year or road-user group to explore the national charts.",
+  },
+  state: {
+    note: "Read chart labels to distinguish counts from population rates.",
+    help: "Use the available filters to compare states and territories.",
+  },
+  firstNations: {
+    note: "Counts and within-population percentages are not population injury rates.",
+    help: "Choose a year and population. Missing values are not zero.",
+  },
+  about: {
+    note: "Read definitions and limitations before interpreting comparisons.",
+    help: "Choose a topic to read about its data, measures and limitations.",
+  },
 };
 
 function renderSharedLayout() {
-    const page = document.body.dataset.page;
-    const settings = pageSettings[page];
+  const page = document.body.dataset.page;
+  const settings = pageSettings[page];
 
-    if (!settings) {
-        throw new Error("Unknown dashboard page: " + page);
-    }
+  if (!settings) {
+    throw new Error("Unknown dashboard page: " + page);
+  }
 
-    document.getElementById("site-header").innerHTML = `
+  document.getElementById("site-header").innerHTML = `
         <h1>
             Hospitalised Injuries from Road Crashes
             in Australia (2011–2021)
@@ -35,15 +39,26 @@ function renderSharedLayout() {
         </button>
     `;
 
-    const links = [
-        { id: "national", label: "National Overview", href: "index.html" },
-        { id: "state", label: "State Comparisons", href: "state-comparisons.html" },
-        { id: "firstNations", label: "Population Comparison", href: "first-nations.html" }
-    ];
+  const links = [
+    { id: "national", label: "National Overview", href: "index.html" },
+    { id: "state", label: "State Comparisons", href: "state-comparisons.html" },
+    {
+      id: "firstNations",
+      label: "Population Comparison",
+      href: "first-nations.html",
+    },
+    {
+      id: "about",
+      label: "About the Data",
+      href: "about-data.html",
+    },
+  ];
 
-    document.getElementById("site-navigation").innerHTML = `
+  document.getElementById("site-navigation").innerHTML = `
         <ul class="tabs">
-            ${links.map(link => `
+            ${links
+              .map(
+                (link) => `
                 <li>
                     <a
                         class="tab ${link.id === page ? "active" : ""}"
@@ -52,18 +67,15 @@ function renderSharedLayout() {
                         ${link.label}
                     </a>
                 </li>
-            `).join("")}
-            <li>
-                <button id="sharedAboutButton" class="tab" type="button">
-                    About the Data
-                </button>
-            </li>
+            `,
+              )
+              .join("")}
         </ul>
     `;
 
-    const footer = document.getElementById("site-footer");
+  const footer = document.getElementById("site-footer");
 
-    footer.innerHTML = `
+  footer.innerHTML = `
         <p>Data Source: BITRE / AIHW | ${settings.note}</p>
         <p class="icon-credits">
             Icons by
@@ -75,12 +87,12 @@ function renderSharedLayout() {
         </p>
     `;
 
-    // About the Data dialog
-    const dialog = document.createElement("dialog");
-    dialog.className = "shared-dialog";
-    dialog.setAttribute("aria-labelledby", "sharedDialogTitle");
+  // Shared dialog: opened above the dashboard without changing its layout.
+  const dialog = document.createElement("dialog");
+  dialog.className = "shared-dialog";
+  dialog.setAttribute("aria-labelledby", "sharedDialogTitle");
 
-    dialog.innerHTML = `
+  dialog.innerHTML = `
         <h2 id="sharedDialogTitle"></h2>
         <p id="sharedDialogText"></p>
         <form method="dialog">
@@ -88,13 +100,15 @@ function renderSharedLayout() {
         </form>
     `;
 
-    document.body.append(dialog);
+  document.body.append(dialog);
 
-    function openDialog(title, text) {
-        document.getElementById("sharedDialogTitle").textContent = title;
-        document.getElementById("sharedDialogText").textContent = text;
-        dialog.showModal();
-    }
+  function openDialog(title, text) {
+    document.getElementById("sharedDialogTitle").textContent = title;
+    document.getElementById("sharedDialogText").textContent = text;
+    dialog.showModal();
+  }
+  // --- REMOVED the sharedHelpButton event listener here ---
+  // The walkthrough.js will handle the "How to use" button click
 
     // Handle "How to use" button click
     document.getElementById("sharedHelpButton")
@@ -125,6 +139,15 @@ function renderSharedLayout() {
             }
             openDialog("About the data", aboutText);
         });
+  document.getElementById("sharedAboutButton").addEventListener("click", () => {
+    openDialog(
+      "About the data",
+      "BITRE’s September 2023 release uses AIHW hospital data " +
+        "for 2011–2021. Figures describe hospitalisation cases, " +
+        "not unique people or crashes. Admission-policy changes " +
+        "and unpublished values affect some comparisons.",
+    );
+  });
 }
 
 renderSharedLayout();
