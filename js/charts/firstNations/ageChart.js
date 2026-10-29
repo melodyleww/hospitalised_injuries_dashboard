@@ -24,9 +24,7 @@ export function drawAgeChart(rows) {
     const message = document.createElement("p");
     message.className = "fn-chart-message";
     message.textContent =
-      "Complete age percentages are unavailable " +
-      "because some age counts were not published.";
-
+      "Age percentages are unavailable for 2014 due to unpublished counts";
     container.append(message);
     return;
   }
@@ -60,7 +58,7 @@ export function drawAgeChart(rows) {
     .attr("role", "group")
     .attr("aria-label", "Age distribution of hospitalisations");
 
-  // Move the drawing origin inside the margins.
+  // Move the drawing origin inside the margins
   const innerChart = svg
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -69,14 +67,14 @@ export function drawAgeChart(rows) {
   // Keep the same scale across years and populations.
   const xScale = d3.scaleLinear().domain([0, 40]).range([0, innerWidth]);
 
-  // Vertical position represents the six age categories.
+  // Vertical position represents the six age categories
   const yScale = d3
     .scaleBand()
     .domain(AGE_ORDER)
     .range([0, innerHeight])
     .padding(0.2);
 
-  // Bottom percentage axis.
+  // Bottom percentage axis
   innerChart
     .append("g")
     .attr("transform", `translate(0, ${innerHeight})`)
@@ -87,32 +85,32 @@ export function drawAgeChart(rows) {
         .tickFormat((value) => `${value}%`),
     );
 
-  // Left age-group axis.
+  // Left age-group axis
   innerChart.append("g").call(d3.axisLeft(yScale).tickSize(4).tickPadding(8));
 
-  // Horizontal-axis label.
+  // Horizontal-axis label
   svg
     .append("text")
     .attr("class", "fn-axis-title")
     .attr("x", margin.left + innerWidth / 2)
     .attr("y", height - 5)
     .attr("text-anchor", "middle")
-    .text("Share within population (%)");
+    .text("Hospitalisations within each population (%)");
 
-  // Grouped bars
-  // Identify the populations included in the current selection.
+  // Grouped bar
+  // Identify the populations included in the current selection
   const populations = POPULATION_ORDER.filter((population) =>
     rows.some((row) => row.first_nations_status === population),
   );
 
-  // Divide each age row into one or two population slots.
+  // Divide each age row into one or two population slots
   const populationScale = d3
     .scaleBand()
     .domain(populations)
     .range([0, yScale.bandwidth()])
     .padding(0.12);
 
-  // Draw one rectangle for each age/population record.
+  // Draw one rectangle for each age/population record
   const bars = innerChart
     .selectAll(".fn-age-bar")
     .data(rows, (row) => `${row.category}-${row.first_nations_status}`)

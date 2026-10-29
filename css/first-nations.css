@@ -78,10 +78,9 @@
     flex: 1;
     min-height: 0;
     min-width: 0;
-
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1.25fr) minmax(0, 1fr);
     grid-template-areas:
         "age road"
         "counterparty road";
@@ -118,7 +117,7 @@
 .fn-card h2 {
     flex-shrink: 0;
     text-align: center;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.4;
 }
 
@@ -171,13 +170,13 @@
     justify-content: center;
     gap: 6px 14px;
     flex-shrink: 0;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .fn-legend-item {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
 }
 
 .fn-legend-swatch {
