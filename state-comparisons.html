@@ -22,6 +22,7 @@
         <!-- FILTER BAR -->
         <section class="filter-bar">
             <div class="dropdowns">
+                <label for="yearFilter">Year</label>
                 <!-- Year Dropdown -->
                 <div class="dropdown-wrapper">
                     <select id="yearFilter" class="dropdown">
@@ -37,10 +38,11 @@
                         <option value="2012">2012</option>
                         <option value="2011">2011</option>
                     </select>
-                    <span class="dropdown-arrow"></span>
+                    <span class="dropdown-arrow" aria-hidden="true"></span>
                 </div>
 
                 <!-- Road User Dropdown -->
+                <label for="roadUserFilter">Road User</label>
                 <div class="dropdown-wrapper">
                     <select id="roadUserFilter" class="dropdown">
                         <option value="All">All Road Users</option>
@@ -53,17 +55,17 @@
                         <option value="Bus">Bus</option>
                         <option value="Other/Unknown">Other/Unknown</option>
                     </select>
-                    <span class="dropdown-arrow"></span>
+                    <span class="dropdown-arrow" aria-hidden="true"></span>
                 </div>
             </div>
 
             <div class="buttons">
-                <button class="btn btn-reset">Reset</button>
+                <button class="btn btn-reset" type="button">Reset</button>
             </div>
 
             <p class="filter-note">
-                <strong>Note:</strong> The Year filter applies only to the Bar and Pie charts. 
-                The Road User filter cross-filters the Line, Bar, and Pie charts. 
+                <strong>Note:</strong> The Year filter applies only to the Bar and Pie charts.
+                The Road User filter cross-filters the Line, Bar, and Pie charts.
                 The Line chart always shows the full timeline.
             </p>
         </section>
@@ -114,7 +116,8 @@
             <div class="card state-pie-card">
                 <h2>Road User Composition</h2>
                 <div class="chart-area" id="roadUserChart"></div>
-                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the Line and Bar charts by road user. </p>
+                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the
+                    Line and Bar charts by road user. </p>
             </div>
 
         </section>
