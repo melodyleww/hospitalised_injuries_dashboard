@@ -1,6 +1,7 @@
 import { loadFirstNationsData } from "./data/loadData.js";
 import { drawAgeChart } from "./charts/firstNations/ageChart.js";
 import { drawStackedBarChart } from "./charts/firstNations/stackedBarChart.js";
+import { drawRoadUserChart } from "./charts/firstNations/roadUserChart.js";
 
 async function initialiseFirstNations() {
   try {
@@ -40,7 +41,6 @@ async function initialiseFirstNations() {
       const ageRows = selectedRows.filter(
         (row) => row.breakdown_type === "age",
       );
-
       drawAgeChart(ageRows);
 
       const counterpartyRows = selectedRows.filter(
@@ -51,6 +51,7 @@ async function initialiseFirstNations() {
       const roadUserRows = selectedRows.filter(
         (row) => row.breakdown_type === "road_user",
       );
+      drawRoadUserChart(roadUserRows);
 
       // Keep chart headings aligned with the selection
       document.getElementById("fnAgeTitle").textContent =
@@ -61,15 +62,6 @@ async function initialiseFirstNations() {
 
       document.getElementById("fnRoadTitle").textContent =
         `Hospitalisations by road user, ${selectedYear}`;
-
-      // Temporary checks; chart drawing will be added here later
-      console.log("Current selection:", {
-        year: selectedYear,
-        population: selectedPopulation,
-        ageRows: ageRows.length,
-        counterpartyRows: counterpartyRows.length,
-        roadUserRows: roadUserRows.length,
-      });
 
       console.table(ageRows);
     }
@@ -88,9 +80,6 @@ async function initialiseFirstNations() {
     // Apply the default selection on page load.
     updateDashboard();
 
-    // Redraw when the available age-chart space changes.
-    const ageContainer = document.getElementById("fnAgeChart");
-
     let resizeTimer;
 
     const resizeObserver = new ResizeObserver(() => {
@@ -101,8 +90,9 @@ async function initialiseFirstNations() {
       }, 100);
     });
 
-    resizeObserver.observe(ageContainer);
+    resizeObserver.observe(document.getElementById("fnAgeChart"));
     resizeObserver.observe(document.getElementById("fnCounterpartyChart"));
+    resizeObserver.observe(document.getElementById("fnRoadChart"));
   } catch (error) {
     console.error("First Nations dashboard could not load:", error);
   }
