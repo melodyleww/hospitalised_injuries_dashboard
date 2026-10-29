@@ -9,13 +9,11 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
 
     const width = container.clientWidth;
     const height = container.clientHeight; 
-
     const legendSpace = 80; 
     const chartHeight = height - legendSpace; 
     const radius = Math.min(width, chartHeight) / 2 - 10;
 
     d3.select(`#${containerId}`).html("");
-    // CRITICAL: Remove ALL old tooltips so they don't stack up invisibly
     d3.selectAll(".pie-tooltip").remove();
 
     const svg = d3.select(`#${containerId}`)
@@ -25,18 +23,38 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .attr("viewBox", `0 0 ${width} ${height}`) 
         .attr("preserveAspectRatio", "xMidYMid meet");
 
+    // Add hatch pattern
+    svg.append("defs").append("pattern")
+        .attr("id", "hatch-pie")
+        .attr("width", 6).attr("height", 6)
+        .attr("patternTransform", "rotate(45 0 0)")
+        .attr("patternUnits", "userSpaceOnUse")
+        .append("line")
+        .attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 6)
+        .attr("stroke", "#9CA3AF").attr("stroke-width", 2);
+
     const chartGroup = svg.append("g")
         .attr("transform", `translate(${width / 2}, ${chartHeight / 2})`);
 
     addAriaLabel(svg, `Road user composition for ${selectedYear}.`);
 
-    let filteredData = data.filter(d => d.year === selectedYear && d.breakdown_type === "Road User" && d.hospitalisations !== null);
+    let filteredData = data.filter(d => d.year === selectedYear && d.breakdown_type === "Road User");
     if (selectedState !== "All") {
         filteredData = filteredData.filter(d => d.jurisdiction === selectedState);
     }
 
-    const groupedData = d3.rollup(filteredData, v => d3.sum(v, d => d.hospitalisations), d => d.category);
-    const pieData = Array.from(groupedData, ([category, value]) => ({ category, value })).sort((a, b) => b.value - a.value);
+    // Group Data (Handle null as 0 for pie drawing, but mark as suppressed)
+    const groupedData = d3.rollup(filteredData, v => {
+        const sum = d3.sum(v, d => d.hospitalisations);
+        const hasSuppressed = v.some(d => d.hospitalisations === null);
+        return { sum: sum, hasSuppressed: hasSuppressed };
+    }, d => d.category);
+
+    const pieData = Array.from(groupedData, ([category, obj]) => ({ 
+        category, 
+        value: obj.sum, 
+        isSuppressed: obj.sum === 0 && obj.hasSuppressed 
+    })).sort((a, b) => b.value - a.value);
 
     if (pieData.length === 0) return;
 
@@ -62,7 +80,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .enter().append("path")
         .attr("class", "slice")
         .attr("d", arc)
-        .attr("fill", d => colorScale(d.data.category))
+        .attr("fill", d => d.data.isSuppressed ? "url(#hatch-pie)" : colorScale(d.data.category))
         .attr("stroke", "#fff")
         .attr("stroke-width", 2)
         .style("opacity", d => selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3)
@@ -72,43 +90,38 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .on("mouseover", function(event, d) {
             if (isClicking) return;
             d3.select(this).style("opacity", 0.8);
+            let tooltipHtml = `<strong>${d.data.category}</strong><br>`;
+            if (d.data.isSuppressed) {
+                tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
+            } else {
+                tooltipHtml += `Count: ${formatNumber(d.data.value)}`;
+            }
             tooltip.style("opacity", 1)
-                .html(`<strong>${d.data.category}</strong><br>Count: ${formatNumber(d.data.value)}`)
+                .html(tooltipHtml)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", function(event, d) {
-            // CRITICAL FIX: Also block mouseout if we are clicking!
-            if (isClicking) return; 
-            
+        .on("mouseout", function() {
+            if (isClicking) return;
             d3.select(this).style("opacity", selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3);
             tooltip.style("opacity", 0);
         })
         .on("click", function(event, d) {
-            // Hide the tooltip immediately
             tooltip.style("opacity", 0);
-            
-            // Set the flag to block hover events
             isClicking = true;
-            
-            // Trigger the redraw
             const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
             if (onFilter) onFilter(newRoadUser);
-            
-            // Unblock hover events after the chart redraws
             setTimeout(() => { isClicking = false; }, 300);
         });
 
-    // --- LEGEND ---
+    // Legend
     const legendGroup = svg.append("g")
         .attr("transform", `translate(10, ${chartHeight + 5})`); 
-
     const itemsPerCol = Math.ceil(pieData.length / 2);
     
     pieData.forEach((d, i) => {
         const col = Math.floor(i / itemsPerCol); 
         const row = i % itemsPerCol;
-        
         const xOffset = col * (width / 2); 
         const yOffset = row * 16; 
 
@@ -118,7 +131,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         legendRow.append("rect")
             .attr("x", 0).attr("y", 0)
             .attr("width", 10).attr("height", 10)
-            .attr("fill", colorScale(d.category));
+            .attr("fill", d.isSuppressed ? "url(#hatch-pie)" : colorScale(d.category));
 
         legendRow.append("text")
             .attr("x", 15).attr("y", 9)

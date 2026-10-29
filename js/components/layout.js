@@ -5,7 +5,7 @@ const pageSettings = {
     help: "Choose a year or road-user group to explore the national charts.",
   },
   state: {
-    note: "Read chart labels to distinguish counts from population rates.",
+    note: "Grey hatched areas or gaps in lines indicate suppressed data (<em>n.p.</em>). These are missing values, not zeros, and are handled this way to protect privacy.",
     help: "Use the available filters to compare states and territories.",
   },
   firstNations: {

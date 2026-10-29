@@ -14,33 +14,37 @@ export function loadData() {
 
 // state_territory data
 export async function loadStateData() {
-  try {
-    const injuryData = await d3.csv(
-      "data/processed/state_territory_cleaned_v2.csv",
-    );
-    injuryData.forEach((d) => {
-      d.hospitalisations =
-        d["Sum(hospitalisations)"] === "" ? null : +d["Sum(hospitalisations)"];
-      d.bed_days = d["Sum(bed_days)"] === "" ? null : +d["Sum(bed_days)"];
-      d.year = +d.year;
-    });
+    try {
+        const injuryData = await d3.csv("data/processed/state_territory_cleaned_v2.csv");
+        injuryData.forEach(d => {
+            // Robustly handle missing data
+            const rawVal = d["Sum(hospitalisations)"];
+            if (rawVal === "" || rawVal === "n.p." || rawVal === "n.p._suppressed" || rawVal === undefined) {
+                d.hospitalisations = null;
+            } else {
+                d.hospitalisations = +rawVal;
+            }
+            
+            const rawBed = d["Sum(bed_days)"];
+            if (rawBed === "" || rawBed === "n.p." || rawBed === "n.p._suppressed" || rawBed === undefined) {
+                d.bed_days = null;
+            } else {
+                d.bed_days = +rawBed;
+            }
+            
+            d.year = +d.year;
+        });
 
-    // Load Population Data: jurisdiction as key and total population as value
-    const popDataRaw = await d3.csv(
-      "data/processed/state_population_2021_cleaned.csv",
-    );
-    const populationMap = {};
-    popDataRaw.forEach((d) => {
-      populationMap[d.jurisdiction] = +d.total;
-    });
+        const popDataRaw = await d3.csv("data/processed/state_population_2021_cleaned.csv");
+        const populationMap = {};
+        popDataRaw.forEach(d => {
+            populationMap[d.jurisdiction] = +d.total; 
+        });
 
-    return { injuryData, populationMap };
-  } catch (error) {
-    console.error(
-      "Failed to load state data files. Please check your file paths:",
-      error,
-    );
-  }
+        return { injuryData, populationMap };
+    } catch (error) {
+        console.error("Failed to load state data files. Please check your file paths:", error);
+    }
 }
 
 //-----FIRST NATIONS-----//
