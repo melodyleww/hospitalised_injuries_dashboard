@@ -3,154 +3,152 @@ document.addEventListener("DOMContentLoaded", () => {
     // Only run on the National page
     if (document.body.dataset.page !== "national") return;
 
-    const overlay = document.getElementById("walkthroughOverlay");
-    const tabHighlight = document.getElementById("walkthroughTabHighlight");
-    const dialog = document.getElementById("walkthroughDialog");
-    const title = document.getElementById("walkthroughTitle");
-    const text = document.getElementById("walkthroughText");
-    const btnPrev = document.getElementById("walkthroughPrev");
-    const btnNext = document.getElementById("walkthroughNext");
-    const btnSkip = document.getElementById("walkthroughSkip");
+    // Wait for layout.js to inject the header and nav elements
+    setTimeout(() => {
+        const overlay = document.getElementById("walkthroughOverlay");
+        const tabHighlight = document.getElementById("walkthroughTabHighlight");
+        const dialog = document.getElementById("walkthroughDialog");
+        const title = document.getElementById("walkthroughTitle");
+        const text = document.getElementById("walkthroughText");
+        const btnPrev = document.getElementById("walkthroughPrev");
+        const btnNext = document.getElementById("walkthroughNext");
+        const btnSkip = document.getElementById("walkthroughSkip");
 
-    if (!dialog) return;
+        if (!dialog) return;
 
-    const steps = [
-        { title: "Step 1/5", text: "Use the filters to explore three connected views: the National Overview (the big picture), State Comparisons (where injuries happen), and First Nations (who is most affected).", targetId: ".tabs" },
-        { title: "Step 2/5", text: "You'll find the data dictionary, glossary, and important notes on data quality, privacy suppression, and time-series breaks to help you interpret the charts correctly.", targetId: "sharedAboutButton" },
-        { title: "Step 3/5", text: "Use the dropdowns to narrow down the data, then click Apply to update the charts or click Reset to clear all filters and start over.", targetId: "yearFilter" },
-        { title: "Step 4/5", text: "Click any bar in the bar chart or slice in the pie chart to instantly cross-filter the entire dashboard.", targetId: "roadUserChart" },
-        { title: "Step 5/5", text: "Forgot how to use the dashboard? You can click this button anytime to replay this guide.", targetId: "sharedHelpButton" }
-    ];
+        const steps = [
+            { title: "Step 1/5", text: "Use the filters to explore three connected views: the National Overview (the big picture), State Comparisons (where injuries happen), and First Nations (who is most affected).", targetId: ".tabs" },
+            { title: "Step 2/5", text: "You'll find the data dictionary, glossary, and important notes on data quality, privacy suppression, and time-series breaks to help you interpret the charts correctly.", targetId: "aboutTab" },
+            { title: "Step 3/5", text: "Use the dropdowns to narrow down the data, then click Apply to update the charts or click Reset to clear all filters and start over.", targetId: "yearFilter" },
+            { title: "Step 4/5", text: "Click any bar in the bar chart or slice in the pie chart to instantly cross-filter the entire dashboard.", targetId: "roadUserChart" },
+            { title: "Step 5/5", text: "Forgot how to use the dashboard? You can click this button anytime to replay this guide.", targetId: "sharedHelpButton" }
+        ];
 
-    let currentStep = 0;
+        let currentStep = 0;
 
-    function updateStep() {
-        const step = steps[currentStep];
-        title.innerText = step.title;
-        text.innerText = step.text;
-        btnPrev.style.display = currentStep === 0 ? "none" : "block";
-        btnNext.innerText = currentStep === steps.length - 1 ? "Start exploring" : "Next";
-        positionWalkthrough(step.targetId);
-    }
-
-    function positionWalkthrough(targetId) {
-        dialog.style.top = "50%"; dialog.style.left = "50%"; dialog.style.transform = "translate(-50%, -50%)"; dialog.style.right = "auto";
-        tabHighlight.style.display = "none";
-
-        if (targetId === ".tabs") {
-            const tabsList = document.querySelectorAll(".tabs li a");
-            if (tabsList.length === 0) return;
-            const firstTab = tabsList[0].getBoundingClientRect();
-            const lastTab = tabsList[2].getBoundingClientRect();
-            tabHighlight.style.display = "block";
-            tabHighlight.style.top = `${firstTab.top - 6}px`; tabHighlight.style.left = `${firstTab.left - 6}px`; tabHighlight.style.width = `${(lastTab.right - firstTab.left) + 12}px`; tabHighlight.style.height = `${firstTab.height + 12}px`;
-            dialog.style.top = `${firstTab.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+        function updateStep() {
+            const step = steps[currentStep];
+            title.innerText = step.title;
+            text.innerText = step.text;
+            btnPrev.style.display = currentStep === 0 ? "none" : "block";
+            btnNext.innerText = currentStep === steps.length - 1 ? "Start exploring" : "Next";
+            positionWalkthrough(step.targetId);
         }
-        else if (targetId === "sharedAboutButton") {
-            const aboutButton = document.getElementById("sharedAboutButton");
-            if (!aboutButton) return;
-            const rect = aboutButton.getBoundingClientRect();
-            tabHighlight.style.display = "block";
-            tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
-            dialog.style.top = `${rect.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
-        }
-        else if (targetId === "yearFilter") {
-            const filterBar = document.querySelector(".filter-bar");
-            if (!filterBar) return;
-            const rect = filterBar.getBoundingClientRect();
-            tabHighlight.style.display = "block";
-            tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
-            dialog.style.top = `${rect.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
-        }
-        else if (targetId === "roadUserChart") {
-            const chartCard = document.querySelector(".road-user-card");
-            if (!chartCard) return;
-            const rect = chartCard.getBoundingClientRect();
-            const dialogWidth = 411; const dialogHeight = 215; const gap = 20;
-            tabHighlight.style.display = "block";
-            tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
 
-            if (rect.right + gap + dialogWidth <= window.innerWidth) {
-                dialog.style.top = "50%"; dialog.style.left = `${rect.right + gap}px`; dialog.style.transform = "translateY(-50%)";
-            } else if (rect.top - gap - dialogHeight >= 0) {
-                dialog.style.top = `${rect.top - gap - dialogHeight}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
-            } else {
-                dialog.style.top = `${rect.bottom + gap}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+        function positionWalkthrough(targetId) {
+            dialog.style.top = "50%"; dialog.style.left = "50%"; dialog.style.transform = "translate(-50%, -50%)"; dialog.style.right = "auto";
+            tabHighlight.style.display = "none";
+
+            if (targetId === ".tabs") {
+                // Step 1: Highlight the first 3 tabs (National, State, First Nations)
+                const tabsList = document.querySelectorAll(".tabs li a");
+                if (tabsList.length < 3) return;
+                const firstTab = tabsList[0].getBoundingClientRect();
+                const lastTab = tabsList[2].getBoundingClientRect(); // 3rd tab
+                tabHighlight.style.display = "block";
+                tabHighlight.style.top = `${firstTab.top - 6}px`; tabHighlight.style.left = `${firstTab.left - 6}px`; tabHighlight.style.width = `${(lastTab.right - firstTab.left) + 12}px`; tabHighlight.style.height = `${firstTab.height + 12}px`;
+                dialog.style.top = `${firstTab.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+            }
+            else if (targetId === "aboutTab") {
+                // Step 2: Highlight the 4th tab (About the Data)
+                const tabsList = document.querySelectorAll(".tabs li a");
+                if (tabsList.length < 4) return;
+                const aboutTab = tabsList[3].getBoundingClientRect(); // 4th tab
+                tabHighlight.style.display = "block";
+                tabHighlight.style.top = `${aboutTab.top - 6}px`; tabHighlight.style.left = `${aboutTab.left - 6}px`; tabHighlight.style.width = `${aboutTab.width + 12}px`; tabHighlight.style.height = `${aboutTab.height + 12}px`;
+                dialog.style.top = `${aboutTab.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+            }
+            else if (targetId === "yearFilter") {
+                const filterBar = document.querySelector(".filter-bar");
+                if (!filterBar) return;
+                const rect = filterBar.getBoundingClientRect();
+                tabHighlight.style.display = "block";
+                tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
+                dialog.style.top = `${rect.bottom + 25}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+            }
+            else if (targetId === "roadUserChart") {
+                const chartCard = document.querySelector(".road-user-card");
+                if (!chartCard) return;
+                const rect = chartCard.getBoundingClientRect();
+                const dialogWidth = 411; const dialogHeight = 215; const gap = 20;
+                tabHighlight.style.display = "block";
+                tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
+
+                if (rect.right + gap + dialogWidth <= window.innerWidth) {
+                    dialog.style.top = "50%"; dialog.style.left = `${rect.right + gap}px`; dialog.style.transform = "translateY(-50%)";
+                } else if (rect.top - gap - dialogHeight >= 0) {
+                    dialog.style.top = `${rect.top - gap - dialogHeight}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+                } else {
+                    dialog.style.top = `${rect.bottom + gap}px`; dialog.style.left = "50%"; dialog.style.transform = "translateX(-50%)";
+                }
+            }
+            else if (targetId === "sharedHelpButton") {
+                const helpButton = document.getElementById("sharedHelpButton");
+                if (!helpButton) return;
+                const rect = helpButton.getBoundingClientRect();
+                const gap = 15;
+                tabHighlight.style.display = "block";
+                tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
+                dialog.style.top = `${rect.bottom + gap}px`; dialog.style.left = "auto"; dialog.style.right = "20px"; dialog.style.transform = "none";
+            }
+            else {
+                dialog.style.top = "50%"; dialog.style.left = "50%"; dialog.style.transform = "translate(-50%, -50%)";
             }
         }
-        else if (targetId === "sharedHelpButton") {
-            const helpButton = document.getElementById("sharedHelpButton");
-            if (!helpButton) return;
-            const rect = helpButton.getBoundingClientRect();
-            const gap = 15;
-            tabHighlight.style.display = "block";
-            tabHighlight.style.top = `${rect.top - 6}px`; tabHighlight.style.left = `${rect.left - 6}px`; tabHighlight.style.width = `${rect.width + 12}px`; tabHighlight.style.height = `${rect.height + 12}px`;
-            dialog.style.top = `${rect.bottom + gap}px`; dialog.style.left = "auto"; dialog.style.right = "20px"; dialog.style.transform = "none";
-        }
-        else {
-            dialog.style.top = "50%"; dialog.style.left = "50%"; dialog.style.transform = "translate(-50%, -50%)";
-        }
-    }
 
-    function startWalkthrough() {
-        currentStep = 0;
-        updateStep();
-        overlay.style.display = "block";
-        if (!dialog.open) dialog.showModal();
-    }
-
-    function endWalkthrough() {
-        overlay.style.display = "none";
-        tabHighlight.style.display = "none";
-        dialog.close();
-    }
-
-    btnNext.addEventListener("click", () => {
-        if (currentStep < steps.length - 1) {
-            currentStep++;
+        function startWalkthrough() {
+            currentStep = 0;
             updateStep();
+            overlay.style.display = "block";
+            if (!dialog.open) dialog.showModal();
+        }
+
+        function endWalkthrough() {
+            overlay.style.display = "none";
+            tabHighlight.style.display = "none";
+            dialog.close();
+        }
+
+        btnNext.addEventListener("click", () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStep();
+            } else {
+                endWalkthrough();
+            }
+        });
+
+        btnPrev.addEventListener("click", () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateStep();
+            }
+        });
+
+        btnSkip.addEventListener("click", endWalkthrough);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const shouldAutoStart = urlParams.get('walkthrough') === 'true';
+
+        if (shouldAutoStart) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+            setTimeout(startWalkthrough, 300); 
         } else {
-            endWalkthrough();
+            setTimeout(startWalkthrough, 800);
         }
-    });
 
-    btnPrev.addEventListener("click", () => {
-        if (currentStep > 0) {
-            currentStep--;
-            updateStep();
-        }
-    });
+        document.body.addEventListener("click", (e) => {
+            if (e.target.closest("#sharedHelpButton")) {
+                e.preventDefault();
+                startWalkthrough();
+            }
+        });
 
-    btnSkip.addEventListener("click", endWalkthrough);
+        window.addEventListener("resize", () => {
+            if (dialog.open) {
+                positionWalkthrough(steps[currentStep].targetId);
+            }
+        });
 
-    // --- REPLAY & URL PARAMETER LOGIC ---
-    
-    // 1. Check if the URL has ?walkthrough=true
-    const urlParams = new URLSearchParams(window.location.search);
-    const shouldAutoStart = urlParams.get('walkthrough') === 'true';
-
-    // 2. Auto-start if coming from another page OR if it's the user's first visit (optional)
-    if (shouldAutoStart) {
-        // Remove the parameter from the URL so it doesn't re-trigger on refresh
-        window.history.replaceState({}, document.title, window.location.pathname);
-        // Start the walkthrough immediately
-        setTimeout(startWalkthrough, 300); 
-    } else {
-        // If not coming from another page, still auto-start after 800ms as a default
-        setTimeout(startWalkthrough, 800);
-    }
-
-    // 3. Allow manual replay (if clicking the button while already on this page)
-    document.body.addEventListener("click", (e) => {
-        if (e.target.closest("#sharedHelpButton")) {
-            e.preventDefault();
-            startWalkthrough();
-        }
-    });
-
-    window.addEventListener("resize", () => {
-        if (dialog.open) {
-            positionWalkthrough(steps[currentStep].targetId);
-        }
-    });
+    }, 150); 
 });
