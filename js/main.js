@@ -1,4 +1,11 @@
 // js/main.js
+
+// --- GenAI Acknowledgment ---
+// The state management logic in this file was generated with the assistance of a
+// large language model. Prompts included: "Refactor state management for a D3 dashboard".
+// The generated code was reviewed, adapted, and integrated by the team.
+// ---
+
 import { loadData } from './data/loadData.js';
 import { calculateKPIs } from './data/transform.js';
 import { initDropdowns } from './interactions/dropdowns.js';
@@ -15,75 +22,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const resetBtn = document.querySelector(".btn-reset");
     const roadUserTitle = document.querySelector(".road-user-card h2");
 
-    // Track the selected age group globally
-    window.currentAgeGroup = "All";
+    let currentFilters = {
+        year: "All",
+        roadUser: "All",
+        ageGroup: "All"
+    };
 
-    // Load Data
     loadData().then(data => {
-        window.globalData = data; 
-        
+        window.globalData = data;
+        updateDashboard();
         drawLineChart(window.globalData, "lineChart");
-        // Default to "All" for initial load
-        drawRoadUserChart(window.globalData, "roadUserChart", "All", "All", "All");
-        drawAgeGroupChart(window.globalData, "ageGroupChart", "All", "All");
-        
-        const kpis = calculateKPIs(window.globalData, "All");
-        document.getElementById("kpiTotal").innerText = formatNumber(kpis.totalHosp);
-        document.getElementById("kpiBedDays").innerText = formatDecimal(kpis.avgBedDays) + " days";
     });
 
     function updateDashboard() {
-        const selectedYear = yearSelect.value === "All" ? "All" : parseInt(yearSelect.value);
-        const selectedRoadUser = roadUserSelect.value;
+        const { year, roadUser, ageGroup } = currentFilters;
+        
+        let filteredData = window.globalData;
+        if (year !== "All") filteredData = filteredData.filter(d => d.year === parseInt(year));
+        if (roadUser !== "All") filteredData = filteredData.filter(d => d.road_user === roadUser);
+        if (ageGroup !== "All") filteredData = filteredData.filter(d => d.age_group === ageGroup);
 
-        window.currentAgeGroup = "All";
-        roadUserTitle.innerText = "Road User Breakdown";
+        const kpis = calculateKPIs(filteredData, "All");
+        document.getElementById("kpiTotal").innerText = formatNumber(kpis.totalHosp);
+        document.getElementById("kpiBedDays").innerText = formatDecimal(kpis.avgBedDays) + " days";
 
-        drawRoadUserChart(window.globalData, "roadUserChart", selectedYear, selectedRoadUser, window.currentAgeGroup);
-        drawAgeGroupChart(window.globalData, "ageGroupChart", selectedYear, window.currentAgeGroup);
+        roadUserTitle.innerText = (ageGroup === "All") ? "Road User Breakdown" : `Road Users for Age ${ageGroup}`;
 
-        if (selectedRoadUser === "All") {
-            const kpis = calculateKPIs(window.globalData, selectedYear);
-            document.getElementById("kpiTotal").innerText = formatNumber(kpis.totalHosp);
-            document.getElementById("kpiBedDays").innerText = formatDecimal(kpis.avgBedDays) + " days";
-        } else {
-            const filteredData = window.globalData.filter(d => d.road_user === selectedRoadUser);
-            const kpis = calculateKPIs(filteredData, selectedYear);
-            document.getElementById("kpiTotal").innerText = formatNumber(kpis.totalHosp);
-            document.getElementById("kpiBedDays").innerText = formatDecimal(kpis.avgBedDays) + " days";
-        }
+        drawRoadUserChart(window.globalData, "roadUserChart", year, roadUser, ageGroup);
+        drawAgeGroupChart(window.globalData, "ageGroupChart", year, ageGroup, roadUser);
     }
 
     window.applyAgeFilter = function(ageGroup) {
-        window.currentAgeGroup = ageGroup;
-        const selectedYear = yearSelect.value === "All" ? "All" : parseInt(yearSelect.value);
-        
-        if (ageGroup === "All") {
-            roadUserTitle.innerText = "Road User Breakdown";
-        } else {
-            roadUserTitle.innerText = `Road Users for Age ${ageGroup}`;
-            roadUserSelect.value = "All"; 
-        }
-
-        drawRoadUserChart(window.globalData, "roadUserChart", selectedYear, "All", window.currentAgeGroup);
-        drawAgeGroupChart(window.globalData, "ageGroupChart", selectedYear, window.currentAgeGroup);
+        currentFilters.ageGroup = (currentFilters.ageGroup === ageGroup) ? "All" : ageGroup;
+        currentFilters.roadUser = "All";
+        roadUserSelect.value = "All"; 
+        updateDashboard();
     };
 
-    yearSelect.addEventListener("change", updateDashboard);
-    roadUserSelect.addEventListener("change", updateDashboard);
+    yearSelect.addEventListener("change", (e) => {
+        currentFilters.year = e.target.value;
+        updateDashboard();
+    });
+
+    roadUserSelect.addEventListener("change", (e) => {
+        currentFilters.roadUser = e.target.value;
+        updateDashboard();
+    });
 
     resetBtn.addEventListener("click", () => {
-        yearSelect.value = "All"; // Reset to All
+        currentFilters = { year: "All", roadUser: "All", ageGroup: "All" };
+        yearSelect.value = "All";
         roadUserSelect.value = "All";
-        window.currentAgeGroup = "All";
-        roadUserTitle.innerText = "Road User Breakdown";
-
-        drawLineChart(window.globalData, "lineChart");
-        drawRoadUserChart(window.globalData, "roadUserChart", "All", "All", "All");
-        drawAgeGroupChart(window.globalData, "ageGroupChart", "All", "All");
-        
-        const kpis = calculateKPIs(window.globalData, "All");
-        document.getElementById("kpiTotal").innerText = formatNumber(kpis.totalHosp);
-        document.getElementById("kpiBedDays").innerText = formatDecimal(kpis.avgBedDays) + " days";
+        updateDashboard();
     });
 });

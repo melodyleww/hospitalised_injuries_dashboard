@@ -22,38 +22,45 @@
         <section class="filter-bar">
             <div class="dropdowns">
 
-                <!-- Year Dropdown: "All" selected by default -->
-                <div class="dropdown-wrapper">
-                    <select id="yearFilter" class="dropdown">
-                        <option value="All" selected>All Years (2011-2021)</option>
-                        <option value="2011">2011</option>
-                        <option value="2012">2012</option>
-                        <option value="2013">2013</option>
-                        <option value="2014">2014</option>
-                        <option value="2015">2015</option>
-                        <option value="2016">2016</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                    </select>
-                    <span class="dropdown-arrow"></span>
+                <!-- Year Filter Group -->
+                <div class="filter-group">
+                    <span class="filter-label">Year</span>
+                    <div class="dropdown-wrapper">
+                        <select id="yearFilter" class="dropdown">
+                            <option value="All" selected>All Years</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                        </select>
+                        <span class="dropdown-arrow"></span>
+                    </div>
                 </div>
 
-                <div class="dropdown-wrapper">
-                    <select id="roadUserFilter" class="dropdown">
-                        <option value="All">Select Road User</option>
-                        <option value="Car driver/passenger">Car driver/passenger</option>
-                        <option value="Motorcyclist">Motorcyclist</option>
-                        <option value="Pedal cyclist">Pedal cyclist</option>
-                        <option value="Pedestrian">Pedestrian</option>
-                        <option value="Heavy transport">Heavy transport</option>
-                        <option value="Pick-up truck/van">Pick-up truck/van</option>
-                        <option value="Bus">Bus</option>
-                        <option value="Other/Unknown">Other/Unknown</option>
-                    </select>
-                    <span class="dropdown-arrow"></span>
+                <!-- Road User Filter Group -->
+                <div class="filter-group">
+                    <span class="filter-label">Road User</span>
+                    <div class="dropdown-wrapper">
+                        <select id="roadUserFilter" class="dropdown">
+                            <option value="All">All Users</option>
+                            <option value="Car driver/passenger">Car driver/passenger</option>
+                            <option value="Motorcyclist">Motorcyclist</option>
+                            <option value="Pedal cyclist">Pedal cyclist</option>
+                            <option value="Pedestrian">Pedestrian</option>
+                            <option value="Heavy transport">Heavy transport</option>
+                            <option value="Pick-up truck/van">Pick-up truck/van</option>
+                            <option value="Bus">Bus</option>
+                            <option value="Other/Unknown">Other/Unknown</option>
+                        </select>
+                        <span class="dropdown-arrow"></span>
+                    </div>
                 </div>
 
             </div>
@@ -115,6 +122,9 @@
     </main>
 
     <footer id="site-footer" class="bottom-bar"></footer>
+
+    <!-- Screen Reader Live Region for Tooltips -->
+    <div id="sr-announcer" class="sr-only" aria-live="polite"></div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="js/main.js"></script>
