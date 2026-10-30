@@ -83,6 +83,7 @@
     grid-template-rows: auto auto;   /* Top (dropdowns/reset), Bottom (note) */
     gap: 10px 20px; 
     align-items: center;
+    font-size: 14px;
 }
 
 .filter-bar .dropdowns { 
