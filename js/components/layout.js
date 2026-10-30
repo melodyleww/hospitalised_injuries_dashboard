@@ -77,14 +77,6 @@ function renderSharedLayout() {
 
   footer.innerHTML = `
         <p>Data Source: BITRE / AIHW | ${settings.note}</p>
-        <p class="icon-credits">
-            Icons by
-            <a href="https://www.flaticon.com/authors/magnific"
-               target="_blank" rel="noopener noreferrer">Magnific</a>
-            from
-            <a href="https://www.flaticon.com/"
-               target="_blank" rel="noopener noreferrer">Flaticon</a>
-        </p>
     `;
 
   // Shared dialog for "How to use" (About now navigates to its own page)
@@ -109,15 +101,14 @@ function renderSharedLayout() {
   }
 
   // --- REDIRECT LOGIC FOR "HOW TO USE" BUTTON ---
-  document.getElementById("sharedHelpButton")
-      .addEventListener("click", (e) => {
-          if (page !== "national") {
-              // If on another page, redirect to national and trigger walkthrough
-              e.preventDefault();
-              window.location.href = "index.html?walkthrough=true";
-          }
-          // If on the national page, walkthrough.js handles it naturally
-      });
+  document.getElementById("sharedHelpButton").addEventListener("click", (e) => {
+    if (page !== "national") {
+      // If on another page, redirect to national and trigger walkthrough
+      e.preventDefault();
+      window.location.href = "index.html?walkthrough=true";
+    }
+    // If on the national page, walkthrough.js handles it naturally
+  });
 }
 
 renderSharedLayout();
