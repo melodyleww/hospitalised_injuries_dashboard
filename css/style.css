@@ -14,29 +14,29 @@
 /* Container for all filter groups */
 .dropdowns {
     display: flex;
-    gap: 24px; /* Increased gap to separate the filter groups */
-    align-items: center; /* Vertically center items */
+    gap: 24px;
+    align-items: center;
 }
 
 /* Container for one label + dropdown pair */
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between the label and the dropdown */
+    gap: 10px;
 }
 
 /* Style for the label text */
 .filter-label {
     font-size: 13px;
     font-weight: 500;
-    color: #1A2B4C; /* Navy text to match theme */
+    color: #1A2B4C;
     white-space: nowrap;
 }
 
 /* --- CUSTOM DROPDOWN --- */
 .dropdown-wrapper {
     position: relative;
-    width: 150px; /* Slightly reduced width to fit better */
+    width: 150px;
 }
 
 .dropdown {
@@ -76,9 +76,8 @@
     transform: translateY(-50%);
     width: 10px;
     height: 6px;
-    pointer-events: none; /* Lets clicks pass through to the dropdown */
+    pointer-events: none;
     
-    /* Clean SVG Arrow */
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%226%22%20viewBox%3D%220%200%2010%206%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M4.75%203.64166L8.39167%200L9.5%201.10833L4.75%205.85833L0%201.10833L1.10833%200L4.75%203.64166Z%22%20fill%3D%22%231D1B20%22%2F%3E%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-position: center;
@@ -87,7 +86,6 @@
     transition: transform 0.2s ease;
 }
 
-/* Rotate the arrow when the wrapper has the 'open' class */
 .dropdown-wrapper.open .dropdown-arrow {
     transform: translateY(-50%) rotate(180deg);
 }
@@ -251,23 +249,18 @@
     pointer-events: none; 
 }
 
-/* The spotlight that sits on top of the dim background, but under the tabs */
 .walkthrough-tab-highlight {
     position: fixed;
-    background: transparent; /* Make the background see-through so text shows */
+    background: transparent;
     border-radius: 50px;
     z-index: 1000; 
-    
-    /* This creates the dark overlay everywhere EXCEPT inside this box */
     box-shadow: 0 0 0 9999px rgba(30, 30, 30, 0.6); 
-    
     pointer-events: none;
     transition: all 0.3s ease;
 }
 
 .walkthrough-dialog {
     position: fixed;
-    /* Default centered position */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -277,7 +270,7 @@
     border: none;
     border-radius: 20px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 1001; /* Highest so it's always clickable */
+    z-index: 1001; 
     font-family: 'Poppins', sans-serif;
     transition: all 0.3s ease;
 }
@@ -348,11 +341,10 @@
 }
 
 /* --- ACCESSIBILITY FOCUS STATES --- */
-/* Ensures keyboard users can see which element is focused */
 rect:focus, circle:focus {
-    outline: 3px solid #F59E0B; /* A high-contrast focus ring */
+    outline: 3px solid #F59E0B;
     outline-offset: 2px;
-    opacity: 0.7; /* Also reduce opacity on focus for extra visibility */
+    opacity: 0.7;
 }
 
 /* --- SCREEN READER ONLY (Visually Hidden) --- */
@@ -366,4 +358,159 @@ rect:focus, circle:focus {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobile & Tablet)
+   ========================================= */
+
+/* --- Tablet (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    /* Allow the page to scroll vertically */
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    /* Allow the header to grow if title wraps */
+    .top-bar {
+        height: auto;
+        min-height: 50px;
+        padding: 12px 20px;
+    }
+
+    /* Allow tabs to wrap */
+    .tabs-container {
+        padding: 8px 12px;
+    }
+    .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+
+    /* Grid changes to 2 columns */
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto auto;
+        flex: none;
+    }
+    
+    .line-chart-card {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        flex-direction: column; /* Stack chart and guide vertically */
+    }
+    
+    .road-user-card {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+    
+    .age-group-card {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+    }
+    
+    .kpi-card {
+        grid-column: span 1;
+    }
+    
+    .filter-bar {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .dropdowns {
+        flex-wrap: wrap;
+    }
+    
+    .buttons {
+        justify-self: end;
+    }
+
+    /* *** CRITICAL FIX: Give charts explicit heights *** */
+    .chart-area {
+        flex: none; /* Stop relying on flex-grow */
+        height: 250px; /* Default height for tablet */
+    }
+    .line-chart-card .chart-area {
+        height: 300px; /* Line chart needs a bit more height */
+    }
+    .road-user-card .chart-area {
+        height: 350px; /* Horizontal bars need more vertical space */
+    }
+
+    /* Allow footer to wrap */
+    .bottom-bar {
+        height: auto;
+        min-height: 28px;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        padding: 10px 12px;
+    }
+}
+
+/* --- Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr; /* Single column */
+        grid-template-rows: auto;
+    }
+    
+    .line-chart-card {
+        grid-column: 1 / 2;
+    }
+    
+    .road-user-card,
+    .age-group-card {
+        grid-column: 1 / 2;
+    }
+    
+    .kpi-card {
+        grid-column: 1 / 2;
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    
+    .dropdown-wrapper {
+        width: 100%;
+    }
+    
+    .walkthrough-dialog {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .top-bar h1 {
+        font-size: 14px;
+    }
+
+    /* *** CRITICAL FIX: Give charts explicit heights on mobile too *** */
+    .chart-area {
+        height: 280px; /* Mobile height */
+    }
+    .line-chart-card .chart-area {
+        height: 300px;
+    }
+    .road-user-card .chart-area {
+        height: 400px; /* Taller for horizontal bars on mobile */
+    }
+    .age-group-card .chart-area {
+        height: 280px;
+    }
+}
+
+/* --- Chart Text Size (Improve Readability) --- */
+.card h2 {
+    font-size: 14px;
 }

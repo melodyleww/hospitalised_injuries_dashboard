@@ -1,11 +1,5 @@
 // js/main.js
 
-// --- GenAI Acknowledgment ---
-// The state management logic in this file was generated with the assistance of a
-// large language model. Prompts included: "Refactor state management for a D3 dashboard".
-// The generated code was reviewed, adapted, and integrated by the team.
-// ---
-
 import { loadData } from './data/loadData.js';
 import { calculateKPIs } from './data/transform.js';
 import { initDropdowns } from './interactions/dropdowns.js';
@@ -75,4 +69,32 @@ document.addEventListener("DOMContentLoaded", () => {
         roadUserSelect.value = "All";
         updateDashboard();
     });
+
+    // --- RESPONSIVE RESIZE HANDLING ---
+    // Use a debounce timer to avoid redrawing hundreds of times per second
+    let resizeTimer;
+
+    function redrawAllCharts() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.globalData) {
+                drawLineChart(window.globalData, "lineChart");
+                const { year, roadUser, ageGroup } = currentFilters;
+                drawRoadUserChart(window.globalData, "roadUserChart", year, roadUser, ageGroup);
+                drawAgeGroupChart(window.globalData, "ageGroupChart", year, ageGroup, roadUser);
+            }
+        }, 150);
+    }
+
+    // 1. Listen to window resize events (e.g., user drags browser edge)
+    window.addEventListener("resize", redrawAllCharts);
+
+    // 2. Use a ResizeObserver to catch container size changes
+    //    (e.g., when the layout switches from 6 columns to 1 column on mobile)
+    const resizeObserver = new ResizeObserver(redrawAllCharts);
+    const chartsContainer = document.querySelector(".charts-grid");
+    if (chartsContainer) {
+        resizeObserver.observe(chartsContainer);
+    }
+    // ----------------------
 });

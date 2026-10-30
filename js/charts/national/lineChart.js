@@ -4,40 +4,51 @@ import { COLORS, MARGINS } from '../../config.js';
 import { formatNumber, formatYear } from '../../utils/formatters.js';
 import { addAriaLabel } from '../../utils/accessibility.js';
 
-// Helper function to announce text to screen readers
 const announce = (text) => {
     const announcer = document.getElementById("sr-announcer");
-    if (announcer) {
-        announcer.textContent = text;
-    }
+    if (announcer) announcer.textContent = text;
 };
 
 export function drawLineChart(data, containerId) {
     const container = document.getElementById(containerId);
     const margin = MARGINS.line;
-    const width = container.clientWidth - margin.left - margin.right;
-    const height = container.clientHeight - margin.top - margin.bottom;
+
+    // 1. Measure the container (like your friend's code)
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    if (innerWidth <= 0 || innerHeight <= 0) {
+        console.warn("Line chart needs more space");
+        return;
+    }
 
     d3.select(`#${containerId}`).html("");
 
     const svg = d3.select(`#${containerId}`)
-        .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
-        .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-
-    addAriaLabel(d3.select(`#${containerId} svg`), "Line chart showing the national trend of hospitalised injuries from road crashes from 2011 to 2021. Note: Dotted lines indicate time-series breaks.");
+        .append("svg")
+        // 2. Set width, height, and viewBox to the measured size
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("role", "group")
+        .attr("aria-label", "Line chart showing the national trend of hospitalised injuries from 2011 to 2021.")
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const yearlyData = d3.rollup(data, v => d3.sum(v, d => d.hospitalisations), d => d.year);
     const trendData = Array.from(yearlyData, ([year, total]) => ({ year, total })).sort((a,b) => a.year - b.year);
 
-    const x = d3.scalePoint().domain(trendData.map(d => d.year)).range([0, width]).padding(0.5);
-    const y = d3.scaleLinear().domain([0, d3.max(trendData, d => d.total) * 1.1]).range([height, 0]);
+    const x = d3.scalePoint().domain(trendData.map(d => d.year)).range([0, innerWidth]).padding(0.5);
+    const y = d3.scaleLinear().domain([0, d3.max(trendData, d => d.total) * 1.1]).range([innerHeight, 0]);
 
-    svg.append("g").attr("transform", `translate(0,${height})`)
+    svg.append("g").attr("transform", `translate(0,${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(formatYear))
-        .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
+        .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted);
 
     svg.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(formatNumber))
-        .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
+        .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted);
 
     const line = d3.line().x(d => x(d.year)).y(d => y(d.total));
     svg.append("path").datum(trendData).attr("fill", "none").attr("stroke", COLORS.primary).attr("stroke-width", 2.5).attr("d", line);
@@ -79,14 +90,12 @@ export function drawLineChart(data, containerId) {
             announce("");
         });
 
-    // Dynamic break lines from data quality flags (KNIME now populates these)
     const breakYears = [...new Set(data.filter(d => d.data_quality_flag && d.data_quality_flag !== "").map(d => d.year))];
-
     breakYears.forEach(year => {
         if(x(year)) {
             svg.append("line")
                 .attr("x1", x(year)).attr("x2", x(year))
-                .attr("y1", 0).attr("y2", height)
+                .attr("y1", 0).attr("y2", innerHeight)
                 .attr("stroke", COLORS.warning).attr("stroke-width", 1.5).attr("stroke-dasharray", "5,5");
         }
     });
