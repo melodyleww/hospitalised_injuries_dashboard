@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/state-styles.css">
 </head>
+
 <body data-page="state">
 
-<header id="site-header" class="top-bar"></header>
-<nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections"></nav>
+    <header id="site-header" class="top-bar"></header>
+    <nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections"></nav>
 
-<main class="dashboard-wrapper" style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
-    <!-- FILTER BAR -->
-    <section class="filter-bar" aria-label="Chart filters">
-        <div class="dropdowns">
+    <main class="dashboard-wrapper"
+        style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
+        <!-- FILTER BAR -->
+        <section class="filter-bar" aria-label="Chart filters">
             <label for="yearFilter">Year</label>
             <div class="dropdown-wrapper">
                 <select id="yearFilter" class="dropdown">
@@ -51,69 +53,72 @@
                 </select>
                 <span class="dropdown-arrow"></span>
             </div>
-        </div>
-        <div class="buttons">
+
             <button class="btn btn-reset" type="button">Reset</button>
-        </div>
-        <p class="filter-note">
-            <strong>Note:</strong> The Year filter applies only to the Bar and Pie charts.
+
+            <p class="filter-note">
+                <strong>Note:</strong> The Year filter applies only to the Bar and Pie charts.
                 The Road User filter cross-filters the Line, Bar, and Pie charts.
                 The Line chart always shows the full timeline.
-        </p>
-    </section>
+            </p>
+        </section>
 
-    <!-- MAIN GRID -->
-    <section class="state-layout-grid">
-        
-        <!-- 1. Line Chart + Guide -->
-        <div class="card state-line-card">
-            <div class="line-section">
-                <h2 id="lineChartTitle">Annual Hospitalisation Trends by State</h2>
-                <div id="lineChart" class="chart-area"></div>
-            </div>
-            <div class="divider"></div>
-            <div class="guide-section">
-                <h2>Chart Guide</h2>
-                <p><strong>Solid line:</strong> Annual hospitalisations by state/territory</p>
-                <p><strong>Grey band:</strong> Time-series breaks (Vic 2012, NSW 2017) where data collection methods changed. Do not compare across these periods.</p>
-                <p><strong>Caveat:</strong> These are raw counts. Larger states like NSW naturally have higher numbers due to population size.</p>
-            </div>
-        </div>
+        <!-- MAIN GRID -->
+        <section class="state-layout-grid">
 
-        <!-- 2. Bar Chart -->
-        <div class="card state-bar-card">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                <h2 id="barChartTitle">Injuries by Jurisdiction (<span id="yearLabel">2021</span>)</h2>
-                <div class="toggle-container">
-                    <label><input type="radio" name="viewMode" value="count" checked> Count</label>
-                    <label><input type="radio" name="viewMode" value="rate"> Rate per 100k</label>
+            <!-- 1. Line Chart + Guide -->
+            <div class="card state-line-card">
+                <div class="line-section">
+                    <h2 id="lineChartTitle">Annual Hospitalisation Trends by State</h2>
+                    <div id="lineChart" class="chart-area"></div>
+                </div>
+                <div class="divider"></div>
+                <div class="guide-section">
+                    <h2>Chart Guide</h2>
+                    <p><strong>Solid line:</strong> Annual hospitalisations by state/territory</p>
+                    <p><strong>Grey band:</strong> Time-series breaks (Vic 2012, NSW 2017) where data collection methods
+                        changed. Do not compare across these periods.</p>
+                    <p><strong>Caveat:</strong> These are raw counts. Larger states like NSW naturally have higher
+                        numbers due to population size.</p>
                 </div>
             </div>
-            <div id="stateBarChart" class="chart-area"></div>
-            <p class="click-note">* Click a bar to filter the Line, Pie, and Heatmap by state.</p>
-        </div>
 
-        <!-- 3. Heatmap -->
-        <div class="card state-heatmap-card">
-            <h2 id="heatmapTitle">Age Group Over Time</h2>
-            <div class="chart-area" id="ageHeatmap"></div>
-        </div>
+            <!-- 2. Bar Chart -->
+            <div class="card state-bar-card">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                    <h2 id="barChartTitle">Injuries by Jurisdiction (<span id="yearLabel">2021</span>)</h2>
+                    <div class="toggle-container">
+                        <label><input type="radio" name="viewMode" value="count" checked> Count</label>
+                        <label><input type="radio" name="viewMode" value="rate"> Rate per 100k</label>
+                    </div>
+                </div>
+                <div id="stateBarChart" class="chart-area"></div>
+                <p class="click-note">* Click a bar to filter the Line, Pie, and Heatmap by state.</p>
+            </div>
 
-        <!-- 4. Pie Chart -->
-        <div class="card state-pie-card">
-            <h2 id="pieChartTitle">Road User Composition (2021)</h2>
-            <div class="chart-area" id="roadUserChart"></div>
-            <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the
+            <!-- 3. Heatmap -->
+            <div class="card state-heatmap-card">
+                <h2 id="heatmapTitle">Age Group Over Time</h2>
+                <div class="chart-area" id="ageHeatmap"></div>
+            </div>
+
+            <!-- 4. Pie Chart -->
+            <div class="card state-pie-card">
+                <h2 id="pieChartTitle">Road User Composition (2021)</h2>
+                <div class="chart-area" id="roadUserChart"></div>
+                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the
                     Line and Bar charts by road user.</p>
-        </div>
+            </div>
 
-    </section>
-</main>
+        </section>
+    </main>
 
-<footer id="site-footer" class="bottom-bar"></footer>
+    <footer id="site-footer" class="bottom-bar"></footer>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script type="module" src="js/state-comparisons.js"></script>
-<script type="module" src="js/components/layout.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module" src="js/state-comparisons.js"></script>
+    <script type="module" src="js/components/layout.js"></script>
 </body>
+
 </html>

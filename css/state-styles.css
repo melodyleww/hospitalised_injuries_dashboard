@@ -76,39 +76,54 @@
     font-size: 13px; margin-bottom: 5px; text-align: center; flex-shrink: 0;
 }
 
-/* 5. FILTER BAR (Always side-by-side) */
+/* =========================================
+   5. FILTER BAR (Mirrors First Nations CSS)
+   ========================================= */
 .filter-bar {
-    display: grid;
-    grid-template-columns: 1fr auto; /* Left (dropdowns), Right (reset) */
-    grid-template-rows: auto auto;   /* Top (dropdowns/reset), Bottom (note) */
-    gap: 10px 20px; 
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 20px;
+    padding: 12px 18px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+    flex-shrink: 0;
+}
+
+.filter-bar label {
     font-size: 14px;
+    white-space: nowrap;
+    color: #1A2B4C;
 }
 
-.filter-bar .dropdowns { 
-    grid-column: 1 / 2; 
-    grid-row: 1 / 2; 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
+.filter-bar .dropdown-wrapper {
+    position: relative;
+    min-width: 0;
+    width: 150px; /* Matches the Year select width */
 }
 
-.filter-bar .buttons { 
-    grid-column: 2 / 3; 
-    grid-row: 1 / 2; 
-    display: flex; 
-    justify-content: flex-end; 
+.filter-bar .dropdown-wrapper:last-of-type {
+    width: 200px; /* Matches the Road User select width */
 }
 
-.filter-bar .filter-note { 
-    grid-column: 1 / -1; 
-    grid-row: 2 / 3; 
+/* Pushes the Reset button to the far right */
+.filter-bar .btn-reset {
+    margin-left: auto;
+}
+
+.filter-bar .filter-note {
+    flex-basis: 100%; /* Forces the note to the next line */
     margin: 0; 
     font-size: 11px; 
+    color: #6B7280;
 }
 
-/* 6. RESPONSIVE BREAKPOINTS (Only for the CHART GRID) */
+/* =========================================
+   6. RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Tablet (1100px) */
 @media (max-width: 1100px) {
     .state-layout-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; }
     .state-line-card { grid-column: 1 / 3; grid-row: 1 / 2; height: 400px; }
@@ -118,12 +133,71 @@
 }
 
 @media (max-width: 768px) {
+    .state-line-card {
+        min-height: 600px !important; /* Increase height to fit the legend below the chart */
+    }
+}
+
+/* Mobile (600px) - Matches First Nations Mobile CSS exactly */
+@media (max-width: 600px) {
+    body[data-page="state"] .top-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        height: auto;
+        min-height: 50px;
+        padding-block: 12px;
+    }
+
+    body[data-page="state"] .tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 20px;
+    }
+
+    .filter-bar {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .filter-bar .dropdown-wrapper,
+    .filter-bar .dropdown-wrapper:last-of-type {
+        width: 100%; /* Stretch dropdowns on mobile */
+    }
+
+    .filter-bar .btn-reset {
+        grid-column: 2;
+        justify-self: end;
+        margin-left: 0;
+    }
+
+    .filter-bar .filter-note {
+        grid-column: 1 / -1;
+    }
+
+    /* Chart Grid Mobile */
     .state-layout-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
     .state-line-card { grid-column: 1 / 2; grid-row: 1 / 2; flex-direction: column; height: 500px; }
     .state-bar-card { grid-column: 1 / 2; grid-row: 2 / 3; height: 400px; }
     .state-heatmap-card { grid-column: 1 / 2; grid-row: 3 / 4; height: 400px; }
     .state-pie-card { grid-column: 1 / 2; grid-row: 4 / 5; height: 500px; }
-    
-    /* REMOVED the filter-bar mobile stacking here. 
-       It will now always stay side-by-side no matter how small the screen is. */
+
+    /* Line Chart Mobile */
+    .state-line-card {
+        flex-direction: column !important; 
+        height: auto;
+        min-height: 500px;
+    }
+
+    .state-line-card .divider {
+        width: 100%; 
+        height: 1px;
+        margin: 15px 0;
+    }
+
+    .state-line-card .guide-section {
+        padding-left: 0;
+        padding-top: 10px;
+        width: 100%;
+    }
 }
