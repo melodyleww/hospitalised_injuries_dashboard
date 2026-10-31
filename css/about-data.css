@@ -1,27 +1,31 @@
+/* css/about-data.css */
+
 /* Use the shared dashboard width and available height. */
 .about-dashboard {
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; 
 }
 
 /* One white panel for the whole page. */
 .about-sheet {
     flex: 1;
     min-height: 0;
-    min-width: 0;
-
     display: flex;
     flex-direction: column;
-
     padding: 20px;
     background: #ffffff;
     border-radius: 18px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
+    overflow-y: auto; 
 }
 
 /* Source information separated from the explanations. */
 .about-source {
     padding-bottom: 20px;
     border-bottom: 2px solid #d9dfe6;
+    flex-shrink: 0;
 }
 
 .about-source h2 {
@@ -36,46 +40,41 @@
 .about-source > a {
     display: inline-block;
     margin-top: 8px;
+    word-break: break-word; 
 }
 
-/* Three equal explanation columns. */
+/* Three equal explanation columns */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns on desktop */
     margin-top: 16px;
     min-height: 0;
-     flex: 1;
+    flex: 1;
+    gap: 0; 
 }
 
 .about-section {
-    min-width: 0;
+    min-width: 0; 
     padding: 0 18px;
 }
 
-.about-section:first-child {
-    padding-left: 0;
-}
+.about-section:first-child { padding-left: 0; }
+.about-section:last-child { padding-right: 0; }
 
-.about-section:last-child {
-    padding-right: 0;
-}
-
-/* Dividers between the explanation columns. */
+/* Vertical dividers on desktop */
 .about-section + .about-section {
     border-left: 2px solid #d9dfe6;
 }
 
-/* Keep your title badges. */
+/* Title badges */
 .about-badge {
     display: inline-block;
     max-width: 100%;
     padding: 8px 14px;
     margin-bottom: 12px;
-
     background: #1a2b4c;
     color: #ffffff;
     border-radius: 9px;
-
     font-size: 14px;
     line-height: 1.3;
     text-align: center;
@@ -85,25 +84,19 @@
 .about-sheet li {
     font-size: 12px;
     line-height: 1.5;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-.about-section > p {
-    margin-bottom: 10px;
-}
-
-.about-section ul {
-    padding-left: 18px;
-}
-
-.about-section li + li {
-    margin-top: 8px;
-}
+.about-section > p { margin-bottom: 10px; }
+.about-section ul { padding-left: 18px; }
+.about-section li + li { margin-top: 8px; }
 
 .about-sheet a {
     color: #1a2b4c;
     font-size: 12px;
     text-underline-offset: 3px;
-    overflow-wrap: anywhere;
+    word-break: break-all; 
 }
 
 .about-section .about-assessment-note {
@@ -111,36 +104,41 @@
     margin-bottom: 0;
 }
 
-/* Stack explanations with horizontal dividers on narrower screens. */
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Tablets & Smaller Laptops (1100px) */
 @media (max-width: 1100px) {
     .about-sheet {
-        padding: 14px;
+        padding: 16px;
     }
 
     .about-source {
-        padding-bottom: 10px;
+        padding-bottom: 12px;
     }
 
+    /* CRITICAL FIX: Stack into 1 column */
     .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: repeat(3, auto);
+        grid-template-columns: 1fr; /* Forces single column */
+        grid-template-rows: auto;
         align-content: start;
-        margin-top: 0;
+        margin-top: 10px;
     }
 
     .about-section {
         display: block;
-        padding: 10px 0;
+        padding: 16px 0;
     }
 
-    /* Remove desktop vertical borders. */
+    /* Change vertical dividers to horizontal */
     .about-section + .about-section {
         border-left: 0;
-        border-top: 1px solid #d9dfe6;
+        border-top: 2px solid #d9dfe6;
     }
 
     .about-section .about-badge {
-        margin: 0 0 7px;
+        margin: 0 0 8px;
         padding: 6px 12px;
         font-size: 13px;
     }
@@ -148,18 +146,66 @@
     .about-sheet p,
     .about-sheet li {
         line-height: 1.4;
+        font-size: 13px; /* Slightly larger text for readability on mobile */
     }
 
-    .about-section > p {
-        margin-bottom: 6px;
+    .about-section > p { margin-bottom: 8px; }
+    .about-section > p:last-child { margin-bottom: 0; }
+}
+
+/* =========================================
+   NAVIGATION TABS RESPONSIVE
+   ========================================= */
+
+/* At 1100px and below (Tablets & Mobile) */
+@media (max-width: 1100px) {
+    /* Allow the top-bar to grow if the title wraps */
+    body[data-page="about"] .top-bar {
+        height: auto;
+        min-height: 50px;
+        padding-block: 12px;
     }
 
-    .about-section > p:last-child {
-        margin-bottom: 0;
+    /* Add padding to the tabs container */
+    body[data-page="about"] .tabs-container {
+        padding: 8px 12px;
     }
 
-    .about-section .about-assessment-note {
-        margin-top: 6px;
-        margin-bottom: 0;
+    /* Force the tabs to wrap into multiple lines */
+    body[data-page="about"] .tabs {
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 20px;
+    }
+
+    /* Allow footer text to wrap */
+    body[data-page="about"] .bottom-bar {
+        height: auto;
+        min-height: 28px;
+        flex-wrap: wrap;
+        gap: 6px 16px;
+        padding: 10px 12px;
+    }
+}
+
+/* Phones (600px) */
+@media (max-width: 600px) {
+    .about-sheet {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .about-source h2 { font-size: 14px; }
+    .about-badge { font-size: 12px; padding: 6px 10px; }
+    
+    .about-sheet p,
+    .about-sheet li,
+    .about-sheet a {
+        font-size: 12px;
+    }
+
+    .about-section {
+        padding: 12px 0;
     }
 }
