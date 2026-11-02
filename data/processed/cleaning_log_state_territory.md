@@ -1,19 +1,21 @@
 # Cleaning Log: State and Territory Hospitalised Injuries
 
-**File Name:** `state_territory_2011_2021.xlsx`
-**Sheet Used:** `raw`
+**File Name:** `state_territory_2011_2021.xlsx`& `state_population_2021.xlsx`
+**Sheet Used:** `raw` (Injuries) & `Sheet1` (Population)
 **Tool Used:** KNIME Analytics Platform
 
 ---
 
 ## 1. File Summary
-- **Input Data:** The `raw` tab in the Excel file, which contains 5 side-by-side tables (Totals, Road User, Sex, Age Group, Counterparty) at a 6-monthly granularity.
-- **Column Count Before Cleaning:** 38 columns (A to AL).
-- **Column Count After Cleaning:** 9 columns (year, jurisdiction, breakdown_type, category, data_quality_flag, Sum(hospitalisations), Sum(bed_days))
+- **Input Data:** 
+- The `raw` tab in the Excel file, which contains 5 side-by-side tables (Totals, Road User, Sex, Age Group, Counterparty) at a 6-monthly granularity.
+- The `Sheet1` tab in the 2021 Census population file.
+- **Column Count Before Cleaning:** 38 columns (A to AL) (Injuries) / 4 columns (Population).
+- **Column Count After Cleaning:** 9 columns (year, jurisdiction, breakdown_type, category, data_quality_flag, Sum(hospitalisations), Sum(bed_days)) / 4 columns (jurisdiction, male, female, total)
 
 ---
 
-## 2. Transformations Applied
+## 2. Transformations Applied (Injuries Data)
 The following transformations were applied using KNIME nodes:
 
 1. **Data Extraction & Splitting:** 
@@ -43,7 +45,19 @@ The following transformations were applied using KNIME nodes:
 
 ---
 
-## 3. `n.p.` Value Counts
+
+## 3. Transformations Applied (Population Data)
+
+To enable the "Rate per 100k" calculation, the 2021 Census population data was cleaned using the following KNIME steps:
+
+1. **Excel Reader:** Read the `Sheet1` tab. Skipped the title rows to start directly at the column headers (`State`, `Male`, `Female`, `Total`). Removed the "Australia" summary row and any notes at the bottom of the sheet, keeping only the 8 states and territories (NSW, Vic, Qld, SA, WA, Tas, NT, ACT).
+2. **Column Rename:** Renamed all the columns to `jurisdiction`, `male`, `female`, and `total`.
+3. **Rule Engine:** Renamed the `jurisdiction` rows to match the exact naming convention used in the injuries dataset (e.g., "NSW", "Vic", "Qld").
+4. **CSV Writer:** Exported as `state_population_2021_cleaned.csv`.
+
+---
+
+## 4. `n.p.` Value Counts
 *These counts reflect the number of `n.p.` cells present in the original raw data that were converted to missing values (`?`).*
 
 | Dimension / Table | `n.p.` Count in `hospitalisations` | `n.p.` Count in `bed_days` |
@@ -58,27 +72,31 @@ The following transformations were applied using KNIME nodes:
 
 ---
 
-## 4. Blank Cells Converted to NA
+## 5. Blank Cells Converted to NA
 Because the Excel file contained 5 tables of varying lengths, KNIME automatically filled rows 177 to 1,371 with blank cells for Table 1. (Same for other tables)
 - **Action Taken:** `Row Filter` nodes were used to exclude these structural blank rows before aggregation.
 - **Count of blank rows removed:** ~1,195 rows per stream. (For Table 1)
 
 ---
 
-## 5. Duplicate Rows Removed
+## 6. Duplicate Rows Removed
 - **Count:** 0 
 - **Reason:** Because the `GroupBy` nodes were used to aggregate the 6-monthly data, KNIME condensed the data into unique annual rows (e.g., 1 row for 2011 NSW). No manual duplicate removal was necessary.
 
 ---
 
-## 6. Discrepancies and Resolutions
+## 7. Discrepancies and Resolutions
 **Discrepancy: Time Series Breaks**
 - **Issue:** Victoria's data (from 2012) and NSW's data (from 2017) changed inclusion criteria, making them incomparable to previous years.
 - **Resolution:** A Rule Engine successfully flagged these years with `Vic_break_2012` and `NSW_break_2017` in the `data_quality_flag` column.
 
+**Discrepancy 2: Population Normalisation**
+- **Issue:** Raw counts do not account for population size. A small jurisdiction like the NT will always appear lower than NSW, regardless of the actual per-capita risk.
+- **Resolution:** The 2021 Census population data was cleaned and joined to the injuries data in D3 (via the `populationMap` object). This allows the dashboard to toggle between "Total Count" and "Rate per 100k". The rate is calculated as: `(Hospitalisations / Population) * 100,000`. A disclaimer is included in the dashboard that this uses a fixed 2021 population baseline.
+
 ---
 
-## 7. Validation Checks
+## 8. Validation Checks
 
 ### 11.1 Row Count Check
 - **Status:** Passed.
@@ -113,7 +131,7 @@ Because the Excel file contained 5 tables of varying lengths, KNIME automaticall
 
 ---
 
-## 8. Final Output
-The final output of the KNIME workflow is a single, unified table that matches the **Common Schema** in Section 2 of the Data Contract. 
-- **Export Format:** `.csv`
-- **File Name:** `state_territory_cleaned.csv`
+## 9. Final Output
+The final output of the KNIME workflow is two unified tables:
+1. **`state_territory_cleaned.csv`** & **`state_territory_cleaned_v2.csv`** (Injuries data in Long Format).
+2. **`state_population_2021_cleaned.csv`** (Population data for Rate calculation).
