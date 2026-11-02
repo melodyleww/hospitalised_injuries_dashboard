@@ -514,3 +514,21 @@ rect:focus, circle:focus {
 .card h2 {
     font-size: 14px;
 }
+
+/* Allow chart cards and their drawing areas to shrink on resize. */
+.charts-grid,
+.card,
+.line-section,
+.guide-section,
+.chart-area {
+    min-width: 0;
+}
+
+/* SVG dimensions should not determine the container's size. */
+.chart-area {
+    contain: size;
+}
+
+.chart-area svg {
+    display: block;
+}
