@@ -490,10 +490,6 @@ rect:focus, circle:focus {
         width: 90%;
         max-width: 400px;
     }
-    
-    .top-bar h1 {
-        font-size: 14px;
-    }
 
     /* *** CRITICAL FIX: Give charts explicit heights on mobile too *** */
     .chart-area {

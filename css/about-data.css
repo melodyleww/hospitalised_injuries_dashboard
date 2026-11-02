@@ -1,11 +1,19 @@
 /* css/about-data.css */
 
+/* Let the whole About page grow and scroll naturally. */
+body[data-page="about"] {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+
+    grid-template-rows: auto auto minmax(auto, 1fr) auto;
+}
+
 /* Use the shared dashboard width and available height. */
 .about-dashboard {
     min-height: 0;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; 
 }
 
 /* One white panel for the whole page. */
@@ -18,7 +26,7 @@
     background: #ffffff;
     border-radius: 18px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
-    overflow-y: auto; 
+    overflow-y: visible; 
 }
 
 /* Source information separated from the explanations. */
