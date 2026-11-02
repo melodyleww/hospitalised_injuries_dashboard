@@ -1,124 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hospitalised Injuries Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body data-page="national">
-
+  <body data-page="national">
     <header id="site-header" class="top-bar"></header>
 
-    <nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections">
-    </nav>
+    <nav
+      id="site-navigation"
+      class="tabs-container"
+      aria-label="Dashboard sections"
+    ></nav>
 
     <main class="dashboard-wrapper">
-
-        <section class="filter-bar">
-            <div class="dropdowns">
-
-                <!-- Year Filter Group -->
-                <div class="filter-group">
-                    <span class="filter-label">Year</span>
-                    <div class="dropdown-wrapper">
-                        <select id="yearFilter" class="dropdown">
-                            <option value="All" selected>All Years</option>
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                        </select>
-                        <span class="dropdown-arrow"></span>
-                    </div>
-                </div>
-
-                <!-- Road User Filter Group -->
-                <div class="filter-group">
-                    <span class="filter-label">Road User</span>
-                    <div class="dropdown-wrapper">
-                        <select id="roadUserFilter" class="dropdown">
-                            <option value="All">All Users</option>
-                            <option value="Car driver/passenger">Car driver/passenger</option>
-                            <option value="Motorcyclist">Motorcyclist</option>
-                            <option value="Pedal cyclist">Pedal cyclist</option>
-                            <option value="Pedestrian">Pedestrian</option>
-                            <option value="Heavy transport">Heavy transport</option>
-                            <option value="Pick-up truck/van">Pick-up truck/van</option>
-                            <option value="Bus">Bus</option>
-                            <option value="Other/Unknown">Other/Unknown</option>
-                        </select>
-                        <span class="dropdown-arrow"></span>
-                    </div>
-                </div>
-
+      <section class="filter-bar">
+        <div class="dropdowns">
+          <!-- Year Filter Group -->
+          <div class="filter-group">
+            <label class="filter-label" for="yearFilter">Year</label>
+            <div class="dropdown-wrapper">
+              <select id="yearFilter" class="dropdown">
+                <option value="All" selected>All Years</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+              </select>
+              <span class="dropdown-arrow"></span>
             </div>
+          </div>
 
-            <div class="buttons">
-                <button class="btn btn-reset">Reset</button>
+          <!-- Road User Filter Group -->
+          <div class="filter-group">
+            <label class="filter-label" for="roadUserFilter">Road User</label>
+            <div class="dropdown-wrapper">
+              <select id="roadUserFilter" class="dropdown">
+                <option value="All">All Users</option>
+                <option value="Car driver/passenger">
+                  Car driver/passenger
+                </option>
+                <option value="Motorcyclist">Motorcyclist</option>
+                <option value="Pedal cyclist">Pedal cyclist</option>
+                <option value="Pedestrian">Pedestrian</option>
+                <option value="Heavy transport">Heavy transport</option>
+                <option value="Pick-up truck/van">Pick-up truck/van</option>
+                <option value="Bus">Bus</option>
+                <option value="Other/Unknown">Other/Unknown</option>
+              </select>
+              <span class="dropdown-arrow"></span>
             </div>
+          </div>
+        </div>
 
-            <p class="filter-note"><strong>Note:</strong> The Year filter updates the KPI cards and the two Bar charts.
-                The Road User filter cross-filters the Bar charts and Age chart. The Line chart shows the full
-                unfiltered timeline.</p>
-        </section>
+        <div class="buttons">
+          <button class="btn btn-reset">Reset</button>
+        </div>
 
-        <section class="charts-grid">
+        <p class="filter-note">
+          <strong>Note:</strong> The Year filter updates the KPI cards and the
+          two Bar charts. The Road User filter cross-filters the Bar charts and
+          Age chart. The Line chart shows the full unfiltered timeline.
+        </p>
+      </section>
 
-            <div class="card line-chart-card">
-                <div class="line-section">
-                    <h2>National Trend (2011 - 2021)</h2>
-                    <div id="lineChart" class="chart-area"></div>
-                </div>
+      <section class="charts-grid">
+        <div class="card line-chart-card">
+          <div class="line-section">
+            <h2>National Trend (2011 - 2021)</h2>
+            <div id="lineChart" class="chart-area"></div>
+          </div>
 
-                <div class="divider"></div>
+          <div class="divider"></div>
 
-                <div class="guide-section">
-                    <h2>Chart Guide</h2>
-                    <ol>
-                        <li><strong>Blue solid line:</strong> Total hospitalisations.</li>
-                        <li><strong>Dotted line:</strong> Time-series breaks (2012/2017).</li>
-                        <li><strong>Caveat:</strong> Raw counts, not rates.</li>
-                    </ol>
-                </div>
-            </div>
+          <div class="guide-section">
+            <h2>Chart Guide</h2>
+            <ol>
+              <li><strong>Blue solid line:</strong> Total hospitalisations.</li>
+              <li>
+                <strong>Dotted line:</strong> Time-series breaks (2012/2017).
+              </li>
+              <li><strong>Caveat:</strong> Raw counts, not rates.</li>
+            </ol>
+          </div>
+        </div>
 
-            <div class="card kpi-card">
-                <img src="assets/images/icons/icon-hospital.png" alt="Hospital Icon" class="kpi-icon">
-                <h3>Total Hospitalisations</h3>
-                <p id="kpiTotal">-</p>
-            </div>
+        <div class="card kpi-card">
+          <img
+            src="assets/images/icons/icon-hospital.png"
+            alt="Hospital Icon"
+            class="kpi-icon"
+          />
+          <h3>Total Hospitalisations</h3>
+          <p id="kpiTotal">-</p>
+        </div>
 
-            <div class="card kpi-card">
-                <img src="assets/images/icons/icon-bed.png" alt="Bed Icon" class="kpi-icon">
-                <h3>Avg Bed Days per Case</h3>
-                <p id="kpiBedDays">-</p>
-            </div>
+        <div class="card kpi-card">
+          <img
+            src="assets/images/icons/icon-bed.png"
+            alt="Bed Icon"
+            class="kpi-icon"
+          />
+          <h3>Avg Bed Days per Case</h3>
+          <p id="kpiBedDays">-</p>
+        </div>
 
-            <div class="card road-user-card">
-                <h2>Road User Breakdown</h2>
-                <div id="roadUserChart" class="chart-area"></div>
-                <p class="click-note">* Click a bar to filter the dashboard.</p>
-            </div>
+        <div class="card road-user-card">
+          <h2>Road User Breakdown</h2>
+          <div id="roadUserChart" class="chart-area"></div>
+          <p class="click-note">* Click a bar to filter the dashboard.</p>
+        </div>
 
-            <div class="card age-group-card">
-                <h2>Age Group Breakdown</h2>
-                <div id="ageGroupChart" class="chart-area"></div>
-                <p class="click-note">* Click a bar to filter the dashboard.</p>
-            </div>
-
-        </section>
+        <div class="card age-group-card">
+          <h2>Age Group Breakdown</h2>
+          <div id="ageGroupChart" class="chart-area"></div>
+          <p class="click-note">* Click a bar to filter the dashboard.</p>
+        </div>
+      </section>
     </main>
 
     <footer id="site-footer" class="bottom-bar"></footer>
@@ -132,23 +145,43 @@
     <script type="module" src="js/walkthrough.js"></script>
 
     <!-- Walkthrough Overlay & Modal -->
-    <div id="walkthroughOverlay" class="walkthrough-overlay" style="display: none;"></div>
+    <div
+      id="walkthroughOverlay"
+      class="walkthrough-overlay"
+      style="display: none"
+    ></div>
     <!-- The spotlight for the tabs -->
-    <div id="walkthroughTabHighlight" class="walkthrough-tab-highlight" style="display: none;"></div>
+    <div
+      id="walkthroughTabHighlight"
+      class="walkthrough-tab-highlight"
+      style="display: none"
+    ></div>
 
-    <dialog id="walkthroughDialog" class="walkthrough-dialog" aria-labelledby="walkthroughTitle">
-        <h2 id="walkthroughTitle" class="walkthrough-step">Step 1/5</h2>
-        <p id="walkthroughText" class="walkthrough-text"></p>
+    <dialog
+      id="walkthroughDialog"
+      class="walkthrough-dialog"
+      aria-labelledby="walkthroughTitle"
+    >
+      <h2 id="walkthroughTitle" class="walkthrough-step">Step 1/5</h2>
+      <p id="walkthroughText" class="walkthrough-text"></p>
 
-        <div class="walkthrough-actions">
-            <button id="walkthroughSkip" class="walkthrough-link">Skip for now</button>
-            <div class="walkthrough-nav">
-                <button id="walkthroughPrev" class="walkthrough-btn-prev" style="display: none;">Prev</button>
-                <button id="walkthroughNext" class="walkthrough-btn-next">Next</button>
-            </div>
+      <div class="walkthrough-actions">
+        <button id="walkthroughSkip" class="walkthrough-link">
+          Skip for now
+        </button>
+        <div class="walkthrough-nav">
+          <button
+            id="walkthroughPrev"
+            class="walkthrough-btn-prev"
+            style="display: none"
+          >
+            Prev
+          </button>
+          <button id="walkthroughNext" class="walkthrough-btn-next">
+            Next
+          </button>
         </div>
+      </div>
     </dialog>
-
-</body>
-
+  </body>
 </html>

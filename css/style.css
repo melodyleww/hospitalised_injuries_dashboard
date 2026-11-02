@@ -1,35 +1,37 @@
 /* --- FILTER BAR --- */
 .filter-bar {
-    background: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 16px; 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 6px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 20px;
+
+    padding: 12px 18px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
     flex-shrink: 0;
 }
 
 /* Container for all filter groups */
 .dropdowns {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 20px;
+    min-width: 0;
 }
-
 /* Container for one label + dropdown pair */
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 /* Style for the label text */
 .filter-label {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    color: #1A2B4C;
+    color: #1a2b4c;
     white-space: nowrap;
 }
 
@@ -37,6 +39,10 @@
 .dropdown-wrapper {
     position: relative;
     width: 150px;
+    min-width: 0;
+}
+.filter-group:last-child .dropdown-wrapper {
+    width: 200px;
 }
 
 .dropdown {
@@ -93,13 +99,14 @@
 .buttons {
     display: flex;
     gap: 10px;
+    margin-left: auto;
 }
-
 .filter-note {
-    grid-column: 1 / -1;
-    font-size: 10px; 
+    flex-basis: 100%;
+    margin: 0;
+    font-size: 11px;
     font-weight: 400;
-    color: #6B7280;
+    color: #6b7280;
 }
 
 /* --- CHARTS GRID --- */
@@ -125,7 +132,7 @@
 }
 
 .card h2 {
-    font-size: 13px; 
+    font-size: 14px; 
     font-weight: 700;
     margin-bottom: 2px;
     text-align: center;
@@ -373,24 +380,6 @@ rect:focus, circle:focus {
         overflow: visible;
     }
 
-    /* Allow the header to grow if title wraps */
-    .top-bar {
-        height: auto;
-        min-height: 50px;
-        padding: 12px 20px;
-    }
-
-    /* Allow tabs to wrap */
-    .tabs-container {
-        padding: 8px 12px;
-    }
-    .tabs {
-        flex-wrap: wrap;
-        justify-content: center;
-        border-radius: 20px;
-        max-width: 100%;
-    }
-
     /* Grid changes to 2 columns */
     .charts-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -417,19 +406,6 @@ rect:focus, circle:focus {
     .kpi-card {
         grid-column: span 1;
     }
-    
-    .filter-bar {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-    
-    .dropdowns {
-        flex-wrap: wrap;
-    }
-    
-    .buttons {
-        justify-self: end;
-    }
 
     /* *** CRITICAL FIX: Give charts explicit heights *** */
     .chart-area {
@@ -441,15 +417,6 @@ rect:focus, circle:focus {
     }
     .road-user-card .chart-area {
         height: 350px; /* Horizontal bars need more vertical space */
-    }
-
-    /* Allow footer to wrap */
-    .bottom-bar {
-        height: auto;
-        min-height: 28px;
-        flex-wrap: wrap;
-        gap: 6px 16px;
-        padding: 10px 12px;
     }
 }
 
@@ -476,16 +443,6 @@ rect:focus, circle:focus {
         text-align: center;
     }
     
-    .filter-group {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
-    
-    .dropdown-wrapper {
-        width: 100%;
-    }
-    
     .walkthrough-dialog {
         width: 90%;
         max-width: 400px;
@@ -506,9 +463,41 @@ rect:focus, circle:focus {
     }
 }
 
-/* --- Chart Text Size (Improve Readability) --- */
-.card h2 {
-    font-size: 14px;
+/* Match State's mobile filter layout. */
+@media (max-width: 600px) {
+    body[data-page="national"] .filter-bar {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    /* Let labels and dropdowns join the filter bar's grid. */
+    body[data-page="national"] .dropdowns,
+    body[data-page="national"] .filter-group {
+        display: contents;
+    }
+
+    body[data-page="national"] .filter-label {
+        grid-column: 1;
+    }
+
+    body[data-page="national"] .filter-bar .dropdown-wrapper {
+        grid-column: 2;
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Place Reset beneath the dropdowns, aligned right. */
+    body[data-page="national"] .buttons {
+        grid-column: 2;
+        justify-self: end;
+        margin-left: 0;
+    }
+
+    /* Explanation spans both columns. */
+    body[data-page="national"] .filter-note {
+        grid-column: 1 / -1;
+    }
 }
 
 /* Allow chart cards and their drawing areas to shrink on resize. */

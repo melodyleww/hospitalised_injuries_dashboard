@@ -140,20 +140,6 @@
 
 /* Mobile (600px) - Matches First Nations Mobile CSS exactly */
 @media (max-width: 600px) {
-    body[data-page="state"] .top-bar {
-        flex-wrap: wrap;
-        gap: 8px;
-        height: auto;
-        min-height: 50px;
-        padding-block: 12px;
-    }
-
-    body[data-page="state"] .tabs {
-        flex-wrap: wrap;
-        justify-content: center;
-        border-radius: 20px;
-    }
-
     .filter-bar {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
