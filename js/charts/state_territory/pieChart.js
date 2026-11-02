@@ -8,9 +8,9 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
     if (!container) return;
 
     const width = container.clientWidth;
-    const height = container.clientHeight; 
-    const legendSpace = 80; 
-    const chartHeight = height - legendSpace; 
+    const height = container.clientHeight;
+    const legendSpace = 80;
+    const chartHeight = height - legendSpace;
     const radius = Math.min(width, chartHeight) / 2 - 10;
 
     d3.select(`#${containerId}`).html("");
@@ -20,7 +20,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .append("svg")
         .attr("width", width)
         .attr("height", height)
-        .attr("viewBox", `0 0 ${width} ${height}`) 
+        .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
     // Add hatch pattern
@@ -50,10 +50,10 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         return { sum: sum, hasSuppressed: hasSuppressed };
     }, d => d.category);
 
-    const pieData = Array.from(groupedData, ([category, obj]) => ({ 
-        category, 
-        value: obj.sum, 
-        isSuppressed: obj.sum === 0 && obj.hasSuppressed 
+    const pieData = Array.from(groupedData, ([category, obj]) => ({
+        category,
+        value: obj.sum,
+        isSuppressed: obj.sum === 0 && obj.hasSuppressed
     })).sort((a, b) => b.value - a.value);
 
     if (pieData.length === 0) return;
@@ -63,8 +63,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
 
     const colorScale = d3.scaleOrdinal()
         .domain(pieData.map(d => d.category))
-        .range(["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899", "#6b7280"]);
-
+        .range(["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#999999"]);
     const arcs = pie(pieData);
 
     const tooltip = d3.select("body").append("div")
@@ -86,8 +85,8 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .style("opacity", d => selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3)
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s")
-        
-        .on("mouseover", function(event, d) {
+
+        .on("mouseover", function (event, d) {
             if (isClicking) return;
             d3.select(this).style("opacity", 0.8);
             let tooltipHtml = `<strong>${d.data.category}</strong><br>`;
@@ -101,12 +100,12 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", function() {
+        .on("mouseout", function () {
             if (isClicking) return;
             d3.select(this).style("opacity", selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3);
             tooltip.style("opacity", 0);
         })
-        .on("click", function(event, d) {
+        .on("click", function (event, d) {
             tooltip.style("opacity", 0);
             isClicking = true;
             const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
@@ -116,18 +115,18 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
 
     // Legend
     const legendGroup = svg.append("g")
-        .attr("transform", `translate(10, ${chartHeight + 5})`); 
+        .attr("transform", `translate(10, ${chartHeight + 5})`);
     const itemsPerCol = Math.ceil(pieData.length / 2);
-    
+
     pieData.forEach((d, i) => {
-        const col = Math.floor(i / itemsPerCol); 
+        const col = Math.floor(i / itemsPerCol);
         const row = i % itemsPerCol;
-        const xOffset = col * (width / 2); 
-        const yOffset = row * 16; 
+        const xOffset = col * (width / 2);
+        const yOffset = row * 16;
 
         const legendRow = legendGroup.append("g")
             .attr("transform", `translate(${xOffset}, ${yOffset})`);
-        
+
         legendRow.append("rect")
             .attr("x", 0).attr("y", 0)
             .attr("width", 10).attr("height", 10)

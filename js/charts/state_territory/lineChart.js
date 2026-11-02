@@ -78,8 +78,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const jurisdictions = [...new Set(filteredData.map(d => d.jurisdiction))].sort();
     const colorScale = d3.scaleOrdinal()
         .domain(jurisdictions)
-        .range(["#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6", "#06b6d4", "#ec4899", "#6b7280"]);
-
+        .range(["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#999999"]);
     // 6. Line Generator
     const line = d3.line()
         .defined(d => d.hospitalisations !== null)
@@ -159,7 +158,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
 
     // 11. Legend
     let legendGroup;
-    
+
     if (isMobile) {
         // Mobile: Place legend at the bottom
         legendGroup = svg.append("g")
@@ -186,14 +185,14 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         if (isMobile) {
             // Horizontal layout for mobile
             const spacing = isVerySmall ? 65 : 70; // Tighter spacing on tiny screens
-            xOffset = (i % itemsPerRow) * spacing; 
-            yOffset = Math.floor(i / itemsPerRow) * 20; 
+            xOffset = (i % itemsPerRow) * spacing;
+            yOffset = Math.floor(i / itemsPerRow) * 20;
         } else {
             // Vertical 2-column layout for desktop
             const itemsPerCol = Math.ceil(jurisdictions.length / 2);
-            const col = Math.floor(i / itemsPerCol); 
+            const col = Math.floor(i / itemsPerCol);
             const row = i % itemsPerCol;
-            xOffset = col * 60; 
+            xOffset = col * 60;
             yOffset = row * 20;
         }
 
