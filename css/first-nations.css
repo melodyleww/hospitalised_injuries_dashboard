@@ -260,6 +260,15 @@
 
 /* Stack charts and allow page scrolling on narrower screens. */
 @media (max-width: 1100px) {
+    
+    /* Allow the Population page to grow and scroll. */
+    body[data-page="firstNations"] {
+        display: block;
+        height: auto;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+
     .fn-dashboard {
         padding: 0 12px 16px;
     }
