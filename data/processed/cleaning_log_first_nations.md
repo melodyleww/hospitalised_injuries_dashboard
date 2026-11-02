@@ -4,7 +4,7 @@
 
 - Source: `data/raw/first_nations_2011_2021.xlsx`
 - Worksheet: `raw`
-- KNIME workflow: `first_nations_clean.knwf`
+- KNIME workflow: `first_nations_KNIME_Group17.knwf`
 - Coverage: 2011–2021
 - Original workbook preserved unchanged.
 
@@ -45,7 +45,7 @@ For the final combined dataset, the four breakdown-specific category columns wer
 
 A new string field `breakdown_type` was added to identify the source breakdown of each row:
 
-- `age_group`
+- `age`
 - `road_user`
 - `remoteness`
 - `counterparty`
@@ -99,20 +99,58 @@ Validation results:
 - Remoteness: all 66 annual groups contained two distinct half-years and two valid numeric values for both hospitalisations and bed days — PASS
 - Counterparty: all 88 annual groups contained two distinct half-years and two valid numeric values for both hospitalisations and bed days — PASS
 
-## 7. Long-format integration
+## 7. Long-format integration and percentage calculations
 
-After the four breakdowns were cleaned and aggregated independently, additional branches were created from each final annual dataset.
-Column Renamer nodes standardised the category field to category, and Constant Value Column nodes added the breakdown_type field.
-The resulting branch dimensions were:
+_Combining the annual breakdowns_
+The four breakdowns were cleaned and aggregated independently. Column Renamer nodes standardised their category columns to category, and Constant Value Column nodes added breakdown_type
 
-- Age: 132 rows × 9 columns
-- Road user: 176 rows × 9 columns
-- Remoteness: 66 rows × 9 columns
-- Counterparty: 88 rows × 9 columns
-  The four datasets were then vertically combined using Concatenate nodes.
-  The final combined First Nations dataset contained:
-  462 rows × 9 columns
-  The combined dataset retains the following structure:
+The annual branches contained:
+
+- Age: 132 rows
+- Road user: 176 rows
+- Remoteness: 66 rows
+- Counterparty: 88 rows
+
+Concatenate nodes vertically combined these branches into a base dataset containing 462 rows and 9 columns. Counts were not added across breakdowns because they describe overlapping hospitalisation cases
+
+_Age percentages_
+A GroupBy node calculated the number of distinct age groups, the number of published hospitalisation values and the hospitalisation total for each year and population
+A Row Filter retained only population-year combinations containing all six age groups and six published annual hospitalisation values. This retained 20 complete combinations
+The totals were joined to the matching annual age records by year and population. A Math Formula node calculated:
+
+`age_share_pct = 100 × hospitalisations ÷ age_total_available`
+
+This produced 120 age-percentage records. The two population distributions for 2014 were excluded from percentage calculation because they were incomplete. Their original annual records were retained in the base dataset.
+
+_Counterparty percentages_
+The same approach checked for four distinct counterparty categories and four published annual hospitalisation values within each year and population
+All 22 population-year combinations were complete. The totals were joined to the corresponding counterparty records, and a Math Formula node calculated:
+
+`counterparty_share_pct = 100 × hospitalisations ÷ counterparty_total_available`
+
+This produced 88 counterparty-percentage records
+
+_Adding percentages to the combined dataset_
+Column Filter nodes retained the matching keys and calculated percentages. Column Renamer nodes standardised the percentage column to hospitalisation_share_pct and the category column to category. Constant Value Column nodes identified the breakdown as age or counterparty
+These two percentage branches were concatenated into a lookup containing 208 rows and 5 columns
+A left outer join added the percentages to the 462-row base dataset using four matching keys:
+
+- year
+- first_nations_status
+- breakdown_type
+- category
+
+The join retained every base record and added only hospitalisation_share_pct. The final dataset therefore contained 462 rows and 10 columns
+Road-user and remoteness percentages were not calculated. Their percentage fields remain empty, as do the age percentage fields for 2014
+
+## 8. Output files
+
+The current workflow exports one combined dataset:
+
+`first_nations_cleaned.csv — 462 rows × 10 columns.`
+
+The final columns are:
+
 - year
 - first_nations_status
 - category
@@ -122,50 +160,25 @@ The resulting branch dimensions were:
 - hospitalisations
 - bed_days
 - breakdown_type
-  The datasets were concatenated vertically rather than joined horizontally because the four breakdowns represent different analytical dimensions and do not have a one-to-one relationship between individual rows.
+- hospitalisation_share_pct
 
-## 8. Output files
-
-The final annual outputs are:
-
-- `first_nations_age_clean.csv`: 132 rows and 8 columns.
-- `first_nations_road_user_clean.csv`: 176 rows and 8 columns.
-- `first_nations_remoteness_clean.csv`: 66 rows and 8 columns.
-- `first_nations_counterparty_clean.csv`: 88 rows and 8 columns.
-
-Each output retains these data-quality fields:
-
-- `half_years_present`
-- `hospitalisations_suppressed_count`
-- `bed_days_suppressed_count`
-
-Temporary aggregation columns were removed from the final exports but remain available upstream in KNIME.
-
-Actual exported dimensions checked: [Confirm].
+The percentage field stores values on a 0–100 scale. For example, a value of 30.90 represents 30.90%
+Percentage values retain their calculated precision in the CSV. Rounding is applied for presentation where required
+The CSV Writer saves the output in the workflow’s Data folder. The dashboard copy is stored in data/processed/first_nations_cleaned.csv
 
 ## 9. Validation results
 
-Age:
-
-- The 2011 First Nations age counts matched T3: 92, 204, 335, 286, 226 and 24, totalling 1,167 — PASS.
-- The 2014 First Nations 0–7 and 65+ hospitalisation values remained missing, matching T3 suppression — PASS.
-
-Road user:
-
-- Selected 2011 First Nations counts matched T2: car occupants 617, motorcyclists 187, pedal cyclists 121 and pedestrians 180 — PASS.
-- The 2011 First Nations bus-occupant group had one half-year record and missing final annual measures — PASS.
-
-Remoteness:
-
-- Expected 2011 First Nations counts: Major Cities 368, Regional 455 and Remote 330.
-- Comparison with T4: The 2011 First Nations Major Cities 368, Regional 455, Remote 330, Total 1153 — PASS
-
-Counterparty:
-
-- Expected 2011 First Nations counts: 391, 192, 362 and 222, totalling 1,167.
-- Comparison with T5: The 2011 First Nations [car, pick-up truck or van] 391, [Fixed or stationary object] 192, [Non-collision transport accident] 362, [Other ] 222 — PASS
-
-Additional years and non-Indigenous records checked: [Record results].
+- Final output contains 462 rows and 10 columns — PASS
+- Breakdown counts remain age 132, road user 176, remoteness 66 and counterparty 88 — PASS
+- No duplicate combinations of year, population, breakdown type and category — PASS
+- Age percentages are populated for 120 records across 20 complete population-year distributions — PASS
+- All 12 age records for 2014 remain in the final dataset, with missing percentages — PASS
+- Counterparty percentages are populated for 88 records across 22 complete population-year distributions — PASS
+- Every complete age and counterparty distribution sums to 100%, within numerical precision — PASS
+- Road-user and remoteness percentage fields remain empty as intended — PASS
+- 2021 First Nations ages 17–25: 686 hospitalisations, approximately 30.90% — PASS
+- 2021 non-Indigenous ages 40–64: 12,337 hospitalisations, approximately 33.57% — PASS
+- The embedded output CSV matches the dashboard CSV — PASS
 
 ## 10. Limitations and discrepancies
 
@@ -194,12 +207,12 @@ CSV exports:
 
 The final combined dataset is exported as: `first_nations_cleaned.csv`
 
-The latest KNIME workflow contains the source Excel workbook within the saved workflow and includes the full cleaning, aggregation, validation, long-format transformation and export process.
+The saved workflow includes the source Excel workbook and combined CSV in its Data folder. It contains the cleaning, annual aggregation, validation, percentage calculation, long-format integration, final left join and export stages.
 
 Final checks:
 
 - Workflow saved — Confirmed
-- Combined dataset contains 462 rows — Confirmed
+- Combined dataset contains 462 rows and 10 columns — Confirmed
 - Breakdown row-count validation executed — Confirmed
 - Combined CSV Writer executed — Confirmed
 - Source workbook included in workflow — Confirmed
