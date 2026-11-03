@@ -116,7 +116,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
             if (d.isSuppressed) {
                 tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
             } else {
-                tooltipHtml += `Count: ${formatNumber(d.rawCount)}<br>Rate: ${d.rateValue.toFixed(1)}`;
+                tooltipHtml += `Hospitalisations: ${formatNumber(d.rawCount)}<br>Rate: ${d.rateValue.toFixed(1)}`;
             }
             tooltip.style("opacity", 1)
                 .html(tooltipHtml)

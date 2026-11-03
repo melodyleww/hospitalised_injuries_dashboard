@@ -148,7 +148,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .on("mouseover", function (event, d) {
             d3.select(this).attr("r", 6);
             tooltip.style("opacity", 1)
-                .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Count: ${formatNumber(d.hospitalisations)}`)
+                .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.hospitalisations)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
         .on("mouseout", function () {

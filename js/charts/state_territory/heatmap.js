@@ -119,7 +119,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
             if (d.isSuppressed) {
                 tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
             } else {
-                tooltipHtml += `Count: ${formatNumber(d.value)}`;
+                tooltipHtml += `Hospitalisations: ${formatNumber(d.value)}`;
             }
             tooltip.style("opacity", 1)
                 .html(tooltipHtml)

@@ -102,7 +102,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
             if (d.data.isSuppressed) {
                 tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
             } else {
-                tooltipHtml += `Count: ${formatNumber(d.data.value)}`;
+                tooltipHtml += `Hospitalisations: ${formatNumber(d.data.value)}`;
             }
             tooltip.style("opacity", 1)
                 .html(tooltipHtml)
