@@ -72,7 +72,11 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    let isClicking = false;
+    // Helper: is this slice currently highlighted by the road-user filter?
+    const isSelected = (d) => selectedRoadUser === "All" || selectedRoadUser === d.data.category;
+
+    // Helper: the resting opacity for a slice
+    const restingOpacity = (d) => isSelected(d) ? 1 : 0.3;
 
     const slices = chartGroup.selectAll(".slice")
         .data(arcs)
@@ -82,13 +86,18 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .attr("fill", d => d.data.isSuppressed ? "url(#hatch-pie)" : colorScale(d.data.category))
         .attr("stroke", "#fff")
         .attr("stroke-width", 2)
-        .style("opacity", d => selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3)
+        .style("opacity", d => restingOpacity(d))
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s")
 
         .on("mouseover", function (event, d) {
-            if (isClicking) return;
-            d3.select(this).style("opacity", 0.8);
+            // Hover feedback respects the dim state:
+            // - selected slices brighten slightly (1 → 0.8)
+            // - dimmed slices stay dimmed (0.3), no brightening
+            const base = restingOpacity(d);
+            d3.select(this).style("opacity", isSelected(d) ? 0.8 : base);
+
+            // Tooltip always shows for any slice
             let tooltipHtml = `<strong>${d.data.category}</strong><br>`;
             if (d.data.isSuppressed) {
                 tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
@@ -100,17 +109,15 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
-        .on("mouseout", function () {
-            if (isClicking) return;
-            d3.select(this).style("opacity", selectedRoadUser === "All" || selectedRoadUser === d.data.category ? 1 : 0.3);
+        .on("mouseout", function (event, d) {
+            // Always restore the correct resting opacity
+            d3.select(this).style("opacity", restingOpacity(d));
             tooltip.style("opacity", 0);
         })
         .on("click", function (event, d) {
             tooltip.style("opacity", 0);
-            isClicking = true;
             const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
             if (onFilter) onFilter(newRoadUser);
-            setTimeout(() => { isClicking = false; }, 300);
         });
 
     // Legend
