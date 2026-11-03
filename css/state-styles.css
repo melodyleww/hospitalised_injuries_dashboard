@@ -77,6 +77,39 @@
 }
 
 /* =========================================
+   4a. BAR CARD HEADER (title + count/rate toggle)
+   ========================================= */
+/* Wrap onto two rows when the card is narrow so the toggle
+   is never squeezed off the card and the title is never clipped. */
+.bar-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.bar-card-header h2 {
+    flex: 1 1 auto;
+    min-width: 0;        /* allow the title to shrink below its content size */
+    margin: 0;
+    text-align: left;
+    /* Wrap long titles instead of truncating them. */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.bar-card-header .toggle-container {
+    flex: 0 0 auto;      /* toggle keeps its natural width */
+    flex-direction: row; /* side-by-side instead of stacked */
+    gap: 10px;
+    white-space: nowrap;
+}
+
+/* =========================================
    5. FILTER BAR (Mirrors First Nations CSS)
    ========================================= */
 .filter-bar {
@@ -184,6 +217,17 @@
     .state-line-card .guide-section {
         padding-left: 0;
         padding-top: 10px;
+        width: 100%;
+    }
+
+    /* Bar Card Header on phones: stack title above toggle
+       so both are always fully visible. */
+    .bar-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bar-card-header h2 {
         width: 100%;
     }
 }
