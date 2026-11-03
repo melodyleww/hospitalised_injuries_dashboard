@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const barTitleEl = document.getElementById("barChartTitle");
         if (barTitleEl) {
             barTitleEl.innerHTML = currentRoadUser === "All" 
-                ? `Injuries by Jurisdiction (<span id="yearLabel">${currentYear}</span>)` 
-                : `${currentRoadUser} Injuries by Jurisdiction (<span id="yearLabel">${currentYear}</span>)`;
+                ? `Hospitalisations by Jurisdiction (<span id="yearLabel">${currentYear}</span>)` 
+                : `${currentRoadUser} Hospitalisations by Jurisdiction (<span id="yearLabel">${currentYear}</span>)`;
         }
     }
 
