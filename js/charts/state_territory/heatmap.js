@@ -14,13 +14,11 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         titleEl.innerText = title;
     }
 
-    const margin = { top: 30, right: 20, bottom: 55, left: 60 };
+    const margin = { top: 8, right: 20, bottom: 55, left: 60 };
 
-    // Measure the actual rendered container size in CSS pixels.
     const totalWidth  = container.clientWidth;
     const totalHeight = container.clientHeight;
 
-    // Guard against a collapsed container (e.g. during a resize).
     if (totalWidth <= 0 || totalHeight <= 0) {
         console.warn("The heatmap needs more drawing space.");
         return;
@@ -34,22 +32,28 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         return;
     }
 
+    // Cap the grid height on very tall/wide cards so cells don't
+    // become stretched. The extra vertical space is centred.
+    const MAX_GRID_HEIGHT = 300;
+    const gridHeight   = Math.min(height, MAX_GRID_HEIGHT);
+    const gridOffsetY  = (height - gridHeight) / 2;
+
     d3.select(`#${containerId}`).html("");
     d3.selectAll(".heatmap-tooltip").remove();
 
-    // NOTE: width/height and viewBox must match 1:1 in CSS pixels
-    // so that axis text is rendered at its true size and is not
-    // scaled down by preserveAspectRatio on narrow windows.
+    // Keep viewBox 1:1 with rendered pixels and use "meet".
+    // Because totalWidth/totalHeight match the rendered <svg> size,
+    // there is no scaling: text stays at its true pixel size and the
+    // grid keeps its aspect ratio on every screen width.
     const svg = d3.select(`#${containerId}`)
         .append("svg")
         .attr("width", totalWidth)
         .attr("height", totalHeight)
         .attr("viewBox", `0 0 ${totalWidth} ${totalHeight}`)
-        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("preserveAspectRatio", "xMidYMid meet")
         .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
+        .attr("transform", `translate(${margin.left},${margin.top + gridOffsetY})`);
 
-    // Add hatch pattern
     svg.append("defs").append("pattern")
         .attr("id", "hatch-heat")
         .attr("width", 6).attr("height", 6)
@@ -61,7 +65,6 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
 
     addAriaLabel(svg, `Heatmap showing hospitalisations by age group over time.`);
 
-    // Filter Data (Keep nulls)
     let filteredData = data.filter(d => d.breakdown_type === "Age Group");
     if (selectedState !== "All") {
         filteredData = filteredData.filter(d => d.jurisdiction === selectedState);
@@ -70,7 +73,6 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
     const years = [...new Set(filteredData.map(d => d.year))].sort();
     const ageGroups = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
 
-    // Aggregate (Track suppression)
     const nestedData = d3.rollup(
         filteredData,
         v => {
@@ -96,22 +98,18 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
     });
 
     const x = d3.scaleBand().domain(years).range([0, width]).padding(0.05);
-    const y = d3.scaleBand().domain(ageGroups).range([0, height]).padding(0.05);
+    const y = d3.scaleBand().domain(ageGroups).range([0, gridHeight]).padding(0.05);
 
     const maxVal = d3.max(heatmapData, d => d.value);
     const colorScale = d3.scaleSequential()
         .interpolator(d3.interpolateBlues)
         .domain([0, maxVal]);
 
-    // --- X AXIS -------------------------------------------------
-    // On narrow containers, 11 year labels at 10px overlap.
-    // Rotate them when the band width is too small for a horizontal label,
-    // and reduce the font size slightly.
+    // X axis at the bottom of the (possibly capped) grid.
     const xAxisGroup = svg.append("g")
-        .attr("transform", `translate(0,${height})`);
+        .attr("transform", `translate(0,${gridHeight})`);
 
     const bandWidth = x.bandwidth();
-    // A horizontal year label (e.g. "2011") at 10px is ~28px wide.
     const rotateLabels = bandWidth < 34;
 
     xAxisGroup
@@ -128,14 +126,17 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
             .attr("dy", "0.4em");
     }
 
-    // Increase bottom margin needs to be accounted for by the rotated labels.
-    // (We already reserved 40px; rotated labels at 9px fit within that.)
+    // Y axis with tighter tick styling.
+    const yAxisGroup = svg.append("g")
+        .call(d3.axisLeft(y).tickSize(4).tickPadding(6));
 
-    // --- Y AXIS -------------------------------------------------
-    svg.append("g")
-        .call(d3.axisLeft(y))
+    yAxisGroup
         .style("font-family", "Poppins")
         .style("font-size", "10px");
+
+    if (y.bandwidth() < 22) {
+        yAxisGroup.selectAll("text").style("font-size", "9px");
+    }
 
     const tooltip = d3.select("body").append("div")
         .attr("class", "heatmap-tooltip")
