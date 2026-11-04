@@ -1,7 +1,12 @@
 // js/charts/state_territory/pieChart.js
 import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
-import { addAriaLabel } from '../../utils/accessibility.js';
+import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
+
+const announce = (text) => {
+    const announcer = document.getElementById("sr-announcer");
+    if (announcer) announcer.textContent = text;
+};
 
 export function drawRoadUserPieChart(data, containerId, selectedYear, selectedState, selectedRoadUser, onFilter) {
     const container = document.getElementById(containerId);
@@ -78,6 +83,13 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
     // Helper: the resting opacity for a slice
     const restingOpacity = (d) => isSelected(d) ? 1 : 0.3;
 
+    const sliceAriaLabel = (d) => {
+        if (d.data.isSuppressed) {
+            return `${d.data.category}: data suppressed, not published`;
+        }
+        return `${d.data.category}: ${formatNumber(d.data.value)} hospitalisations`;
+    };
+
     const slices = chartGroup.selectAll(".slice")
         .data(arcs)
         .enter().append("path")
@@ -89,38 +101,66 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .style("opacity", d => restingOpacity(d))
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s")
+        .attr("role", "img")
+        .attr("aria-label", sliceAriaLabel);
 
-        .on("mouseover", function (event, d) {
-            // Hover feedback respects the dim state:
-            // - selected slices brighten slightly (1 → 0.8)
-            // - dimmed slices stay dimmed (0.3), no brightening
-            const base = restingOpacity(d);
-            d3.select(this).style("opacity", isSelected(d) ? 0.8 : base);
+    const showSliceTooltip = (event, d, el) => {
+        d3.select(el).style("opacity", isSelected(d) ? 0.8 : restingOpacity(d));
 
-            // Tooltip always shows for any slice
-            let tooltipHtml = `<strong>${d.data.category}</strong><br>`;
-            if (d.data.isSuppressed) {
-                tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
-            } else {
-                tooltipHtml += `Hospitalisations: ${formatNumber(d.data.value)}`;
-            }
-            tooltip.style("opacity", 1)
-                .html(tooltipHtml)
-                .style("left", (event.pageX + 10) + "px")
-                .style("top", (event.pageY - 28) + "px");
+        // Tooltip always shows for any slice
+        let tooltipHtml = `<strong>${d.data.category}</strong><br>`;
+        if (d.data.isSuppressed) {
+            tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
+        } else {
+            tooltipHtml += `Hospitalisations: ${formatNumber(d.data.value)}`;
+        }
+        tooltip.style("opacity", 1)
+            .html(tooltipHtml)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+    };
+
+    const hideSliceTooltip = (el, d) => {
+        d3.select(el).style("opacity", restingOpacity(d));
+        tooltip.style("opacity", 0);
+    };
+
+    const triggerSliceFilter = (d) => {
+        const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
+        if (onFilter) onFilter(newRoadUser);
+    };
+
+    slices
+        .on("mouseover", function (event, d) { showSliceTooltip(event, d, this); })
+        .on("mouseout", function (event, d) { hideSliceTooltip(this, d); })
+        .on("focus", function (event, d) {
+            const bounds = this.getBoundingClientRect();
+            showSliceTooltip(
+                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
+                d,
+                this
+            );
+            announce(sliceAriaLabel(d));
         })
-        .on("mouseout", function (event, d) {
-            // Always restore the correct resting opacity
-            d3.select(this).style("opacity", restingOpacity(d));
-            tooltip.style("opacity", 0);
+        .on("blur", function (event, d) {
+            hideSliceTooltip(this, d);
+            announce("");
+        })
+        .on("keydown", function (event, d) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                tooltip.style("opacity", 0);
+                triggerSliceFilter(d);
+            }
         })
         .on("click", function (event, d) {
             tooltip.style("opacity", 0);
-            const newRoadUser = (selectedRoadUser === d.data.category) ? "All" : d.data.category;
-            if (onFilter) onFilter(newRoadUser);
+            triggerSliceFilter(d);
         });
 
-    // Legend
+    // Roving tabindex: linear ring navigation (Left/Up = previous, Right/Down = next).
+    enableGridNavigation(slices);
+
     const legendGroup = svg.append("g")
         .attr("transform", `translate(10, ${chartHeight + 5})`);
     const itemsPerCol = Math.ceil(pieData.length / 2);
@@ -137,7 +177,8 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         legendRow.append("rect")
             .attr("x", 0).attr("y", 0)
             .attr("width", 10).attr("height", 10)
-            .attr("fill", d.isSuppressed ? "url(#hatch-pie)" : colorScale(d.category));
+            .attr("fill", d.isSuppressed ? "url(#hatch-pie)" : colorScale(d.category))
+            .attr("aria-hidden", "true");
 
         legendRow.append("text")
             .attr("x", 15).attr("y", 9)
@@ -145,6 +186,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
             .style("font-family", "Poppins")
             .style("font-size", "10px")
             .style("fill", COLORS.text)
-            .style("alignment-baseline", "middle");
+            .style("alignment-baseline", "middle")
+            .attr("aria-hidden", "true");
     });
 }

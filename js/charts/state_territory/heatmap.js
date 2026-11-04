@@ -1,7 +1,12 @@
 // js/charts/state_territory/heatmap.js
 import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
-import { addAriaLabel } from '../../utils/accessibility.js';
+import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
+
+const announce = (text) => {
+    const announcer = document.getElementById("sr-announcer");
+    if (announcer) announcer.textContent = text;
+};
 
 export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", selectedState = "All") {
     const container = document.getElementById(containerId);
@@ -144,9 +149,17 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    svg.selectAll(".cell")
+    const cellAriaLabel = (d) => {
+        if (d.isSuppressed) {
+            return `${d.year}, age ${d.ageGroup}: data suppressed, not published`;
+        }
+        return `${d.year}, age ${d.ageGroup}: ${formatNumber(d.value)} hospitalisations`;
+    };
+
+    const cells = svg.selectAll(".cell")
         .data(heatmapData)
         .enter().append("rect")
+        .attr("class", "cell")
         .attr("x", d => x(d.year))
         .attr("y", d => y(d.ageGroup))
         .attr("width", x.bandwidth())
@@ -158,21 +171,53 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         .style("stroke", "#FFFFFF")
         .style("stroke-width", 1)
         .style("cursor", "pointer")
-        .on("mouseover", function (event, d) {
-            d3.select(this).style("stroke", COLORS.text).style("stroke-width", 2);
-            let tooltipHtml = `<strong>Year: ${d.year}</strong><br>Age: ${d.ageGroup}<br>`;
-            if (d.isSuppressed) {
-                tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
-            } else {
-                tooltipHtml += `Count: ${formatNumber(d.value)}`;
-            }
-            tooltip.style("opacity", 1)
-                .html(tooltipHtml)
-                .style("left", (event.pageX + 10) + "px")
-                .style("top", (event.pageY - 28) + "px");
+        .attr("role", "img")
+        .attr("aria-label", cellAriaLabel);
+
+    const showCellTooltip = (event, d, el) => {
+        d3.select(el).style("stroke", COLORS.text).style("stroke-width", 2);
+        let tooltipHtml = `<strong>Year: ${d.year}</strong><br>Age: ${d.ageGroup}<br>`;
+        if (d.isSuppressed) {
+            tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
+        } else {
+            tooltipHtml += `Count: ${formatNumber(d.value)}`;
+        }
+        tooltip.style("opacity", 1)
+            .html(tooltipHtml)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+    };
+
+    const hideCellTooltip = (el) => {
+        d3.select(el).style("stroke", "#FFFFFF").style("stroke-width", 1);
+        tooltip.style("opacity", 0);
+    };
+
+    cells
+        .on("mouseover", function (event, d) { showCellTooltip(event, d, this); })
+        .on("mouseout", function () { hideCellTooltip(this); })
+        .on("focus", function (event, d) {
+            const bounds = this.getBoundingClientRect();
+            showCellTooltip(
+                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
+                d,
+                this
+            );
+            announce(cellAriaLabel(d));
         })
-        .on("mouseout", function () {
-            d3.select(this).style("stroke", "#FFFFFF").style("stroke-width", 1);
-            tooltip.style("opacity", 0);
+        .on("blur", function () {
+            hideCellTooltip(this);
+            announce("");
         });
+
+    // Roving tabindex: 2-D grid navigation (years × age groups).
+    const yearIndex = new Map(years.map((y, i) => [y, i]));
+    const ageIndex  = new Map(ageGroups.map((a, i) => [a, i]));
+
+    enableGridNavigation(cells, {
+        cols: (d) => yearIndex.get(d.year),
+        rows: (d) => ageIndex.get(d.ageGroup),
+        colCount: years.length,
+        rowCount: ageGroups.length
+    });
 }

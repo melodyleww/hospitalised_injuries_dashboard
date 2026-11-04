@@ -1,7 +1,12 @@
 // js/charts/state_territory/barChart.js
 import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
-import { addAriaLabel } from '../../utils/accessibility.js';
+import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
+
+const announce = (text) => {
+    const announcer = document.getElementById("sr-announcer");
+    if (announcer) announcer.textContent = text;
+};
 
 export function drawStateBarChart(data, popMap, containerId, selectedYear, viewMode, selectedRoadUser, selectedState, onFilter) {
     const container = document.getElementById(containerId);
@@ -18,6 +23,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
         .attr("preserveAspectRatio", "xMidYMid meet")
+        .attr("role", "group")
         .append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
     svg.append("defs").append("pattern")
@@ -31,7 +37,6 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
 
     addAriaLabel(svg, `Hospitalisations by state for ${selectedYear}.`);
 
-    // 1. Filter Data and Resolve Duplicates
     let yearData;
     if (selectedRoadUser === "All") {
         yearData = data.filter(d => d.year === selectedYear && d.breakdown_type === "Total");
@@ -39,14 +44,11 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         yearData = data.filter(d => d.year === selectedYear && d.breakdown_type === "Road User" && d.category === selectedRoadUser);
     }
 
-    // Group by jurisdiction to handle cases where there are duplicate rows (e.g., OK and n.p.)
     const uniqueData = d3.group(yearData, d => d.jurisdiction);
     const chartData = [];
 
     uniqueData.forEach((values, jurisdiction) => {
-        // Find if there is a valid, non-null value
         const validValue = values.find(v => v.hospitalisations !== null);
-
         const pop = popMap[jurisdiction] || 1;
 
         if (validValue) {
@@ -95,12 +97,18 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    let isClicking = false;
+    const barAriaLabel = (d) => {
+        if (d.isSuppressed) {
+            return `${d.jurisdiction}: data suppressed, not published`;
+        }
+        const unit = viewMode === "count" ? "hospitalisations" : "per 100,000 population";
+        return `${d.jurisdiction}: ${formatNumber(d.value)} ${unit}`;
+    };
 
-    // 2. Draw Bars (Handle Suppressed)
-    svg.selectAll(".bar").data(chartData).enter().append("rect")
+    const bars = svg.selectAll(".bar").data(chartData).enter().append("rect")
+        .attr("class", "bar")
         .attr("x", 0).attr("y", d => y(d.jurisdiction))
-        .attr("width", d => d.isSuppressed ? 15 : x(d.value)) // Small width for hatch
+        .attr("width", d => d.isSuppressed ? 15 : x(d.value))
         .attr("height", y.bandwidth())
         .attr("fill", d => {
             if (d.isSuppressed) return "url(#hatch)";
@@ -109,36 +117,68 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         })
         .style("cursor", "pointer")
         .style("transition", "fill 0.2s")
-        .on("mouseover", function (event, d) {
-            if (isClicking) return;
-            d3.select(this).style("opacity", 0.7);
-            let tooltipHtml = `<strong>${d.jurisdiction}</strong><br>`;
-            if (d.isSuppressed) {
-                tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
-            } else {
-                tooltipHtml += `Hospitalisations: ${formatNumber(d.rawCount)}<br>Rate: ${d.rateValue.toFixed(1)}`;
-            }
-            tooltip.style("opacity", 1)
-                .html(tooltipHtml)
-                .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
+        .attr("role", "img")
+        .attr("aria-label", barAriaLabel);
+
+    const showBarTooltip = (event, d, el) => {
+        d3.select(el).style("opacity", 0.7);
+        let tooltipHtml = `<strong>${d.jurisdiction}</strong><br>`;
+        if (d.isSuppressed) {
+            tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
+        } else {
+            tooltipHtml += `Hospitalisations: ${formatNumber(d.rawCount)}<br>Rate: ${d.rateValue.toFixed(1)}`;
+        }
+        tooltip.style("opacity", 1)
+            .html(tooltipHtml)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+    };
+
+    const hideBarTooltip = (el) => {
+        d3.select(el).style("opacity", 1);
+        tooltip.style("opacity", 0);
+    };
+
+    bars
+        .on("mouseover", function (event, d) { showBarTooltip(event, d, this); })
+        .on("mouseout", function () { hideBarTooltip(this); })
+        .on("focus", function (event, d) {
+            const bounds = this.getBoundingClientRect();
+            showBarTooltip(
+                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
+                d,
+                this
+            );
+            announce(barAriaLabel(d));
         })
-        .on("mouseout", function () {
-            if (isClicking) return;
-            d3.select(this).style("opacity", 1);
-            tooltip.style("opacity", 0);
+        .on("blur", function () {
+            hideBarTooltip(this);
+            announce("");
+        })
+        .on("keydown", function (event, d) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                if (onFilter) onFilter(d.jurisdiction);
+            }
         })
         .on("click", function (event, d) {
             tooltip.style("opacity", 0);
-            isClicking = true;
             if (onFilter) onFilter(d.jurisdiction);
-            setTimeout(() => { isClicking = false; }, 300);
         });
 
-    // Labels (Outside the bar for normal, inside for suppressed)
+    // Roving tabindex: one Tab stop, arrow keys move between bars vertically.
+    enableGridNavigation(bars, {
+        cols: () => 0,
+        rows: (d, i) => i,
+        colCount: 1,
+        rowCount: chartData.length
+    });
+
     svg.selectAll(".label").data(chartData).enter().append("text")
         .attr("x", d => d.isSuppressed ? 20 : x(d.value) + 5)
         .attr("y", d => y(d.jurisdiction) + y.bandwidth() / 2)
         .attr("dy", ".35em")
+        .attr("aria-hidden", "true")
         .text(d => d.isSuppressed ? "n.p." : (viewMode === "count" ? formatNumber(d.value) : d.value.toFixed(1)))
         .style("font-family", "Poppins").style("font-size", "9px")
         .style("fill", d => d.isSuppressed ? "#6B7280" : COLORS.muted)

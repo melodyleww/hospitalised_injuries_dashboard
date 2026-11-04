@@ -1,7 +1,12 @@
 // js/charts/state_territory/lineChart.js
 import { COLORS } from '../../config.js';
 import { formatNumber, formatYear } from '../../utils/formatters.js';
-import { addAriaLabel } from '../../utils/accessibility.js';
+import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
+
+const announce = (text) => {
+    const announcer = document.getElementById("sr-announcer");
+    if (announcer) announcer.textContent = text;
+};
 
 export function drawStateLineChart(data, containerId, selectedRoadUser = "All", selectedState = "All") {
     const container = document.getElementById(containerId);
@@ -97,8 +102,11 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
             .attr("d", line);
     });
 
-    // 8. Draw Data Point Markers
-    svg.selectAll(".marker")
+    const markerAriaLabel = (d) =>
+        `${d.jurisdiction}, year ${d.year}: ${formatNumber(d.hospitalisations)} hospitalisations`;
+
+    //8. Draw data point markers
+    const markers = svg.selectAll(".marker")
         .data(filteredData)
         .enter()
         .append("circle")
@@ -109,7 +117,9 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("fill", d => colorScale(d.jurisdiction))
         .attr("stroke", "#FFFFFF")
         .attr("stroke-width", 1)
-        .style("cursor", "pointer");
+        .style("cursor", "pointer")
+        .attr("role", "img")
+        .attr("aria-label", markerAriaLabel);
 
     // 9. Data Quality Breaks
     const breakYears = [2012, 2017];
@@ -124,12 +134,14 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
                 .attr("height", height)
                 .attr("fill", "#bbbdbf")
                 .attr("opacity", 0.5)
+                .attr("aria-hidden", "true")
                 .style("pointer-events", "none");
 
             svg.append("text")
                 .attr("x", x(year))
                 .attr("y", -5)
                 .attr("text-anchor", "middle")
+                .attr("aria-hidden", "true")
                 .text(year === 2012 ? "Vic break" : "NSW break")
                 .style("font-family", "Poppins")
                 .style("font-size", "9px")
@@ -140,25 +152,53 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
 
     // 10. Tooltip
     const tooltip = d3.select("body").append("div")
+        .attr("class", "line-tooltip")
         .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
-    svg.selectAll(".marker")
-        .on("mouseover", function (event, d) {
-            d3.select(this).attr("r", 6);
-            tooltip.style("opacity", 1)
-                .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.hospitalisations)}`)
-                .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
+    const showMarkerTooltip = (event, d, el) => {
+        d3.select(el).attr("r", 6);
+        tooltip.style("opacity", 1)
+            .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.hospitalisations)}`)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+    };
+
+    const hideMarkerTooltip = (el) => {
+        d3.select(el).attr("r", 3.5);
+        tooltip.style("opacity", 0);
+    };
+
+    markers
+        .on("mouseover", function (event, d) { showMarkerTooltip(event, d, this); })
+        .on("mouseout", function () { hideMarkerTooltip(this); })
+        .on("focus", function (event, d) {
+            const bounds = this.getBoundingClientRect();
+            showMarkerTooltip(
+                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
+                d,
+                this
+            );
+            announce(markerAriaLabel(d));
         })
-        .on("mouseout", function () {
-            d3.select(this).attr("r", 3.5);
-            tooltip.style("opacity", 0);
+        .on("blur", function () {
+            hideMarkerTooltip(this);
+            announce("");
         });
 
-    // 11. Legend
-    let legendGroup;
+    // Roving tabindex: grid of years (columns) × jurisdictions (rows).
+    const yearIndex = new Map(years.map((yr, i) => [yr, i]));
+    const jurIndex  = new Map(jurisdictions.map((j, i) => [j, i]));
 
+    enableGridNavigation(markers, {
+        cols: (d) => yearIndex.get(d.year),
+        rows: (d) => jurIndex.get(d.jurisdiction),
+        colCount: years.length,
+        rowCount: jurisdictions.length
+    });
+
+    let legendGroup;
     if (isMobile) {
         // Mobile: Place legend at the bottom
         legendGroup = svg.append("g")
@@ -184,7 +224,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
 
         if (isMobile) {
             // Horizontal layout for mobile
-            const spacing = isVerySmall ? 65 : 70; // Tighter spacing on tiny screens
+            const spacing = isVerySmall ? 65 : 70;
             xOffset = (i % itemsPerRow) * spacing;
             yOffset = Math.floor(i / itemsPerRow) * 20;
         } else {
@@ -203,7 +243,8 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
             .attr("x", 0).attr("y", 0)
             .attr("width", isVerySmall ? 10 : 12)
             .attr("height", isVerySmall ? 10 : 12)
-            .attr("fill", colorScale(jurisdiction));
+            .attr("fill", colorScale(jurisdiction))
+            .attr("aria-hidden", "true");
 
         legendRow.append("text")
             .attr("x", isVerySmall ? 14 : 18)
@@ -212,6 +253,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
             .style("font-family", "Poppins")
             .style("font-size", isVerySmall ? "9px" : "11px")
             .style("fill", COLORS.text)
-            .style("alignment-baseline", "middle");
+            .style("alignment-baseline", "middle")
+            .attr("aria-hidden", "true");
     });
 }

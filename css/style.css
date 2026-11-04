@@ -348,10 +348,21 @@
 }
 
 /* --- ACCESSIBILITY FOCUS STATES --- */
-rect:focus, circle:focus {
+/* Visible keyboard focus for all interactive SVG marks */
+rect:focus,
+circle:focus,
+path.slice:focus {
     outline: 3px solid #F59E0B;
     outline-offset: 2px;
-    opacity: 0.7;
+    opacity: 0.85;
+}
+
+/* SVG outline fallback for browsers that don't outline SVG natively */
+circle:focus,
+rect:focus,
+path:focus {
+    stroke: #F59E0B !important;
+    stroke-width: 2.5px !important;
 }
 
 /* --- SCREEN READER ONLY (Visually Hidden) --- */
