@@ -13,7 +13,6 @@ export function drawLineChart(data, containerId) {
     const container = document.getElementById(containerId);
     const margin = MARGINS.line;
 
-    // 1. Measure the container (like your friend's code)
     const width = container.clientWidth;
     const height = container.clientHeight;
     const innerWidth = width - margin.left - margin.right;
@@ -28,7 +27,6 @@ export function drawLineChart(data, containerId) {
 
     const svg = d3.select(`#${containerId}`)
         .append("svg")
-        // 2. Set width, height, and viewBox to the measured size
         .attr("width", width)
         .attr("height", height)
         .attr("viewBox", `0 0 ${width} ${height}`)
@@ -69,7 +67,8 @@ export function drawLineChart(data, containerId) {
         .on("mouseover", function(event, d) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             tooltip.style("opacity", 1)
-                .html(`Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.total)}`)
+                // FIXED: Bolded first line only
+                .html(`<strong>Year: ${d.year}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
         .on("mouseout", function() {
@@ -80,7 +79,8 @@ export function drawLineChart(data, containerId) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             const rect = this.getBoundingClientRect();
             tooltip.style("opacity", 1)
-                .html(`Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.total)}`)
+                // FIXED: Bolded first line only
+                .html(`<strong>Year: ${d.year}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (rect.right + window.scrollX + 10) + "px").style("top", (rect.top + window.scrollY) + "px");
             announce(`Year ${d.year}: ${formatNumber(d.total)} hospitalisations`);
         })

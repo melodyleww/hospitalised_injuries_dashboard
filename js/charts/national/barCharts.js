@@ -93,7 +93,8 @@ export function drawRoadUserChart(data, containerId, selectedYear = "All", selec
         .on("mouseover", function(event, d) {
             d3.select(this).style("opacity", 0.7);
             tooltip.style("opacity", 1)
-                .html(`${d.roadUser}<br><strong>${formatNumber(d.total)}</strong> cases`)
+                // FIXED: Bolded first line only
+                .html(`<strong>${d.roadUser}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
         .on("mouseout", function() {
@@ -104,7 +105,8 @@ export function drawRoadUserChart(data, containerId, selectedYear = "All", selec
             d3.select(this).style("opacity", 0.7);
             const rect = this.getBoundingClientRect();
             tooltip.style("opacity", 1)
-                .html(`${d.roadUser}<br><strong>${formatNumber(d.total)}</strong> cases`)
+                // FIXED: Bolded first line only
+                .html(`<strong>${d.roadUser}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (rect.right + window.scrollX + 10) + "px").style("top", (rect.top + window.scrollY) + "px");
             announce(`${d.roadUser}: ${formatNumber(d.total)} hospitalisations`);
         })
@@ -200,7 +202,8 @@ export function drawAgeGroupChart(data, containerId, selectedYear = "All", selec
         .on("mouseover", function(event, d) {
             d3.select(this).style("opacity", 0.7);
             tooltip.style("opacity", 1)
-                .html(`Age ${d.ageGroup}<br><strong>${formatNumber(d.total)}</strong> cases`)
+                // FIXED: Bolded first line only
+                .html(`<strong>Age group: ${d.ageGroup}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
         .on("mouseout", function() {
@@ -211,7 +214,8 @@ export function drawAgeGroupChart(data, containerId, selectedYear = "All", selec
             d3.select(this).style("opacity", 0.7);
             const rect = this.getBoundingClientRect();
             tooltip.style("opacity", 1)
-                .html(`Age ${d.ageGroup}<br><strong>${formatNumber(d.total)}</strong> cases`)
+                // FIXED: Bolded first line only
+                .html(`<strong>Age group: ${d.ageGroup}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (rect.right + window.scrollX + 10) + "px").style("top", (rect.top + window.scrollY) + "px");
             announce(`Age group ${d.ageGroup}: ${formatNumber(d.total)} hospitalisations`);
         })
