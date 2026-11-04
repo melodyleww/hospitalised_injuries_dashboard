@@ -1,7 +1,7 @@
 // js/charts/state_territory/lineChart.js
 import { COLORS } from '../../config.js';
 import { formatNumber, formatYear } from '../../utils/formatters.js';
-import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
+import { addAriaLabel } from '../../utils/accessibility.js';
 
 const announce = (text) => {
     const announcer = document.getElementById("sr-announcer");
@@ -17,7 +17,6 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const isVerySmall = window.innerWidth < 480;
 
     // 2. Adjust margins
-    // Very small screens need a taller bottom margin for more legend rows
     let margin;
     if (isVerySmall) {
         margin = { top: 20, right: 20, bottom: 120, left: 50 };
@@ -84,6 +83,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const colorScale = d3.scaleOrdinal()
         .domain(jurisdictions)
         .range(["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#999999"]);
+
     // 6. Line Generator
     const line = d3.line()
         .defined(d => d.hospitalisations !== null)
@@ -105,7 +105,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const markerAriaLabel = (d) =>
         `${d.jurisdiction}, year ${d.year}: ${formatNumber(d.hospitalisations)} hospitalisations`;
 
-    //8. Draw data point markers
+    // 8. Draw data point markers
     const markers = svg.selectAll(".marker")
         .data(filteredData)
         .enter()
@@ -187,48 +187,139 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
             announce("");
         });
 
-    // Roving tabindex: grid of years (columns) × jurisdictions (rows).
-    const yearIndex = new Map(years.map((yr, i) => [yr, i]));
-    const jurIndex  = new Map(jurisdictions.map((j, i) => [j, i]));
+    // -----------------------------------------------------------------
+    // Roving tabindex for the line chart
+    //
+    // Left / Right  → previous / next data point in chronological order
+    //                 (walks across ALL jurisdictions, so no one gets stuck)
+    // Up / Down     → same year, previous / next jurisdiction
+    //                 (skips jurisdictions with no data for that year)
+    // Home / End    → first / last data point in the whole timeline
+    // -----------------------------------------------------------------
 
-    enableGridNavigation(markers, {
-        cols: (d) => yearIndex.get(d.year),
-        rows: (d) => jurIndex.get(d.jurisdiction),
-        colCount: years.length,
-        rowCount: jurisdictions.length
+    // Chronologically ordered list of every point (year, then jurisdiction)
+    const orderedPoints = filteredData
+        .slice()
+        .sort((a, b) =>
+            a.year - b.year || a.jurisdiction.localeCompare(b.jurisdiction)
+        );
+
+    // Lookup index by "jurisdiction|year"
+    const orderIndex = new Map();
+    orderedPoints.forEach((d, i) => {
+        orderIndex.set(`${d.jurisdiction}|${d.year}`, i);
     });
 
+    // Lookup DOM node by "jurisdiction|year"
+    const markerByKey = new Map();
+    markers.each(function (d) {
+        markerByKey.set(`${d.jurisdiction}|${d.year}`, this);
+    });
+
+    // Index jurisdictions so we can walk them in sorted order
+    const jurIndex = new Map(jurisdictions.map((j, i) => [j, i]));
+
+    // Collect all marker nodes so we can reset tabindexes in bulk
+    const allMarkerNodes = markers.nodes();
+
+    // Start with only the first chronological marker tabbable
+    allMarkerNodes.forEach((n) => n.setAttribute("tabindex", "-1"));
+    if (orderedPoints.length > 0) {
+        const firstKey = `${orderedPoints[0].jurisdiction}|${orderedPoints[0].year}`;
+        const firstNode = markerByKey.get(firstKey);
+        if (firstNode) firstNode.setAttribute("tabindex", "0");
+    }
+
+    function focusMarker(node) {
+        if (!node) return;
+        allMarkerNodes.forEach((n) => n.setAttribute("tabindex", "-1"));
+        node.setAttribute("tabindex", "0");
+        node.focus();
+    }
+
+    markers.on("keydown.nav", function (event, d) {
+        const keys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+        if (!keys.includes(event.key)) return;
+
+        event.preventDefault();
+
+        const key = `${d.jurisdiction}|${d.year}`;
+        const idx = orderIndex.get(key);
+        if (idx == null) return;
+
+        let targetNode = null;
+
+        if (event.key === "ArrowRight") {
+            // Next point in chronological order
+            const next = orderedPoints[idx + 1];
+            if (next) targetNode = markerByKey.get(`${next.jurisdiction}|${next.year}`);
+
+        } else if (event.key === "ArrowLeft") {
+            // Previous point in chronological order
+            const prev = orderedPoints[idx - 1];
+            if (prev) targetNode = markerByKey.get(`${prev.jurisdiction}|${prev.year}`);
+
+        } else if (event.key === "ArrowDown") {
+            // Same year, next jurisdiction that has data
+            const currentJurIdx = jurIndex.get(d.jurisdiction);
+            for (let j = currentJurIdx + 1; j < jurisdictions.length; j++) {
+                const candidateKey = `${jurisdictions[j]}|${d.year}`;
+                if (markerByKey.has(candidateKey)) {
+                    targetNode = markerByKey.get(candidateKey);
+                    break;
+                }
+            }
+
+        } else if (event.key === "ArrowUp") {
+            // Same year, previous jurisdiction that has data
+            const currentJurIdx = jurIndex.get(d.jurisdiction);
+            for (let j = currentJurIdx - 1; j >= 0; j--) {
+                const candidateKey = `${jurisdictions[j]}|${d.year}`;
+                if (markerByKey.has(candidateKey)) {
+                    targetNode = markerByKey.get(candidateKey);
+                    break;
+                }
+            }
+
+        } else if (event.key === "Home") {
+            const first = orderedPoints[0];
+            if (first) targetNode = markerByKey.get(`${first.jurisdiction}|${first.year}`);
+
+        } else if (event.key === "End") {
+            const last = orderedPoints[orderedPoints.length - 1];
+            if (last) targetNode = markerByKey.get(`${last.jurisdiction}|${last.year}`);
+        }
+
+        if (targetNode) focusMarker(targetNode);
+    });
+
+    // --- Legend ---
     let legendGroup;
     if (isMobile) {
-        // Mobile: Place legend at the bottom
         legendGroup = svg.append("g")
             .attr("transform", `translate(5, ${height + 40})`);
     } else {
-        // Desktop: Place legend to the right side
         legendGroup = svg.append("g")
             .attr("transform", `translate(${width + 20}, 10)`);
     }
 
-    // 12. Calculate items per row based on screen size
     let itemsPerRow;
     if (isVerySmall) {
-        itemsPerRow = 3; // 3 items per row on very small screens
+        itemsPerRow = 3;
     } else if (isMobile) {
-        itemsPerRow = 4; // 4 items per row on standard mobile
+        itemsPerRow = 4;
     } else {
-        itemsPerRow = 2; // Desktop uses columns, not rows
+        itemsPerRow = 2;
     }
 
     jurisdictions.forEach((jurisdiction, i) => {
         let xOffset, yOffset;
 
         if (isMobile) {
-            // Horizontal layout for mobile
             const spacing = isVerySmall ? 65 : 70;
             xOffset = (i % itemsPerRow) * spacing;
             yOffset = Math.floor(i / itemsPerRow) * 20;
         } else {
-            // Vertical 2-column layout for desktop
             const itemsPerCol = Math.ceil(jurisdictions.length / 2);
             const col = Math.floor(i / itemsPerCol);
             const row = i % itemsPerCol;
