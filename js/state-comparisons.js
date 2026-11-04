@@ -7,22 +7,22 @@ import { drawRoadUserPieChart } from './charts/state_territory/pieChart.js';
 import { drawAgeHeatmap } from './charts/state_territory/heatmap.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
-    
+
     initDropdowns();
 
-    let currentViewMode = "count"; 
-    let currentYear = 2021; 
-    let currentRoadUser = "All"; 
-    let currentStateFilter = "All"; 
+    let currentViewMode = "count";
+    let currentYear = 2021;
+    let currentRoadUser = "All";
+    let currentStateFilter = "All";
 
     const yearLabel = document.getElementById("yearLabel");
     const yearSelect = document.getElementById("yearFilter");
     const roadUserSelect = document.getElementById("roadUserFilter");
-    const lineChartTitle = document.getElementById("lineChartTitle"); 
+    const lineChartTitle = document.getElementById("lineChartTitle");
     const pieChartTitle = document.getElementById("pieChartTitle");
 
     const { injuryData, populationMap } = await loadStateData();
-    
+
     // --- TITLE UPDATERS ---
     function updateLineChartTitle() {
         if (!lineChartTitle) return;
@@ -34,11 +34,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function updateBarChartTitle() {
         const barTitleEl = document.getElementById("barChartTitle");
-        if (barTitleEl) {
-            barTitleEl.innerHTML = currentRoadUser === "All" 
-                ? `Hospitalisations by Jurisdiction (<span id="yearLabel">${currentYear}</span>)` 
-                : `${currentRoadUser} Hospitalisations by Jurisdiction (<span id="yearLabel">${currentYear}</span>)`;
-        }
+        if (!barTitleEl) return;
+
+        // Shorten long road-user categories for the chart title only.
+        // The dropdown and tooltip keep the full label.
+        const shortLabels = {
+            "Car driver/passenger": "Car occupant",
+            "Heavy transport": "Heavy transport",
+            "Pick-up truck/van": "Pick-up / van",
+            "Other/Unknown": "Other",
+        };
+
+        const displayRoadUser = shortLabels[currentRoadUser] || currentRoadUser;
+
+        barTitleEl.innerHTML = currentRoadUser === "All"
+            ? `Injuries by Jurisdiction (<span id="yearLabel">${currentYear}</span>)`
+            : `${displayRoadUser} Injuries (<span id="yearLabel">${currentYear}</span>)`;
     }
 
     function updatePieChartTitle() {
@@ -53,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         updateLineChartTitle();
         updateBarChartTitle();
         updatePieChartTitle();
-        
+
         drawStateLineChart(injuryData, "lineChart", currentRoadUser, currentStateFilter);
         drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
         drawRoadUserPieChart(injuryData, "roadUserChart", currentYear, currentStateFilter, currentRoadUser, handleRoadUserFilter);
@@ -68,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             updateAllCharts();
-        }, 150); 
+        }, 150);
     });
     const gridContainer = document.querySelector('.state-layout-grid');
     if (gridContainer) {
@@ -78,11 +89,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     // --- EVENT LISTENERS ---
 
     // Radio Toggle
+    const rateNote = document.getElementById("rateDenominatorNote");
+
     const radioButtons = document.querySelectorAll('input[name="viewMode"]');
     radioButtons.forEach(radio => {
         radio.addEventListener('change', (e) => {
             currentViewMode = e.target.value;
-            drawStateBarChart(injuryData, populationMap, "stateBarChart", currentYear, currentViewMode, currentRoadUser, currentStateFilter, handleStateFilter);
+
+            // Show the denominator note only in rate mode
+            if (rateNote) {
+                rateNote.hidden = currentViewMode !== "rate";
+            }
+
+            drawStateBarChart(
+                injuryData, populationMap, "stateBarChart",
+                currentYear, currentViewMode, currentRoadUser,
+                currentStateFilter, handleStateFilter
+            );
         });
     });
 
@@ -90,8 +113,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (yearSelect) {
         yearSelect.addEventListener("change", (e) => {
             currentYear = +e.target.value;
-            if(yearLabel) yearLabel.innerText = currentYear;
-            
+            if (yearLabel) yearLabel.innerText = currentYear;
+
             updateBarChartTitle();
             updatePieChartTitle();
 
@@ -104,7 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (roadUserSelect) {
         roadUserSelect.addEventListener("change", (e) => {
             currentRoadUser = e.target.value;
-            updateAllCharts(); 
+            updateAllCharts();
         });
     }
 
@@ -118,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     function handleRoadUserFilter(roadUser) {
         currentRoadUser = (currentRoadUser === roadUser) ? "All" : roadUser;
         if (roadUserSelect) roadUserSelect.value = currentRoadUser;
-        updateAllCharts(); 
+        updateAllCharts();
     }
 
     // Reset Button
@@ -129,12 +152,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             roadUserSelect.value = "All";
             currentYear = 2021;
             currentRoadUser = "All";
-            currentStateFilter = "All"; 
-            
-            if(yearLabel) yearLabel.innerText = 2021;
+            currentStateFilter = "All";
+            currentViewMode = "count";
+
+            if (yearLabel) yearLabel.innerText = 2021;
             document.querySelector('input[name="viewMode"][value="count"]').checked = true;
             currentViewMode = "count";
 
+            if (rateNote) rateNote.hidden = true;
             updateAllCharts();
         });
     }
