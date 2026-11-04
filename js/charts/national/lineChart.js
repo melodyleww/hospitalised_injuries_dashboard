@@ -41,9 +41,15 @@ export function drawLineChart(data, containerId) {
     const x = d3.scalePoint().domain(trendData.map(d => d.year)).range([0, innerWidth]).padding(0.5);
     const y = d3.scaleLinear().domain([0, d3.max(trendData, d => d.total) * 1.1]).range([innerHeight, 0]);
 
+    // --- UPDATED X-AXIS WITH SLANTED LABELS ---
     svg.append("g").attr("transform", `translate(0,${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(formatYear))
-        .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted);
+        .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted)
+        .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end")
+        .attr("dx", "-0.5em")
+        .attr("dy", "0.5em");
 
     svg.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted);
@@ -67,7 +73,6 @@ export function drawLineChart(data, containerId) {
         .on("mouseover", function(event, d) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             tooltip.style("opacity", 1)
-                // FIXED: Bolded first line only
                 .html(`<strong>Year: ${d.year}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px");
         })
@@ -79,7 +84,6 @@ export function drawLineChart(data, containerId) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             const rect = this.getBoundingClientRect();
             tooltip.style("opacity", 1)
-                // FIXED: Bolded first line only
                 .html(`<strong>Year: ${d.year}</strong><br>Hospitalisations: ${formatNumber(d.total)}`)
                 .style("left", (rect.right + window.scrollX + 10) + "px").style("top", (rect.top + window.scrollY) + "px");
             announce(`Year ${d.year}: ${formatNumber(d.total)} hospitalisations`);

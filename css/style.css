@@ -37,6 +37,7 @@
     width: 150px;
     min-width: 0;
 }
+
 .filter-group:last-child .dropdown-wrapper {
     width: 200px;
 }
@@ -91,6 +92,7 @@
     gap: 10px;
     margin-left: auto;
 }
+
 .filter-note {
     flex-basis: 100%;
     margin: 0;
@@ -107,7 +109,6 @@
     min-height: 0;
 }
 
-/* Left side (Line + Road User) */
 .left-column {
     flex: 1; /* Takes 50% width */
     display: flex;
@@ -116,7 +117,6 @@
     min-height: 0;
 }
 
-/* Right side (KPIs + Age Group) */
 .right-column {
     flex: 1; /* Takes 50% width */
     display: flex;
@@ -125,7 +125,6 @@
     min-height: 0;
 }
 
-/* KPI Row */
 .kpi-row {
     display: flex;
     gap: 12px;
@@ -180,7 +179,7 @@
     flex-direction: column;
     justify-content: flex-start; 
     padding-left: 20px;          
-    overflow-y: auto;
+    overflow-y: auto; /* Scrollable on desktop */
 }
 
 .guide-section h2 {
@@ -296,58 +295,82 @@ rect:focus, circle:focus { outline: 3px solid #F59E0B; outline-offset: 2px; opac
    ========================================= */
 
 @media (max-width: 1024px) {
-    body { height: auto; min-height: 100vh; overflow: visible; }
+    body { 
+        height: auto; 
+        min-height: 100vh; 
+        overflow: visible; 
+    }
 
-    /* Stack the columns vertically on tablets */
     .charts-layout {
+        display: flex;
         flex-direction: column;
     }
 
+    .left-column, 
+    .right-column {
+        display: contents; 
+    }
+
+    /* FIX: Move KPI cards to the very top */
     .kpi-row {
+        order: -1; 
         height: auto;
-        flex-direction: row; /* KPIs stay side-by-side */
+        flex-direction: row; 
+        margin-bottom: 12px; 
     }
 
     .line-chart-card {
         flex-direction: column;
+        height: auto; 
+        min-height: 500px;
     }
 
     .divider {
-        width: 100%; height: 1px; margin: 10px 0;
+        width: 100%; 
+        height: 1px; 
+        margin: 15px 0;
     }
 
     .guide-section {
         padding-left: 0;
+        padding-top: 10px;
+        overflow-y: visible;
+        flex: none; 
     }
 
-    .chart-area {
+    .line-chart-card .chart-area {
         flex: none;
-        height: 250px; 
-    }
-    .line-chart-card .chart-area, .road-user-card .chart-area {
         height: 300px; 
+        min-height: 300px;
     }
-    .age-group-card .chart-area {
-        height: 300px;
+
+    .road-user-card {
+        flex: none;
+        height: 450px; 
+    }
+    
+    .age-group-card {
+        flex: none;
+        height: 400px;
     }
 }
 
 @media (max-width: 768px) {
+    /* Stack KPIs vertically on mobile */
     .kpi-row {
-        flex-direction: column; /* Stack KPIs on mobile */
+        flex-direction: column; 
     }
 
-    .chart-area {
-        height: 280px; 
-    }
     .line-chart-card .chart-area {
-        height: 300px;
+        height: 280px;
     }
-    .road-user-card .chart-area {
+    
+    .road-user-card {
         height: 400px; 
     }
-    .age-group-card .chart-area {
-        height: 300px;
+    
+    .age-group-card {
+        height: 350px;
     }
 }
 
@@ -365,6 +388,7 @@ rect:focus, circle:focus { outline: 3px solid #F59E0B; outline-offset: 2px; opac
 
     body[data-page="national"] .filter-label {
         grid-column: 1;
+        align-self: center;
     }
 
     body[data-page="national"] .filter-bar .dropdown-wrapper {
@@ -384,6 +408,7 @@ rect:focus, circle:focus { outline: 3px solid #F59E0B; outline-offset: 2px; opac
     }
 }
 
+/* Utilities */
 .charts-layout,
 .left-column,
 .right-column,
