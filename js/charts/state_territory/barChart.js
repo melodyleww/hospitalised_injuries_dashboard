@@ -2,11 +2,7 @@
 import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
 import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
-
-const announce = (text) => {
-    const announcer = document.getElementById("sr-announcer");
-    if (announcer) announcer.textContent = text;
-};
+import { attachTooltip, hideTooltip } from '../../utils/tooltip.js';
 
 export function drawStateBarChart(data, popMap, containerId, selectedYear, viewMode, selectedRoadUser, selectedState, onFilter) {
     const container = document.getElementById(containerId);
@@ -17,7 +13,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
     const height = container.clientHeight - margin.top - margin.bottom;
 
     d3.select(`#${containerId}`).html("");
-    d3.selectAll(".bar-tooltip").remove();
+    hideTooltip();
 
     const svg = d3.select(`#${containerId}`)
         .append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom)
@@ -91,20 +87,6 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         .call(d3.axisBottom(x).ticks(4).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "9px").style("color", COLORS.muted);
 
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "bar-tooltip")
-        .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
-        .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
-        .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
-
-    const barAriaLabel = (d) => {
-        if (d.isSuppressed) {
-            return `${d.jurisdiction}: data suppressed, not published`;
-        }
-        const unit = viewMode === "count" ? "hospitalisations" : "per 100,000 population";
-        return `${d.jurisdiction}: ${formatNumber(d.value)} ${unit}`;
-    };
-
     const bars = svg.selectAll(".bar").data(chartData).enter().append("rect")
         .attr("class", "bar")
         .attr("x", 0).attr("y", d => y(d.jurisdiction))
@@ -116,55 +98,41 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
             return d.jurisdiction === selectedState ? COLORS.primary : "#D1D5DB";
         })
         .style("cursor", "pointer")
-        .style("transition", "fill 0.2s")
-        .attr("role", "img")
-        .attr("aria-label", barAriaLabel);
+        .style("transition", "fill 0.2s");
 
-    const showBarTooltip = (event, d, el) => {
-        d3.select(el).style("opacity", 0.7);
-        let tooltipHtml = `<strong>${d.jurisdiction}</strong><br>`;
+    // --- Shared tooltip ---
+    attachTooltip(bars, (d) => {
         if (d.isSuppressed) {
-            tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
-        } else {
-            tooltipHtml += `Hospitalisations: ${formatNumber(d.rawCount)}<br>Rate: ${d.rateValue.toFixed(1)}`;
+            return {
+                title: d.jurisdiction,
+                lines: ["Data suppressed (n.p.)"],
+                context: `State ${selectedYear}`
+            };
         }
-        tooltip.style("opacity", 1)
-            .html(tooltipHtml)
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 28) + "px");
-    };
 
-    const hideBarTooltip = (el) => {
-        d3.select(el).style("opacity", 1);
-        tooltip.style("opacity", 0);
-    };
+        // Always show both count and rate
+        return {
+            title: d.jurisdiction,
+            lines: [
+                `Hospitalisations: ${formatNumber(d.rawCount)}`,
+                `Rate per 100k: ${d.rateValue.toFixed(1)}`
+            ],
+            context: `State ${selectedYear}`
+        };
+    });
 
-    bars
-        .on("mouseover", function (event, d) { showBarTooltip(event, d, this); })
-        .on("mouseout", function () { hideBarTooltip(this); })
-        .on("focus", function (event, d) {
-            const bounds = this.getBoundingClientRect();
-            showBarTooltip(
-                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
-                d,
-                this
-            );
-            announce(barAriaLabel(d));
-        })
-        .on("blur", function () {
-            hideBarTooltip(this);
-            announce("");
-        })
-        .on("keydown", function (event, d) {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                if (onFilter) onFilter(d.jurisdiction);
-            }
-        })
-        .on("click", function (event, d) {
-            tooltip.style("opacity", 0);
+    // --- Keyboard activation ---
+    bars.on("keydown.activate", function (event, d) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            hideTooltip();
             if (onFilter) onFilter(d.jurisdiction);
-        });
+        }
+    });
+    bars.on("click.activate", function (event, d) {
+        hideTooltip();
+        if (onFilter) onFilter(d.jurisdiction);
+    });
 
     // Roving tabindex: one Tab stop, arrow keys move between bars vertically.
     enableGridNavigation(bars, {

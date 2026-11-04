@@ -2,11 +2,7 @@
 import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
 import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
-
-const announce = (text) => {
-    const announcer = document.getElementById("sr-announcer");
-    if (announcer) announcer.textContent = text;
-};
+import { attachTooltip, hideTooltip } from '../../utils/tooltip.js';
 
 export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", selectedState = "All") {
     const container = document.getElementById(containerId);
@@ -20,7 +16,6 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
     }
 
     const margin = { top: 8, right: 20, bottom: 55, left: 60 };
-
     const totalWidth  = container.clientWidth;
     const totalHeight = container.clientHeight;
 
@@ -44,7 +39,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
     const gridOffsetY  = (height - gridHeight) / 2;
 
     d3.select(`#${containerId}`).html("");
-    d3.selectAll(".heatmap-tooltip").remove();
+    hideTooltip();
 
     // Keep viewBox 1:1 with rendered pixels and use "meet".
     // Because totalWidth/totalHeight match the rendered <svg> size,
@@ -143,19 +138,6 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         yAxisGroup.selectAll("text").style("font-size", "9px");
     }
 
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "heatmap-tooltip")
-        .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
-        .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
-        .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
-
-    const cellAriaLabel = (d) => {
-        if (d.isSuppressed) {
-            return `${d.year}, age ${d.ageGroup}: data suppressed, not published`;
-        }
-        return `${d.year}, age ${d.ageGroup}: ${formatNumber(d.value)} hospitalisations`;
-    };
-
     const cells = svg.selectAll(".cell")
         .data(heatmapData)
         .enter().append("rect")
@@ -170,48 +152,26 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         })
         .style("stroke", "#FFFFFF")
         .style("stroke-width", 1)
-        .style("cursor", "pointer")
-        .attr("role", "img")
-        .attr("aria-label", cellAriaLabel);
+        .style("cursor", "pointer");
 
-    const showCellTooltip = (event, d, el) => {
-        d3.select(el).style("stroke", COLORS.text).style("stroke-width", 2);
-        let tooltipHtml = `<strong>Year: ${d.year}</strong><br>Age: ${d.ageGroup}<br>`;
+    // --- Shared tooltip ---
+    attachTooltip(cells, (d) => {
         if (d.isSuppressed) {
-            tooltipHtml += `<span style="color: #FCA5A5;">Data Suppressed (n.p.)</span>`;
-        } else {
-            tooltipHtml += `Count: ${formatNumber(d.value)}`;
+            return {
+                title: `Year ${d.year}, age ${d.ageGroup}`,
+                lines: ["Data suppressed (n.p.)"],
+                context: `Age group ${d.ageGroup}`
+            };
         }
-        tooltip.style("opacity", 1)
-            .html(tooltipHtml)
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 28) + "px");
-    };
-
-    const hideCellTooltip = (el) => {
-        d3.select(el).style("stroke", "#FFFFFF").style("stroke-width", 1);
-        tooltip.style("opacity", 0);
-    };
-
-    cells
-        .on("mouseover", function (event, d) { showCellTooltip(event, d, this); })
-        .on("mouseout", function () { hideCellTooltip(this); })
-        .on("focus", function (event, d) {
-            const bounds = this.getBoundingClientRect();
-            showCellTooltip(
-                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
-                d,
-                this
-            );
-            announce(cellAriaLabel(d));
-        })
-        .on("blur", function () {
-            hideCellTooltip(this);
-            announce("");
-        });
+        return {
+            title: `Year ${d.year}, age ${d.ageGroup}`,
+            lines: [`Hospitalisations: ${formatNumber(d.value)}`],
+            context: `Age group ${d.ageGroup}`
+        };
+    });
 
     // Roving tabindex: 2-D grid navigation (years × age groups).
-    const yearIndex = new Map(years.map((y, i) => [y, i]));
+    const yearIndex = new Map(years.map((yy, i) => [yy, i]));
     const ageIndex  = new Map(ageGroups.map((a, i) => [a, i]));
 
     enableGridNavigation(cells, {

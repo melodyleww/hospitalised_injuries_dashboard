@@ -123,7 +123,10 @@
     <script type="module" src="js/state-comparisons.js"></script>
     <script type="module" src="js/components/layout.js"></script>
 
-    <!-- Screen Reader Live Region for Tooltips -->
+    <!-- Shared tooltip (used by attachTooltip in utils/tooltip.js) -->
+    <div id="fnTooltip" class="fn-tooltip" role="tooltip" hidden></div>
+
+    <!-- Screen reader live region -->
     <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 </body>
 

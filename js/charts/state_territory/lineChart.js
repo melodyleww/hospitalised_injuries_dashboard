@@ -2,6 +2,7 @@
 import { COLORS } from '../../config.js';
 import { formatNumber, formatYear } from '../../utils/formatters.js';
 import { addAriaLabel } from '../../utils/accessibility.js';
+import { attachTooltip, hideTooltip } from '../../utils/tooltip.js';
 
 const announce = (text) => {
     const announcer = document.getElementById("sr-announcer");
@@ -151,41 +152,14 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     });
 
     // 10. Tooltip
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "line-tooltip")
-        .style("opacity", 0).style("position", "absolute").style("background", COLORS.text)
-        .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
-        .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
-
-    const showMarkerTooltip = (event, d, el) => {
-        d3.select(el).attr("r", 6);
-        tooltip.style("opacity", 1)
-            .html(`<strong>${d.jurisdiction}</strong><br>Year: ${d.year}<br>Hospitalisations: ${formatNumber(d.hospitalisations)}`)
-            .style("left", (event.pageX + 10) + "px")
-            .style("top", (event.pageY - 28) + "px");
-    };
-
-    const hideMarkerTooltip = (el) => {
-        d3.select(el).attr("r", 3.5);
-        tooltip.style("opacity", 0);
-    };
-
-    markers
-        .on("mouseover", function (event, d) { showMarkerTooltip(event, d, this); })
-        .on("mouseout", function () { hideMarkerTooltip(this); })
-        .on("focus", function (event, d) {
-            const bounds = this.getBoundingClientRect();
-            showMarkerTooltip(
-                { pageX: bounds.right + window.scrollX, pageY: bounds.top + window.scrollY },
-                d,
-                this
-            );
-            announce(markerAriaLabel(d));
-        })
-        .on("blur", function () {
-            hideMarkerTooltip(this);
-            announce("");
-        });
+    attachTooltip(markers, (d) => ({
+        title: d.jurisdiction,
+        lines: [
+            `Year: ${d.year}`,
+            `Hospitalisations: ${formatNumber(d.hospitalisations)}`
+        ],
+        context: `Annual hospitalisations, ${d.year}`
+    }));
 
     // -----------------------------------------------------------------
     // Roving tabindex for the line chart

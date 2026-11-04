@@ -164,8 +164,45 @@
     color: #6B7280;
 }
 
+
+/* 6. Shared tooltip */
+.fn-tooltip {
+    position: fixed;
+    z-index: 1000;
+    max-width: min(360px, calc(100vw - 24px));
+    padding: 5px 10px;
+    background: #1A2B4C;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.6;
+    pointer-events: none;
+}
+
+.fn-tooltip[hidden] {
+    display: none;
+}
+
+.fn-tooltip strong {
+    display: block;
+    font-weight: 700;
+}
+
+/* Visually hidden but screen-reader accessible */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* =========================================
-   6. RESPONSIVE BREAKPOINTS
+   7. RESPONSIVE BREAKPOINTS
    ========================================= */
 
 /* Tablet (1100px) */
