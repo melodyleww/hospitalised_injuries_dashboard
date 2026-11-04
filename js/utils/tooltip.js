@@ -1,10 +1,16 @@
-//floating tooltip shared by the First Nations charts
+// js/utils/tooltip.js
 function getTooltip() {
   return document.getElementById("fnTooltip");
 }
 
+function announce(text) {
+  const announcer = document.getElementById("sr-announcer");
+  if (announcer) announcer.textContent = text;
+}
+
 export function hideTooltip() {
   getTooltip().hidden = true;
+  announce("");
 }
 
 // Keep the tooltip inside the browser window
@@ -36,7 +42,6 @@ export function attachTooltip(marks, getContent) {
     const tooltip = getTooltip();
     const content = getContent(datum);
 
-    // Clear elements AND plain text from the previous chart
     tooltip.replaceChildren();
 
     const heading = document.createElement("strong");
@@ -51,6 +56,12 @@ export function attachTooltip(marks, getContent) {
 
     tooltip.hidden = false;
     positionTooltip(event);
+
+    // Announce the full accessible text to screen readers
+    const accessible = [content.context, content.title, ...content.lines]
+      .filter(Boolean)
+      .join(". ");
+    announce(accessible);
   }
 
   marks
@@ -59,7 +70,6 @@ export function attachTooltip(marks, getContent) {
     .attr("role", "img")
     .attr("aria-label", (datum) => {
       const content = getContent(datum);
-
       return [content.context, content.title, ...content.lines]
         .filter(Boolean)
         .join(". ");
