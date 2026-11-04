@@ -27,15 +27,29 @@ function renderSharedLayout() {
   }
 
   document.getElementById("site-header").innerHTML = `
-        <h1>
-            Hospitalised Injuries from Road Crashes
-            in Australia (2011–2021)
-        </h1>
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none"
+                     stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21V8l9-5 9 5v13" />
+                    <path d="M12 9v6" />
+                    <path d="M9 12h6" />
+                    <path d="M3 21h18" />
+                </svg>
+            </span>
+            <div class="brand-text">
+                <span class="brand-title">Hospitalised Injuries</span>
+                <span class="brand-subtitle">Road crashes in Australia · 2011–2021</span>
+            </div>
+        </div>
         <button
             id="sharedHelpButton"
             class="how-to-use"
-            type="button">
-            ⓘ How to use?
+            type="button"
+            aria-label="Open the how-to-use walkthrough">
+            <span class="help-icon" aria-hidden="true">ⓘ</span>
+            <span class="help-text">How to use</span>
         </button>
     `;
 
@@ -57,8 +71,8 @@ function renderSharedLayout() {
   document.getElementById("site-navigation").innerHTML = `
         <ul class="tabs">
             ${links
-              .map(
-                (link) => `
+      .map(
+        (link) => `
                 <li>
                     <a
                         class="tab ${link.id === page ? "active" : ""}"
@@ -68,8 +82,8 @@ function renderSharedLayout() {
                     </a>
                 </li>
             `,
-              )
-              .join("")}
+      )
+      .join("")}
         </ul>
     `;
 

@@ -32,30 +32,135 @@ select {
 
 /* --- TOP HEADER --- */
 .top-bar {
+    position: relative;
     background-color: #1A2B4C;
     color: #FFFFFF;
-    height: 50px;
+    min-height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 0 20px;
+    padding: 20px;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
+    background-size: 18px 18px;
+    background-position: right top;
+    background-repeat: repeat;
 }
 
-.top-bar h1 {
-    font-size: clamp(16px, 1.8vw, 22px); 
+/* Thin gradient accent strip at the bottom of the header.
+   Colours match the chart palette so the header ties visually
+   to the visualisations. */
+.top-bar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #0072B2 0%, #009E73 50%, #E69F00 100%);
+}
+
+/* Brand block: icon + two-line title */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+/* Vertical accent bar before the brand */
+.brand::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            #1A2B4C 0%,
+            #1A2B4C 40%,
+            rgba(26, 43, 76, 0.4) 70%,
+            rgba(26, 43, 76, 0) 100%
+        );
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 64%;
+    border-radius: 2px;
+}
+
+.brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    color: #7FB2FF;
+}
+
+.brand-mark svg {
+    display: block;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    min-width: 0;
+}
+
+.brand-title {
+    font-size: 18px;
     font-weight: 700;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
 }
 
+.brand-subtitle {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #A0ABC0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Help button: pill style */
 .how-to-use {
-    border: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
     background: transparent;
-    color: inherit;
+    color: #FFFFFF;
     font-family: inherit;
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.how-to-use:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.how-to-use:focus-visible {
+    outline: 3px solid #b86200;
+    outline-offset: 3px;
+}
+
+.help-icon {
+    font-size: 14px;
+    line-height: 1;
 }
 
 /* --- NAVIGATION TABS --- */
@@ -182,7 +287,7 @@ select {
 @media (max-width: 1100px) {
     .top-bar {
         height: auto;
-        min-height: 50px;
+        min-height: 56px;
         padding: 12px 20px;
     }
 
@@ -211,5 +316,24 @@ select {
     .top-bar {
         flex-wrap: wrap;
         gap: 8px;
+        padding: 10px 16px;
+    }
+
+    .brand-title {
+        font-size: 14px;
+    }
+
+    .brand-subtitle {
+        max-width: 70vw;
+        font-size: 10px;
+    }
+
+    .help-text {
+        /* Keep the icon, drop the word on tiny screens */
+        display: none;
+    }
+
+    .how-to-use {
+        padding: 7px 10px;
     }
 }
