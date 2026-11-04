@@ -13,11 +13,9 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    // 1. Check screen sizes
     const isMobile = window.innerWidth < 768;
     const isVerySmall = window.innerWidth < 480;
 
-    // 2. Adjust margins
     let margin;
     if (isVerySmall) {
         margin = { top: 20, right: 20, bottom: 120, left: 50 };
@@ -27,17 +25,33 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         margin = { top: 20, right: 200, bottom: 40, left: 60 };
     }
 
-    const width = container.clientWidth - margin.left - margin.right;
-    const height = container.clientHeight - margin.top - margin.bottom;
+    const totalWidth = container.clientWidth;
+    const totalHeight = container.clientHeight;
+
+    if (totalWidth <= 0 || totalHeight <= 0) {
+        console.warn("The line chart needs more drawing space.");
+        return;
+    }
+
+    const width = totalWidth - margin.left - margin.right;
+    const height = totalHeight - margin.top - margin.bottom;
+
+    if (width <= 0 || height <= 0) {
+        console.warn("The line chart needs more drawing space.");
+        return;
+    }
 
     d3.select(`#${containerId}`).html("");
+    hideTooltip();
 
+    // width/height and viewBox match 1:1 in CSS pixels so text renders
+    // at its true size and is NOT scaled down on narrow windows.
     const svg = d3.select(`#${containerId}`)
         .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-        .attr("preserveAspectRatio", "xMidYMid meet")
+        .attr("width", totalWidth)
+        .attr("height", totalHeight)
+        .attr("viewBox", `0 0 ${totalWidth} ${totalHeight}`)
+        .attr("preserveAspectRatio", "xMinYMin meet")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -69,12 +83,31 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .domain([0, d3.max(filteredData, d => d.hospitalisations) * 1.1])
         .range([height, 0]);
 
-    // 4. Axes
-    svg.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickFormat(formatYear))
-        .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
+    // --- X axis: always rotate labels to -45° ---------------------
+    // Rotating keeps the 11 year labels legible at every width,
+    // and prevents the labels from colliding with the shaded break bands.
+    const xAxisGroup = svg.append("g")
+        .attr("transform", `translate(0,${height})`);
 
+    const stepWidth = width / Math.max(1, years.length - 1);
+
+    // Slightly larger font on wide screens, smaller on narrow ones.
+
+    xAxisGroup
+        .call(d3.axisBottom(x).tickFormat(formatYear))
+        .style("font-family", "Poppins")
+        .style("color", COLORS.muted);
+
+    // Always rotate the tick labels
+    xAxisGroup
+        .selectAll("text")
+        .attr("transform", "rotate(-45)")
+        .style("text-anchor", "end")
+        .attr("dx", "-0.4em")
+        .attr("dy", "0.4em");
+
+
+    // --- Y axis ---------------------------------------------------
     svg.append("g")
         .call(d3.axisLeft(y).ticks(5).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
@@ -118,9 +151,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("fill", d => colorScale(d.jurisdiction))
         .attr("stroke", "#FFFFFF")
         .attr("stroke-width", 1)
-        .style("cursor", "pointer")
-        .attr("role", "img")
-        .attr("aria-label", markerAriaLabel);
+        .style("cursor", "pointer");
 
     // 9. Data Quality Breaks
     const breakYears = [2012, 2017];
@@ -151,7 +182,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         }
     });
 
-    // 10. Tooltip
+    // 10. Shared tooltip
     attachTooltip(markers, (d) => ({
         title: d.jurisdiction,
         lines: [
@@ -162,41 +193,28 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     }));
 
     // -----------------------------------------------------------------
-    // Roving tabindex for the line chart
-    //
-    // Left / Right  → previous / next data point in chronological order
-    //                 (walks across ALL jurisdictions, so no one gets stuck)
-    // Up / Down     → same year, previous / next jurisdiction
-    //                 (skips jurisdictions with no data for that year)
-    // Home / End    → first / last data point in the whole timeline
+    // Roving tabindex: Left/Right walk every point chronologically,
+    // Up/Down jump by jurisdiction at the current year.
     // -----------------------------------------------------------------
-
-    // Chronologically ordered list of every point (year, then jurisdiction)
     const orderedPoints = filteredData
         .slice()
         .sort((a, b) =>
             a.year - b.year || a.jurisdiction.localeCompare(b.jurisdiction)
         );
 
-    // Lookup index by "jurisdiction|year"
     const orderIndex = new Map();
     orderedPoints.forEach((d, i) => {
         orderIndex.set(`${d.jurisdiction}|${d.year}`, i);
     });
 
-    // Lookup DOM node by "jurisdiction|year"
     const markerByKey = new Map();
     markers.each(function (d) {
         markerByKey.set(`${d.jurisdiction}|${d.year}`, this);
     });
 
-    // Index jurisdictions so we can walk them in sorted order
     const jurIndex = new Map(jurisdictions.map((j, i) => [j, i]));
-
-    // Collect all marker nodes so we can reset tabindexes in bulk
     const allMarkerNodes = markers.nodes();
 
-    // Start with only the first chronological marker tabbable
     allMarkerNodes.forEach((n) => n.setAttribute("tabindex", "-1"));
     if (orderedPoints.length > 0) {
         const firstKey = `${orderedPoints[0].jurisdiction}|${orderedPoints[0].year}`;
@@ -224,17 +242,12 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         let targetNode = null;
 
         if (event.key === "ArrowRight") {
-            // Next point in chronological order
             const next = orderedPoints[idx + 1];
             if (next) targetNode = markerByKey.get(`${next.jurisdiction}|${next.year}`);
-
         } else if (event.key === "ArrowLeft") {
-            // Previous point in chronological order
             const prev = orderedPoints[idx - 1];
             if (prev) targetNode = markerByKey.get(`${prev.jurisdiction}|${prev.year}`);
-
         } else if (event.key === "ArrowDown") {
-            // Same year, next jurisdiction that has data
             const currentJurIdx = jurIndex.get(d.jurisdiction);
             for (let j = currentJurIdx + 1; j < jurisdictions.length; j++) {
                 const candidateKey = `${jurisdictions[j]}|${d.year}`;
@@ -243,9 +256,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
                     break;
                 }
             }
-
         } else if (event.key === "ArrowUp") {
-            // Same year, previous jurisdiction that has data
             const currentJurIdx = jurIndex.get(d.jurisdiction);
             for (let j = currentJurIdx - 1; j >= 0; j--) {
                 const candidateKey = `${jurisdictions[j]}|${d.year}`;
@@ -254,11 +265,9 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
                     break;
                 }
             }
-
         } else if (event.key === "Home") {
             const first = orderedPoints[0];
             if (first) targetNode = markerByKey.get(`${first.jurisdiction}|${first.year}`);
-
         } else if (event.key === "End") {
             const last = orderedPoints[orderedPoints.length - 1];
             if (last) targetNode = markerByKey.get(`${last.jurisdiction}|${last.year}`);
