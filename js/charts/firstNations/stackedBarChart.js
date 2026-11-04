@@ -217,13 +217,8 @@ export function drawStackedBarChart(rows) {
     .attr("y", (segment) => yScale(segment.population) + yScale.bandwidth() / 2)
     .attr("text-anchor", "middle")
     .attr("dominant-baseline", "middle")
-    // White on purple/wine; dark text on teal/sand.
-    .attr("fill", (segment) =>
-      segment.category === COUNTERPARTY_ORDER[1] ||
-      segment.category === COUNTERPARTY_ORDER[2]
-        ? COLORS.white
-        : "#111111",
-    )
+    // Dark text remains readable on all four segment colours.
+    .attr("fill", "#111111")
 
     // Hide all labels when the drawing area is too small.
     .text((segment) => {

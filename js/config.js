@@ -7,8 +7,6 @@ export const COLORS = {
   text: "#1A2B4C", // Navy - Title text
   muted: "#6B7280", // Grey - Axis labels
   white: "#FFFFFF", // White - Backgrounds
-  green: "#00d382", // Green - General use
-  orange: "#ff8819", // Orange - General use
 };
 
 export const MARGINS = {
@@ -25,10 +23,10 @@ export const POPULATION_COLORS = {
 
 // Counterparty categories four distinct colours
 export const COUNTERPARTY_COLORS = [
-  "#44AA99", // Teal
-  "#AA4499", // Purple
-  "#882255", // Wine
-  "#DDCC77", // Sand
+  "#009E73", // Bluish green
+  "#CC79A7", // Reddish purple
+  "#F0E442", // Yellow
+  "#56B4E9", // Grey
 ];
 
 // Source values: used for filtering and consistent chart order
