@@ -41,7 +41,7 @@ export function drawLineChart(data, containerId) {
     const x = d3.scalePoint().domain(trendData.map(d => d.year)).range([0, innerWidth]).padding(0.5);
     const y = d3.scaleLinear().domain([0, d3.max(trendData, d => d.total) * 1.1]).range([innerHeight, 0]);
 
-    // --- UPDATED X-AXIS WITH SLANTED LABELS ---
+    // --- X-AXIS WITH SLANTED LABELS ---
     svg.append("g").attr("transform", `translate(0,${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(formatYear))
         .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted)
@@ -94,13 +94,29 @@ export function drawLineChart(data, containerId) {
             announce("");
         });
 
-    const breakYears = [...new Set(data.filter(d => d.data_quality_flag && d.data_quality_flag !== "").map(d => d.year))];
-    breakYears.forEach(year => {
+    const breakYears = [...new Set(data.filter(d => d.data_quality_flag && d.data_quality_flag !== "").map(d => d.year))].sort((a, b) => a - b);
+    
+    // --- BREAK LINE LABELS ---
+    breakYears.forEach((year, index) => {
         if(x(year)) {
+            // Draw the dashed line
             svg.append("line")
                 .attr("x1", x(year)).attr("x2", x(year))
                 .attr("y1", 0).attr("y2", innerHeight)
                 .attr("stroke", COLORS.warning).attr("stroke-width", 1.5).attr("stroke-dasharray", "5,5");
+
+            // Add the text label
+            const labelText = index === 0 ? "VIC break" : "NSW break";
+
+            svg.append("text")
+                .attr("x", x(year))
+                .attr("y", -8)
+                .text(labelText)
+                .style("font-family", "Poppins")
+                .style("font-size", "9px")
+                .style("fill", COLORS.warning)
+                .style("font-weight", "bold")
+                .attr("text-anchor", "middle");
         }
     });
 }
