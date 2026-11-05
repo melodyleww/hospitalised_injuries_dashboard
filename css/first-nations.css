@@ -8,7 +8,7 @@
     background: #FFFFFF;
     border-radius: 14px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 8%);
-
+    flex-wrap: wrap;
     flex-shrink: 0;
 }
 
@@ -23,18 +23,18 @@
 }
 
 .fn-year-select {
-    width: 130px;
+    width: 150px;
 }
 
 .fn-population-select {
-    width: 270px;
+    width: 200px;
 }
 
 /* Match the National dropdown appearance. */
 .fn-select-wrapper select {
     display: block;
     width: 100%;
-    padding: 6px 34px 6px 14px;
+    padding: 6px 30px 6px 14px;
 
     appearance: none;
     -webkit-appearance: none;
@@ -47,6 +47,8 @@
     font-size: 12px;
     color: #686868;
     cursor: pointer;
+
+    transition: background-color 0.2s ease;
 }
 
 .fn-select-wrapper select:focus {
@@ -57,20 +59,31 @@
 /* Draw a decorative downward chevron. */
 .fn-select-arrow {
     position: absolute;
-    right: 15px;
+    right: 14px;
     top: 50%;
-
-    width: 7px;
-    height: 7px;
-    border-right: 2px solid #1A2B4C;
-    border-bottom: 2px solid #1A2B4C;
-
-    transform: translateY(-70%) rotate(45deg);
+    transform: translateY(-50%);
+    width: 10px;
+    height: 6px;
     pointer-events: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%226%22%20viewBox%3D%220%200%2010%206%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M4.75%203.64166L8.39167%200L9.5%201.10833L4.75%205.85833L0%201.10833L1.10833%200L4.75%203.64166Z%22%20fill%3D%22%231D1B20%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: transform 0.2s ease;
 }
+
 
 #fnReset {
     margin-left: auto;
+}
+
+.fn-filter-note {
+  flex-basis: 100%;
+  grid-column: 1 / -1;
+  margin: 0;
+  line-height: 1.4;
+  font-size: 11px; 
+  color: #6B7280;
 }
 
 /* Two rows on the left; road-user chart spans both on the right. */
@@ -275,16 +288,6 @@
         overflow: visible;
     }
 
-    .fn-dashboard {
-        padding: 0 12px 16px;
-    }
-
-    /* Keep filters usable when space becomes limited. */
-    .fn-filters {
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-
     /* One column: age, counterparty, then road user. */
     .fn-grid {
         flex: none;
@@ -318,6 +321,7 @@
     .fn-filters {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
     }
 
     .fn-year-select,
