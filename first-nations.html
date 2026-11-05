@@ -33,7 +33,7 @@
 
         <label for="fnPopulation"> Population </label>
         <div class="fn-select-wrapper fn-population-select">
-          <select id="fnPopulation">
+          <select id="fnPopulation" aria-describedby="fnFilterNote">
             <option value="Both">Both populations</option>
             <option value="First Nations people">First Nations peoples</option>
             <option value="Non-Indigenous">Non-Indigenous Australians</option>
@@ -42,7 +42,7 @@
         </div>
 
         <button id="fnReset" class="btn btn-reset" type="button">Reset</button>
-        <p class="fn-filter-note">
+        <p id="fnFilterNote" class="fn-filter-note">
           <strong>Note:</strong> Age and counterparty percentages show the
           distribution of hospitalisations within each population for the
           selected year—not population injury rates.
