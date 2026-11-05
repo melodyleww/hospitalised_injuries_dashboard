@@ -14,7 +14,12 @@ export function drawAgeChart(rows) {
   // Remove the previous chart when a filter change
   container.replaceChildren();
 
-  drawPopulationLegend("fnAgeLegend");
+  // Find the populations included in the filtered records.
+  const populations = POPULATION_ORDER.filter((population) =>
+    rows.some((row) => row.first_nations_status === population),
+  );
+
+  drawPopulationLegend("fnAgeLegend", populations);
 
   // Do not draw an incomplete percentage distribution
   if (
@@ -98,11 +103,6 @@ export function drawAgeChart(rows) {
     .text("Hospitalisations within each population (%)");
 
   // Grouped bar
-  // Identify the populations included in the current selection
-  const populations = POPULATION_ORDER.filter((population) =>
-    rows.some((row) => row.first_nations_status === population),
-  );
-
   // Divide each age row into one or two population slots
   const populationScale = d3
     .scaleBand()

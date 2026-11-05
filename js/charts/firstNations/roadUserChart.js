@@ -31,7 +31,12 @@ export function drawRoadUserChart(rows) {
   hideTooltip();
   container.replaceChildren();
 
-  drawPopulationLegend("fnRoadLegend");
+  // Find the populations included in the filtered records.
+  const populations = POPULATION_ORDER.filter((population) =>
+    rows.some((row) => row.first_nations_status === population),
+  );
+
+  drawPopulationLegend("fnRoadLegend", populations);
 
   // Find the largest available count; missing values are ignored
   const maxCount = d3.max(rows, (row) => row.hospitalisations);
@@ -114,11 +119,6 @@ export function drawRoadUserChart(rows) {
     .attr("y", height - 5)
     .attr("text-anchor", "middle")
     .text("Hospitalisations");
-
-  // Find the populations included in the current selection
-  const populations = POPULATION_ORDER.filter((population) =>
-    rows.some((row) => row.first_nations_status === population),
-  );
 
   // Divide each road-user row into population slots
   const populationScale = d3

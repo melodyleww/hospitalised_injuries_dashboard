@@ -26,11 +26,14 @@ export function drawLegend(containerId, items) {
   legendItems.append("span").text((item) => item.label);
 }
 
-// Shared population legend for age and road-user charts
-export function drawPopulationLegend(containerId) {
+// Draw legend entries for the selected populations.
+export function drawPopulationLegend(
+  containerId,
+  populations = POPULATION_ORDER,
+) {
   drawLegend(
     containerId,
-    POPULATION_ORDER.map((population) => ({
+    populations.map((population) => ({
       label: POPULATION_LABELS[population],
       color: POPULATION_COLORS[population],
     })),
