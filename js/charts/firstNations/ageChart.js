@@ -35,7 +35,7 @@ export function drawAgeChart(rows) {
 
   const margin = {
     top: 10,
-    right: 20,
+    right: 50,
     bottom: 40,
     left: 60,
   };
@@ -124,6 +124,24 @@ export function drawAgeChart(rows) {
     .attr("width", (row) => xScale(row.hospitalisation_share_pct))
     .attr("height", populationScale.bandwidth())
     .attr("fill", (row) => POPULATION_COLORS[row.first_nations_status]);
+
+  // Display each percentage just beyond its bar.
+  innerChart
+    .selectAll(".fn-age-value")
+    .data(rows)
+    .join("text")
+    .attr("class", "fn-age-value")
+    .attr("x", (row) => xScale(row.hospitalisation_share_pct) + 5)
+    .attr(
+      "y",
+      (row) =>
+        yScale(row.category) +
+        populationScale(row.first_nations_status) +
+        populationScale.bandwidth() / 2,
+    )
+    .attr("dy", "0.35em")
+    .attr("aria-hidden", "true")
+    .text((row) => `${row.hospitalisation_share_pct.toFixed(1)}%`);
 
   // Supply age-specific content to the shared tooltip
   attachTooltip(bars, (row) => ({
