@@ -96,11 +96,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         radio.addEventListener('change', (e) => {
             currentViewMode = e.target.value;
 
-            // Show the denominator note only in rate mode
-            if (rateNote) {
-                rateNote.hidden = currentViewMode !== "rate";
-            }
-
             drawStateBarChart(
                 injuryData, populationMap, "stateBarChart",
                 currentYear, currentViewMode, currentRoadUser,
@@ -159,7 +154,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.querySelector('input[name="viewMode"][value="count"]').checked = true;
             currentViewMode = "count";
 
-            if (rateNote) rateNote.hidden = true;
             updateAllCharts();
         });
     }

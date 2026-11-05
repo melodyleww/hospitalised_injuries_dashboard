@@ -8,7 +8,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const margin = { top: 5, right: 50, bottom: 20, left: 50 };
+    const margin = { top: 0, right: 50, bottom: 15, left: 50 };
     const width = container.clientWidth - margin.left - margin.right;
     const height = container.clientHeight - margin.top - margin.bottom;
 

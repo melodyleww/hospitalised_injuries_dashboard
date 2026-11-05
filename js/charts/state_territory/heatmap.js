@@ -15,7 +15,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         titleEl.innerText = title;
     }
 
-    const margin = { top: 8, right: 20, bottom: 55, left: 60 };
+    const margin = { top: 0, right: 20, bottom: 30, left: 60 };
     const totalWidth  = container.clientWidth;
     const totalHeight = container.clientHeight;
 

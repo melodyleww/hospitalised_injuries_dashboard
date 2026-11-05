@@ -16,8 +16,9 @@
     <header id="site-header" class="top-bar"></header>
     <nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections"></nav>
 
-    <main class="dashboard-wrapper"
-        style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
+    <!-- Kept the strict height and overflow hidden to ensure NO SCROLLING -->
+    <main class="dashboard-wrapper" style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow: hidden;">
+        
         <!-- FILTER BAR -->
         <section class="filter-bar" aria-label="Chart filters">
             <label for="yearFilter">Year</label>
@@ -76,10 +77,8 @@
                 <div class="guide-section">
                     <h2>Chart Guide</h2>
                     <p><strong>Solid line:</strong> Annual hospitalisations by state/territory</p>
-                    <p><strong>Grey band:</strong> Time-series breaks (Vic 2012, NSW 2017) where data collection methods
-                        changed. Do not compare across these periods.</p>
-                    <p><strong>Caveat:</strong> These are raw counts. Larger states like NSW naturally have higher
-                        numbers due to population size.</p>
+                    <p><strong>Grey band:</strong> Time-series breaks (Vic 2012, NSW 2017) where data collection methods changed. Do not compare across these periods.</p>
+                    <p><strong>Caveat:</strong> These are raw counts. Larger states like NSW naturally have higher numbers due to population size.</p>
                 </div>
             </div>
 
@@ -93,10 +92,9 @@
                     </div>
                 </div>
                 <div id="stateBarChart" class="chart-area"></div>
-                <p class="click-note">* Click a bar to filter the Line, Pie, and Heatmap by state.</p>
-                <p class="rate-note" hidden id="rateDenominatorNote">
-                    Rate uses 2021 Census population as a fixed denominator for every year; it is not a year-specific
-                    rate.
+                <p class="rate-note">
+                    <strong>Count</strong> = total cases. <strong>Rate</strong> = cases per 100k (using 2021 pop).<br>
+                    <em>* Click a bar to filter other charts.</em>
                 </p>
             </div>
 
@@ -104,9 +102,9 @@
             <div class="card state-heatmap-card">
                 <h2 id="heatmapTitle">Age Group Over Time</h2>
                 <div class="chart-area" id="ageHeatmap"></div>
-                <p class="click-note">
-                    Age bands are unequal-width as published by the source; cells compare
-                    counts by colour intensity, not equal age intervals.
+                <p class="age-band-note">
+                    <strong>Darker</strong> = higher count. Hover for exact numbers.<br>
+                    <em>Bands are unequal-width; colour shows count, not equal intervals.</em>
                 </p>
             </div>
 
@@ -114,8 +112,7 @@
             <div class="card state-pie-card">
                 <h2 id="pieChartTitle">Road User Composition (2021)</h2>
                 <div class="chart-area" id="roadUserChart"></div>
-                <p class="click-note" style="text-align: center; margin-top: 10px;">* Click a pie slice to filter the
-                    Line and Bar charts by road user.</p>
+                <p class="click-note" style="text-align: center; margin-top: 8px;">* Click a pie slice to filter the Line and Bar charts by road user.</p>
             </div>
 
         </section>
@@ -127,7 +124,7 @@
     <script type="module" src="js/state-comparisons.js"></script>
     <script type="module" src="js/components/layout.js"></script>
 
-    <!-- Shared tooltip (used by attachTooltip in utils/tooltip.js) -->
+    <!-- Shared tooltip -->
     <div id="fnTooltip" class="fn-tooltip" role="tooltip" hidden></div>
 
     <!-- Screen reader live region -->
