@@ -91,6 +91,12 @@
     grid-area: age;
 }
 
+.fn-age-value {
+  font-size: 9px;
+  fill: #1a2b4c;
+  pointer-events: none;
+}
+
 .fn-counterparty {
     grid-area: counterparty;
 }
@@ -324,4 +330,17 @@
         justify-self: end;
         margin-left: 0;
     }
+}
+
+/* Hide visually while keeping content available to screen readers. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
