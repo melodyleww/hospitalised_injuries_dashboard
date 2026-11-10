@@ -226,10 +226,17 @@
 }
 
 .fn-note {
-    flex-shrink: 0;
-    color: #536174;
-    font-size: 9px;
-    line-height: 1.4;
+    flex: 0 0 auto;
+    margin: 6px 0 0;
+    padding: 8px 10px;
+
+    font-size: 11px;
+    line-height: 1.5;
+    color: #1A2B4C;
+
+    background: #F4F7F6;
+    border-left: 4px solid #0072B2;
+    border-radius: 4px;
 }
 
 /* Floating tooltip does not occupy dashboard layout space. */

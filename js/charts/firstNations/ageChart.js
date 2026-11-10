@@ -29,7 +29,9 @@ export function drawAgeChart(rows) {
     const message = document.createElement("p");
     message.className = "fn-chart-message";
     message.textContent =
-      "Age percentages are unavailable for 2014 due to unpublished counts";
+      "Age percentages are unavailable for 2014 because some " +
+      "hospitalisation counts were not published. " +
+      "Missing counts do not mean zero cases.";
     container.append(message);
     return;
   }
