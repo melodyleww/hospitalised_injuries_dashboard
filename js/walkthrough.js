@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const steps = [
             { title: "Step 1/5", text: "Use the filters to explore three connected views: the National Overview (the big picture), State Comparisons (where injuries happen), and First Nations (who is most affected).", targetId: ".tabs" },
             { title: "Step 2/5", text: "You'll find the data dictionary, glossary, and important notes on data quality, privacy suppression, and time-series breaks to help you interpret the charts correctly.", targetId: "aboutTab" },
-            { title: "Step 3/5", text: "Use the dropdowns to narrow down the data, then click Apply to update the charts or click Reset to clear all filters and start over.", targetId: "yearFilter" },
+            { title: "Step 3/5", text: "Use the dropdowns to narrow down the data, and the charts will update automatically. Click Reset to clear all filters and start over.", targetId: "yearFilter" },
             { title: "Step 4/5", text: "Click any bar in the bar chart or slice in the pie chart to instantly cross-filter the entire dashboard.", targetId: "roadUserChart" },
             { title: "Step 5/5", text: "Forgot how to use the dashboard? You can click this button anytime to replay this guide.", targetId: "sharedHelpButton" }
         ];
