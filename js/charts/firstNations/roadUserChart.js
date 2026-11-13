@@ -31,7 +31,7 @@ export function drawRoadUserChart(rows) {
   hideTooltip();
   container.replaceChildren();
 
-  // Find the populations included in the filtered records.
+  // Find the populations included in the filtered records
   const populations = POPULATION_ORDER.filter((population) =>
     rows.some((row) => row.first_nations_status === population),
   );
@@ -41,6 +41,7 @@ export function drawRoadUserChart(rows) {
   // Find the largest available count; missing values are ignored
   const maxCount = d3.max(rows, (row) => row.hospitalisations);
 
+  // If every count is null, show a message instead of an empty chart
   if (maxCount == null) {
     const message = document.createElement("p");
     message.className = "fn-chart-message";
@@ -55,6 +56,7 @@ export function drawRoadUserChart(rows) {
   const width = container.clientWidth;
   const height = container.clientHeight;
 
+  // Larger left margin because road-user labels are long
   const margin = {
     top: 10,
     right: 25,
@@ -85,6 +87,7 @@ export function drawRoadUserChart(rows) {
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
   // Counts use a common zero baseline
+  // * 1.1 adds a little headroom; .nice() rounds the max to a clean number
   const xScale = d3
     .scaleLinear()
     .domain([0, Math.max(1, maxCount * 1.1)])
@@ -127,6 +130,7 @@ export function drawRoadUserChart(rows) {
     .range([0, yScale.bandwidth()])
     .padding(0.05);
 
+  // Split rows into real counts vs. unpublished (null) counts
   const publishedRows = rows.filter((row) => row.hospitalisations !== null);
 
   const missingRows = rows.filter((row) => row.hospitalisations === null);
@@ -147,7 +151,7 @@ export function drawRoadUserChart(rows) {
     .attr("height", populationScale.bandwidth())
     .attr("fill", (row) => POPULATION_COLORS[row.first_nations_status]);
 
-  // Display published counts beside the bars.
+  // Display published counts beside the bars
   const countLabels = innerChart
     .selectAll(".fn-road-count")
     .data(publishedRows, (row) => `${row.category}-${row.first_nations_status}`)
@@ -164,7 +168,11 @@ export function drawRoadUserChart(rows) {
     .attr("dominant-baseline", "middle")
     .text((row) => d3.format(",d")(row.hospitalisations));
 
-  // Label unavailable counts instead of drawing zero-length bars.
+  // --- GenAI Acknowledgment ---
+  // The "Not published" labelling for unavailable counts below was generated
+  // with the assistance of a large language model
+
+  // Label unavailable counts instead of drawing zero-length bars
   const missingLabels = innerChart
     .selectAll(".fn-road-missing")
     .data(missingRows, (row) => `${row.category}-${row.first_nations_status}`)

@@ -1,4 +1,3 @@
-//counterparty
 import {
   COLORS,
   COUNTERPARTY_COLORS,
@@ -8,6 +7,7 @@ import {
 import { attachTooltip, hideTooltip } from "../../utils/tooltip.js";
 import { drawLegend } from "../../utils/legend.js";
 
+// Fixed category order for the stack (bottom → top)
 const COUNTERPARTY_ORDER = [
   "Car, pick-up truck or van",
   "Fixed or stationary object",
@@ -27,6 +27,7 @@ export function drawStackedBarChart(rows) {
   );
 
   // Each population needs all four published category percentage
+  // (a complete 100% stack; otherwise we can't draw meaningful bars)
   const complete =
     populations.length > 0 &&
     populations.every((population) => {
@@ -46,6 +47,7 @@ export function drawStackedBarChart(rows) {
       );
     });
 
+  // Show a message if any population is missing a category
   if (!complete) {
     const message = document.createElement("p");
     message.className = "fn-chart-message";
@@ -56,10 +58,11 @@ export function drawStackedBarChart(rows) {
     return;
   }
 
-  // Use the space available inside the card.
+  // Use the space available inside the card
   const width = container.clientWidth;
   const height = container.clientHeight;
 
+  // Large left margin for long population labels
   const margin = {
     top: 8,
     right: 15,
@@ -98,6 +101,7 @@ export function drawStackedBarChart(rows) {
     .range([0, innerHeight])
     .padding(0.35);
 
+  // Bottom percentage axis (0-100%)
   innerChart
     .append("g")
     .attr("transform", `translate(0, ${innerHeight})`)
@@ -108,6 +112,7 @@ export function drawStackedBarChart(rows) {
         .tickFormat((value) => `${value}%`),
     );
 
+  // Left axis for population labels
   innerChart.append("g").call(
     d3
       .axisLeft(yScale)
@@ -124,8 +129,14 @@ export function drawStackedBarChart(rows) {
     .attr("text-anchor", "middle")
     .text("Hospitalisations within each population (%)");
 
+  // --- GenAI Acknowledgment ---
+  // The stacked bar chart logic below (building stackData, using d3.stack()
+  // to calculate segment start/end positions and drawing stacked segment
+  // rectangles) was generated with the assistance of a large language model
+
   // Stacked segments
-  // Convert long-format records into one object per population.
+  // Convert long-format records into one object per population
+  // e.g. { population: "First Nations people", "Car...": 45, "Fixed...": 20, ... }
   const stackData = populations.map((population) => {
     const record = { population };
 
@@ -141,18 +152,19 @@ export function drawStackedBarChart(rows) {
     return record;
   });
 
-  // Calculate each segment's starting and ending percentages.
+  // Calculate each segment's starting and ending percentages
+  // d3.stack returns one series per category (keys in COUNTERPARTY_ORDER)
   const stackGenerator = d3.stack().keys(COUNTERPARTY_ORDER);
 
   const series = stackGenerator(stackData);
 
-  // Use a consistent colour for each counterparty.
+  // Use a consistent colour for each counterparty
   const colorScale = d3
     .scaleOrdinal()
     .domain(COUNTERPARTY_ORDER)
     .range(COUNTERPARTY_COLORS);
 
-  // Draw one group per counterparty category.
+  // Draw one group per counterparty category
   const categoryGroups = innerChart
     .selectAll(".fn-counterparty-series")
     .data(series)
@@ -160,7 +172,8 @@ export function drawStackedBarChart(rows) {
     .attr("class", "fn-counterparty-series")
     .attr("fill", (series) => colorScale(series.key));
 
-  // Prepare the same segment data for rectangles and labels.
+  // Prepare the same segment data for rectangles and labels
+  // Converts [start, end] arrays into a flat object for easier mapping
   function getSegments(series) {
     return series.map((segment) => ({
       category: series.key,
@@ -169,7 +182,7 @@ export function drawStackedBarChart(rows) {
       end: segment[1],
     }));
   }
-  // Draw one segment per population within each category group.
+  // Draw one segment per population within each category group
   const segments = categoryGroups
     .selectAll("rect")
     .data(getSegments)
@@ -182,7 +195,8 @@ export function drawStackedBarChart(rows) {
     .attr("stroke", COLORS.white)
     .attr("stroke-width", 1);
 
-  // Find the original count record for a drawn segment.
+  // Find the original count record for a drawn segment
+  // Needed because segments only carry percentages, not raw counts
   function getRecord(segment) {
     return rows.find(
       (row) =>
@@ -191,7 +205,7 @@ export function drawStackedBarChart(rows) {
     );
   }
 
-  // Supply counterparty-specific content to the shared tooltip.
+  // Supply counterparty-specific content to the shared tooltip
   attachTooltip(segments, (segment) => {
     const row = getRecord(segment);
 
@@ -217,10 +231,9 @@ export function drawStackedBarChart(rows) {
     .attr("y", (segment) => yScale(segment.population) + yScale.bandwidth() / 2)
     .attr("text-anchor", "middle")
     .attr("dominant-baseline", "middle")
-    // Dark text remains readable on all four segment colours.
     .attr("fill", "#111111")
 
-    // Hide all labels when the drawing area is too small.
+    // Hide all labels when the drawing area is too small
     .text((segment) => {
       const compact = innerWidth < 300 || yScale.bandwidth() < 18;
 

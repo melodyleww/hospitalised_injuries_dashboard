@@ -1,4 +1,7 @@
-// js/components/layout.js
+// This file builds the shared header, navigation tabs, footer, and "How to use" dialog
+// that appear on every page
+
+// Different page footer settings: note and help text used by the shared layout
 const pageSettings = {
   national: {
     note: "Counts are not adjusted for population size.",
@@ -18,7 +21,9 @@ const pageSettings = {
   },
 };
 
+// Builds the shared header, nav, footer and dialog into the page
 function renderSharedLayout() {
+  // Read which page we're on from <body data-page="...">
   const page = document.body.dataset.page;
   const settings = pageSettings[page];
 
@@ -53,6 +58,7 @@ function renderSharedLayout() {
         </button>
     `;
 
+  // Navigation tabs (one per dashboard page)
   const links = [
     { id: "national", label: "National Overview", href: "index.html" },
     { id: "state", label: "State Comparisons", href: "state-comparisons.html" },
@@ -68,11 +74,12 @@ function renderSharedLayout() {
     },
   ];
 
+  // Build the nav <ul>, marking the current page as active
   document.getElementById("site-navigation").innerHTML = `
         <ul class="tabs">
             ${links
-      .map(
-        (link) => `
+              .map(
+                (link) => `
                 <li>
                     <a
                         class="tab ${link.id === page ? "active" : ""}"
@@ -82,37 +89,17 @@ function renderSharedLayout() {
                     </a>
                 </li>
             `,
-      )
-      .join("")}
+              )
+              .join("")}
         </ul>
     `;
 
   const footer = document.getElementById("site-footer");
 
+  // Footer shows the data source + the note for this page
   footer.innerHTML = `
         <p>Data Source: BITRE / AIHW | ${settings.note}</p>
     `;
-
-  // Shared dialog for "How to use" (About now navigates to its own page)
-  const dialog = document.createElement("dialog");
-  dialog.className = "shared-dialog";
-  dialog.setAttribute("aria-labelledby", "sharedDialogTitle");
-
-  dialog.innerHTML = `
-        <h2 id="sharedDialogTitle"></h2>
-        <p id="sharedDialogText"></p>
-        <form method="dialog">
-            <button type="submit" class="btn btn-apply">Close</button>
-        </form>
-    `;
-
-  document.body.append(dialog);
-
-  function openDialog(title, text) {
-    document.getElementById("sharedDialogTitle").textContent = title;
-    document.getElementById("sharedDialogText").textContent = text;
-    dialog.showModal();
-  }
 
   // --- REDIRECT LOGIC FOR "HOW TO USE" BUTTON ---
   document.getElementById("sharedHelpButton").addEventListener("click", (e) => {

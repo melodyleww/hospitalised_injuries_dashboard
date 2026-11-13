@@ -1,25 +1,37 @@
-// js/utils/tooltip.js
+// This file manages the shared chart tooltip: showing/hiding it, positioning it
+// near the pointer or focused mark, and announcing content to screen readers
+
+// Get the shared tooltip element
 function getTooltip() {
   return document.getElementById("fnTooltip");
 }
 
-// --- Screen Reader Live Region ---
+// --- Screen Reader Live Region (state_territory [Chok Li En]) ---
 // GenAI Acknowledgement: I asked Deepseek AI how to make D3 SVG charts accessible 
 // to screen readers. The AI explained that SVG shapes cannot be read directly, 
 // so I needed to update an aria-live region on focus. I used the suggested 
 // pattern of clearing the region first (textContent = "") and then setting 
 // the new value, to ensure the screen reader announces every change.
+
+// --- GenAI Acknowledgment (nation [Eva]) ---
+// The announce() helper below, which sends tooltip text to the
+// #sr-announcer live region so screen readers can read it, was written
+// with help from a large language model
+
+// Send text to the visually-hidden live region for screen readers
 function announce(text) {
   const announcer = document.getElementById("sr-announcer");
   if (announcer) announcer.textContent = text;
 }
 
+// Hide the tooltip and clear the announcement
 export function hideTooltip() {
   getTooltip().hidden = true;
   announce("");
 }
 
 // Keep the tooltip inside the browser window
+// Positions the tooltip near the pointer (mouse) or mark (focus)
 function positionTooltip(event) {
   const tooltip = getTooltip();
   const bounds = event.currentTarget.getBoundingClientRect();
@@ -44,6 +56,7 @@ function positionTooltip(event) {
 
 // Each chart provides its title, detail lines and accessible context
 export function attachTooltip(marks, getContent) {
+  // Build tooltip content, position it, and announce it
   function showTooltip(event, datum) {
     const tooltip = getTooltip();
     const content = getContent(datum);
@@ -72,9 +85,10 @@ export function attachTooltip(marks, getContent) {
 
   marks
     .classed("fn-interactive-mark", true)
-    .attr("tabindex", 0)
+    .attr("tabindex", 0) //focusable via keyboard
     .attr("role", "img")
     .attr("aria-label", (datum) => {
+      // Full accessible description for each mark
       const content = getContent(datum);
       return [content.context, content.title, ...content.lines]
         .filter(Boolean)

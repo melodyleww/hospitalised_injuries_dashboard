@@ -5,19 +5,21 @@ import { drawRoadUserChart } from "./charts/firstNations/roadUserChart.js";
 
 async function initialiseFirstNations() {
   try {
+    // Load data
     const data = await loadFirstNationsData();
 
-    // Find the existing HTML controls
+    // Find the existing dropdwon reset controls
     const yearSelect = document.getElementById("fnYear");
     const populationSelect = document.getElementById("fnPopulation");
     const resetButton = document.getElementById("fnReset");
 
     // Build year options from the dataset
-    //gets the years, removes repeated years, and turns them back into an array
+    // gets the years, removes repeated years, and turns them back into an array
     const years = [...new Set(data.map((row) => row.year))].sort(
       (a, b) => b - a,
     );
 
+    // Replace all <option> element inside year dropdown
     yearSelect.replaceChildren(
       ...years.map((year) => new Option(String(year), String(year))),
     );
@@ -26,6 +28,7 @@ async function initialiseFirstNations() {
     yearSelect.value = "2021";
     populationSelect.value = "Both";
 
+    //Re-render all chart based on current filter selection
     function updateDashboard() {
       const selectedYear = Number(yearSelect.value);
       const selectedPopulation = populationSelect.value;
@@ -38,20 +41,21 @@ async function initialiseFirstNations() {
             row.first_nations_status === selectedPopulation),
       );
 
+      // Split filtered row by breakdown type and draw each chart
       const ageRows = selectedRows.filter(
         (row) => row.breakdown_type === "age",
       );
-      drawAgeChart(ageRows);
+      drawAgeChart(ageRows); // draw the paired bar chart
 
       const counterpartyRows = selectedRows.filter(
         (row) => row.breakdown_type === "counterparty",
       );
-      drawStackedBarChart(counterpartyRows);
+      drawStackedBarChart(counterpartyRows); // draw stacked bar chart
 
       const roadUserRows = selectedRows.filter(
         (row) => row.breakdown_type === "road_user",
       );
-      drawRoadUserChart(roadUserRows);
+      drawRoadUserChart(roadUserRows); //road user paired bar chart
 
       // Keep chart headings aligned with the selection
       document.getElementById("fnAgeTitle").textContent =
@@ -66,22 +70,23 @@ async function initialiseFirstNations() {
       console.table(ageRows);
     }
 
-    // Redraw whenever either selection changes.
+    // Redraw whenever either selection changes
     yearSelect.addEventListener("change", updateDashboard);
     populationSelect.addEventListener("change", updateDashboard);
 
-    // Restore the starting selections.
+    // Restore the starting selections
     resetButton.addEventListener("click", () => {
       yearSelect.value = "2021";
       populationSelect.value = "Both";
       updateDashboard();
     });
 
-    // Apply the default selection on page load.
+    // Apply the default selection on page load
     updateDashboard();
 
-    let resizeTimer;
+    let resizeTimer; // debounce timer used by resize observer
 
+    // Redraw all chart when container size changed
     const resizeObserver = new ResizeObserver(() => {
       clearTimeout(resizeTimer);
 
