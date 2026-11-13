@@ -1,4 +1,4 @@
-// js/utils/formatters.js
+// This file provides small number-formatting helpers used across the charts
 
 // Formats numbers with commas (e.g., 39505 -> 39,505)
 export const formatNumber = d3.format(",");
