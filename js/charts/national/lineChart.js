@@ -4,6 +4,7 @@ import { COLORS, MARGINS } from '../../config.js';
 import { formatNumber, formatYear } from '../../utils/formatters.js';
 import { addAriaLabel } from '../../utils/accessibility.js';
 
+// Helper function for screen-reader announcements (Accessibility)
 const announce = (text) => {
     const announcer = document.getElementById("sr-announcer");
     if (announcer) announcer.textContent = text;
@@ -18,11 +19,13 @@ export function drawLineChart(data, containerId) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
+    // Edge case handling: Prevent chart from rendering if container is too small
     if (innerWidth <= 0 || innerHeight <= 0) {
         console.warn("Line chart needs more space");
         return;
     }
 
+    // Clear previous SVG before redrawing (handles ResizeObserver updates)
     d3.select(`#${containerId}`).html("");
 
     const svg = d3.select(`#${containerId}`)
@@ -31,17 +34,21 @@ export function drawLineChart(data, containerId) {
         .attr("height", height)
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("role", "group")
+        // Accessibility: ARIA label describing the chart
         .attr("aria-label", "Line chart showing the national trend of hospitalised injuries from 2011 to 2021.")
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
+    // 1. Data Aggregation: Sum total hospitalisations per year
     const yearlyData = d3.rollup(data, v => d3.sum(v, d => d.hospitalisations), d => d.year);
     const trendData = Array.from(yearlyData, ([year, total]) => ({ year, total })).sort((a,b) => a.year - b.year);
 
+    // 2. Scales Setup
     const x = d3.scalePoint().domain(trendData.map(d => d.year)).range([0, innerWidth]).padding(0.5);
     const y = d3.scaleLinear().domain([0, d3.max(trendData, d => d.total) * 1.1]).range([innerHeight, 0]);
 
-    // --- X-AXIS WITH SLANTED LABELS ---
+    // 3. Draw Axes
+    // X-Axis with rotated labels to prevent overlapping on smaller screens
     svg.append("g").attr("transform", `translate(0,${innerHeight})`)
         .call(d3.axisBottom(x).tickFormat(formatYear))
         .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted)
@@ -51,9 +58,11 @@ export function drawLineChart(data, containerId) {
         .attr("dx", "-0.5em")
         .attr("dy", "0.5em");
 
+    // Y-Axis
     svg.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "12px").style("color", COLORS.muted);
 
+    // 4. Draw the Line Path
     const line = d3.line().x(d => x(d.year)).y(d => y(d.total));
     svg.append("path").datum(trendData).attr("fill", "none").attr("stroke", COLORS.primary).attr("stroke-width", 2.5).attr("d", line);
 
@@ -63,13 +72,16 @@ export function drawLineChart(data, containerId) {
         .style("color", "#fff").style("padding", "5px 10px").style("border-radius", "5px")
         .style("font-size", "12px").style("pointer-events", "none").style("z-index", "1000");
 
+    // 5. Draw Data Points (Circles) and add interactions
     svg.selectAll(".dot").data(trendData).enter().append("circle")
         .attr("class", "dot")
         .attr("cx", d => x(d.year)).attr("cy", d => y(d.total))
         .attr("r", 4).attr("fill", COLORS.primary)
-        .attr("tabindex", 0)
+        .attr("tabindex", 0) // Focusable for keyboard users
         .attr("aria-label", d => `Year ${d.year}: ${formatNumber(d.total)} hospitalisations`)
         .style("cursor", "pointer")
+        
+        // Hover tooltip
         .on("mouseover", function(event, d) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             tooltip.style("opacity", 1)
@@ -80,6 +92,8 @@ export function drawLineChart(data, containerId) {
             d3.select(this).attr("r", 4).attr("fill", COLORS.primary);
             tooltip.style("opacity", 0);
         })
+        
+        // Accessibility: Keyboard focus triggers tooltip and screen-reader announcer
         .on("focus", function(event, d) {
             d3.select(this).attr("r", 6).attr("fill", COLORS.text);
             const rect = this.getBoundingClientRect();
@@ -94,18 +108,21 @@ export function drawLineChart(data, containerId) {
             announce("");
         });
 
+    // 6. Draw Time-Series Break Annotations (Data-Driven)
+    // Filter unique years where data_quality_flag is not blank
     const breakYears = [...new Set(data.filter(d => d.data_quality_flag && d.data_quality_flag !== "").map(d => d.year))].sort((a, b) => a - b);
     
     // --- BREAK LINE LABELS ---
     breakYears.forEach((year, index) => {
+        // Only draw if the year exists on the x-axis scale
         if(x(year)) {
-            // Draw the dashed line
+            // Draw the dashed red line
             svg.append("line")
                 .attr("x1", x(year)).attr("x2", x(year))
                 .attr("y1", 0).attr("y2", innerHeight)
                 .attr("stroke", COLORS.warning).attr("stroke-width", 1.5).attr("stroke-dasharray", "5,5");
 
-            // Add the text label
+            // Add the text label centered above the line
             const labelText = index === 0 ? "VIC break" : "NSW break";
 
             svg.append("text")

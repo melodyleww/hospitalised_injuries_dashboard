@@ -4,19 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hospitalised Injuries Dashboard</title>
+    
+    <!-- External Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
+  <!-- data-page attribute used for page-specific CSS targeting (e.g., responsive filter bar) -->
   <body data-page="national">
+    
+    <!-- Header & Navigation are injected via layout.js for consistency across tabs -->
     <header id="site-header" class="top-bar"></header>
     <nav id="site-navigation" class="tabs-container" aria-label="Dashboard sections"></nav>
 
     <main class="dashboard-wrapper">
+      
+      <!-- ========================================== -->
+      <!-- 1. FILTER BAR SECTION                      -->
+      <!-- ========================================== -->
       <section class="filter-bar">
-        <!-- ... (Filter bar stays exactly the same) ... -->
         <div class="dropdowns">
+          <!-- Year Filter -->
           <div class="filter-group">
             <label class="filter-label" for="yearFilter">Year</label>
             <div class="dropdown-wrapper">
@@ -32,6 +43,8 @@
               <span class="dropdown-arrow"></span>
             </div>
           </div>
+          
+          <!-- Road User Filter -->
           <div class="filter-group">
             <label class="filter-label" for="roadUserFilter">Road User</label>
             <div class="dropdown-wrapper">
@@ -50,25 +63,35 @@
             </div>
           </div>
         </div>
+        
+        <!-- Reset Button -->
         <div class="buttons"><button class="btn btn-reset">Reset</button></div>
+        
+        <!-- Informational Note -->
         <p class="filter-note">
           <strong>Note:</strong> The Year filter updates the KPI cards and the two Bar charts. The Road User filter cross-filters the Bar charts and Age chart. The Line chart shows the full unfiltered timeline.
         </p>
       </section>
 
-      <!-- NEW WRAPPED LAYOUT -->
+      <!-- ========================================== -->
+      <!-- 2. CHARTS LAYOUT (Two Columns)             -->
+      <!-- ========================================== -->
       <section class="charts-layout">
         
         <!-- LEFT COLUMN -->
         <div class="left-column">
           
-          <!-- Line Chart -->
+          <!-- Line Chart Card -->
           <div class="card line-chart-card">
             <div class="line-section">
               <h2>National Trend (2011 - 2021)</h2>
+              <!-- D3 Chart Container -->
               <div id="lineChart" class="chart-area"></div>
             </div>
+            
             <div class="divider"></div>
+            
+            <!-- Chart Guide Section -->
             <div class="guide-section">
               <h2>Chart Guide</h2>
               <ul>
@@ -79,7 +102,7 @@
             </div>
           </div>
 
-          <!-- Road User Chart -->
+          <!-- Road User Chart Card -->
           <div class="card road-user-card">
             <h2>Road User Breakdown</h2>
             <div id="roadUserChart" class="chart-area"></div>
@@ -91,12 +114,13 @@
         <!-- RIGHT COLUMN -->
         <div class="right-column">
           
-          <!-- KPI Row -->
+          <!-- KPI Cards Row -->
           <div class="kpi-row">
             <div class="card kpi-card">
               <img src="assets/images/icons/icon-hospital.png" alt="Hospital Icon" class="kpi-icon" />
               <div class="kpi-text-group">
                 <h3>Total Hospitalisations</h3>
+                <!-- Value injected by main.js -->
                 <p id="kpiTotal">-</p>
               </div>
             </div>
@@ -105,12 +129,13 @@
               <img src="assets/images/icons/icon-bed.png" alt="Bed Icon" class="kpi-icon" />
               <div class="kpi-text-group">
                 <h3>Avg Bed Days per Case</h3>
+                <!-- Value injected by main.js -->
                 <p id="kpiBedDays">-</p>
               </div>
             </div>
           </div>
 
-          <!-- Age Group Chart -->
+          <!-- Age Group Chart Card -->
           <div class="card age-group-card">
             <h2>Age Group Breakdown</h2>
             <div id="ageGroupChart" class="chart-area"></div>
@@ -123,15 +148,24 @@
     </main>
 
     <footer id="site-footer" class="bottom-bar"></footer>
+
+    <!-- Accessibility: Screen-reader live region for announcing chart values on keyboard focus -->
     <div id="sr-announcer" class="sr-only" aria-live="polite"></div>
 
+    <!-- Scripts -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/components/layout.js"></script>
     <script type="module" src="js/walkthrough.js"></script>
 
+    <!-- ========================================== -->
+    <!-- 3. ONBOARDING WALKTHROUGH MODAL            -->
+    <!-- ========================================== -->
+    <!-- Overlays for dimming background elements -->
     <div id="walkthroughOverlay" class="walkthrough-overlay" style="display: none"></div>
     <div id="walkthroughTabHighlight" class="walkthrough-tab-highlight" style="display: none"></div>
+    
+    <!-- Accessible Dialog for the 5-step guide -->
     <dialog id="walkthroughDialog" class="walkthrough-dialog" aria-labelledby="walkthroughTitle">
       <h2 id="walkthroughTitle" class="walkthrough-step">Step 1/5</h2>
       <p id="walkthroughText" class="walkthrough-text"></p>
