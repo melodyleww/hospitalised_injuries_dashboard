@@ -1,10 +1,5 @@
 // js/walkthrough.js
 
-// --- GenAI Acknowledgment ---
-// The walkthrough logic, including the localStorage check to show it only once,
-// was generated with the assistance of a large language model.
-// ---
-
 document.addEventListener("DOMContentLoaded", () => {
     // Only run on the National page
     if (document.body.dataset.page !== "national") return;

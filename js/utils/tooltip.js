@@ -3,6 +3,12 @@ function getTooltip() {
   return document.getElementById("fnTooltip");
 }
 
+// --- Screen Reader Live Region ---
+// GenAI Acknowledgement: I asked Deepseek AI how to make D3 SVG charts accessible 
+// to screen readers. The AI explained that SVG shapes cannot be read directly, 
+// so I needed to update an aria-live region on focus. I used the suggested 
+// pattern of clearing the region first (textContent = "") and then setting 
+// the new value, to ensure the screen reader announces every change.
 function announce(text) {
   const announcer = document.getElementById("sr-announcer");
   if (announcer) announcer.textContent = text;

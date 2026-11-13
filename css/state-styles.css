@@ -11,13 +11,11 @@
     width: 100%;
     flex: 1; 
     min-height: 0; 
-    /* Give a tiny bit of breathing room at the bottom of the grid */
     padding-bottom: 10px; 
 }
 
 /* 2. CARD CONFIGURATION */
 .card {
-    /* CHANGE: visible instead of hidden so notes never get sliced off */
     overflow: visible; 
     display: flex;
     flex-direction: column;
@@ -37,10 +35,14 @@
 
 /* 3. CHART AREAS */
 .chart-area {
+    /* GenAI Acknowledgement: I asked Deepseek AI why my chart was 
+       being collapsed on smaller screens. The AI explained that flex: 1 with 
+       min-height: 0 allows the chart to shrink when the card runs out of 
+       space, but without a floor it can shrink to 0px. I added min-height: 140px 
+       below so the chart remains visible. */
     flex: 1;
     width: 100%;
     position: relative;
-    /* CRITICAL: Allows D3 to shrink the chart so notes fit */
     min-height: 0; 
 }
 
@@ -114,7 +116,10 @@
    ========================================= */
 .rate-note,
 .age-band-note {
-    /* CRITICAL: flex-shrink: 0 stops the notes from being squished */
+    /* GenAI Acknowledgement: The AI suggested flex: 0 0 auto to ensure the 
+       notes take exactly their natural height and never get squeezed by the 
+       chart above them. I also reduced the font size and padding to make 
+       them fit comfortably inside the card on smaller viewports. */
     flex: 0 0 auto; 
     margin: 6px 0 0 0;
     font-size: 9px;

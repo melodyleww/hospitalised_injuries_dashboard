@@ -1,5 +1,4 @@
 // js/charts/state_territory/heatmap.js
-import { COLORS } from '../../config.js';
 import { formatNumber } from '../../utils/formatters.js';
 import { addAriaLabel, enableGridNavigation } from '../../utils/accessibility.js';
 import { attachTooltip, hideTooltip } from '../../utils/tooltip.js';
@@ -32,8 +31,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         return;
     }
 
-    // Cap the grid height on very tall/wide cards so cells don't
-    // become stretched. The extra vertical space is centred.
+    // Cap the grid height on very tall/wide cards so cells don't become stretched. The extra vertical space is centred.
     const MAX_GRID_HEIGHT = 300;
     const gridHeight   = Math.min(height, MAX_GRID_HEIGHT);
     const gridOffsetY  = (height - gridHeight) / 2;
@@ -105,7 +103,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         .interpolator(d3.interpolateBlues)
         .domain([0, maxVal]);
 
-    // X axis at the bottom of the (possibly capped) grid.
+    // X axis at the bottom of the grid.
     const xAxisGroup = svg.append("g")
         .attr("transform", `translate(0,${gridHeight})`);
 
@@ -154,7 +152,7 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         .style("stroke-width", 1)
         .style("cursor", "pointer");
 
-    // --- Shared tooltip ---
+    // Shared tooltip
     attachTooltip(cells, (d) => {
         if (d.isSuppressed) {
             return {
@@ -170,7 +168,9 @@ export function drawAgeHeatmap(data, containerId, selectedRoadUser = "All", sele
         };
     });
 
-    // Roving tabindex: 2-D grid navigation (years × age groups).
+    // Roving tabindex: 2-D grid navigation (years × age groups)
+    // GenAI Acknowledgement: The logic to map the Up/Down/Left/Right keys to the 
+    // 2D index of the years and age groups was developed with guidance from Deepseek AI
     const yearIndex = new Map(years.map((yy, i) => [yy, i]));
     const ageIndex  = new Map(ageGroups.map((a, i) => [a, i]));
 

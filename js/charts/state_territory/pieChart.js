@@ -80,7 +80,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         .style("cursor", "pointer")
         .style("transition", "opacity 0.2s");
 
-    // Hover/rest opacity: independent of tooltip; uses separate handlers.
+    // Hover/rest opacity: independent of tooltip, uses separate handlers.
     slices
         .on("mouseenter.opacity", function (event, d) {
             d3.select(this).style("opacity", isSelected(d) ? 0.8 : restingOpacity(d));
@@ -89,7 +89,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
             d3.select(this).style("opacity", restingOpacity(d));
         });
 
-    // --- Shared tooltip (attaches focus/blur too) ---
+    // Shared tooltip (attaches focus/blur too)
     attachTooltip(slices, (d) => {
         if (d.data.isSuppressed) {
             return {
@@ -105,7 +105,7 @@ export function drawRoadUserPieChart(data, containerId, selectedYear, selectedSt
         };
     });
 
-    // --- Keyboard activation (Enter / Space) ---
+    // Keyboard activation (Enter / Space)
     slices.on("keydown.activate", function (event, d) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();

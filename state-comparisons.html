@@ -127,7 +127,9 @@
     <!-- Shared tooltip -->
     <div id="fnTooltip" class="fn-tooltip" role="tooltip" hidden></div>
 
-    <!-- Screen reader live region -->
+    <!-- Screen reader live region. 
+     GenAI Acknowledgement: aria-live="polite" means the screen reader will wait until it finishes 
+     its current sentence before reading the new value, rather than interrupting. -->
     <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 </body>
 

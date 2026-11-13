@@ -100,7 +100,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         .style("cursor", "pointer")
         .style("transition", "fill 0.2s");
 
-    // --- Shared tooltip ---
+    // Shared tooltip
     attachTooltip(bars, (d) => {
         if (d.isSuppressed) {
             return {
@@ -121,7 +121,7 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
         };
     });
 
-    // --- Keyboard activation ---
+    // Keyboard activation
     bars.on("keydown.activate", function (event, d) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
@@ -135,6 +135,8 @@ export function drawStateBarChart(data, popMap, containerId, selectedYear, viewM
     });
 
     // Roving tabindex: one Tab stop, arrow keys move between bars vertically.
+    // GenAI Acknowledgement: The initial concept of a generic 'enableGridNavigation' helper was 
+    // suggested by Deepseek AI. I adapted it to handle the vertical-only navigation for this bar chart.
     enableGridNavigation(bars, {
         cols: () => 0,
         rows: (d, i) => i,

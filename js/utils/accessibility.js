@@ -1,5 +1,12 @@
 // js/utils/accessibility.js
 
+// GenAI Acknowledgement: 
+// The overall structure of the `enableGridNavigation` function, including the 
+// roving tabindex pattern (setting one tabindex=0 and the rest to -1), was drafted 
+// with the help of Deepseek AI. 
+// I significantly modified the solution to support custom row/column mapping, 
+// allowing it to handle 1D lists (bar charts) and 2D grids (heatmaps).
+
 export function addAriaLabel(svgSelection, labelText) {
     svgSelection
         .attr("role", "img")

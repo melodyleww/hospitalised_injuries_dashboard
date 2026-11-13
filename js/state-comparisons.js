@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const { injuryData, populationMap } = await loadStateData();
 
-    // --- TITLE UPDATERS ---
+    // TITLE UPDATERS - changed based on filters
     function updateLineChartTitle() {
         if (!lineChartTitle) return;
         let title = "Annual Hospitalisation Trends ";
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         pieChartTitle.innerText = title;
     }
 
-    // --- MASTER RENDER ---
+    // MASTER RENDER
     function updateAllCharts() {
         updateLineChartTitle();
         updateBarChartTitle();
@@ -73,7 +73,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     setTimeout(updateAllCharts, 50);
 
-    // --- RESIZE OBSERVER ---
+    // --- RESIZE OBSERVER: automatically redraws charts when the browser window changes size ---
+    // GenAI Acknowledgement: I asked Deepseek AI how to debounce a ResizeObserver to prevent 
+    // the charts from redrawing hundreds of times per second during a window drag. 
+    // The clearTimeout/setTimeout pattern below was suggested by the AI.
     let resizeTimeout;
     const resizeObserver = new ResizeObserver(() => {
         clearTimeout(resizeTimeout);
@@ -86,8 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         resizeObserver.observe(gridContainer);
     }
 
-    // --- EVENT LISTENERS ---
-
+    // EVENT LISTENERS
     // Radio Toggle
     const rateNote = document.getElementById("rateDenominatorNote");
 
@@ -126,13 +128,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // Click Bar (State Filter)
+    // Click Bar (State Filter [horizontal bar chart])
     function handleStateFilter(state) {
         currentStateFilter = (currentStateFilter === state) ? "All" : state;
         updateAllCharts();
     }
 
-    // Click Pie Slice (Road User Filter)
+    // Click Pie Slice (Road User Filter [doughnut chart])
     function handleRoadUserFilter(roadUser) {
         currentRoadUser = (currentRoadUser === roadUser) ? "All" : roadUser;
         if (roadUserSelect) roadUserSelect.value = currentRoadUser;

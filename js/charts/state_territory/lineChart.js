@@ -55,7 +55,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // 3. Filter Data
+    // Filter Data
     let filteredData;
     if (selectedRoadUser === "All") {
         filteredData = data.filter(d => d.breakdown_type === "Total" && d.hospitalisations !== null);
@@ -83,22 +83,19 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .domain([0, d3.max(filteredData, d => d.hospitalisations) * 1.1])
         .range([height, 0]);
 
-    // --- X axis: always rotate labels to -45° ---------------------
-    // Rotating keeps the 11 year labels legible at every width,
-    // and prevents the labels from colliding with the shaded break bands.
+    // rotate X axis labels
     const xAxisGroup = svg.append("g")
         .attr("transform", `translate(0,${height})`);
 
     const stepWidth = width / Math.max(1, years.length - 1);
 
     // Slightly larger font on wide screens, smaller on narrow ones.
-
     xAxisGroup
         .call(d3.axisBottom(x).tickFormat(formatYear))
         .style("font-family", "Poppins")
         .style("color", COLORS.muted);
 
-    // Always rotate the tick labels
+    // rotate the tick labels
     xAxisGroup
         .selectAll("text")
         .attr("transform", "rotate(-45)")
@@ -107,18 +104,23 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("dy", "0.4em");
 
 
-    // --- Y axis ---------------------------------------------------
+    // Y axis
     svg.append("g")
         .call(d3.axisLeft(y).ticks(5).tickFormat(formatNumber))
         .style("font-family", "Poppins").style("font-size", "10px").style("color", COLORS.muted);
 
-    // 5. Color Scale
+    // Color Scale
     const jurisdictions = [...new Set(filteredData.map(d => d.jurisdiction))].sort();
+
+    // GenAI Acknowledgement: I found the Okabe-Ito colourblind-safe hex codes online 
+    // because the original red/green palette was indistinguishable for users with colour 
+    // vision deficiency. I used Deepseek AI to learn how to apply these codes to a 
+    // d3.scaleOrdinal() so that each jurisdiction keeps a consistent colour across charts
     const colorScale = d3.scaleOrdinal()
         .domain(jurisdictions)
         .range(["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#999999"]);
 
-    // 6. Line Generator
+    // Line Generator
     const line = d3.line()
         .defined(d => d.hospitalisations !== null)
         .x(d => x(d.year))
@@ -126,7 +128,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
 
     const groupedData = d3.group(filteredData, d => d.jurisdiction);
 
-    // 7. Draw Lines
+    // Draw Lines
     groupedData.forEach((values, jurisdiction) => {
         svg.append("path")
             .datum(values.sort((a, b) => a.year - b.year))
@@ -139,7 +141,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
     const markerAriaLabel = (d) =>
         `${d.jurisdiction}, year ${d.year}: ${formatNumber(d.hospitalisations)} hospitalisations`;
 
-    // 8. Draw data point markers
+    // Draw data point markers
     const markers = svg.selectAll(".marker")
         .data(filteredData)
         .enter()
@@ -153,7 +155,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         .attr("stroke-width", 1)
         .style("cursor", "pointer");
 
-    // 9. Data Quality Breaks
+    // Data Quality Breaks
     const breakYears = [2012, 2017];
     const bandWidth = x.step() * 0.5 || 20;
 
@@ -182,7 +184,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         }
     });
 
-    // 10. Shared tooltip
+    // Shared tooltip
     attachTooltip(markers, (d) => ({
         title: d.jurisdiction,
         lines: [
@@ -192,10 +194,9 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         context: `Annual hospitalisations, ${d.year}`
     }));
 
-    // -----------------------------------------------------------------
-    // Roving tabindex: Left/Right walk every point chronologically,
-    // Up/Down jump by jurisdiction at the current year.
-    // -----------------------------------------------------------------
+    // GenAI Acknowledgement: I asked Deepseek AI how to handle keyboard navigation for a chart 
+    // with missing data points. The AI suggested sorting the data into a flat chronological array 
+    // and using the index to navigate, which I implemented below.
     const orderedPoints = filteredData
         .slice()
         .sort((a, b) =>
@@ -276,7 +277,7 @@ export function drawStateLineChart(data, containerId, selectedRoadUser = "All", 
         if (targetNode) focusMarker(targetNode);
     });
 
-    // --- Legend ---
+    // Legend
     let legendGroup;
     if (isMobile) {
         legendGroup = svg.append("g")
