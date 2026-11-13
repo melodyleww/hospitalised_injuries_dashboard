@@ -1,9 +1,9 @@
-//age paired bar chart
+// age paired bar chart
 import { POPULATION_COLORS, POPULATION_ORDER } from "../../config.js";
 import { attachTooltip, hideTooltip } from "../../utils/tooltip.js";
 import { drawPopulationLegend } from "../../utils/legend.js";
 
-// Keep age categories in their natural order.
+// Keep age categories in their natural order
 const AGE_ORDER = ["0-7", "8-16", "17-25", "26-39", "40-64", "65+"];
 
 export function drawAgeChart(rows) {
@@ -14,14 +14,14 @@ export function drawAgeChart(rows) {
   // Remove the previous chart when a filter change
   container.replaceChildren();
 
-  // Find the populations included in the filtered records.
+  // Find the populations included in the filtered records
   const populations = POPULATION_ORDER.filter((population) =>
     rows.some((row) => row.first_nations_status === population),
   );
 
   drawPopulationLegend("fnAgeLegend", populations);
 
-  // Do not draw an incomplete percentage distribution
+  // Incomplete percentage distribution is not drawn (2014)
   if (
     rows.length === 0 ||
     rows.some((row) => row.hospitalisation_share_pct === null)
@@ -40,6 +40,7 @@ export function drawAgeChart(rows) {
   const width = container.clientWidth;
   const height = container.clientHeight;
 
+  // Margin for axes and labels
   const margin = {
     top: 10,
     right: 50,
@@ -47,6 +48,7 @@ export function drawAgeChart(rows) {
     left: 60,
   };
 
+  // Actual drawing space
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
 
@@ -70,8 +72,8 @@ export function drawAgeChart(rows) {
     .append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-  // Horizontal position represents percentage.
-  // Keep the same scale across years and populations.
+  // Horizontal position represents percentage
+  // Keep the same scale across years and populations
   const xScale = d3.scaleLinear().domain([0, 40]).range([0, innerWidth]);
 
   // Vertical position represents the six age categories
@@ -104,6 +106,10 @@ export function drawAgeChart(rows) {
     .attr("text-anchor", "middle")
     .text("Hospitalisations within each population (%)");
 
+  // --- GenAI Acknowledgment ---
+  // The paired bar drawing logic and percentage labels below were generated
+  // with the assistance of a large language model
+
   // Grouped bar
   // Divide each age row into one or two population slots
   const populationScale = d3
@@ -127,7 +133,7 @@ export function drawAgeChart(rows) {
     .attr("height", populationScale.bandwidth())
     .attr("fill", (row) => POPULATION_COLORS[row.first_nations_status]);
 
-  // Display each percentage just beyond its bar.
+  // Display each percentage just beyond its bar
   innerChart
     .selectAll(".fn-age-value")
     .data(rows)
