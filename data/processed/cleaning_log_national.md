@@ -1,8 +1,7 @@
 # Cleaning Log — National File
 
-## 1. File name and owner
+## 1. File name
 - File: national_2011_2021.xlsx
-- Owner: <Your Name>
 
 ## 2. Row count before and after cleaning
 - Before (raw): 117,919
@@ -21,12 +20,13 @@
 - Aggregated monthly data into annual totals (GroupBy Sum)
 - Added `jurisdiction` = "Australia"
 - Added `first_nations_status` = "Unknown"
+- Created `data_quality_flag` column to annotate time-series breaks (National_break_2012, National_break_2017)
 
 ## 5. Count of n.p. values converted to NA
 - 0 (National file had no suppressed n.p. values)
 
 ## 6. Count of blank cells converted to NA
-- 0
+- 0 (No blank cells were found in any column)
 
 ## 7. Count of duplicate rows removed
 - 0 (Resolved automatically via GroupBy aggregation)
@@ -35,5 +35,8 @@
 - ABS population data was not provided in the Data Dictionary. As a result, the `rate_per_100k` column was omitted from this file.
 
 ## 9. Validation check results
-- 2011 National Total: Expected 34,033 / Actual: 34,033 (PASS)
 - 2021 National Total: Expected 39,505 / Actual: 39,505 (PASS)
+- 2021 Remoteness (Major Cities): Expected 26,355 / Actual: 26,355 (PASS)
+- 2021 Remoteness (Regional): Expected 11,407 / Actual: 11,407 (PASS)
+- 2021 Remoteness (Remote): Expected 1,114 / Actual: 1,114 (PASS)
+- Category Label Check: All labels match the Data Contract (PASS)

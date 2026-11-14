@@ -7,13 +7,13 @@ function getTooltip() {
 }
 
 // --- Screen Reader Live Region (state_territory [Chok Li En]) ---
-// GenAI Acknowledgement: I asked Deepseek AI how to make D3 SVG charts accessible 
-// to screen readers. The AI explained that SVG shapes cannot be read directly, 
-// so I needed to update an aria-live region on focus. I used the suggested 
-// pattern of clearing the region first (textContent = "") and then setting 
+// GenAI Acknowledgement: I asked Deepseek AI how to make D3 SVG charts accessible
+// to screen readers. The AI explained that SVG shapes cannot be read directly,
+// so I needed to update an aria-live region on focus. I used the suggested
+// pattern of clearing the region first (textContent = "") and then setting
 // the new value, to ensure the screen reader announces every change.
 
-// --- GenAI Acknowledgment (nation [Eva]) ---
+// --- GenAI Acknowledgment (first_nation [Tan Yi Chin], nation [Eva]) ---
 // The announce() helper below, which sends tooltip text to the
 // #sr-announcer live region so screen readers can read it, was written
 // with help from a large language model
